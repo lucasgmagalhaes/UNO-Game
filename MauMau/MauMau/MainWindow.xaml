@@ -6,25 +6,23 @@
         xmlns:local="clr-namespace:MauMau"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="865.096" Width="1420.806" MouseMove="Window_MouseMove" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseUp="Window_MouseUp">
+        Title="MainWindow" Height="753" Width="1309" MouseMove="Window_MouseMove" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseUp="Window_MouseUp" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/poker-table-felt.jpg" Stretch="UniformToFill"></ImageBrush>
         </Grid.Background>
         <Grid>
-            <Grid>
-                <Canvas Name="root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
-                    <Label Content="MONTE" FontSize="36" Canvas.Left="432" Canvas.Top="155"/>
-                    <Label Content="CARTAS JOGADAS" FontSize="36" Canvas.Left="646" Canvas.Top="155"/>
-                    <Image x:Name="Mont" Canvas.Left="432"  Canvas.Top="246" Source="Images/images.jpg" Height="180" Width="114" Stretch="Fill" />
-                    <Image x:Name="Played" Canvas.Left="619"  Canvas.Top="246" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Source="Images/images.jpg" Height="180" Width="114" Stretch="Fill" />
+            <Grid Margin="0,-24,0,0">
+                <Canvas Name="root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,-10">
+                    <Image x:Name="Mont" Canvas.Left="542"  Canvas.Top="246" Source="Images/images.jpg" Height="180" Width="114" Stretch="Fill" />
+                    <Image x:Name="Played" Canvas.Left="720"  Canvas.Top="246" Source="Images/images.jpg" Height="180" Width="114" Stretch="Fill" />
                     <!---Bottom Cards-->
-                    <Image x:Name="cardb1" Canvas.Left="600"  Canvas.Top="582" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
-                    <Image x:Name="cardb2" Grid.Column="2" Grid.Row="1" Canvas.Left="630"  Canvas.Top="582" Source="Images/download.jpg" Height="180" Width="114" Stretch="Fill" />
-                    <Image x:Name="cardb3" Canvas.Left="660"  Canvas.Top="582" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
-                    <Image x:Name="cardb4" Canvas.Left="694"  Canvas.Top="582" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Image x:Name="cardb1" Canvas.Left="585"  Canvas.Top="508" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Image x:Name="cardb2" Grid.Column="2" Grid.Row="1" Canvas.Left="615"  Canvas.Top="508" Source="Images/download.jpg" Height="180" Width="114" Stretch="Fill" />
+                    <Image x:Name="cardb3" Canvas.Left="645"  Canvas.Top="508" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Image x:Name="cardb4" Canvas.Left="681"  Canvas.Top="508" Canvas.Bottom="100" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
                     <!---Right Cards-->
-                    <Image x:Name="cardr1" IsEnabled="False" Canvas.Left="1193"  Canvas.Top="186" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
+                    <Image x:Name="cardr1" IsEnabled="False" Canvas.Left="1194"  Canvas.Top="247" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -34,7 +32,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image x:Name="cardUNO_Copy1" IsEnabled="False" Canvas.Left="1192"  Canvas.Top="170" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
+                    <Image x:Name="cardUNO_Copy1" IsEnabled="False" Canvas.Left="1193"  Canvas.Top="231" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -45,7 +43,7 @@
                         </Image.RenderTransform>
                     </Image>
                     <!---Left Cards-->
-                    <Image x:Name="cardUNO_Copy4" IsEnabled="False" Canvas.Left="57"  Canvas.Top="207" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
+                    <Image x:Name="cardUNO_Copy4"  Canvas.Left="56" HorizontalAlignment="Right" Canvas.Top="275" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -55,7 +53,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image x:Name="cardUNO_Copy5" IsEnabled="False" Canvas.Left="58"  Canvas.Top="177" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="115" RenderTransformOrigin="0.5,0.5" >
+                    <Image x:Name="cardUNO_Copy5" IsEnabled="False" Canvas.Left="57"  Canvas.Top="245" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="115" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -65,7 +63,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image x:Name="cardUNO_Copy6" IsEnabled="False" Canvas.Left="59"  Canvas.Top="146" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
+                    <Image x:Name="cardUNO_Copy6" IsEnabled="False" Canvas.Left="58"  Canvas.Top="214" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -76,11 +74,11 @@
                         </Image.RenderTransform>
                     </Image>
                     <!--Top Cards-->
-                    <Image x:Name="cardUNO_Copy7" IsEnabled="False" Canvas.Left="525"  Canvas.Top="10" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
-                    <Image x:Name="Card_Copy"  IsEnabled="False" Canvas.Left="555"  Canvas.Top="10" Source="Images/download.jpg" Height="180" Width="114" Stretch="Fill" />
-                    <Image x:Name="cardUNO_Copy8" IsEnabled="False" Canvas.Left="585"  Canvas.Top="10" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
-                    <Image x:Name="cardUNO_Copy9" IsEnabled="False" Canvas.Left="619"  Canvas.Top="10" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
-                    <Ellipse Height="76" IsEnabled="False" Cursor="Hand" Canvas.Left="482" Stroke="Black" Canvas.Top="686" Width="80">
+                    <Image x:Name="cardUNO_Copy7" IsEnabled="False" Canvas.Left="601"  Canvas.Top="22" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Image x:Name="Card_Copy"  IsEnabled="False" Canvas.Left="631"  Canvas.Top="22" Source="Images/download.jpg" Height="180" Width="114" Stretch="Fill" />
+                    <Image x:Name="cardUNO_Copy8" IsEnabled="False" Canvas.Left="661"  Canvas.Top="22" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Image x:Name="cardUNO_Copy9" IsEnabled="False" Canvas.Left="696"  Canvas.Top="22" Source="Images/download.jpg" Stretch="Fill" Height="180" Width="114" />
+                    <Ellipse Height="76" IsEnabled="False" Cursor="Hand" Canvas.Left="465" Stroke="Black" Canvas.Top="594" Width="80">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="Images/uno_Button.jpg" Stretch="Fill" />
                         </Ellipse.Fill>

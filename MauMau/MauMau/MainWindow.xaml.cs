@@ -57,7 +57,20 @@ namespace MauMau
 
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if(element != null) element.ReleaseMouseCapture();
+            if (element != null) element.ReleaseMouseCapture();
+        }
+        UIElement element1;
+        private void Window_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var ee = Mouse.DirectlyOver as UIElement;
+            if(ee.IsMouseOver)
+            {
+                Canvas.SetTop(ee, Canvas.GetTop(ee) + 40);
+            }
+        }
+
+        private void Window_MouseLeave(object sender, MouseEventArgs e)
+        {
         }
     }
 }
