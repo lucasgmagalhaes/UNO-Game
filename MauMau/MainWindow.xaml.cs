@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MauMau.Graphic;
 namespace MauMau
 {
     /// <summary>
@@ -28,6 +28,21 @@ namespace MauMau
         private Point mousePosition = new Point();
         private UIElement element;
         private UIElement nowcreated;
+        private UIEnginee eng;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            eng = new UIEnginee(Played);
+            List<UI_Player> img = eng.GetRandom(3);
+            player1.Fill = new ImageBrush(img[0].GetImageSource());
+            player1name.Content = img[0].Name;
+
+            player2.Fill = new ImageBrush(img[1].GetImageSource());
+            player2name.Content = img[1].Name;
+
+            player4.Fill = new ImageBrush(img[2].GetImageSource());
+            player4name.Content = img[2].Name;
+        }
+
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && element != null)
@@ -73,21 +88,7 @@ namespace MauMau
             if (element != null)
             {
                 element.ReleaseMouseCapture();
-
-                double fixLEFT = Canvas.GetLeft(Played as UIElement);
-                double fixTOP = Canvas.GetTop(Played as UIElement);
-
-                double cardLEFT = Canvas.GetLeft(element);
-                double cardTOP = Canvas.GetTop(element);
-
-                if(fixLEFT - cardLEFT > -30 && fixLEFT - cardLEFT < 50
-                    || fixLEFT - cardLEFT < 50 && fixLEFT - cardLEFT > -30
-                    && fixTOP - cardTOP > -30 && fixTOP - cardTOP < 50
-                    || fixTOP - cardTOP < 50 && fixTOP - cardTOP > -30)
-                {
-                    Canvas.SetLeft(element, fixLEFT);
-                    Canvas.SetTop(element, fixTOP);
-                }
+                if (eng.CancColapse(element)) element = eng.ColapseElement(element);
             }
         }
         private void Window_MouseEnter(object sender, MouseEventArgs e)

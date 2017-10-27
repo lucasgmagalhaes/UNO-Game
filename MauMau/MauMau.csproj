@@ -63,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Graphic\UIEnginee.cs" />
+    <Compile Include="Graphic\UI_Player.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -173,6 +175,18 @@
     <Resource Include="Images\vermelho\7red.png" />
     <Resource Include="Images\vermelho\8red.png" />
     <Resource Include="Images\vermelho\9red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\player\buzz.png" />
+    <Resource Include="Images\player\cowboy-col.png" />
+    <Resource Include="Images\player\magneto.jpg" />
+    <Resource Include="Images\player\mario.jpg" />
+    <Resource Include="Images\player\stormtrooper.png" />
+    <Resource Include="Images\player\vader.png" />
+    <Resource Include="Images\player\walle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\player\camb.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -100,3 +100,17 @@ C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.
 C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
 C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.exe
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\bin\Debug\MauMau.exe
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\bin\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\App.g.cs
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MainWindow.baml
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
