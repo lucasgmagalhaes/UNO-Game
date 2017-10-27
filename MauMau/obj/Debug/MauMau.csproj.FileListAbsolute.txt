@@ -1,0 +1,102 @@
+C:\Users\1047825\Desktop\MauMau\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\1047825\Desktop\MauMau\MauMau\bin\Debug\MauMau.exe
+C:\Users\1047825\Desktop\MauMau\MauMau\bin\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\App.g.cs
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MainWindow.baml
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.exe
+C:\Users\1047825\Desktop\MauMau\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\bin\Debug\MauMau.exe
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\bin\Debug\MauMau.pdb
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\App.g.cs
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MainWindow.baml
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.exe
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Lucax\Dropbox\Windows-Forms\PUC\3º período\MauMau\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\bin\Debug\MauMau.exe
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\bin\Debug\MauMau.pdb
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\App.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MainWindow.baml
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.exe
+C:\Users\Lucax\Documents\UNO-Game\MauMau\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\bin\Debug\MauMau.exe
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\bin\Debug\MauMau.pdb
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\App.g.cs
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MainWindow.baml
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.exe
+C:\Users\1047825\Desktop\UNO-Game-master\MauMau\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.exe
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\bin\Debug\MauMau.exe
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\bin\Debug\MauMau.pdb
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\App.g.cs
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MainWindow.baml
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.exe
+C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.pdb
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\App.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MainWindow.baml
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.exe
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\bin\Debug\MauMau.exe
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\bin\Debug\MauMau.pdb
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MainWindow.g.cs
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\App.g.cs
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MainWindow.baml
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.exe
+C:\Users\Lucax\Desktop\UNO-Game\MauMau\obj\Debug\MauMau.pdb
