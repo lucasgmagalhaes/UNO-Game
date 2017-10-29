@@ -27,27 +27,27 @@
                             <ImageBrush ImageSource="Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246" RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114">
+                    <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114">
                     </Rectangle>
                     <!---Bottom Cards-->
                     <Rectangle  x:Name="cardb1" Canvas.Left="585"  Canvas.Top="508" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb2" Canvas.Left="615"  Canvas.Top="508" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb3" Canvas.Left="645"  Canvas.Top="508" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb4"  Canvas.Left="681"  Canvas.Top="508" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <!---Right Cards-->
@@ -61,7 +61,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardd2" IsEnabled="False" Canvas.Left="1115"  Canvas.Top="384" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
@@ -74,7 +74,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardd3" IsEnabled="False" Canvas.Left="1116"  Canvas.Top="352" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
@@ -87,7 +87,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <!---Left Cards-->
@@ -101,7 +101,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <!--Top Cards-->
@@ -120,7 +120,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardl1_Copy" IsEnabled="False"  Canvas.Left="9" HorizontalAlignment="Right" Canvas.Top="399" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
@@ -133,7 +133,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardl1_Copy1" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="367" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
@@ -146,7 +146,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardl1_Copy2" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="319" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
@@ -159,27 +159,27 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb4_Copy"  Canvas.Left="536"  Canvas.Top="25" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb4_Copy1"  Canvas.Left="573"  Canvas.Top="25" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb4_Copy2"  Canvas.Left="606"  Canvas.Top="25" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle  x:Name="cardb4_Copy3"  Canvas.Left="639"  Canvas.Top="25" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="Images/azul/0blue.jpg" Stretch="Fill" />
+                            <ImageBrush ImageSource="Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle x:Name="player1" Canvas.Left="386" Canvas.Top="25" RadiusY="10" RadiusX="10" Stroke="White" Height="72" Width="83">
@@ -206,6 +206,7 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <Label x:Name="player3name" Content="Player4" Canvas.Left="397" FontSize="20" Canvas.Top="680" Width="152" Height="38"/>
+                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Height="249" Canvas.Left="681" Stroke="Transparent" Canvas.Top="210" Width="195" MouseEnter="blockplayedborder_MouseEnter"/>
                 </Canvas>
             </Grid>
         </Grid>

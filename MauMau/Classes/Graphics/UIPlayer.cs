@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace MauMau.Graphic
+namespace MauMau.Classes.Graphics
 {
-    class UI_Player
+    class UIPlayer
     {
         private string name;
         private ImageBrush source;
 
         public string Name { get { return this.name; } }
         public ImageBrush Source { get { return this.source; } }
-        public UI_Player(string name, ImageBrush source)
+        public UIPlayer(string name, ImageBrush source)
         {
             this.name = name;
             this.source = source;

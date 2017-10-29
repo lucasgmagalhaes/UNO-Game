@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
-namespace MauMau.Graphic
+namespace MauMau.Classes.Graphics
 {
     class UIEnginee
     {
-        private List<UI_Player> playersIMG = new List<UI_Player>();
+        private List<UIPlayer> playersIMG = new List<UIPlayer>();
         private static Random ran = new Random();
         private UIElement element_colapse;
         private const int marginMin = -20;
         private const int marginMax = 50;
+        private int zIndexElement = -99;
+
+        public int ZIndexElement { get { this.zIndexElement++; return this.zIndexElement; } }
+
         public UIEnginee(UIElement colapse)
         {
             LoadImage();
@@ -28,36 +33,36 @@ namespace MauMau.Graphic
         private void LoadImage()
         {
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/buzz.png", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("Buzz", brush));
+            playersIMG.Add(new UIPlayer("Buzz", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/camb.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("Cambit", brush));
+            playersIMG.Add(new UIPlayer("Cambit", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/cowboy-col.png", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("CowBoy", brush));
+            playersIMG.Add(new UIPlayer("CowBoy", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/magneto.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("Magneto", brush));
+            playersIMG.Add(new UIPlayer("Magneto", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/mario.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("Mario", brush));
+            playersIMG.Add(new UIPlayer("Mario", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/stormtrooper.png", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("StormTrooper", brush));
+            playersIMG.Add(new UIPlayer("StormTrooper", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/vader.png", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("Vader", brush));
+            playersIMG.Add(new UIPlayer("Vader", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/walle.png", UriKind.Absolute)));
-            playersIMG.Add(new UI_Player("WallE", brush));
+            playersIMG.Add(new UIPlayer("WallE", brush));
         }
-        public UI_Player GetRandomImg()
+        public UIPlayer GetRandomImg()
         {
             int valran = ran.Next(0, playersIMG.Count - 1);
             return playersIMG[valran];
         }
 
-        public List<UI_Player> GetRandom(int quant)
+        public List<UIPlayer> GetRandom(int quant)
         {
             int[] aux = new int[quant];
             while (aux.Distinct().Count() != aux.Count())
@@ -66,25 +71,9 @@ namespace MauMau.Graphic
                 aux[1] = ran.Next(0, playersIMG.Count - 1);
                 aux[2] = ran.Next(0, playersIMG.Count - 1);
             }
-            List<UI_Player> auxlist = new List<UI_Player>();
+            List<UIPlayer> auxlist = new List<UIPlayer>();
             foreach (int val in aux) auxlist.Add(playersIMG[val]);
             return auxlist;
-        }
-
-        public bool CancColapse(UIElement el)
-        {
-            double fixLEFT = Canvas.GetLeft(el);
-            double fixTOP = Canvas.GetTop(el);
-
-            double cardLEFT = Canvas.GetLeft(this.element_colapse);
-            double cardTOP = Canvas.GetTop(this.element_colapse);
-
-            if (fixLEFT - cardLEFT > marginMin && fixLEFT - cardLEFT < marginMax || fixLEFT - cardLEFT < marginMax && fixLEFT - cardLEFT > marginMin)
-                if (fixTOP - cardTOP > marginMin && fixTOP - cardTOP < marginMax || fixTOP - cardTOP < marginMax && fixTOP - cardTOP > marginMin)
-                {
-                    return true;
-                }
-            return false;
         }
         public UIElement ColapseElement(UIElement el)
         {
@@ -92,5 +81,6 @@ namespace MauMau.Graphic
             Canvas.SetTop(el, Canvas.GetTop(this.element_colapse));
             return el;
         }
+
     }
 }

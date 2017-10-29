@@ -63,8 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Graphic\UIEnginee.cs" />
-    <Compile Include="Graphic\UI_Player.cs" />
+    <Compile Include="Classes\Background\Baralho.cs" />
+    <Compile Include="Classes\Background\Carta.cs" />
+    <Compile Include="Classes\Background\Exception.cs" />
+    <Compile Include="Classes\Background\Player.cs" />
+    <Compile Include="Classes\Graphics\UIEnginee.cs" />
+    <Compile Include="Classes\Graphics\UIPlayer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,80 +105,74 @@
     <Resource Include="Images\outras\poker-table-felt.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\download.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\images.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\outras\uno_Button.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\outras\uno_back.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\amarelo\0yel.jpg" />
-    <Resource Include="Images\amarelo\10yelBloq.jpg" />
-    <Resource Include="Images\amarelo\11yelInverte.jpg" />
-    <Resource Include="Images\amarelo\12yelCompra.jpg" />
-    <Resource Include="Images\amarelo\1yel.jpg" />
-    <Resource Include="Images\amarelo\2yel.jpg" />
-    <Resource Include="Images\amarelo\3yel.jpg" />
-    <Resource Include="Images\amarelo\4yel.jpg" />
-    <Resource Include="Images\amarelo\5yel.jpg" />
-    <Resource Include="Images\amarelo\6yel.jpg" />
-    <Resource Include="Images\amarelo\7yel.jpg" />
-    <Resource Include="Images\amarelo\8yel.jpg" />
-    <Resource Include="Images\amarelo\9yel.jpg" />
+    <Resource Include="Images\Cartas\amarelo\0yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowBloq.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowInverte.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowCompra.jpg" />
+    <Resource Include="Images\Cartas\amarelo\1yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\2yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\3yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\4yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\5yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\6yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\7yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\8yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\9yellow.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\especial\coringa.png" />
-    <Resource Include="Images\especial\coringaCompra.jpg" />
+    <Resource Include="Images\Cartas\especial\coringa.png" />
+    <Resource Include="Images\Cartas\especial\coringaCompra.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\azul\0blue.jpg" />
-    <Resource Include="Images\azul\10blueBloq.jpg" />
-    <Resource Include="Images\azul\11blueInverte.jpg" />
-    <Resource Include="Images\azul\12blueCompra.jpg" />
-    <Resource Include="Images\azul\1blue.jpg" />
-    <Resource Include="Images\azul\2blue.jpg" />
-    <Resource Include="Images\azul\3blue.jpg" />
-    <Resource Include="Images\azul\4blue.jpg" />
-    <Resource Include="Images\azul\5blue.jpg" />
-    <Resource Include="Images\azul\6blue.jpg" />
-    <Resource Include="Images\azul\7blue.jpg" />
-    <Resource Include="Images\azul\8blue.jpg" />
-    <Resource Include="Images\azul\9blue.jpg" />
+    <Resource Include="Images\Cartas\azul\0blue.jpg" />
+    <Resource Include="Images\Cartas\azul\blueBloq.jpg" />
+    <Resource Include="Images\Cartas\azul\blueInverte.jpg" />
+    <Resource Include="Images\Cartas\azul\blueCompra.jpg" />
+    <Resource Include="Images\Cartas\azul\1blue.jpg" />
+    <Resource Include="Images\Cartas\azul\2blue.jpg" />
+    <Resource Include="Images\Cartas\azul\3blue.jpg" />
+    <Resource Include="Images\Cartas\azul\4blue.jpg" />
+    <Resource Include="Images\Cartas\azul\5blue.jpg" />
+    <Resource Include="Images\Cartas\azul\6blue.jpg" />
+    <Resource Include="Images\Cartas\azul\7blue.jpg" />
+    <Resource Include="Images\Cartas\azul\8blue.jpg" />
+    <Resource Include="Images\Cartas\azul\9blue.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\verde\0gre.jpg" />
-    <Resource Include="Images\verde\10greBloq.jpg" />
-    <Resource Include="Images\verde\11greInverte.jpg" />
-    <Resource Include="Images\verde\12greCompra.jpg" />
-    <Resource Include="Images\verde\1gre.jpg" />
-    <Resource Include="Images\verde\2gre.jpg" />
-    <Resource Include="Images\verde\3gre.jpg" />
-    <Resource Include="Images\verde\4gre.jpg" />
-    <Resource Include="Images\verde\5gre.jpg" />
-    <Resource Include="Images\verde\6gre.jpg" />
-    <Resource Include="Images\verde\7gre.jpg" />
-    <Resource Include="Images\verde\8gre.jpg" />
-    <Resource Include="Images\verde\9gre.jpg" />
+    <Resource Include="Images\Cartas\verde\0green.jpg" />
+    <Resource Include="Images\Cartas\verde\greenBloq.jpg" />
+    <Resource Include="Images\Cartas\verde\greenInverte.jpg" />
+    <Resource Include="Images\Cartas\verde\greenCompra.jpg" />
+    <Resource Include="Images\Cartas\verde\1green.jpg" />
+    <Resource Include="Images\Cartas\verde\2green.jpg" />
+    <Resource Include="Images\Cartas\verde\3green.jpg" />
+    <Resource Include="Images\Cartas\verde\4green.jpg" />
+    <Resource Include="Images\Cartas\verde\5green.jpg" />
+    <Resource Include="Images\Cartas\verde\6green.jpg" />
+    <Resource Include="Images\Cartas\verde\7green.jpg" />
+    <Resource Include="Images\Cartas\verde\8green.jpg" />
+    <Resource Include="Images\Cartas\verde\9green.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\vermelho\0red.png" />
-    <Resource Include="Images\vermelho\10redBloq.png" />
-    <Resource Include="Images\vermelho\11redInverte.png" />
-    <Resource Include="Images\vermelho\12redCompra.png" />
-    <Resource Include="Images\vermelho\1red.png" />
-    <Resource Include="Images\vermelho\2red.png" />
-    <Resource Include="Images\vermelho\3red.png" />
-    <Resource Include="Images\vermelho\4red.png" />
-    <Resource Include="Images\vermelho\5red.png" />
-    <Resource Include="Images\vermelho\6red.png" />
-    <Resource Include="Images\vermelho\7red.png" />
-    <Resource Include="Images\vermelho\8red.png" />
-    <Resource Include="Images\vermelho\9red.png" />
+    <Resource Include="Images\Cartas\vermelho\0red.png" />
+    <Resource Include="Images\Cartas\vermelho\redBloq.png" />
+    <Resource Include="Images\Cartas\vermelho\redInverte.png" />
+    <Resource Include="Images\Cartas\vermelho\redCompra.png" />
+    <Resource Include="Images\Cartas\vermelho\1red.png" />
+    <Resource Include="Images\Cartas\vermelho\2red.png" />
+    <Resource Include="Images\Cartas\vermelho\3red.png" />
+    <Resource Include="Images\Cartas\vermelho\4red.png" />
+    <Resource Include="Images\Cartas\vermelho\5red.png" />
+    <Resource Include="Images\Cartas\vermelho\6red.png" />
+    <Resource Include="Images\Cartas\vermelho\7red.png" />
+    <Resource Include="Images\Cartas\vermelho\8red.png" />
+    <Resource Include="Images\Cartas\vermelho\9red.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\player\buzz.png" />
@@ -188,6 +186,7 @@
   <ItemGroup>
     <Resource Include="Images\player\camb.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

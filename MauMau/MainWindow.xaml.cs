@@ -13,7 +13,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MauMau.Graphic;
+using MauMau.Classes.Graphics;
+using MauMau.Classes.Background;
+
 namespace MauMau
 {
     /// <summary>
@@ -25,14 +27,15 @@ namespace MauMau
         {
             InitializeComponent();
         }
+
         private Point mousePosition = new Point();
         private UIElement element;
-        private UIElement nowcreated;
         private UIEnginee eng;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new UIEnginee(Played);
-            List<UI_Player> img = eng.GetRandom(3);
+            List<UIPlayer> img = eng.GetRandom(3);
             player1.Fill = new ImageBrush(img[0].GetImageSource());
             player1name.Content = img[0].Name;
 
@@ -41,6 +44,8 @@ namespace MauMau
 
             player4.Fill = new ImageBrush(img[2].GetImageSource());
             player4name.Content = img[2].Name;
+
+            Baralho B = new Baralho();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -62,24 +67,14 @@ namespace MauMau
 
             if (mouseWasDownOn != null)
             {
-                if (nowcreated != null)
+                if (mouseWasDownOn.Name != "Mont" && mouseWasDownOn.Name != "Played")
                 {
-                    element = nowcreated;
+                    element = mouseWasDownOn;
                     mousePosition = e.GetPosition(this);
                     element.CaptureMouse();
-                    nowcreated = null;
+                    Canvas.SetZIndex(element, -1);
                 }
-                else
-                {
-                    if (mouseWasDownOn.Name != "Mont" && mouseWasDownOn.Name != "Played")
-                    {
-                        element = mouseWasDownOn;
-                        mousePosition = e.GetPosition(this);
-                        element.CaptureMouse();
-                    }
-                    else element = null;
-
-                }
+                else element = null;
             }
         }
 
@@ -88,20 +83,15 @@ namespace MauMau
             if (element != null)
             {
                 element.ReleaseMouseCapture();
-                if (eng.CancColapse(element)) element = eng.ColapseElement(element);
+                element = null;
             }
         }
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-            var ee = Mouse.DirectlyOver as UIElement;
-            if (ee.IsMouseOver)
-            {
-                Canvas.SetTop(ee, Canvas.GetTop(ee) + 40);
-            }
+
         }
         private void btnUNO_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //btnUNO.Opacity = 0.5;
             DoubleAnimation da = new DoubleAnimation
                 (0, 360, new Duration(TimeSpan.FromMilliseconds(400)));
             RotateTransform rt = new RotateTransform();
@@ -115,7 +105,7 @@ namespace MauMau
             Rectangle getcard = new Rectangle();
             getcard.Fill = new ImageBrush
             {
-               ImageSource = new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/azul/0blue.jpg", UriKind.Absolute))
+                ImageSource = new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/azul/0blue.jpg", UriKind.Absolute))
             };
             getcard.RadiusX = 10;
             getcard.RadiusY = 10;
@@ -123,11 +113,49 @@ namespace MauMau
             getcard.Width = 114;
             getcard.Name = "newcard";
 
+            //getcard.MouseEnter += Getcard_MouseEnter;
+            //getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
+            Canvas.SetZIndex(getcard as UIElement, 0);
             root.Children.Add(getcard);
-            nowcreated = getcard;
-            Window_MouseLeftButtonDown(sender, e);
+        }
+
+        //private void Getcard_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    var ee = Mouse.DirectlyOver as UIElement;
+        //    if (ee.IsMouseOver && element != null)
+        //    {
+        //        ElementAnimationLeave(element);
+        //        element = null;
+        //    }
+        //}
+
+        private void Getcard_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //var ee = Mouse.DirectlyOver as UIElement;
+            //element = ee;
+            // if (ee.IsMouseOver) ElementAnimationHover(element);
+        }
+
+        private void blockplayedborder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (element != null)
+            {
+                eng.ColapseElement(element);
+                Canvas.SetZIndex(element,-3);
+                element = null;
+            }
+        }
+        public void ElementAnimationHover(UIElement element)
+        {
+            var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(element) - 40, new Duration(TimeSpan.FromMilliseconds(100)));
+            element.BeginAnimation(Canvas.TopProperty, moveAnimY);
+        }
+        public void ElementAnimationLeave(UIElement element)
+        {
+            var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(element) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+            element.BeginAnimation(Canvas.TopProperty, moveAnimY);
         }
     }
 }
