@@ -13,7 +13,6 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MauMau.Classes.Graphics;
 using MauMau.Classes.Background;
 
 namespace MauMau
@@ -30,22 +29,28 @@ namespace MauMau
 
         private Point mousePosition = new Point();
         private UIElement element;
-        private UIEnginee eng;
+        private Enginee eng;
+        private bool cardsExpanded;
+        int count = -100;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            eng = new UIEnginee(Played);
-            List<UIPlayer> img = eng.GetRandom(3);
-            player1.Fill = new ImageBrush(img[0].GetImageSource());
-            player1name.Content = img[0].Name;
+            eng = new Enginee(Played);
+            List<Player> img = eng.GetPlayers();
+            player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
+            player1name.Content = img[0].Infos.Name;
 
-            player2.Fill = new ImageBrush(img[1].GetImageSource());
-            player2name.Content = img[1].Name;
+            player2.Fill = new ImageBrush(img[1].Infos.GetImageSource());
+            player2name.Content = img[1].Infos.Name;
 
-            player4.Fill = new ImageBrush(img[2].GetImageSource());
-            player4name.Content = img[2].Name;
+            player3.Fill = new ImageBrush(img[2].Infos.GetImageSource());
+            player3name.Content = img[2].Infos.Name;
 
-            Baralho B = new Baralho();
+            player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
+            player4name.Content = img[3].Infos.Name;
+
+            Baralho deck = new Baralho();
+            deck.Embaralhar();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -61,6 +66,7 @@ namespace MauMau
                 mousePosition = temp;
             }
         }
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var mouseWasDownOn = e.Source as FrameworkElement;
@@ -69,12 +75,39 @@ namespace MauMau
             {
                 if (mouseWasDownOn.Name != "Mont" && mouseWasDownOn.Name != "Played")
                 {
-                    element = mouseWasDownOn;
-                    mousePosition = e.GetPosition(this);
-                    element.CaptureMouse();
-                    Canvas.SetZIndex(element, -1);
+                    if (cardsExpanded == true)
+                    {
+                        element = mouseWasDownOn;
+                        mousePosition = e.GetPosition(this);
+                        element.CaptureMouse();
+                        Canvas.SetZIndex(element, 3);
+                    }
+                    else ExpandPlayerCards();
                 }
                 else element = null;
+            }
+        }
+
+        private void ExpandPlayerCards()
+        {
+            cardsExpanded = true;
+        }
+
+        private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var mouseon = e.OriginalSource as FrameworkElement;
+            if (mouseon != null)
+            {
+                element = mouseon as UIElement;
+                if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")
+                {
+                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
+                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
+                    element.BeginAnimation(Canvas.TopProperty, moveAnimY);
+                    element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+                    Canvas.SetZIndex(element, count++);
+                    element = null;
+                }
             }
         }
 
@@ -83,13 +116,14 @@ namespace MauMau
             if (element != null)
             {
                 element.ReleaseMouseCapture();
+                if (element != null)
+                {
+                    Canvas.SetZIndex(element, 0);
+                }
                 element = null;
             }
         }
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        {
 
-        }
         private void btnUNO_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DoubleAnimation da = new DoubleAnimation
@@ -117,7 +151,6 @@ namespace MauMau
             //getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
-            Canvas.SetZIndex(getcard as UIElement, 0);
             root.Children.Add(getcard);
         }
 
@@ -143,15 +176,17 @@ namespace MauMau
             if (element != null)
             {
                 eng.ColapseElement(element);
-                Canvas.SetZIndex(element,-3);
+                Canvas.SetZIndex(element, count++);
                 element = null;
             }
         }
+
         public void ElementAnimationHover(UIElement element)
         {
             var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(element) - 40, new Duration(TimeSpan.FromMilliseconds(100)));
             element.BeginAnimation(Canvas.TopProperty, moveAnimY);
         }
+
         public void ElementAnimationLeave(UIElement element)
         {
             var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(element) + 40, new Duration(TimeSpan.FromMilliseconds(100)));

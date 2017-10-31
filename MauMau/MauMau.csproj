@@ -65,10 +65,10 @@
     </Compile>
     <Compile Include="Classes\Background\Baralho.cs" />
     <Compile Include="Classes\Background\Carta.cs" />
-    <Compile Include="Classes\Background\Exception.cs" />
+    <Compile Include="Classes\Exceptions\ImageLoadException.cs" />
     <Compile Include="Classes\Background\Player.cs" />
-    <Compile Include="Classes\Graphics\UIEnginee.cs" />
-    <Compile Include="Classes\Graphics\UIPlayer.cs" />
+    <Compile Include="Classes\Background\Enginee.cs" />
+    <Compile Include="Classes\Background\Profile.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -186,7 +186,9 @@
   <ItemGroup>
     <Resource Include="Images\player\camb.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\outras\card_template.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

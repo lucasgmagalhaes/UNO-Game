@@ -9,22 +9,30 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
-namespace MauMau.Classes.Graphics
+namespace MauMau.Classes.Background
 {
-    class UIEnginee
+    class Enginee
     {
-        private List<UIPlayer> playersIMG = new List<UIPlayer>();
+        private List<Player> players;
+        private List<Profile> allprofiles;
         private static Random ran = new Random();
+        /// <summary>
+        /// Jogar controlado pelo usuário
+        /// </summary>
+        private Player realOne;
+        /// <summary>
+        /// Elemento das cartas jogadas
+        /// </summary>
         private UIElement element_colapse;
-        private const int marginMin = -20;
-        private const int marginMax = 50;
-        private int zIndexElement = -99;
 
-        public int ZIndexElement { get { this.zIndexElement++; return this.zIndexElement; } }
+        public Player RealOne { get { return this.players[0]; } }
 
-        public UIEnginee(UIElement colapse)
+        public Enginee(UIElement colapse)
         {
+            players = new List<Player>();
+            allprofiles = new List<Profile>();
             LoadImage();
+            SetRandomPlayers();
             this.element_colapse = colapse;
         }
         /// <summary>
@@ -33,48 +41,48 @@ namespace MauMau.Classes.Graphics
         private void LoadImage()
         {
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/buzz.png", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("Buzz", brush));
+            allprofiles.Add(new Profile("Buzz", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/camb.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("Cambit", brush));
+            allprofiles.Add(new Profile("Cambit", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/cowboy-col.png", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("CowBoy", brush));
+            allprofiles.Add(new Profile("CowBoy", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/magneto.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("Magneto", brush));
+            allprofiles.Add(new Profile("Magneto", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/mario.jpg", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("Mario", brush));
+            allprofiles.Add(new Profile("Mario", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/stormtrooper.png", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("StormTrooper", brush));
+            allprofiles.Add(new Profile("StormTrooper", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/vader.png", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("Vader", brush));
+            allprofiles.Add(new Profile("Vader", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/walle.png", UriKind.Absolute)));
-            playersIMG.Add(new UIPlayer("WallE", brush));
-        }
-        public UIPlayer GetRandomImg()
-        {
-            int valran = ran.Next(0, playersIMG.Count - 1);
-            return playersIMG[valran];
+            allprofiles.Add(new Profile("WallE", brush));
         }
 
-        public List<UIPlayer> GetRandom(int quant)
+        private void SetRandomPlayers()
         {
-            int[] aux = new int[quant];
+            int[] aux = new int[4];
             while (aux.Distinct().Count() != aux.Count())
             {
-                aux[0] = ran.Next(0, playersIMG.Count - 1);
-                aux[1] = ran.Next(0, playersIMG.Count - 1);
-                aux[2] = ran.Next(0, playersIMG.Count - 1);
+                aux[0] = ran.Next(0, this.allprofiles.Count - 1);
+                aux[1] = ran.Next(0, this.allprofiles.Count - 1);
+                aux[2] = ran.Next(0, this.allprofiles.Count - 1);
+                aux[3] = ran.Next(0, this.allprofiles.Count - 1);
             }
-            List<UIPlayer> auxlist = new List<UIPlayer>();
-            foreach (int val in aux) auxlist.Add(playersIMG[val]);
-            return auxlist;
+            for (int val = 0; val < aux.Length; val++) players.Add(new Player(allprofiles[aux[val]]));
         }
+
+        public List<Player> GetPlayers()
+        {
+            return this.players;
+        }
+
         public UIElement ColapseElement(UIElement el)
         {
             Canvas.SetLeft(el, Canvas.GetLeft(this.element_colapse));

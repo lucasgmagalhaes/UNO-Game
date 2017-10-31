@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using MauMau.Classes.Exceptions;
+
 namespace MauMau.Classes.Background
 {
     class Baralho
     {
+        /// <summary>
+        /// Lista de todas as cartas do baralho
+        /// </summary>
         private List<Carta> cartas = new List<Carta>();
+        private Random RAM = new Random();
 
         public Baralho()
         {
             LoadCards();
         }
+        /// <summary>
+        /// Carrega todas as cartas do baralho
+        /// </summary>
         private void LoadCards()
         {
             try
@@ -27,11 +32,16 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch (System.Exception ee)
+            catch(Exception ee)
             {
-                Exception.IOImage(ee.Message);
+               new ImageLoadException(ee.Message);
             }
         }
+        /// <summary>
+        /// Retorna uma lista de cartas de acordo com a cor especificada
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         private List<Carta> GetCardsListOfEspecificColor(string color)
         {
             string corcarta = "";
@@ -86,6 +96,23 @@ namespace MauMau.Classes.Background
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + color + "/" + corcarta + "Inverte.png", UriKind.Absolute))); }
             aux.Add(new Carta(brush));
             return aux;
+        }
+
+        /// <summary>
+        /// Reorganiza o baralho em uma nova ordem
+        /// </summary>
+        public void Embaralhar()
+        {
+            if(cartas.Count > 1)
+            {
+                for(int i = 0; i < cartas.Count; i++)
+                {
+                    int newplace = RAM.Next(0, cartas.Count - 1);
+                    Carta aux = cartas[i];
+                    cartas[i] = cartas[newplace];
+                    cartas[newplace] = aux;
+                }
+            }
         }
     }
 }

@@ -73,7 +73,6 @@ C:\Users\1047825\Documents\GitHub\MauMau\MauMau\obj\Debug\MauMau.csproj.Generate
 C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
 C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.exe
 C:\Users\Lucax\Documents\UNO-Game\MauMau\bin\Debug\MauMau.pdb
-C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MainWindow.g.cs
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\App.g.cs
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.cache
@@ -114,3 +113,5 @@ C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MainWi
 C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.g.resources
 C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.Properties.Resources.resources
 C:\Users\1047825\Desktop\UNO-Game-master\UNO-Game-master\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau_Content.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
