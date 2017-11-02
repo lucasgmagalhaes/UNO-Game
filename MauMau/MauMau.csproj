@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95AC0F55-E643-40F4-8124-CD2AB96328A8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MauMau</RootNamespace>
+    <AssemblyName>MauMau</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Main\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Visual Objects\Carta.xaml.cs">
+      <DependentUpon>Carta.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Dependency\BitmapImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Main\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Main\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Background\Baralho.cs" />
+    <Compile Include="Classes\Background\Carta.cs" />
+    <Compile Include="Classes\Exceptions\ImageLoadException.cs" />
+    <Compile Include="Classes\Background\Player.cs" />
+    <Compile Include="Classes\Background\Enginee.cs" />
+    <Compile Include="Classes\Background\Profile.cs" />
+    <Compile Include="Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Visual Objects\Carta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Main\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outras\poker-table-felt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outras\uno_Button.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outras\uno_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartas\amarelo\0yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowBloq.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowInverte.jpg" />
+    <Resource Include="Images\Cartas\amarelo\yellowCompra.jpg" />
+    <Resource Include="Images\Cartas\amarelo\1yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\2yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\3yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\4yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\5yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\6yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\7yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\8yellow.jpg" />
+    <Resource Include="Images\Cartas\amarelo\9yellow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartas\especial\coringa.png" />
+    <Resource Include="Images\Cartas\especial\coringaCompra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartas\azul\0blue.jpg" />
+    <Resource Include="Images\Cartas\azul\blueBloq.jpg" />
+    <Resource Include="Images\Cartas\azul\blueInverte.jpg" />
+    <Resource Include="Images\Cartas\azul\blueCompra.jpg" />
+    <Resource Include="Images\Cartas\azul\1blue.jpg" />
+    <Resource Include="Images\Cartas\azul\2blue.jpg" />
+    <Resource Include="Images\Cartas\azul\3blue.jpg" />
+    <Resource Include="Images\Cartas\azul\4blue.jpg" />
+    <Resource Include="Images\Cartas\azul\5blue.jpg" />
+    <Resource Include="Images\Cartas\azul\6blue.jpg" />
+    <Resource Include="Images\Cartas\azul\7blue.jpg" />
+    <Resource Include="Images\Cartas\azul\8blue.jpg" />
+    <Resource Include="Images\Cartas\azul\9blue.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartas\verde\0green.jpg" />
+    <Resource Include="Images\Cartas\verde\greenBloq.jpg" />
+    <Resource Include="Images\Cartas\verde\greenInverte.jpg" />
+    <Resource Include="Images\Cartas\verde\greenCompra.jpg" />
+    <Resource Include="Images\Cartas\verde\1green.jpg" />
+    <Resource Include="Images\Cartas\verde\2green.jpg" />
+    <Resource Include="Images\Cartas\verde\3green.jpg" />
+    <Resource Include="Images\Cartas\verde\4green.jpg" />
+    <Resource Include="Images\Cartas\verde\5green.jpg" />
+    <Resource Include="Images\Cartas\verde\6green.jpg" />
+    <Resource Include="Images\Cartas\verde\7green.jpg" />
+    <Resource Include="Images\Cartas\verde\8green.jpg" />
+    <Resource Include="Images\Cartas\verde\9green.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartas\vermelho\0red.png" />
+    <Resource Include="Images\Cartas\vermelho\redBloq.png" />
+    <Resource Include="Images\Cartas\vermelho\redInverte.png" />
+    <Resource Include="Images\Cartas\vermelho\redCompra.png" />
+    <Resource Include="Images\Cartas\vermelho\1red.png" />
+    <Resource Include="Images\Cartas\vermelho\2red.png" />
+    <Resource Include="Images\Cartas\vermelho\3red.png" />
+    <Resource Include="Images\Cartas\vermelho\4red.png" />
+    <Resource Include="Images\Cartas\vermelho\5red.png" />
+    <Resource Include="Images\Cartas\vermelho\6red.png" />
+    <Resource Include="Images\Cartas\vermelho\7red.png" />
+    <Resource Include="Images\Cartas\vermelho\8red.png" />
+    <Resource Include="Images\Cartas\vermelho\9red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\player\buzz.png" />
+    <Resource Include="Images\player\cowboy-col.png" />
+    <Resource Include="Images\player\magneto.jpg" />
+    <Resource Include="Images\player\mario.jpg" />
+    <Resource Include="Images\player\stormtrooper.png" />
+    <Resource Include="Images\player\vader.png" />
+    <Resource Include="Images\player\walle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\player\camb.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
