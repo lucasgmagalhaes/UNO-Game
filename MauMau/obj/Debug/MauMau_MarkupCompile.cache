@@ -9,12 +9,12 @@ MauMau
 none
 false
 DEBUG;TRACE
-C:\Users\Lucax\Documents\UNO-Game\MauMau\App.xaml
-11151548125
-11970072290
-11-1421268018
+C:\Users\Lucax\Documents\UNO-Game\MauMau\Main\App.xaml
+31024782924
+
+12-151766230
 13738642453
-MainWindow.xaml;
+Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Visual Objects\Carta.xaml;
 
 False
 

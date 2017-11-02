@@ -151,7 +151,7 @@ namespace MauMau
             //getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
-            root.Children.Add(getcard);
+            //root.Children.Add(getcard);
         }
 
         //private void Getcard_MouseLeave(object sender, MouseEventArgs e)
