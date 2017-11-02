@@ -4,14 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MauMau.Visual_Objects"
-             mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="114" x:Name="Card" >
+             mc:Ignorable="d" x:Name="Card" Height="181.5" Width="114.5">
     <Grid>
-        <Rectangle RadiusX="20" RadiusY="10">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="{Binding ElementName=Card}"/>
-            </Rectangle.Fill>
-        </Rectangle>
-
+        <Rectangle x:Name="cardex" Fill="{Binding Source=FrontImage}" />
     </Grid>
 </UserControl>

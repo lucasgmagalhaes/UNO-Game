@@ -105,7 +105,9 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
+                    
                     <!--Top Cards-->
+                    
                     <Ellipse x:Name="btnUNO" Height="80" Cursor="Hand" Canvas.Left="907" Stroke="Black" Canvas.Top="607" Width="80" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="../Images/outras/uno_Button.jpg" Stretch="Fill" />

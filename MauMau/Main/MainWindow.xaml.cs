@@ -106,6 +106,7 @@ namespace MauMau
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
                     Canvas.SetZIndex(element, count++);
+                    element.IsEnabled = false;
                     element = null;
                 }
             }
@@ -177,6 +178,7 @@ namespace MauMau
             {
                 eng.ColapseElement(element);
                 Canvas.SetZIndex(element, count++);
+                element.IsEnabled = false;
                 element = null;
             }
         }

@@ -58,6 +58,12 @@
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Visual Objects\UNO_Button.xaml.cs">
+      <DependentUpon>UNO_Button.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Visual Objects\PlayerView.xaml.cs">
+      <DependentUpon>PlayerView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dependency\BitmapImages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +87,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Visual Objects\Carta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Visual Objects\UNO_Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Visual Objects\PlayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

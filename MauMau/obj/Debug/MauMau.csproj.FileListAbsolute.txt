@@ -119,3 +119,7 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Dependency\BitmapImages.baml
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Main\MainWindow.baml
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Visual Objects\Carta.baml
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Visual Objects\UNO_Button.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Visual Objects\PlayerView.g.cs
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Visual Objects\UNO_Button.baml
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Visual Objects\PlayerView.baml

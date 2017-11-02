@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Lucax\Documents\UNO-Game\MauMau\Main\App.xaml
-31024782924
+5721073314
 
-16219074477
+18-343309486
 13738642453
-Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Visual Objects\Carta.xaml;
+Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Visual Objects\Carta.xaml;Visual Objects\UNO_Button.xaml;Visual Objects\PlayerView.xaml;
 
 True
 
