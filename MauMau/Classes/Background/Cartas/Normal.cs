@@ -13,7 +13,9 @@ namespace MauMau.Classes.Background.Cartas
     {
         private int numero;
         private Cor cor;
+
         public int Numero { get { return this.numero; } }
+        public Cor Cor { get{ return this.cor; } }
 
         public Normal(Cor cor, int numero, ImageBrush img) : base(img)
         {
@@ -24,7 +26,18 @@ namespace MauMau.Classes.Background.Cartas
 
         public bool Equals(IEquatable card)
         {
-            throw new NotImplementedException();
+            if(Normal.ReferenceEquals(this, card))
+            {
+                Normal aux = (Normal)card;
+                if (aux.numero == this.numero || aux.cor == this.cor) return true;
+                else return false;
+            }
+            else
+            {
+                Especial aux = (Especial)card;
+                if (this.cor == aux.Cor) return true;
+                else return false;
+            }
         }
     }
 }

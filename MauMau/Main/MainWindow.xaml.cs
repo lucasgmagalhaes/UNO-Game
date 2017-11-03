@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MauMau.Classes.Background;
+using MauMau.Classes.Background.Estruturas;
 
 namespace MauMau
 {
@@ -35,10 +36,14 @@ namespace MauMau
         private void AddCardToHand()
         {
             Console.BackgroundColor = ConsoleColor.Black;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Pilha<Player> newlista = new Pilha<Player>();
+            newlista.Add(null);
+           Player aux =  newlista[1];
             eng = new Enginee(Played);
             List<Player> img = eng.GetPlayers();
             player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());

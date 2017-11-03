@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MauMau.Classes.Exceptions;
 using MauMau.Classes.Background.Cartas;
+using MauMau.Classes.Background.Cartas.Composicao;
 
 namespace MauMau.Classes.Background
 {
@@ -95,7 +95,7 @@ namespace MauMau.Classes.Background
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardNumber + cardcolor + ".jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardNumber + cardcolor + ".png", UriKind.Absolute))); }
 
-            return new Normal(foldercolor, int.Parse(cardNumber), brush);
+            return new Normal(PaletaCor.GetCor(foldercolor), int.Parse(cardNumber), brush);
         }
 
         /// <summary>
@@ -110,12 +110,12 @@ namespace MauMau.Classes.Background
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardcolor + cardname + ".jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardcolor + cardname + ".png", UriKind.Absolute))); }
 
-            string efeitoaux;
-            if (cardname.ToUpper() == "BLOQ") efeitoaux = "bloquear";
-            else if (cardname.ToUpper() == "COMPRA") efeitoaux = "comprar";
-            else efeitoaux = "inverter";
+            Efeito efeitoaux;
+            if (cardname.ToUpper() == "BLOQ") efeitoaux = Efeito.Bloquear;
+            else if (cardname.ToUpper() == "COMPRA") efeitoaux = Efeito.Comprar2;
+            else efeitoaux = Efeito.Inverter;
 
-            return new Especial(efeitoaux, brush, foldercolor);
+            return new Especial(efeitoaux, brush, PaletaCor.GetCor(foldercolor));
         }
 
         private Carta CreateCuringaSemEfeito()
@@ -124,7 +124,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png", UriKind.Absolute))); }
-            return new Curinga(brush, false);
+            return new Curinga(brush, Efeito.MudarCor);
         }
 
         private Carta CreateCuringaComEfeito()
@@ -133,7 +133,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
-            return new Curinga(brush, true);
+            return new Curinga(brush, Efeito.MudarCorEComprar4);
         }
 
         public List<Carta> GetCards()

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MauMau.Classes.Background.Cartas.Composicao
+﻿namespace MauMau.Classes.Background.Cartas.Composicao
 {
-    class Efeito
+    public enum Efeito
     {
-    }
+        Bloquear = 1,
+        Inverter = 2,
+        MudarCor = 3,
+        MudarCorEComprar4 = 4,
+        Comprar2 = 5
+    };
 }

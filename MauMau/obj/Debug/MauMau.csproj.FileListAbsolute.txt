@@ -122,3 +122,18 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\GeneratedInternalTypeHelper.g
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.exe
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.pdb
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\MainWindow.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Visual Objects\Carta.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\App.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\App.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Dependency\BitmapImages.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\MainWindow.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Visual Objects\Carta.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
