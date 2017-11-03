@@ -13,27 +13,50 @@ namespace MauMau.Classes.Background
 {
     class Enginee
     {
+        /// <summary>
+        /// Lista com todos os jogadores
+        /// </summary>
         private List<Player> players;
+        /// <summary>
+        /// Lista dos perfis dos jogadores
+        /// </summary>
         private List<Profile> allprofiles;
+        /// <summary>
+        /// Cartas para saque
+        /// </summary>
+        private Monte monte;
+        /// <summary>
+        /// Cartas descartadas
+        /// </summary>
+        private Descarte descarte;
+        /// <summary>
+        /// Elemento que contem todas as cartas;
+        /// </summary>
+        private Baralho baralho;
+        /// <summary>
+        /// Elemento base para o get dos perfils
+        /// </summary>
         private static Random ran = new Random();
         /// <summary>
-        /// Jogar controlado pelo usuário
+        /// Jogador real
         /// </summary>
         private Player realOne;
         /// <summary>
-        /// Elemento das cartas jogadas
+        /// Elemento usado como base para o "colapso" das cartas
         /// </summary>
-        private UIElement element_colapse;
-
-        public Player RealOne { get { return this.players[0]; } }
+        private UIElement element_colapse; //Elemento comparatório das cartas jogadas
 
         public Enginee(UIElement colapse)
         {
-            players = new List<Player>();
-            allprofiles = new List<Profile>();
+            this.players = new List<Player>();
+            this.allprofiles = new List<Profile>();
+            this.baralho = new Baralho();
+            baralho.Embaralhar();
             LoadImage();
-            SetRandomPlayers();
+            SetRandomPlayersProfile();
+            this.realOne = this.players[3];
             this.element_colapse = colapse;
+            this.monte = new Monte(baralho.GetCards());
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -65,7 +88,7 @@ namespace MauMau.Classes.Background
             allprofiles.Add(new Profile("WallE", brush));
         }
 
-        private void SetRandomPlayers()
+        private void SetRandomPlayersProfile()
         {
             int[] aux = new int[4];
             while (aux.Distinct().Count() != aux.Count())
@@ -78,9 +101,19 @@ namespace MauMau.Classes.Background
             for (int val = 0; val < aux.Length; val++) players.Add(new Player(allprofiles[aux[val]]));
         }
 
+        public Player GetMainPlayer()
+        {
+            return this.realOne;
+        }
+
         public List<Player> GetPlayers()
         {
             return this.players;
+        }
+
+        public Carta GetFromMonte()
+        {
+            return this.monte.GetCardOnTop();
         }
 
         public UIElement ColapseElement(UIElement el)

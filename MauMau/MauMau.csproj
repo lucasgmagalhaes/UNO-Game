@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Background\Cartas\Curinga.cs" />
+    <Compile Include="Classes\Background\Cartas\Especial.cs" />
+    <Compile Include="Classes\Background\Cartas\Normal.cs" />
+    <Compile Include="Classes\Background\Descarte.cs" />
+    <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>

@@ -33,6 +33,11 @@ namespace MauMau
         private bool cardsExpanded;
         int count = -100;
 
+        private void AddCardToHand()
+        {
+
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(Played);
@@ -48,9 +53,6 @@ namespace MauMau
 
             player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
             player4name.Content = img[3].Infos.Name;
-
-            Baralho deck = new Baralho();
-            deck.Embaralhar();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -92,7 +94,7 @@ namespace MauMau
         {
             cardsExpanded = true;
         }
-
+        UIElement nexttohide;
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
@@ -101,11 +103,13 @@ namespace MauMau
                 element = mouseon as UIElement;
                 if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")
                 {
+                    Canvas.SetZIndex(element, count++);
                     var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
                     var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-                    Canvas.SetZIndex(element, count++);
+                    if(nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;
+                    nexttohide = element;
                     element = null;
                 }
             }
@@ -137,10 +141,8 @@ namespace MauMau
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle getcard = new Rectangle();
-            getcard.Fill = new ImageBrush
-            {
-                ImageSource = new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/azul/0blue.jpg", UriKind.Absolute))
-            };
+            getcard.Fill =  eng.GetFromMonte().Source;
+
             getcard.RadiusX = 10;
             getcard.RadiusY = 10;
             getcard.Height = 180;
@@ -151,7 +153,7 @@ namespace MauMau
             //getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
-            //root.Children.Add(getcard);
+            root.Children.Add(getcard);
         }
 
         //private void Getcard_MouseLeave(object sender, MouseEventArgs e)

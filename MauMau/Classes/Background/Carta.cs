@@ -7,9 +7,11 @@ using System.Windows.Media;
 
 namespace MauMau.Classes.Background
 {
-    class Carta
+    abstract class Carta
     {
-        private ImageBrush source;
+        protected ImageBrush source;
+
+        public ImageBrush Source { get { return this.source; } }
 
         public Carta(ImageBrush image)
         {
