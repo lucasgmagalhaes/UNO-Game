@@ -32,10 +32,9 @@ namespace MauMau
         private Enginee eng;
         private bool cardsExpanded;
         int count = -100;
-
         private void AddCardToHand()
         {
-
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -142,7 +141,8 @@ namespace MauMau
         {
             Rectangle getcard = new Rectangle();
             getcard.Fill =  eng.GetFromMonte().Source;
-
+            Border asd = new Border();
+            Console.BackgroundColor = ConsoleColor.Black;
             getcard.RadiusX = 10;
             getcard.RadiusY = 10;
             getcard.Height = 180;
