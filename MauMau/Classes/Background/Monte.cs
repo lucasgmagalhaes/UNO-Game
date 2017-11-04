@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MauMau.Classes.Background.Estruturas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,14 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista de todas as cartas do restantes
         /// </summary>
-        private Stack<Carta> cartas = new Stack<Carta>();
+        private Pilha<Carta> cartas = new Pilha<Carta>();
         
-        public Monte(List<Carta> cartas)
+        public Monte(Lista<Carta> cartas)
         {
             foreach (Carta card in cartas) this.cartas.Push(card);
         }
 
-        public Stack<Carta> GetMonte()
+        public Pilha<Carta> GetMonte()
         {
             return this.cartas;
         }

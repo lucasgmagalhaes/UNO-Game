@@ -10,6 +10,7 @@ namespace MauMau.Classes.Background.Estruturas
     {
         private object dado;
         private Elemento proximo;
+        private int index;
 
         public Elemento Prox { get { return this.proximo; } set { this.proximo = value; } }
 
@@ -17,10 +18,20 @@ namespace MauMau.Classes.Background.Estruturas
         {
             this.dado = dado;
         }
+        public Elemento(object dado, int index)
+        {
+            this.dado = dado;
+            this.index = index;
+        }
 
         public object GetDado()
         {
             return this.dado;
+        }
+
+        public void SetDado(object dado)
+        {
+            this.dado = dado;
         }
     }
 }

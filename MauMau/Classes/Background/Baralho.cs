@@ -5,7 +5,8 @@ using System.Windows.Media.Imaging;
 using MauMau.Classes.Exceptions;
 using MauMau.Classes.Background.Cartas;
 using MauMau.Classes.Background.Cartas.Composicao;
-
+using MauMau.Classes.Background.Estruturas;
+using System.IO;
 namespace MauMau.Classes.Background
 {
     class Baralho
@@ -13,7 +14,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista de todas as cartas do baralho
         /// </summary>
-        private List<Carta> cartas = new List<Carta>();
+        private Lista<Carta> cartas = new Lista<Carta>();
         private Random RAM = new Random();
 
         public Baralho()
@@ -33,9 +34,13 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch (Exception ee)
+            catch(IOException  ee)
             {
                 new ImageLoadException(ee.Message);
+            }
+            catch(NullReferenceException ee)
+            {
+
             }
         }
         /// <summary>
@@ -43,10 +48,10 @@ namespace MauMau.Classes.Background
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        private List<Carta> GetCardsListOfEspecificColor(string color)
+        private Lista<Carta> GetCardsListOfEspecificColor(string color)
         {
             string corcarta = "";
-            List<Carta> aux = new List<Carta>();
+            Lista<Carta> aux = new Lista<Carta>();
             switch (color)
             {
                 case "amarelo":
@@ -136,12 +141,18 @@ namespace MauMau.Classes.Background
             return new Curinga(brush, Efeito.MudarCorEComprar4);
         }
 
-        public List<Carta> GetCards()
+        public Lista<Carta> GetCards()
         {
             return this.cartas;
         }
         /// <summary>
         /// Reorganiza o baralho em uma nova ordem
+        ///  int newplace = RAM.Next(0, cartas.Count - 1);
+        ///  
+        ///Carta aux = cartas[i];
+        ///cartas[i] = cartas[newplace];
+        ///cartas[newplace] = aux;
+        ///
         /// </summary>
         public void Embaralhar()
         {
@@ -153,7 +164,7 @@ namespace MauMau.Classes.Background
                     Carta aux = cartas[i];
                     cartas[i] = cartas[newplace];
                     cartas[newplace] = aux;
-                }
+                }        
             }
         }
     }

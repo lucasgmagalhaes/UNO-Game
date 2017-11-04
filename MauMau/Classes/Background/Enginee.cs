@@ -28,7 +28,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Cartas descartadas
         /// </summary>
-        private Descarte descarte;
+        private Coletor descarte;
         /// <summary>
         /// Elemento que contem todas as cartas;
         /// </summary>
@@ -122,6 +122,5 @@ namespace MauMau.Classes.Background
             Canvas.SetTop(el, Canvas.GetTop(this.element_colapse));
             return el;
         }
-
     }
 }

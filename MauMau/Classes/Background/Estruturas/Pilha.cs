@@ -29,7 +29,7 @@
         /// Pega o elemento no topo da pilha, removendo-
         /// </summary>
         /// <returns></returns>
-        public object Pop()
+        public T Pop()
         {
             Elemento aux = this.topo.Prox;
 
@@ -39,19 +39,18 @@
                 aux.Prox = null;
                 if (aux == this.fundo) this.fundo = this.topo;
                 this.count--;
-                return aux.GetDado();
+                return (T)aux.GetDado();
             }
-            else return null;
+            else return default(T);
         }
         /// <summary>
         /// Pega o primeiro elemento da pilha sem remove-lo
         /// </summary>
         /// <returns></returns>
-        public object Peek()
+        public T Peek()
         {
-            return this.topo.Prox.GetDado();
+            return (T)this.topo.Prox.GetDado();
         }
-
         /// <summary>
         /// Verifica se a pilha está vazia
         /// </summary>

@@ -3,39 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MauMau.Classes.Background.Estruturas;
 
 namespace MauMau.Classes.Background
 {
     /// <summary>
     /// Cartas jogadas
     /// </summary>
-    class Descarte
+    class Coletor
     {
         /// <summary>
-        /// Lista de todas as cartas do baralho
+        /// Pilha de todas as cartas do baralho
         /// </summary>
-        private Stack<Carta> cartas = new Stack<Carta>();
+        private Pilha<Carta> cartas = new Pilha<Carta>();
 
         /// <summary>
         /// Recebe a primeira carta do baralho para ser a referência pro procedimento do jogo
         /// </summary>
         /// <param name="primeiranalista"></param>
-        public Descarte(Carta primeiranalista)
+        public Coletor(Carta primeiranalista)
         {
             this.cartas.Push(primeiranalista);
         }
-
-        public Stack<Carta> GetMonte()
+        /// <summary>
+        /// Pega todas as cartas da pilha
+        /// </summary>
+        /// <returns></returns>
+        public Pilha<Carta> GetMonte()
         {
             return this.cartas;
         }
-
+        /// <summary>
+        /// Pega a carta no topo da pilha
+        /// </summary>
+        /// <returns></returns>
         public Carta GetCardOnTop()
         {
             return this.cartas.Peek();
         }
-
-        public void PlayCard(Carta card)
+        //Insere na pilha uma carta jogada
+        public void GetPlayedCard(Carta card)
         {
             this.cartas.Push(card);
         }
