@@ -11,7 +11,7 @@ namespace MauMau.Classes.Background.Estruturas
         private object dado;
         private Elemento proximo;
 
-        public Elemento Proximo { get { return this.proximo; } set { this.proximo = value; } }
+        public Elemento Prox { get { return this.proximo; } set { this.proximo = value; } }
 
         public Elemento(object dado)
         {

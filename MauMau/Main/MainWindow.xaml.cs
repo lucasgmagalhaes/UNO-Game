@@ -41,11 +41,6 @@ namespace MauMau
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Pilha<Enginee> newlista = new Pilha<Enginee>();
-            newlista.Add(new Enginee(element));
-            newlista.Add(new Enginee(element));
-            newlista.Add(new Enginee(element));
-            Enginee aux =  newlista[2];
             eng = new Enginee(Played);
             List<Player> img = eng.GetPlayers();
             player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
