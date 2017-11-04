@@ -28,12 +28,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-<<<<<<< HEAD
-                    <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114">
-                    </Rectangle>
-=======
                     <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114"/>
->>>>>>> master
                     <!---Bottom Cards-->
                     <Rectangle  x:Name="cardb1" Canvas.Left="501"  Canvas.Top="517" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
@@ -109,13 +104,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-<<<<<<< HEAD
-                    
                     <!--Top Cards-->
-                    
-=======
-                    <!--Top Cards-->
->>>>>>> master
                     <Ellipse x:Name="btnUNO" Height="80" Cursor="Hand" Canvas.Left="907" Stroke="Black" Canvas.Top="607" Width="80" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="../Images/outras/uno_Button.jpg" Stretch="Fill" />
@@ -217,11 +206,7 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <Label x:Name="player3name" Content="Player4" IsEnabled="False" Canvas.Left="397" FontSize="20" Canvas.Top="680" Width="152" Height="38"/>
-<<<<<<< HEAD
-                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="681" Stroke="Transparent" Canvas.Top="210" Width="195" MouseEnter="blockplayedborder_MouseEnter"/>
-=======
                     <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="692" Stroke="Transparent" Canvas.Top="205" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
->>>>>>> master
                     <Rectangle  x:Name="cardb4_Copy4"  Canvas.Left="636" Canvas.Top="516" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../Images/Cartas/azul/2blue.jpg" Stretch="Fill" />
@@ -232,11 +217,7 @@
                             <ImageBrush ImageSource="../Images/Cartas/azul/1blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-<<<<<<< HEAD
-                    <Rectangle  x:Name="cardb4_Copy6"  Canvas.Left="720" Canvas.Top="517" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
-=======
                     <Rectangle  x:Name="cardb4_Copy6"  Canvas.Left="707" Canvas.Top="517" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
->>>>>>> master
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>

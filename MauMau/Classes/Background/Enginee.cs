@@ -13,29 +13,6 @@ namespace MauMau.Classes.Background
 {
     class Enginee
     {
-<<<<<<< HEAD
-        private List<Player> players;
-        private List<Profile> allprofiles;
-        private static Random ran = new Random();
-        /// <summary>
-        /// Jogar controlado pelo usuário
-        /// </summary>
-        private Player realOne;
-        /// <summary>
-        /// Elemento das cartas jogadas
-        /// </summary>
-        private UIElement element_colapse;
-
-        public Player RealOne { get { return this.players[0]; } }
-
-        public Enginee(UIElement colapse)
-        {
-            players = new List<Player>();
-            allprofiles = new List<Profile>();
-            LoadImage();
-            SetRandomPlayers();
-            this.element_colapse = colapse;
-=======
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
@@ -80,7 +57,6 @@ namespace MauMau.Classes.Background
             this.realOne = this.players[3];
             this.element_colapse = colapse;
             this.monte = new Monte(baralho.GetCards());
->>>>>>> master
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -112,11 +88,7 @@ namespace MauMau.Classes.Background
             allprofiles.Add(new Profile("WallE", brush));
         }
 
-<<<<<<< HEAD
-        private void SetRandomPlayers()
-=======
         private void SetRandomPlayersProfile()
->>>>>>> master
         {
             int[] aux = new int[4];
             while (aux.Distinct().Count() != aux.Count())
@@ -129,27 +101,21 @@ namespace MauMau.Classes.Background
             for (int val = 0; val < aux.Length; val++) players.Add(new Player(allprofiles[aux[val]]));
         }
 
-<<<<<<< HEAD
-=======
         public Player GetMainPlayer()
         {
             return this.realOne;
         }
 
->>>>>>> master
         public List<Player> GetPlayers()
         {
             return this.players;
         }
 
-<<<<<<< HEAD
-=======
         public Carta GetFromMonte()
         {
             return this.monte.GetCardOnTop();
         }
 
->>>>>>> master
         public UIElement ColapseElement(UIElement el)
         {
             Canvas.SetLeft(el, Canvas.GetLeft(this.element_colapse));
