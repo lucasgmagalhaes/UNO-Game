@@ -24,6 +24,7 @@ namespace MauMau.Visual_Objects
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         public static readonly DependencyProperty ValorProperty = DependencyProperty.Register("Valor", typeof(object), typeof(Carta));
         public static readonly DependencyProperty FrontImageProperty = DependencyProperty.Register("FrontImage", typeof(BitmapImage), typeof(Carta));
@@ -79,5 +80,7 @@ namespace MauMau.Visual_Objects
             get { return (bool)GetValue(ShowBackProperty); }
             set { SetValue(ShowBackProperty, value); }
         }
+=======
+>>>>>>> master
     }
 }

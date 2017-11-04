@@ -14,6 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MauMau.Classes.Background;
+<<<<<<< HEAD
+=======
+using MauMau.Classes.Background.Estruturas;
+>>>>>>> master
 
 namespace MauMau
 {
@@ -32,6 +36,14 @@ namespace MauMau
         private Enginee eng;
         private bool cardsExpanded;
         int count = -100;
+<<<<<<< HEAD
+=======
+        private void AddCardToHand()
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+
+        }
+>>>>>>> master
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -48,9 +60,12 @@ namespace MauMau
 
             player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
             player4name.Content = img[3].Infos.Name;
+<<<<<<< HEAD
 
             Baralho deck = new Baralho();
             deck.Embaralhar();
+=======
+>>>>>>> master
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -92,7 +107,11 @@ namespace MauMau
         {
             cardsExpanded = true;
         }
+<<<<<<< HEAD
 
+=======
+        UIElement nexttohide;
+>>>>>>> master
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
@@ -101,12 +120,21 @@ namespace MauMau
                 element = mouseon as UIElement;
                 if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")
                 {
+<<<<<<< HEAD
+=======
+                    Canvas.SetZIndex(element, count++);
+>>>>>>> master
                     var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
                     var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+<<<<<<< HEAD
                     Canvas.SetZIndex(element, count++);
                     element.IsEnabled = false;
+=======
+                    if(nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;
+                    nexttohide = element;
+>>>>>>> master
                     element = null;
                 }
             }
@@ -138,10 +166,16 @@ namespace MauMau
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle getcard = new Rectangle();
+<<<<<<< HEAD
             getcard.Fill = new ImageBrush
             {
                 ImageSource = new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/azul/0blue.jpg", UriKind.Absolute))
             };
+=======
+            getcard.Fill =  eng.GetFromMonte().Source;
+            Border asd = new Border();
+            Console.BackgroundColor = ConsoleColor.Black;
+>>>>>>> master
             getcard.RadiusX = 10;
             getcard.RadiusY = 10;
             getcard.Height = 180;
@@ -152,7 +186,11 @@ namespace MauMau
             //getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
+<<<<<<< HEAD
             //root.Children.Add(getcard);
+=======
+            root.Children.Add(getcard);
+>>>>>>> master
         }
 
         //private void Getcard_MouseLeave(object sender, MouseEventArgs e)
@@ -178,7 +216,10 @@ namespace MauMau
             {
                 eng.ColapseElement(element);
                 Canvas.SetZIndex(element, count++);
+<<<<<<< HEAD
                 element.IsEnabled = false;
+=======
+>>>>>>> master
                 element = null;
             }
         }

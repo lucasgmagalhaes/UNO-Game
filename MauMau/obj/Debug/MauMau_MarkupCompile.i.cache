@@ -10,6 +10,7 @@ none
 false
 DEBUG;TRACE
 C:\Users\Lucax\Documents\UNO-Game\MauMau\Main\App.xaml
+<<<<<<< HEAD
 5721073314
 
 18-343309486
@@ -17,4 +18,13 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\Main\App.xaml
 Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Visual Objects\Carta.xaml;Visual Objects\UNO_Button.xaml;Visual Objects\PlayerView.xaml;
 
 True
+=======
+31024782924
+
+29-2070222441
+13738642453
+Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Visual Objects\Carta.xaml;
+
+False
+>>>>>>> master
 

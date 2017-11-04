@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>
@@ -64,6 +65,24 @@
     <Compile Include="Visual Objects\PlayerView.xaml.cs">
       <DependentUpon>PlayerView.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Classes\Background\Cartas\Composicao\Cor.cs" />
+    <Compile Include="Classes\Background\Cartas\Composicao\Efeito.cs" />
+    <Compile Include="Classes\Background\Cartas\Composicao\PaletaCor.cs" />
+    <Compile Include="Classes\Background\Cartas\Composicao\PaletaEfeito.cs" />
+    <Compile Include="Classes\Background\Cartas\Curinga.cs" />
+    <Compile Include="Classes\Background\Cartas\Especial.cs" />
+    <Compile Include="Classes\Background\Estruturas\Elemento.cs" />
+    <Compile Include="Classes\Background\Estruturas\Lista.cs" />
+    <Compile Include="Classes\Background\Estruturas\Pilha.cs" />
+    <Compile Include="Classes\Background\Interfaces\IEquatable.cs" />
+    <Compile Include="Classes\Background\Cartas\Normal.cs" />
+    <Compile Include="Classes\Background\Descarte.cs" />
+    <Compile Include="Classes\Background\Monte.cs" />
+    <Compile Include="Visual Objects\Carta.xaml.cs">
+      <DependentUpon>Carta.xaml</DependentUpon>
+    </Compile>
+>>>>>>> master
     <Page Include="Dependency\BitmapImages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +109,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Visual Objects\UNO_Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +118,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+=======
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
