@@ -1,7 +1,15 @@
 ﻿namespace MauMau.Classes.Background.Cartas.Composicao
 {
+    /// <summary>
+    /// Auxilia na busca de um efeito
+    /// </summary>
     public static class PaletaEfeito
     {
+        /// <summary>
+        /// Procura um efeito pelo seu nome
+        /// </summary>
+        /// <param name="efeito_nome"></param>
+        /// <returns></returns>
         public static Efeito GetCor(string efeito_nome)
         {
             switch (efeito_nome.ToUpper())
@@ -14,6 +22,11 @@
                 default: return 0;
             }
         }
+        /// <summary>
+        /// Procura um efeito pelo seu número identificador
+        /// </summary>
+        /// <param name="cor_numero"></param>
+        /// <returns></returns>
         public static Efeito GetCor(int cor_numero)
         {
             switch (cor_numero)

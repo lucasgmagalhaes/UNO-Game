@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MauMau.Classes.Background.Estruturas
+﻿namespace MauMau.Classes.Background.Estruturas
 {
     class Pilha<T>
     {
-        public Elemento root;
+        public Elemento topo, fundo;
         private int indexall;
         public Pilha()
         {
-            indexall = 0;
+            this.topo = new Elemento(null);
+            this.fundo = this.topo;
         }
 
         public T this[int index]
@@ -24,18 +18,52 @@ namespace MauMau.Classes.Background.Estruturas
         public object GetByIndex(int val)
         {
             int count = 0;
-            Elemento aux = root.Proximo;
+            Elemento aux = topo.Proximo;
             while (aux == null || count == val) aux = aux.Proximo;
             return aux.GetDado();
         }
 
-        public void Add(object obj)
+        public void Push(object novo)
         {
-            if (this.root == null)
+            Elemento elemento = new Elemento(novo);
+            elemento.Proximo = this.topo.Proximo;
+            this.topo.Proximo = elemento;
+            if (this.topo == this.fundo) this.fundo = elemento;
+        }
+        /// <summary>
+        /// Pega o elemento no topo da pilha, removendo-
+        /// </summary>
+        /// <returns></returns>
+        public object Pop()
+        {
+            Elemento aux = this.topo.Proximo;
+
+            if (aux != null)
             {
-                this.root = new Elemento(obj);
-                this.indexall++;
+                this.topo.Proximo = aux.Proximo;
+                aux.Proximo = null;
+                if (aux == this.fundo)
+                    this.fundo = this.topo;
+                return aux.GetDado();
             }
+            else return null;
+        }
+        /// <summary>
+        /// Pega o primeiro elemento da pilha sem remove-lo
+        /// </summary>
+        /// <returns></returns>
+        public object Peek()
+        {
+            return this.topo.Proximo.GetDado();
+        }
+
+        /// <summary>
+        /// Verifica se a pilha está vazia
+        /// </summary>
+        /// <returns></returns>
+        public bool PilhaVazia()
+        {
+            return (this.topo == this.fundo);
         }
     }
 }

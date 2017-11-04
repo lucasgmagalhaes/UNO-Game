@@ -1,7 +1,15 @@
 ﻿namespace MauMau.Classes.Background.Cartas.Composicao
 {
+    /// <summary>
+    /// Auxilia na busca de uma cor
+    /// </summary>
     public static class PaletaCor
     {
+        /// <summary>
+        /// Procura uma cor pelo seu nome
+        /// </summary>
+        /// <param name="cor_nome"></param>
+        /// <returns></returns>
         public static Cor GetCor(string cor_nome)
         {
             switch (cor_nome.ToUpper())
@@ -13,6 +21,11 @@
                 default: return 0;
             }
         }
+        /// <summary>
+        /// Procura uma cor pelo seu número identificador
+        /// </summary>
+        /// <param name="cor_numero"></param>
+        /// <returns></returns>
         public static Cor GetCor(int cor_numero)
         {
             switch (cor_numero)
