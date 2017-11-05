@@ -14,7 +14,7 @@ namespace MauMau.Classes.Background
         /// </summary>
         private Pilha<Carta> cartas = new Pilha<Carta>();
         
-        public Monte(Lista<Carta> cartas)
+        public Monte(List<Carta> cartas)
         {
             foreach (Carta card in cartas) this.cartas.Push(card);
         }

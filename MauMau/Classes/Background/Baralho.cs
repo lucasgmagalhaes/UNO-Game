@@ -14,7 +14,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista de todas as cartas do baralho
         /// </summary>
-        private Lista<Carta> cartas = new Lista<Carta>();
+        private List<Carta> cartas = new List<Carta>();
         private Random RAM = new Random();
 
         public Baralho()
@@ -34,24 +34,24 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch(IOException  ee)
+            catch (IOException ee)
             {
                 new ImageLoadException(ee.Message);
             }
-            catch(NullReferenceException ee)
+            catch (NullReferenceException ee)
             {
-
+                new NullReferenceException(ee.Message);
             }
         }
         /// <summary>
-        /// Retorna uma lista de cartas de acordo com a cor especificada
+        /// Retorna uma List de cartas de acordo com a cor especificada
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        private Lista<Carta> GetCardsListOfEspecificColor(string color)
+        private List<Carta> GetCardsListOfEspecificColor(string color)
         {
             string corcarta = "";
-            Lista<Carta> aux = new Lista<Carta>();
+            List<Carta> aux = new List<Carta>();
             switch (color)
             {
                 case "amarelo":
@@ -141,7 +141,7 @@ namespace MauMau.Classes.Background
             return new Coringa(brush, Efeito.MudarCorEComprar4);
         }
 
-        public Lista<Carta> GetCards()
+        public List<Carta> GetCards()
         {
             return this.cartas;
         }
@@ -164,7 +164,7 @@ namespace MauMau.Classes.Background
                     Carta aux = cartas[i];
                     cartas[i] = cartas[newplace];
                     cartas[newplace] = aux;
-                }        
+                }
             }
         }
     }

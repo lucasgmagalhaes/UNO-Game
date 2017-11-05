@@ -57,16 +57,25 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         private object GetByIndex(int val)
         {
-            int auxcount = 0;
             Elemento aux = prim.Prox;
             if (val == 0) return aux.GetDado();
             while (aux != null && val <= count && val != auxcount && auxcount < val && auxcount < actualIndexPosition)
             {
                 aux = aux.Prox;
-                auxcount++;
             }
             return aux.GetDado();
         }
+        //private object GetByIndex(int val)
+        //{
+        //    int auxcount = 0;
+        //    Elemento aux = prim.Prox;
+        //    while (aux != null && count == val || auxcount < actualIndexPosition || auxcount < val)
+        //    {
+        //        aux = aux.Prox;
+        //        auxcount++;
+        //    }
+        //    return aux.GetDado();
+        //}
         /// <summary>
         /// Retorna um elemento pelo seu index
         /// </summary>
