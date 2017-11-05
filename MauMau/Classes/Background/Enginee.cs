@@ -54,7 +54,21 @@ namespace MauMau.Classes.Background
         /// Elemento usado como base para o "colapso" das cartas
         /// </summary>
         private UIElement element_colapse; //Elemento comparatório das cartas jogadas
+        /// <summary>
+        /// Define se as cartas dos BOTs vao ou não serem exibidas
+        /// </summary>
+        private bool showBotCards;
 
+        public bool ShowBotCards
+        {
+            get { return this.showBotCards; }
+            set
+            {
+                this.showBotCards = value;
+                if (this.showBotCards == true) ShowBOTCards();
+                else HideBOTCards();
+            }
+        }
         public Monte Monte { get { return this.monte; } }
         public Enginee(UIElement colapse, Canvas enviroment)
         {
@@ -70,6 +84,7 @@ namespace MauMau.Classes.Background
             this.monte = new Monte(baralho.GetCards());
             this.roda = new Turno(this.players);
             this.DistributeCards();
+            this.AddCardsOnInterface();
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -144,28 +159,28 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, 15);
-                    Canvas.SetTop(card.ElementUI, 310);
-                    X += 20;
+                    Canvas.SetTop(card.ElementUI, X);
+                    X += 30;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Right)
             {
-                int X = 310;
+                int X = 210;
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, enviroment.ActualWidth - 50);
                     Canvas.SetTop(card.ElementUI, X);
-                    X += 20;
+                    X += 30;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Top)
             {
-                int X = 501;
+                int X = 621;
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, 30);
-                    X += 30;
+                    Canvas.SetTop(card.ElementUI, 200);
+                    X += 40;
                 }
             }
             else
@@ -175,10 +190,55 @@ namespace MauMau.Classes.Background
                 {
                     Canvas.SetLeft(card.ElementUI, X);
                     Canvas.SetTop(card.ElementUI, 517);
-                    X += 30;
+                    X += 40;
                 }
             }
         }
+        /// <summary>
+        /// Exibe as cartas dos BOTs
+        /// </summary>
+        private void ShowBOTCards()
+        {
+            foreach (Player pl in this.players)
+            {
+                if (pl.Position != Enum.PlayerPosition.Bottom)
+                {
+                    foreach (Carta card in pl.Hand) card.ElementUI.Fill = card.FrontImage;
+                }
+            }
+        }
+        /// <summary>
+        /// Esconde as cartas dos BOTs
+        /// </summary>
+        private void HideBOTCards()
+        {
+            foreach (Player pl in this.players)
+            {
+                if (pl.Position != Enum.PlayerPosition.Bottom)
+                {
+                    foreach (Carta card in pl.Hand) card.ElementUI.Fill = card.BackImage;
+                }
+            }
+        }
+        /// <summary>
+        /// Adiciona as cartas dos jogadores na interface gráfica
+        /// </summary>
+        private void AddCardsOnInterface()
+        {
+            foreach (Player pl in this.players)
+            {
+                foreach (Carta card in pl.Hand)
+                {
+                    enviroment.Children.Add(card.ElementUI);
+                    if (pl.Position != Enum.PlayerPosition.Bottom) card.ElementUI.IsEnabled = false;
+                }
+            }
+        }
+        /// <summary>
+        /// Junta a carta do jogador com o Monte caso esteja próximo
+        /// </summary>
+        /// <param name="el"></param>
+        /// <returns></returns>
         public UIElement ColapseElement(UIElement el)
         {
             Canvas.SetLeft(el, Canvas.GetLeft(this.element_colapse));

@@ -17,6 +17,7 @@ namespace MauMau.Classes.Background
 
         public ImageBrush FrontImage { get { return this.frontImage; } }
         public Rectangle ElementUI { get { return this.elementUI; } set { this.elementUI = value; } }
+        public ImageBrush BackImage { get { return this.backImage; } }
 
         public Carta(ImageBrush image)
         {
