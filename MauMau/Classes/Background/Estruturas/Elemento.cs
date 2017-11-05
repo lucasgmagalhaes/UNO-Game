@@ -1,4 +1,10 @@
-﻿namespace MauMau.Classes.Background.Estruturas
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MauMau.Classes.Background.Estruturas
 {
     class Elemento
     {
@@ -26,14 +32,6 @@
         public void SetDado(object dado)
         {
             this.dado = dado;
-        }
-        public int GetIndex()
-        {
-            return this.index;
-        }
-        public void SetIndex(int val)
-        {
-            this.index = val;
         }
     }
 }
