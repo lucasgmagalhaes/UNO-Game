@@ -67,7 +67,7 @@ namespace MauMau.Classes.Background
             allprofiles.Add(new Profile("Buzz", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/camb.jpg", UriKind.Absolute)));
-            allprofiles.Add(new Profile("Cambit", brush));
+            allprofiles.Add(new Profile("Gambit", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/cowboy-col.png", UriKind.Absolute)));
             allprofiles.Add(new Profile("CowBoy", brush));

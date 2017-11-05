@@ -34,13 +34,13 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch(IOException  ee)
+            catch (IOException ee)
             {
                 new ImageLoadException(ee.Message);
             }
-            catch(NullReferenceException ee)
+            catch (NullReferenceException ee)
             {
-
+                new NullReferenceException(ee.Message);
             }
         }
         /// <summary>
@@ -164,7 +164,7 @@ namespace MauMau.Classes.Background
                     Carta aux = cartas[i];
                     cartas[i] = cartas[newplace];
                     cartas[newplace] = aux;
-                }        
+                }
             }
         }
     }
