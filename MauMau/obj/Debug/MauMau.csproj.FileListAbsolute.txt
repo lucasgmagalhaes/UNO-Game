@@ -135,3 +135,4 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResourc
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
