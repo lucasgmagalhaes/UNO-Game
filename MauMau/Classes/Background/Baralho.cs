@@ -86,7 +86,6 @@ namespace MauMau.Classes.Background
             }
             return aux;
         }
-
         /// <summary>
         /// Referido as cartas normais
         /// </summary>
@@ -102,7 +101,6 @@ namespace MauMau.Classes.Background
 
             return new Normal(PaletaCor.GetCor(foldercolor), int.Parse(cardNumber), brush);
         }
-
         /// <summary>
         /// Cria as cartas especiais de uma cor
         /// </summary>
@@ -122,7 +120,6 @@ namespace MauMau.Classes.Background
 
             return new Especial(efeitoaux, brush, PaletaCor.GetCor(foldercolor));
         }
-
         private Carta CreateCuringaSemEfeito()
         {
             ImageBrush brush;
@@ -131,7 +128,6 @@ namespace MauMau.Classes.Background
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png", UriKind.Absolute))); }
             return new Coringa(brush, Efeito.MudarCor);
         }
-
         private Carta CreateCuringaComEfeito()
         {
             ImageBrush brush;
@@ -140,7 +136,6 @@ namespace MauMau.Classes.Background
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
             return new Coringa(brush, Efeito.MudarCorEComprar4);
         }
-
         public List<Carta> GetCards()
         {
             return this.cartas;
