@@ -51,14 +51,15 @@ namespace MauMau.Classes.Background
         /// </summary>
         private UIElement element_colapse; //Elemento comparatório das cartas jogadas
 
+        public Monte Monte { get { return this.monte; } }
         public Enginee(UIElement colapse)
         {
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
+            this.LoadImage();
+            this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
-            baralho.Embaralhar();
-            LoadImage();
-            SetRandomPlayersProfile();
+            this.baralho.Embaralhar();
             this.realOne = this.players[3];
             this.element_colapse = colapse;
             this.monte = new Monte(baralho.GetCards());
@@ -70,25 +71,25 @@ namespace MauMau.Classes.Background
         /// </summary>
         private void LoadImage()
         {
-            ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/buzz.png", UriKind.Absolute)));
+            ImageBrush brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_buzz"]));
             allprofiles.Add(new Profile("Buzz", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/camb.jpg", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_camb"]));
             allprofiles.Add(new Profile("Cambit", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/cowboy-col.png", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_cowboy-cool"]));
             allprofiles.Add(new Profile("CowBoy", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/magneto.jpg", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_magneto"]));
             allprofiles.Add(new Profile("Magneto", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/mario.jpg", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_mario"]));
             allprofiles.Add(new Profile("Mario", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/stormtrooper.png", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_stormtrooper"]));
             allprofiles.Add(new Profile("StormTrooper", brush));
 
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/vader.png", UriKind.Absolute)));
+            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_vader"]));
             allprofiles.Add(new Profile("Vader", brush));
 
             brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/walle.png", UriKind.Absolute)));
@@ -135,7 +136,7 @@ namespace MauMau.Classes.Background
             foreach(Player pl in this.players)
             {
                 for (int i = 0; i < 7; i++) pl.AddCardToHand(this.monte.GetCardOnTop());
-                this.AlignCardsToHand(pl);
+               // this.AlignCardsToHand(pl);
             }
         }
         /// <summary>

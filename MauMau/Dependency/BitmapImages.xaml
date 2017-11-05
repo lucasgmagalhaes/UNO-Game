@@ -19,6 +19,7 @@
     <BitmapImage x:Key="Card_player_mario" x:Name="Mario" UriSource="/MauMau;component/Images/Cartas/player/mario.jpg" />
     <BitmapImage x:Key="Card_player_stormtrooper" x:Name="StormTrooper" UriSource="/MauMau;component/Images/Cartas/player/stormtrooper.png" />
     <BitmapImage x:Key="Card_player_vader" x:Name="Vader" UriSource="/MauMau;component/Images/Cartas/player/vader.png" />
+    <BitmapImage x:Key="Card_player_walle" x:Name="walle" UriSource="/MauMau;component/Images/Cartas/player/walle.png" />
 
     <!--Yellow Cards-->
     <BitmapImage x:Key="Card_yellow_00" UriSource="/MauMau;component/Images/Cartas/amarelo/0yellow.jpg" />

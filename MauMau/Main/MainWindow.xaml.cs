@@ -38,17 +38,17 @@ namespace MauMau
         {
             eng = new Enginee(Played);
             Lista<Player> img = eng.GetPlayers();
-            player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
-            player1name.Content = img[0].Infos.Name;
+            //player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
+            //player1name.Content = img[0].Infos.Name;
 
-            player2.Fill = new ImageBrush(img[1].Infos.GetImageSource());
-            player2name.Content = img[1].Infos.Name;
+            //player2.Fill = new ImageBrush(img[1].Infos.GetImageSource());
+            //player2name.Content = img[1].Infos.Name;
 
-            player3.Fill = new ImageBrush(img[2].Infos.GetImageSource());
-            player3name.Content = img[2].Infos.Name;
+            //player3.Fill = new ImageBrush(img[2].Infos.GetImageSource());
+            //player3name.Content = img[2].Infos.Name;
 
-            player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
-            player4name.Content = img[3].Infos.Name;
+            //player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
+            //player4name.Content = img[3].Infos.Name;
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -104,7 +104,7 @@ namespace MauMau
                     var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-                    if(nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;
+                    if (nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;
                     nexttohide = element;
                     element = null;
                 }
@@ -136,13 +136,22 @@ namespace MauMau
 
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Rectangle getcard = eng.GetFromMonte().GetCardUI();       
+            if (eng.Monte.Count() > 0)
+            {
+                Rectangle getcard = eng.GetFromMonte().GetCardUI();
 
-            ////getcard.MouseEnter += Getcard_MouseEnter;
-            ////getcard.MouseLeave += Getcard_MouseLeave;
-            Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
-            Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
-            root.Children.Add(getcard);
+                ////getcard.MouseEnter += Getcard_MouseEnter;
+                ////getcard.MouseLeave += Getcard_MouseLeave;
+                Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
+                Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
+                root.Children.Add(getcard);
+            }
+            else //será chamado o método para reembaralhar
+            {
+                Mont.IsEnabled = false;
+                Mont.Fill = null;
+            }
+
         }
 
         //private void Getcard_MouseLeave(object sender, MouseEventArgs e)
