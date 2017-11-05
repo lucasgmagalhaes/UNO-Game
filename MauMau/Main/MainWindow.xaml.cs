@@ -37,7 +37,7 @@ namespace MauMau
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(Played);
-            Lista<Player> img = eng.GetPlayers();
+            List<Player> img = eng.GetPlayers();
             //player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
             //player1name.Content = img[0].Infos.Name;
 

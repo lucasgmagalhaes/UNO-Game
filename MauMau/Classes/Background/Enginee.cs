@@ -1,4 +1,4 @@
-﻿using MauMau.Classes.Background.Estruturas;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +17,11 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
-        private Lista<Player> players;
+        private List<Player> players;
         /// <summary>
         /// Lista dos perfis dos jogadores
         /// </summary>
-        private Lista<Profile> allprofiles;
+        private List<Profile> allprofiles;
         /// <summary>
         /// Cartas para saque
         /// </summary>
@@ -54,8 +54,8 @@ namespace MauMau.Classes.Background
         public Monte Monte { get { return this.monte; } }
         public Enginee(UIElement colapse)
         {
-            this.players = new Lista<Player>();
-            this.allprofiles = new Lista<Profile>();
+            this.players = new List<Player>();
+            this.allprofiles = new List<Profile>();
             this.LoadImage();
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
@@ -71,29 +71,14 @@ namespace MauMau.Classes.Background
         /// </summary>
         private void LoadImage()
         {
-            ImageBrush brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_buzz"]));
-            allprofiles.Add(new Profile("Buzz", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_camb"]));
-            allprofiles.Add(new Profile("Cambit", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_cowboy-cool"]));
-            allprofiles.Add(new Profile("CowBoy", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_magneto"]));
-            allprofiles.Add(new Profile("Magneto", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_mario"]));
-            allprofiles.Add(new Profile("Mario", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_stormtrooper"]));
-            allprofiles.Add(new Profile("StormTrooper", brush));
-
-            brush = new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_vader"]));
-            allprofiles.Add(new Profile("Vader", brush));
-
-            brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/player/walle.png", UriKind.Absolute)));
-            allprofiles.Add(new Profile("WallE", brush));
+            allprofiles.Add(new Profile("Buzz", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_buzz"]))));
+            allprofiles.Add(new Profile("Cambit", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_camb"]))));
+            allprofiles.Add(new Profile("CowBoy", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_cowboy-cool"]))));
+            allprofiles.Add(new Profile("Magneto", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_magneto"]))));
+            allprofiles.Add(new Profile("Mario", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_mario"]))));
+            allprofiles.Add(new Profile("StormTrooper", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_stormtrooper"]))));
+            allprofiles.Add(new Profile("Vader", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_vader"]))));
+            allprofiles.Add(new Profile("WallE", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_walle"]))));
         }
 
         private void SetRandomPlayersProfile()
@@ -114,7 +99,7 @@ namespace MauMau.Classes.Background
             return this.realOne;
         }
 
-        public Lista<Player> GetPlayers()
+        public List<Player> GetPlayers()
         {
             return this.players;
         }
