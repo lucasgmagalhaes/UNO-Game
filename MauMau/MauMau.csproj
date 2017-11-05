@@ -70,7 +70,6 @@
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
-    <Compile Include="Classes\Recursos\CardImage.cs" />
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>
