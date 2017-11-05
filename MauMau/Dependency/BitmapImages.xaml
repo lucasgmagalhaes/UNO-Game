@@ -3,82 +3,82 @@
                     xmlns:local="clr-namespace:MauMau.Dependency">
 
     <!--Special Cards-->
-    <BitmapImage x:Key="Card_special_coringa" UriSource="/MauMau;component/Images/Cartas/especial/coringa.png" />
-    <BitmapImage x:Key="Card_special_coringaComrpa" UriSource="/MauMau;component/Images/Cartas/amarelo/coringaCompra.jpg" />
-    
+    <BitmapImage x:Key="Card_special_coringa" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png" />
+    <BitmapImage x:Key="Card_special_coringaComrpa" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.jpg" />
+
     <!--Other Cards-->
-    <BitmapImage x:Key="Card_other_poker-table-felt" UriSource="/MauMau;component/Images/Cartas/outras/poker-table-felt.jpg" />
-    <BitmapImage x:Key="Card_other_back" UriSource="/MauMau;component/Images/Cartas/outras/uno_back.jpg" />
-    <BitmapImage x:Key="Card_other_uno_Button" UriSource="/MauMau;component/Images/Cartas/outras/uno_Button.jpg" />
+    <BitmapImage x:Key="Card_other_poker-table-felt" UriSource="pack://application:,,,/MauMau;component/Images/outras/poker-table-felt.jpg" />
+    <BitmapImage x:Key="Card_other_back" UriSource="pack://application:,,,/MauMau;component/Images/outras/uno_back.jpg" />
+    <BitmapImage x:Key="Card_other_uno_Button" UriSource="pack://application:,,,/MauMau;component/Images/outras/uno_Button.jpg" />
 
     <!--Player Cards-->
-    <BitmapImage x:Key="Card_player_buzz" x:Name="Buzz" UriSource="/MauMau;component/Images/Cartas/player/buzz.png" />
-    <BitmapImage x:Key="Card_player_camb" x:Name="Cambit" UriSource="/MauMau;component/Images/Cartas/player/camb.jpg" />
-    <BitmapImage x:Key="Card_player_cowboy-cool" x:Name="CowBoy" UriSource="/MauMau;component/Images/Cartas/player/cowboy-col.png" />
-    <BitmapImage x:Key="Card_player_magneto" x:Name="Magneto" UriSource="/MauMau;component/Images/Cartas/player/magneto.jpg" />
-    <BitmapImage x:Key="Card_player_mario" x:Name="Mario" UriSource="/MauMau;component/Images/Cartas/player/mario.jpg" />
-    <BitmapImage x:Key="Card_player_stormtrooper" x:Name="StormTrooper" UriSource="/MauMau;component/Images/Cartas/player/stormtrooper.png" />
-    <BitmapImage x:Key="Card_player_vader" x:Name="Vader" UriSource="/MauMau;component/Images/Cartas/player/vader.png" />
-    <BitmapImage x:Key="Card_player_walle" x:Name="walle" UriSource="/MauMau;component/Images/Cartas/player/walle.png" />
+    <BitmapImage x:Key="Card_player_buzz" UriSource="pack://application:,,,/MauMau;component/Images/player/buzz.png" />
+    <BitmapImage x:Key="Card_player_camb" UriSource="pack://application:,,,/MauMau;component/Images/player/camb.jpg" />
+    <BitmapImage x:Key="Card_player_cowboy-cool" UriSource="pack://application:,,,/MauMau;component/Images/player/cowboy-col.png" />
+    <BitmapImage x:Key="Card_player_magneto" UriSource="pack://application:,,,/MauMau;component/Images/player/magneto.jpg" />
+    <BitmapImage x:Key="Card_player_mario" UriSource="pack://application:,,,/MauMau;component/Images/player/mario.jpg" />
+    <BitmapImage x:Key="Card_player_stormtrooper" UriSource="pack://application:,,,/MauMau;component/Images/player/stormtrooper.png" />
+    <BitmapImage x:Key="Card_player_vader" UriSource="pack://application:,,,/MauMau;component/Images/player/vader.png" />
+    <BitmapImage x:Key="Card_player_walle" UriSource="pack://application:,,,/MauMau;component/Images/player/walle.png" />
 
     <!--Yellow Cards-->
-    <BitmapImage x:Key="Card_yellow_00" UriSource="/MauMau;component/Images/Cartas/amarelo/0yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_01" UriSource="/MauMau;component/Images/Cartas/amarelo/1yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_02" UriSource="/MauMau;component/Images/Cartas/amarelo/2yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_03" UriSource="/MauMau;component/Images/Cartas/amarelo/3yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_04" UriSource="/MauMau;component/Images/Cartas/amarelo/4yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_05" UriSource="/MauMau;component/Images/Cartas/amarelo/5yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_06" UriSource="/MauMau;component/Images/Cartas/amarelo/6yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_07" UriSource="/MauMau;component/Images/Cartas/amarelo/7yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_08" UriSource="/MauMau;component/Images/Cartas/amarelo/8yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_09" UriSource="/MauMau;component/Images/Cartas/amarelo/9yellow.jpg" />
-    <BitmapImage x:Key="Card_yellow_Bloq" UriSource="/MauMau;component/Images/Cartas/amarelo/yellowBloq.jpg" />
-    <BitmapImage x:Key="Card_yellow_Compra" UriSource="/MauMau;component/Images/Cartas/amarelo/0yellowCompra.jpg" />
-    <BitmapImage x:Key="Card_yellow_Inverte" UriSource="/MauMau;component/Images/Cartas/amarelo/0yellowInverte.jpg" />
-    
+    <BitmapImage x:Key="Card_yellow_00" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/0yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_01" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/1yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_02" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/2yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_03" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/3yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_04" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/4yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_05" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/5yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_06" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/6yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_07" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/7yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_08" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/8yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_09" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/9yellow.jpg" />
+    <BitmapImage x:Key="Card_yellow_Bloq" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/yellowBloq.jpg" />
+    <BitmapImage x:Key="Card_yellow_Compra" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/0yellowCompra.jpg" />
+    <BitmapImage x:Key="Card_yellow_Inverte" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/amarelo/0yellowInverte.jpg" />
+
     <!--Blue Cards-->
-    <BitmapImage x:Key="Card_blue_00" UriSource="/MauMau;component/Images/Cartas/azul/0blue.jpg" />
-    <BitmapImage x:Key="Card_blue_01" UriSource="/MauMau;component/Images/Cartas/azul/1blue.jpg" />
-    <BitmapImage x:Key="Card_blue_02" UriSource="/MauMau;component/Images/Cartas/azul/2blue.jpg" />
-    <BitmapImage x:Key="Card_blue_03" UriSource="/MauMau;component/Images/Cartas/azul/3blue.jpg" />
-    <BitmapImage x:Key="Card_blue_04" UriSource="/MauMau;component/Images/Cartas/azul/4blue.jpg" />
-    <BitmapImage x:Key="Card_blue_05" UriSource="/MauMau;component/Images/Cartas/azul/5blue.jpg" />
-    <BitmapImage x:Key="Card_blue_06" UriSource="/MauMau;component/Images/Cartas/azul/6blue.jpg" />
-    <BitmapImage x:Key="Card_blue_07" UriSource="/MauMau;component/Images/Cartas/azul/7blue.jpg" />
-    <BitmapImage x:Key="Card_blue_08" UriSource="/MauMau;component/Images/Cartas/azul/8blue.jpg" />
-    <BitmapImage x:Key="Card_blue_09" UriSource="/MauMau;component/Images/Cartas/azul/9blue.jpg" />
-    <BitmapImage x:Key="Card_blue_Bloq" UriSource="/MauMau;component/Images/Cartas/azul/blueBloq.jpg" />
-    <BitmapImage x:Key="Card_blue_Compra" UriSource="/MauMau;component/Images/Cartas/azul/0blueCompra.jpg" />
-    <BitmapImage x:Key="Card_blue_Inverte" UriSource="/MauMau;component/Images/Cartas/azul/0blueInverte.jpg" />
+    <BitmapImage x:Key="Card_blue_00" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/0blue.jpg" />
+    <BitmapImage x:Key="Card_blue_01" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/1blue.jpg" />
+    <BitmapImage x:Key="Card_blue_02" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/2blue.jpg" />
+    <BitmapImage x:Key="Card_blue_03" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/3blue.jpg" />
+    <BitmapImage x:Key="Card_blue_04" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/4blue.jpg" />
+    <BitmapImage x:Key="Card_blue_05" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/5blue.jpg" />
+    <BitmapImage x:Key="Card_blue_06" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/6blue.jpg" />
+    <BitmapImage x:Key="Card_blue_07" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/7blue.jpg" />
+    <BitmapImage x:Key="Card_blue_08" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/8blue.jpg" />
+    <BitmapImage x:Key="Card_blue_09" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/9blue.jpg" />
+    <BitmapImage x:Key="Card_blue_Bloq" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/blueBloq.jpg" />
+    <BitmapImage x:Key="Card_blue_Compra" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/0blueCompra.jpg" />
+    <BitmapImage x:Key="Card_blue_Inverte" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/azul/0blueInverte.jpg" />
 
     <!--Green Cards-->
-    <BitmapImage x:Key="Card_green_00" UriSource="/MauMau;component/Images/Cartas/verde/0green.jpg" />
-    <BitmapImage x:Key="Card_green_01" UriSource="/MauMau;component/Images/Cartas/verde/1green.jpg" />
-    <BitmapImage x:Key="Card_green_02" UriSource="/MauMau;component/Images/Cartas/verde/2green.jpg" />
-    <BitmapImage x:Key="Card_green_03" UriSource="/MauMau;component/Images/Cartas/verde/3green.jpg" />
-    <BitmapImage x:Key="Card_green_04" UriSource="/MauMau;component/Images/Cartas/verde/4green.jpg" />
-    <BitmapImage x:Key="Card_green_05" UriSource="/MauMau;component/Images/Cartas/verde/5green.jpg" />
-    <BitmapImage x:Key="Card_green_06" UriSource="/MauMau;component/Images/Cartas/verde/6green.jpg" />
-    <BitmapImage x:Key="Card_green_07" UriSource="/MauMau;component/Images/Cartas/verde/7green.jpg" />
-    <BitmapImage x:Key="Card_green_08" UriSource="/MauMau;component/Images/Cartas/verde/8green.jpg" />
-    <BitmapImage x:Key="Card_green_09" UriSource="/MauMau;component/Images/Cartas/verde/9green.jpg" />
-    <BitmapImage x:Key="Card_green_Bloq" UriSource="/MauMau;component/Images/Cartas/verde/greenBloq.jpg" />
-    <BitmapImage x:Key="Card_green_Compra" UriSource="/MauMau;component/Images/Cartas/verde/0greenCompra.jpg" />
-    <BitmapImage x:Key="Card_green_Inverte" UriSource="/MauMau;component/Images/Cartas/verde/0greenInverte.jpg" />
+    <BitmapImage x:Key="Card_green_00" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/0green.jpg" />
+    <BitmapImage x:Key="Card_green_01" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/1green.jpg" />
+    <BitmapImage x:Key="Card_green_02" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/2green.jpg" />
+    <BitmapImage x:Key="Card_green_03" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/3green.jpg" />
+    <BitmapImage x:Key="Card_green_04" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/4green.jpg" />
+    <BitmapImage x:Key="Card_green_05" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/5green.jpg" />
+    <BitmapImage x:Key="Card_green_06" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/6green.jpg" />
+    <BitmapImage x:Key="Card_green_07" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/7green.jpg" />
+    <BitmapImage x:Key="Card_green_08" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/8green.jpg" />
+    <BitmapImage x:Key="Card_green_09" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/9green.jpg" />
+    <BitmapImage x:Key="Card_green_Bloq" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/greenBloq.jpg" />
+    <BitmapImage x:Key="Card_green_Compra" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/0greenCompra.jpg" />
+    <BitmapImage x:Key="Card_green_Inverte" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/verde/0greenInverte.jpg" />
 
     <!--red Cards-->
-    <BitmapImage x:Key="Card_red_00" UriSource="/MauMau;component/Images/Cartas/vermelho/0red.jpg" />
-    <BitmapImage x:Key="Card_red_01" UriSource="/MauMau;component/Images/Cartas/vermelho/1red.jpg" />
-    <BitmapImage x:Key="Card_red_02" UriSource="/MauMau;component/Images/Cartas/vermelho/2red.jpg" />
-    <BitmapImage x:Key="Card_red_03" UriSource="/MauMau;component/Images/Cartas/vermelho/3red.jpg" />
-    <BitmapImage x:Key="Card_red_04" UriSource="/MauMau;component/Images/Cartas/vermelho/4red.jpg" />
-    <BitmapImage x:Key="Card_red_05" UriSource="/MauMau;component/Images/Cartas/vermelho/5red.jpg" />
-    <BitmapImage x:Key="Card_red_06" UriSource="/MauMau;component/Images/Cartas/vermelho/6red.jpg" />
-    <BitmapImage x:Key="Card_red_07" UriSource="/MauMau;component/Images/Cartas/vermelho/7red.jpg" />
-    <BitmapImage x:Key="Card_red_08" UriSource="/MauMau;component/Images/Cartas/vermelho/8red.jpg" />
-    <BitmapImage x:Key="Card_red_09" UriSource="/MauMau;component/Images/Cartas/vermelho/9red.jpg" />
-    <BitmapImage x:Key="Card_red_Bloq" UriSource="/MauMau;component/Images/Cartas/vermelho/redBloq.jpg" />
-    <BitmapImage x:Key="Card_red_Compra" UriSource="/MauMau;component/Images/Cartas/vermelho/0redCompra.jpg" />
-    <BitmapImage x:Key="Card_red_Inverte" UriSource="/MauMau;component/Images/Cartas/vermelho/0redInverte.jpg" />
+    <BitmapImage x:Key="Card_red_00" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/0red.jpg" />
+    <BitmapImage x:Key="Card_red_01" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/1red.jpg" />
+    <BitmapImage x:Key="Card_red_02" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/2red.jpg" />
+    <BitmapImage x:Key="Card_red_03" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/3red.jpg" />
+    <BitmapImage x:Key="Card_red_04" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/4red.jpg" />
+    <BitmapImage x:Key="Card_red_05" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/5red.jpg" />
+    <BitmapImage x:Key="Card_red_06" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/6red.jpg" />
+    <BitmapImage x:Key="Card_red_07" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/7red.jpg" />
+    <BitmapImage x:Key="Card_red_08" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/8red.jpg" />
+    <BitmapImage x:Key="Card_red_09" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/9red.jpg" />
+    <BitmapImage x:Key="Card_red_Bloq" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/redBloq.jpg" />
+    <BitmapImage x:Key="Card_red_Compra" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/0redCompra.jpg" />
+    <BitmapImage x:Key="Card_red_Inverte" UriSource="pack://application:,,,/MauMau;component/Images/Cartas/vermelho/0redInverte.jpg" />
 
 </ResourceDictionary>

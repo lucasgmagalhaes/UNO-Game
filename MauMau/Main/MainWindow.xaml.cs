@@ -38,17 +38,18 @@ namespace MauMau
         {
             eng = new Enginee(Played);
             List<Player> img = eng.GetPlayers();
-            //player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
-            //player1name.Content = img[0].Infos.Name;
 
-            //player2.Fill = new ImageBrush(img[1].Infos.GetImageSource());
-            //player2name.Content = img[1].Infos.Name;
+            player1.Fill = img[0].Infos.GetImageBrush();
+            player1name.Content = img[0].Infos.Name;
 
-            //player3.Fill = new ImageBrush(img[2].Infos.GetImageSource());
-            //player3name.Content = img[2].Infos.Name;
+            player2.Fill = img[1].Infos.GetImageBrush();
+            player2name.Content = img[1].Infos.Name;
 
-            //player4.Fill = new ImageBrush(img[3].Infos.GetImageSource());
-            //player4name.Content = img[3].Infos.Name;
+            player3.Fill = img[2].Infos.GetImageBrush();
+            player3name.Content = img[2].Infos.Name;
+
+            player4.Fill = img[3].Infos.GetImageBrush();
+            player4name.Content = img[3].Infos.Name;
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -138,7 +139,7 @@ namespace MauMau
         {
             if (eng.Monte.Count() > 0)
             {
-                Rectangle getcard = eng.GetFromMonte().GetCardUI();
+                Rectangle getcard = eng.GetFromMonte().ElementUI;
 
                 ////getcard.MouseEnter += Getcard_MouseEnter;
                 ////getcard.MouseLeave += Getcard_MouseLeave;
@@ -151,7 +152,6 @@ namespace MauMau
                 Mont.IsEnabled = false;
                 Mont.Fill = null;
             }
-
         }
 
         //private void Getcard_MouseLeave(object sender, MouseEventArgs e)

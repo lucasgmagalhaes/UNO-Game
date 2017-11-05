@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
@@ -72,7 +73,7 @@ namespace MauMau.Classes.Background
         private void LoadImage()
         {
             allprofiles.Add(new Profile("Buzz", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_buzz"]))));
-            allprofiles.Add(new Profile("Cambit", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_camb"]))));
+            allprofiles.Add(new Profile("Gambit", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_camb"]))));
             allprofiles.Add(new Profile("CowBoy", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_cowboy-cool"]))));
             allprofiles.Add(new Profile("Magneto", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_magneto"]))));
             allprofiles.Add(new Profile("Mario", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_mario"]))));
@@ -91,7 +92,12 @@ namespace MauMau.Classes.Background
                 aux[2] = ran.Next(0, this.allprofiles.Count - 1);
                 aux[3] = ran.Next(0, this.allprofiles.Count - 1);
             }
-            for (int val = 0; val < aux.Length; val++) players.Add(new Player(allprofiles[aux[val]]));
+            players.Add(new Player(allprofiles[aux[0]], Enum.PlayerPosition.Top));
+            players.Add(new Player(allprofiles[aux[1]], Enum.PlayerPosition.Right));
+            players.Add(new Player(allprofiles[aux[2]], Enum.PlayerPosition.Bottom));
+            players.Add(new Player(allprofiles[aux[3]], Enum.PlayerPosition.Left));
+
+//            for (int val = 0; val < aux.Length; val++) players.Add(new Player(allprofiles[aux[val]]));
         }
 
         public Player GetMainPlayer()
@@ -121,7 +127,7 @@ namespace MauMau.Classes.Background
             foreach(Player pl in this.players)
             {
                 for (int i = 0; i < 7; i++) pl.AddCardToHand(this.monte.GetCardOnTop());
-               // this.AlignCardsToHand(pl);
+                this.AlignCardsToHand(pl);
             }
         }
         /// <summary>
@@ -134,7 +140,6 @@ namespace MauMau.Classes.Background
                //Canvas.SetLeft(card.GetCardUI(), )
             }
         }
-
         public UIElement ColapseElement(UIElement el)
         {
             Canvas.SetLeft(el, Canvas.GetLeft(this.element_colapse));

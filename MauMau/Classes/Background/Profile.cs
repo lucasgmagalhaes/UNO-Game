@@ -18,14 +18,15 @@ namespace MauMau.Classes.Background
         {
             this.name = name;
             this.source = source;
+ 
         }
         /// <summary>
         /// Retorna o o path da imagem
         /// </summary>
         /// <returns></returns>
-        public ImageSource GetImageSource()
+        public ImageBrush GetImageBrush()
         {
-            return this.source.ImageSource;
+            return this.source;
         }
     }
 }

@@ -14,7 +14,9 @@ namespace MauMau.Classes.Background
         protected ImageBrush frontImage;
         protected ImageBrush backImage = new ImageBrush(((ImageSource)Application.Current.Resources["Card_other_back"]));
         protected Rectangle elementUI;
+
         public ImageBrush FrontImage { get { return this.frontImage; } }
+        public Rectangle ElementUI { get { return this.elementUI; } set { this.elementUI = value; } }
 
         public Carta(ImageBrush image)
         {
@@ -27,11 +29,6 @@ namespace MauMau.Classes.Background
             this.elementUI.Height = 180;
             this.elementUI.Width = 114;
             this.elementUI.Name = "newcard";
-        }
-
-        public Rectangle GetCardUI()
-        {
-            return this.elementUI;
         }
     }
 }
