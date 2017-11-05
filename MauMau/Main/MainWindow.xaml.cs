@@ -99,7 +99,7 @@ namespace MauMau
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
-            if (mouseon != null)
+            if (mouseon != null && mouseon.Name != "btnUNO")
             {
                 element = mouseon as UIElement;
                 if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")

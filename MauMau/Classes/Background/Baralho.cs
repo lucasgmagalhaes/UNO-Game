@@ -129,7 +129,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png", UriKind.Absolute))); }
-            return new Curinga(brush, Efeito.MudarCor);
+            return new Coringa(brush, Efeito.MudarCor);
         }
 
         private Carta CreateCuringaComEfeito()
@@ -138,7 +138,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
-            return new Curinga(brush, Efeito.MudarCorEComprar4);
+            return new Coringa(brush, Efeito.MudarCorEComprar4);
         }
 
         public Lista<Carta> GetCards()
