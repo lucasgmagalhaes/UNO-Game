@@ -9,12 +9,12 @@ using MauMau.Classes.Background.Interfaces;
 
 namespace MauMau.Classes.Background.Cartas
 {
-    class Curinga : Carta, IEquatable
+    class Coringa : Carta, IEquatable
     {
         private Efeito efeito;
-        public Curinga(ImageBrush img, Efeito buycards) : base(img)
+        public Coringa(ImageBrush img, Efeito buycards) : base(img)
         {
-            base.source = img;
+            base.frontImage = img;
             this.efeito = buycards;
         }
 

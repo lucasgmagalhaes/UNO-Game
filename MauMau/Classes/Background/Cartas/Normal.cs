@@ -21,7 +21,7 @@ namespace MauMau.Classes.Background.Cartas
         {
             this.numero = numero;
             this.cor = cor;
-            base.source = img;
+            base.frontImage = img;
         }
 
         public bool Equals(IEquatable card)

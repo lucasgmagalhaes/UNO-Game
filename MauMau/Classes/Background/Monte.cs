@@ -33,5 +33,10 @@ namespace MauMau.Classes.Background
         {
             this.cartas.Push(card);
         }
+
+        public int Count()
+        {
+            return this.cartas.Count;
+        }
     }
 }

@@ -34,17 +34,17 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch (IOException ee)
+            catch(IOException  ee)
             {
                 new ImageLoadException(ee.Message);
             }
-            catch (NullReferenceException ee)
+            catch(NullReferenceException ee)
             {
-                new NullReferenceException(ee.Message);
+
             }
         }
         /// <summary>
-        /// Retorna uma List de cartas de acordo com a cor especificada
+        /// Retorna uma lista de cartas de acordo com a cor especificada
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -129,7 +129,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png", UriKind.Absolute))); }
-            return new Curinga(brush, Efeito.MudarCor);
+            return new Coringa(brush, Efeito.MudarCor);
         }
 
         private Carta CreateCuringaComEfeito()
@@ -138,7 +138,7 @@ namespace MauMau.Classes.Background
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
-            return new Curinga(brush, Efeito.MudarCorEComprar4);
+            return new Coringa(brush, Efeito.MudarCorEComprar4);
         }
 
         public List<Carta> GetCards()
@@ -164,7 +164,7 @@ namespace MauMau.Classes.Background
                     Carta aux = cartas[i];
                     cartas[i] = cartas[newplace];
                     cartas[newplace] = aux;
-                }
+                }        
             }
         }
     }
