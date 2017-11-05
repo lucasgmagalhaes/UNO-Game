@@ -33,16 +33,11 @@ namespace MauMau
         private Enginee eng;
         private bool cardsExpanded;
         int count = -100;
-        private void AddCardToHand()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(Played);
-            List<Player> img = eng.GetPlayers();
+            Lista<Player> img = eng.GetPlayers();
             player1.Fill = new ImageBrush(img[0].Infos.GetImageSource());
             player1name.Content = img[0].Infos.Name;
 
@@ -141,18 +136,10 @@ namespace MauMau
 
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Rectangle getcard = new Rectangle();
-            getcard.Fill =  eng.GetFromMonte().Source;
-            Border asd = new Border();
-            Console.BackgroundColor = ConsoleColor.Black;
-            getcard.RadiusX = 10;
-            getcard.RadiusY = 10;
-            getcard.Height = 180;
-            getcard.Width = 114;
-            getcard.Name = "newcard";
+            Rectangle getcard = eng.GetFromMonte().GetCardUI();       
 
-            //getcard.MouseEnter += Getcard_MouseEnter;
-            //getcard.MouseLeave += Getcard_MouseLeave;
+            ////getcard.MouseEnter += Getcard_MouseEnter;
+            ////getcard.MouseLeave += Getcard_MouseLeave;
             Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
             Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
             root.Children.Add(getcard);

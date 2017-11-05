@@ -224,5 +224,40 @@ namespace MauMau.Classes.Background.Estruturas
         {
             return (IEnumerator)this;
         }
+        /// <summary>
+        /// Retorna o index de um elemento
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public int GetIndexOf(object obj)
+        {
+            int auxcount = 0;
+            Elemento aux = prim.Prox;
+            while (aux != null || aux.GetDado() == obj)
+            {
+                aux = aux.Prox;
+                auxcount++;
+            }
+            return count;
+        }
+        /// <summary>
+        /// Remove um elemento localizado em uma posição fornecida
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T RemoveAt(int index)
+        {
+            Elemento aux = this.prim;
+            for (int i = 0; i < index; i++)
+            {
+                if(aux.Prox != null) aux = aux.Prox;
+            }
+            Elemento aux2 = aux.Prox;
+            aux.Prox = aux.Prox.Prox;
+            aux2.Prox = null;
+            ElementDeleted();
+            Rebuild();
+            return (T)aux2.GetDado();
+        }
     }
 }

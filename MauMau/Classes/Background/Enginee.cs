@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MauMau.Classes.Background.Estruturas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
-        private List<Player> players;
+        private Lista<Player> players;
         /// <summary>
         /// Lista dos perfis dos jogadores
         /// </summary>
-        private List<Profile> allprofiles;
+        private Lista<Profile> allprofiles;
         /// <summary>
         /// Cartas para saque
         /// </summary>
@@ -42,14 +43,18 @@ namespace MauMau.Classes.Background
         /// </summary>
         private Player realOne;
         /// <summary>
+        /// Turno dos jogadores
+        /// </summary>
+        private Turno roda;
+        /// <summary>
         /// Elemento usado como base para o "colapso" das cartas
         /// </summary>
         private UIElement element_colapse; //Elemento comparatório das cartas jogadas
 
         public Enginee(UIElement colapse)
         {
-            this.players = new List<Player>();
-            this.allprofiles = new List<Profile>();
+            this.players = new Lista<Player>();
+            this.allprofiles = new Lista<Profile>();
             this.baralho = new Baralho();
             baralho.Embaralhar();
             LoadImage();
@@ -57,6 +62,8 @@ namespace MauMau.Classes.Background
             this.realOne = this.players[3];
             this.element_colapse = colapse;
             this.monte = new Monte(baralho.GetCards());
+            this.roda = new Turno(this.players);
+            this.DistributeCards();
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -106,7 +113,7 @@ namespace MauMau.Classes.Background
             return this.realOne;
         }
 
-        public List<Player> GetPlayers()
+        public Lista<Player> GetPlayers()
         {
             return this.players;
         }
@@ -114,6 +121,32 @@ namespace MauMau.Classes.Background
         public Carta GetFromMonte()
         {
             return this.monte.GetCardOnTop();
+        }
+
+        public Player GetCurrentPlayer()
+        {
+            return this.roda.GetCurrentPlayer();
+        }
+        /// <summary>
+        /// Distribui as cartas para os jogadores
+        /// </summary>
+        private void DistributeCards()
+        {
+            foreach(Player pl in this.players)
+            {
+                for (int i = 0; i < 7; i++) pl.AddCardToHand(this.monte.GetCardOnTop());
+                this.AlignCardsToHand(pl);
+            }
+        }
+        /// <summary>
+        /// Alinha a posição das cartas na mão dos jogadores
+        /// </summary>
+        private void AlignCardsToHand(Player pl)
+        {
+            foreach(Carta card in pl.Hand)
+            {
+               //Canvas.SetLeft(card.GetCardUI(), )
+            }
         }
 
         public UIElement ColapseElement(UIElement el)

@@ -91,7 +91,7 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <!---Left Cards-->
-                    <Rectangle  x:Name="cardl1" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="430" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="464" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -123,7 +123,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy" IsEnabled="False"  Canvas.Left="9" HorizontalAlignment="Right" Canvas.Top="399" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy" IsEnabled="False"  Canvas.Left="9" HorizontalAlignment="Right" Canvas.Top="433" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -136,7 +136,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy1" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="367" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy1" IsEnabled="False"  Canvas.Left="8" HorizontalAlignment="Right" Canvas.Top="401" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -149,7 +149,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy2" IsEnabled="False"  Canvas.Left="7" HorizontalAlignment="Right" Canvas.Top="346" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy2" IsEnabled="False"  Canvas.Left="7" HorizontalAlignment="Right" Canvas.Top="380" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -222,7 +222,7 @@
                             <ImageBrush ImageSource="../Images/Cartas/azul/0blue.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy3" IsEnabled="False"  Canvas.Left="10" HorizontalAlignment="Right" Canvas.Top="327" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy3" IsEnabled="False"  Canvas.Left="10" HorizontalAlignment="Right" Canvas.Top="361" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -235,7 +235,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy4" IsEnabled="False"  Canvas.Left="9" HorizontalAlignment="Right" Canvas.Top="297" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy4" IsEnabled="False"  Canvas.Left="9" HorizontalAlignment="Right" Canvas.Top="331" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -248,7 +248,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle  x:Name="cardl1_Copy5" IsEnabled="False"  Canvas.Left="11" HorizontalAlignment="Right" Canvas.Top="274" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
+                    <Rectangle  x:Name="cardl1_Copy5" IsEnabled="False"  Canvas.Left="11" HorizontalAlignment="Right" Canvas.Top="308" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
