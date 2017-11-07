@@ -59,7 +59,7 @@ namespace MauMau.Classes.Background.Estruturas
                 aux = aux.Prox;
                 auxcount++;
             }
-            return aux.GetDado();
+            return aux.GetDado().Info;
         }
         /// <summary>
         /// Retorna um elemento pelo seu index
@@ -211,14 +211,36 @@ namespace MauMau.Classes.Background.Estruturas
         {
             this.actualIndexPosition = -1;
         }
-        /// <summary>
-        /// Pega o elemento
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerator GetEnumerator()
+
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)this;
+            return new ListaNumerable(this);
         }
+
+        private class ListaNumerable : IEnumerator
+        {
+            private Lista<T> instance;
+            private int position = -1;
+
+            public ListaNumerable(Lista<T> inst)
+            {
+                this.instance = inst;
+            }
+
+            public object Current { get { return instance[position]; } }
+
+            public bool MoveNext()
+            {
+                position++;
+                return (position < this.instance.count);
+            }
+
+            public void Reset()
+            {
+                position = -1;
+            }
+        }
+
         /// <summary>
         /// Retorna o index de um elemento
         /// </summary>

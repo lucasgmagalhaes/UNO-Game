@@ -9,10 +9,10 @@ namespace MauMau.Classes.Background
 {
     class Turno
     {
-        private List<Player> jogadores = new List<Player>();
+        private Lista<Player> jogadores = new Lista<Player>();
         private Player current;
 
-        public Turno(List<Player> jogadores)
+        public Turno(Lista<Player> jogadores)
         {
             this.jogadores = jogadores;
             current = jogadores[0];
