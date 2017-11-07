@@ -58,7 +58,6 @@ namespace MauMau.Classes.Background
         /// Define se as cartas dos BOTs vao ou não serem exibidas
         /// </summary>
         private bool showBotCards;
-
         public bool ShowBotCards
         {
             get { return this.showBotCards; }
@@ -100,7 +99,6 @@ namespace MauMau.Classes.Background
             allprofiles.Add(new Profile("Vader", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_vader"]))));
             allprofiles.Add(new Profile("WallE", new ImageBrush(((ImageSource)Application.Current.Resources["Card_player_walle"]))));
         }
-
         private void SetRandomPlayersProfile()
         {
             int[] aux = new int[4];
@@ -117,22 +115,18 @@ namespace MauMau.Classes.Background
             players.Add(new Player(allprofiles[aux[2]], Enum.PlayerPosition.Bottom));
             players.Add(new Player(allprofiles[aux[3]], Enum.PlayerPosition.Left));
         }
-
         public Player GetMainPlayer()
         {
             return this.realOne;
         }
-
         public List<Player> GetPlayers()
         {
             return this.players;
         }
-
         public Carta GetFromMonte()
         {
             return this.monte.GetCardOnTop();
         }
-
         public Player GetCurrentPlayer()
         {
             return this.roda.GetCurrentPlayer();

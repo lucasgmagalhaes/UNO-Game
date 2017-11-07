@@ -9,7 +9,7 @@
 
         public Pilha()
         {
-            this.topo = new Elemento(null);
+            this.topo = new Elemento(null, 0);
             this.fundo = this.topo;
         }
 
@@ -19,7 +19,7 @@
         /// <param name="novo"></param>
         public void Push(object novo)
         {
-            Elemento elemento = new Elemento(novo);
+            Elemento elemento = new Elemento(novo, count);
             elemento.Prox = this.topo.Prox;
             this.topo.Prox = elemento;
             if (this.topo == this.fundo) this.fundo = elemento;
@@ -39,7 +39,7 @@
                 aux.Prox = null;
                 if (aux == this.fundo) this.fundo = this.topo;
                 this.count--;
-                return (T)aux.GetDado();
+                return (T)aux.GetDado().Info;
             }
             else return default(T);
         }
@@ -49,7 +49,7 @@
         /// <returns></returns>
         public T Peek()
         {
-            return (T)this.topo.Prox.GetDado();
+            return (T)this.topo.Prox.GetDado().Info;
         }
         /// <summary>
         /// Verifica se a pilha está vazia

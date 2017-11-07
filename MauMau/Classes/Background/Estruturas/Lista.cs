@@ -11,7 +11,6 @@ namespace MauMau.Classes.Background.Estruturas
     {
         private Elemento prim, ult;
         private int count;
-        private int elementIndex = 0;
         private int actualIndexPosition = -1;
         public int Count { get { return this.count; } }
         public object Current
@@ -25,7 +24,7 @@ namespace MauMau.Classes.Background.Estruturas
         }
         public Lista()
         {
-            this.prim = new Elemento(null);
+            this.prim = new Elemento(null, 0);
             this.ult = this.prim;
         }
         /// <summary>
@@ -35,20 +34,16 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public T this[int index]
         {
-            get { return (T)this.GetByIndex(index); }
+            get
+            {
+                if (index > count) return default(T);
+                return (T)this.GetByIndex(index);
+            }
             set
             {
                 Elemento val = this.GetElementoByIndex(index);
-                val.SetDado(value);
+                val.SetDado(value, index);
             }
-        }
-        /// <summary>
-        /// Posiciona o ponteiro da lista para o próximo elemento da mesma
-        /// </summary>
-        /// <returns></returns>
-        private int GetNewIndex()
-        {
-            return this.elementIndex++;
         }
         /// <summary>
         /// Retorna um objeto pelo seu index
@@ -59,8 +54,7 @@ namespace MauMau.Classes.Background.Estruturas
         {
             int auxcount = 0;
             Elemento aux = prim.Prox;
-            if (val == 0) return aux.GetDado();
-            while (aux != null && val <= count && val != auxcount && auxcount < val && auxcount < actualIndexPosition)
+            while (auxcount < val && auxcount < count)
             {
                 aux = aux.Prox;
                 auxcount++;
@@ -89,7 +83,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public T Primeiro()
         {
-            return (T)this.prim.Prox.GetDado();
+            return (T)this.prim.Prox.GetDado().Info;
         }
         /// <summary>
         /// Acrescenta o contador de elementos da lista
@@ -113,7 +107,7 @@ namespace MauMau.Classes.Background.Estruturas
             if (this.prim.Prox == null)
             {
                 object dad = null;
-                this.prim = new Elemento(dad);
+                this.prim = new Elemento(dad, 0);
                 this.ult = prim;
             }
         }
@@ -123,10 +117,10 @@ namespace MauMau.Classes.Background.Estruturas
         /// <param name="el"></param>
         public virtual void Add(object el)
         {
-            Elemento aux = new Elemento(el, GetNewIndex());
+            Elemento aux = new Elemento(el, this.count);
             this.ult.Prox = aux;
             this.ult = aux;
-            ElementAdded();
+            this.ElementAdded();
         }
         /// <summary>
         /// Remove um elemento da lista
@@ -143,9 +137,9 @@ namespace MauMau.Classes.Background.Estruturas
                     Elemento aux2 = aux.Prox;
                     aux.Prox = aux.Prox.Prox;
                     aux2.Prox = null;
-                    ElementDeleted();
-                    Rebuild();
-                    return (T)aux2.GetDado();
+                    this.ElementDeleted();
+                    this.Rebuild();
+                    return (T)aux2.GetDado().Info;
                 }
                 aux = aux.Prox;
             }
@@ -163,9 +157,9 @@ namespace MauMau.Classes.Background.Estruturas
                 Elemento aux2 = aux;
                 this.prim.Prox = aux.Prox;
                 aux = null;
-                ElementDeleted();
+                this.ElementDeleted();
                 Rebuild();
-                return (T)aux2.GetDado();
+                return (T)aux2.GetDado().Info;
             }
             else return default(T);
         }
@@ -181,7 +175,7 @@ namespace MauMau.Classes.Background.Estruturas
             {
                 if (aux.GetDado().Equals(obj))
                 {
-                    return (T)aux.GetDado();
+                    return (T)aux.GetDado().Info;
                 }
                 aux = aux.Prox;
             }
@@ -258,7 +252,7 @@ namespace MauMau.Classes.Background.Estruturas
             aux2.Prox = null;
             ElementDeleted();
             Rebuild();
-            return (T)aux2.GetDado();
+            return (T)aux2.GetDado().Info;
         }
     }
 }
