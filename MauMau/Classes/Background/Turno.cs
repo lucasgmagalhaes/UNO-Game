@@ -28,7 +28,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Finaliza o turno do jogador definindo o proximo na lista
         /// </summary>
-        public void EndPLayerTurn()
+        public void End()
         {
             //if (jogadores.GetIndexOf(current) + 1 > jogadores.Count) current = jogadores[0];   
             //else current = jogadores[jogadores.GetIndexOf(current) + 1];
