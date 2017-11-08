@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MauMau.Classes.Background;
 using MauMau.Classes.Background.Estruturas;
-
+using MauMau.Pages;
 namespace MauMau
 {
     /// <summary>
@@ -50,6 +50,7 @@ namespace MauMau
 
             player4.Fill = img[3].Infos.GetImageBrush();
             player4name.Content = img[3].Infos.Name;
+            frame.Content = new Start();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)

@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/MauMau;component/Dependency/BitmapImages.xaml"/>
+                <ResourceDictionary Source="/MauMau;component/Resources Dictionary/ButtonStyleRound.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
