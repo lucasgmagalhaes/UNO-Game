@@ -11,7 +11,6 @@ namespace MauMau.Classes.Background.Estruturas
         private Dado dado;
         private Elemento proximo;
         private int index;
-
         public Elemento Prox { get { return this.proximo; } set { this.proximo = value; } }
 
         public Elemento(object dado, int index)

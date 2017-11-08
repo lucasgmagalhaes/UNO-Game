@@ -226,7 +226,36 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public IEnumerator GetEnumerator()
         {
-            return (IEnumerator)this;
+            return new internClass(this);
+        }
+
+        private class internClass : IEnumerator
+        {
+            private Lista<T> val;
+            private int indexactual = -1; 
+            
+            public internClass(Lista<T> val)
+            {
+                this.val = val;
+            } 
+            public object Current
+            {
+                get
+                {
+                    return this.val[indexactual];
+                }
+            }
+
+            public bool MoveNext()
+            {
+                indexactual++;
+                return (indexactual < this.val.count);
+            }
+
+            public void Reset()
+            {
+                indexactual = -1;
+            }
         }
         /// <summary>
         /// Retorna o index de um elemento
