@@ -149,7 +149,7 @@ namespace MauMau.Classes.Background
         {
             if (pl.Position == Enum.PlayerPosition.Left)
             {
-                int X = 301;
+                double X = System.Windows.SystemParameters.PrimaryScreenHeight / 2;
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, 15);
@@ -159,12 +159,14 @@ namespace MauMau.Classes.Background
             }
             else if (pl.Position == Enum.PlayerPosition.Right)
             {
-                int X = 210;
+                double Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2)-114;
+                double X = System.Windows.SystemParameters.PrimaryScreenWidth - 15;
+
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, enviroment.ActualWidth - 50);
-                    Canvas.SetTop(card.ElementUI, X);
-                    X += 30;
+                    Canvas.SetLeft(card.ElementUI, X);
+                    Canvas.SetTop(card.ElementUI, Y);
+                    Y += 30;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Top)
@@ -180,10 +182,12 @@ namespace MauMau.Classes.Background
             else
             {
                 int X = 501;
+                double Y = System.Windows.SystemParameters.PrimaryScreenHeight - 15;
+
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, 517);
+                    Canvas.SetTop(card.ElementUI, Y - 165);
                     X += 40;
                 }
             }
