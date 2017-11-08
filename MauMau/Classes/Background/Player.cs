@@ -93,7 +93,7 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         private Carta Remover(Carta card)
         {
-            for (int i = 0; i < this.hand.Count; i++)
+            for (int i = 0; i < CountHand(); i++)
             {
                 if (this.hand[i] == card) hand.RemoveAt(i);
                 return card;
@@ -114,8 +114,24 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         public bool TimeToUNO()
         {
-            if (this.hand.Count == 1) return true;
+            if (CountHand() == 1) return true;
             return false;
+        }
+        public List<Carta> GetHand()
+        {
+            return this.hand;
+        }
+        public void SetHand(List<Carta> hd)
+        {
+            this.hand = hd;
+        }
+        public Profile GetProfile()
+        {
+            return this.infos;
+        }
+        public void SetProfile(Profile prf)
+        {
+            this.infos = prf;
         }
     }
 }
