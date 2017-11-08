@@ -14,7 +14,7 @@ namespace MauMau.Classes.Background.Cartas
         private Efeito efeito;
         public Coringa(ImageBrush img, Efeito buycards) : base(img)
         {
-            base.source = img;
+            base.frontImage = img;
             this.efeito = buycards;
         }
 

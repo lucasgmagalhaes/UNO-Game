@@ -9,10 +9,10 @@ namespace MauMau.Classes.Background
 {
     class Turno
     {
-        private Lista<Player> jogadores = new Lista<Player>();
+        private List<Player> jogadores = new List<Player>();
         private Player current;
 
-        public Turno(Lista<Player> jogadores)
+        public Turno(List<Player> jogadores)
         {
             this.jogadores = jogadores;
             current = jogadores[0];
@@ -28,10 +28,10 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Finaliza o turno do jogador definindo o proximo na lista
         /// </summary>
-        public void EndPLayerTurn()
+        public void End()
         {
-            if (jogadores.GetIndexOf(current) + 1 > jogadores.Count) current = jogadores[0];   
-            else current = jogadores[jogadores.GetIndexOf(current) + 1];
+            //if (jogadores.GetIndexOf(current) + 1 > jogadores.Count) current = jogadores[0];   
+            //else current = jogadores[jogadores.GetIndexOf(current) + 1];
         }
     }
 }

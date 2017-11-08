@@ -59,7 +59,8 @@ namespace MauMau.Classes.Background.Estruturas
         {
             int auxcount = 0;
             Elemento aux = prim.Prox;
-            while (aux != null && count == val || auxcount < actualIndexPosition || auxcount < val)
+            if (val == 0) return aux.GetDado();
+            while (aux != null && val <= count && val != auxcount && auxcount < val && auxcount < actualIndexPosition)
             {
                 aux = aux.Prox;
                 auxcount++;
@@ -250,7 +251,7 @@ namespace MauMau.Classes.Background.Estruturas
             Elemento aux = this.prim;
             for (int i = 0; i < index; i++)
             {
-                if(aux.Prox != null) aux = aux.Prox;
+                if (aux.Prox != null) aux = aux.Prox;
             }
             Elemento aux2 = aux.Prox;
             aux.Prox = aux.Prox.Prox;

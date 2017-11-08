@@ -15,7 +15,7 @@ namespace MauMau.Classes.Background.Cartas
         public Especial(Efeito efeito, ImageBrush img, Cor cor) : base(img)
         {
             this.efeito = efeito;
-            base.source = img;
+            base.frontImage = img;
             this.cor = cor;
         }
 
