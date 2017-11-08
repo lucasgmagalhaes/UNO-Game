@@ -39,7 +39,7 @@
                 aux.Prox = null;
                 if (aux == this.fundo) this.fundo = this.topo;
                 this.count--;
-                return (T)aux.GetDado().Info;
+                return (T)aux.GetDado();
             }
             else return default(T);
         }
@@ -49,7 +49,7 @@
         /// <returns></returns>
         public T Peek()
         {
-            return (T)this.topo.Prox.GetDado().Info;
+            return (T)this.topo.Prox.GetDado();
         }
         /// <summary>
         /// Verifica se a pilha está vazia

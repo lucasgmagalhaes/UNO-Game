@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MauMau.Classes.Background.Estruturas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,11 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
-        private List<Player> players;
+        private Lista<Player> players;
         /// <summary>
         /// Lista dos perfis dos jogadores
         /// </summary>
-        private List<Profile> allprofiles;
+        private Lista<Profile> allprofiles;
         /// <summary>
         /// Cartas para saque
         /// </summary>
@@ -72,8 +73,8 @@ namespace MauMau.Classes.Background
         public Enginee(UIElement colapse, Canvas enviroment)
         {
             this.enviroment = enviroment;
-            this.players = new List<Player>();
-            this.allprofiles = new List<Profile>();
+            this.players = new Lista<Player>();
+            this.allprofiles = new Lista<Profile>();
             this.LoadImage();
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
@@ -119,7 +120,7 @@ namespace MauMau.Classes.Background
         {
             return this.realOne;
         }
-        public List<Player> GetPlayers()
+        public Lista<Player> GetPlayers()
         {
             return this.players;
         }

@@ -14,7 +14,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Lista de todas as cartas do baralho
         /// </summary>
-        private List<Carta> cartas = new List<Carta>();
+        private Lista<Carta> cartas = new Lista<Carta>();
         private Random RAM = new Random();
 
         public Baralho()
@@ -136,7 +136,7 @@ namespace MauMau.Classes.Background
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
             return new Coringa(brush, Efeito.MudarCorEComprar4);
         }
-        public List<Carta> GetCards()
+        public Lista<Carta> GetCards()
         {
             return this.cartas;
         }
@@ -151,16 +151,7 @@ namespace MauMau.Classes.Background
         /// </summary>
         public void Embaralhar()
         {
-            if (cartas.Count > 1)
-            {
-                for (int i = 0; i < cartas.Count; i++)
-                {
-                    int newplace = RAM.Next(0, cartas.Count - 1);
-                    Carta aux = cartas[i];
-                    cartas[i] = cartas[newplace];
-                    cartas[newplace] = aux;
-                }        
-            }
+            this.cartas.SwitchAll(this.RAM);
         }
     }
 }

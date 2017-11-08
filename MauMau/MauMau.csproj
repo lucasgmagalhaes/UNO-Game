@@ -62,7 +62,6 @@
     <Compile Include="Classes\Background\Cartas\Coringa.cs" />
     <Compile Include="Classes\Background\Cartas\Especial.cs" />
     <Compile Include="Classes\Background\Enum\PlayerPosition.cs" />
-    <Compile Include="Classes\Background\Estruturas\Dado.cs" />
     <Compile Include="Classes\Background\Estruturas\Elemento.cs" />
     <Compile Include="Classes\Background\Estruturas\Lista.cs" />
     <Compile Include="Classes\Background\Estruturas\Pilha.cs" />

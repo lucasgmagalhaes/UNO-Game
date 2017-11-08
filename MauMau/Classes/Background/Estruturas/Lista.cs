@@ -42,7 +42,7 @@ namespace MauMau.Classes.Background.Estruturas
             set
             {
                 Elemento val = this.GetElementoByIndex(index);
-                val.SetDado(value, index);
+                val.SetDado(value);
             }
         }
         /// <summary>
@@ -53,23 +53,12 @@ namespace MauMau.Classes.Background.Estruturas
         private object GetByIndex(int val)
         {
             Elemento aux = prim.Prox;
-            while (aux != null && val != aux.GetIndex())
-            {
-                aux = aux.Prox;
-            }
+            if (val > this.count || val < 0) throw new IndexOutOfRangeException();
+            else if (aux == null) throw new NullReferenceException();
+
+            while (aux != null && val != aux.GetIndex()) aux = aux.Prox;
             return aux.GetDado();
         }
-        //private object GetByIndex(int val)
-        //{
-        //    int auxcount = 0;
-        //    Elemento aux = prim.Prox;
-        //    while (auxcount < val && auxcount < count)
-        //    {
-        //        aux = aux.Prox;
-        //        auxcount++;
-        //    }
-        //    return aux.GetDado();
-        //}
         /// <summary>
         /// Retorna um elemento pelo seu index
         /// </summary>
@@ -77,13 +66,22 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         private Elemento GetElementoByIndex(int val)
         {
-            int auxcount = 0;
-            Elemento aux = prim.Prox;
-            while (aux == null || count == val)
-            {
-                aux = aux.Prox;
-                auxcount++;
-            }
+            Elemento aux = this.prim.Prox;
+            if (val > this.count || val < 0) throw new IndexOutOfRangeException();
+            else if (aux == null) throw new NullReferenceException();
+
+            while (val != aux.GetIndex()) aux = aux.Prox;
+            return aux;
+        }
+        /// <summary>
+        /// Através de um objeto, verifica se o mesmo existe na lista
+        /// </summary>
+        /// <param name="dado"></param>
+        /// <returns></returns>
+        private Elemento GetElementOnList(object dado)
+        {
+            Elemento aux = this.prim.Prox;
+            while (aux.GetDado() != dado || aux == null) aux = aux.Prox;
             return aux;
         }
         /// <summary>
@@ -92,7 +90,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public T Primeiro()
         {
-            return (T)this.prim.Prox.GetDado().Info;
+            return (T)this.prim.Prox.GetDado();
         }
         /// <summary>
         /// Acrescenta o contador de elementos da lista
@@ -148,7 +146,7 @@ namespace MauMau.Classes.Background.Estruturas
                     aux2.Prox = null;
                     this.ElementDeleted();
                     this.Rebuild();
-                    return (T)aux2.GetDado().Info;
+                    return (T)aux2.GetDado();
                 }
                 aux = aux.Prox;
             }
@@ -168,7 +166,7 @@ namespace MauMau.Classes.Background.Estruturas
                 aux = null;
                 this.ElementDeleted();
                 Rebuild();
-                return (T)aux2.GetDado().Info;
+                return (T)aux2.GetDado();
             }
             else return default(T);
         }
@@ -184,7 +182,7 @@ namespace MauMau.Classes.Background.Estruturas
             {
                 if (aux.GetDado().Equals(obj))
                 {
-                    return (T)aux.GetDado().Info;
+                    return (T)aux.GetDado();
                 }
                 aux = aux.Prox;
             }
@@ -228,16 +226,18 @@ namespace MauMau.Classes.Background.Estruturas
         {
             return new internClass(this);
         }
-
+        /// <summary>
+        /// Classe interna para foreach
+        /// </summary>
         private class internClass : IEnumerator
         {
             private Lista<T> val;
-            private int indexactual = -1; 
-            
+            private int indexactual = -1;
+
             public internClass(Lista<T> val)
             {
                 this.val = val;
-            } 
+            }
             public object Current
             {
                 get
@@ -290,7 +290,88 @@ namespace MauMau.Classes.Background.Estruturas
             aux2.Prox = null;
             ElementDeleted();
             Rebuild();
-            return (T)aux2.GetDado().Info;
+            return (T)aux2.GetDado();
+        }
+        /// <summary>
+        /// troca a posições entre dois elementos da lista
+        /// </summary>
+        /// <param name="dadofrom"></param>
+        /// <param name="dadoto"></param>
+        public void Switch(object dadofrom, object dadoto)
+        {
+
+        }
+        /// <summary>
+        /// troca a posições entre dois elementos da lista
+        /// </summary>
+        /// <param name="dadofrom"></param>
+        /// <param name="dadoto"></param>
+        public void Switch(object dadofrom, int dadoto)
+        {
+
+        }
+        /// <summary>
+        /// troca a posições entre dois elementos da lista
+        /// </summary>
+        /// <param name="dadofrom"></param>
+        /// <param name="dadoto"></param>
+        public void Switch(int dadofrom, object dadoto)
+        {
+            this.TreatIndexException(dadofrom);
+            this.TreatElementException(dadoto);
+
+            object aux = this.GetElementoByIndex(dadofrom);
+            ((Elemento)dadoto).SetDado(this.GetElementoByIndex(dadofrom).GetDado());
+            this.GetElementoByIndex(dadofrom).SetDado(aux);
+        }
+        /// <summary>
+        /// troca a posições entre dois elementos da lista
+        /// </summary>
+        /// <param name="dadofrom"></param>
+        /// <param name="dadoto"></param>
+        public void Switch(int dadofrom, int dadoto)
+        {
+            this.TreatIndexException(dadofrom);
+            this.TreatIndexException(dadoto);
+
+            object aux = this.GetByIndex(dadoto);
+            this.GetElementoByIndex(dadoto).SetDado(this.GetElementoByIndex(dadofrom).GetDado());
+            this.GetElementoByIndex(dadofrom).SetDado(aux);
+        }
+        /// <summary>
+        /// Embaralha a posição de todos os elementos da lista
+        /// </summary>
+        /// <param name="RAM"></param>
+        public void SwitchAll(Random RAM)
+        {
+            if (this.count > 1)
+            {
+                for (int i = 0; i < this.count; i++)
+                {
+                    int newplace = RAM.Next(0, this.count - 1);
+                    object obj = this[i];
+                    this[i] = this[newplace];
+                    this[newplace] = (T)obj;
+                }
+            }
+        }
+
+        private void TreatIndexException(int forsearch)
+        {
+            if (forsearch < 0 || forsearch > this.count) throw new IndexOutOfRangeException();
+        }
+
+        private void TreatElementException(Elemento el)
+        {
+            Elemento aux;
+            if (el == null) throw new ArgumentNullException();
+            else if ((aux = GetElementOnList(el.GetDado())) == null) throw new NullReferenceException();
+        }
+        private void TreatElementException(object obj)
+        {
+            Elemento aux;
+            if (obj == null) throw new ArgumentNullException();
+            else if ((aux = this.GetElementOnList(obj)) == null) throw new NullReferenceException();
         }
     }
 }
