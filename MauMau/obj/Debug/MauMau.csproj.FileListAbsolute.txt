@@ -155,3 +155,5 @@ C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateR
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.pdb
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_Content.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\Start.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\Start.baml

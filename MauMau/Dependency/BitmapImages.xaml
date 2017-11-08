@@ -10,6 +10,8 @@
     <BitmapImage x:Key="Card_other_poker-table-felt" UriSource="pack://application:,,,/MauMau;component/Images/outras/poker-table-felt.jpg" />
     <BitmapImage x:Key="Card_other_back" UriSource="pack://application:,,,/MauMau;component/Images/outras/uno_back.jpg" />
     <BitmapImage x:Key="Card_other_uno_Button" UriSource="pack://application:,,,/MauMau;component/Images/outras/uno_Button.jpg" />
+    <BitmapImage x:Key="Card_other_Wallpaper" UriSource="pack://application:,,,/MauMau;component/Images/outras/wallpaper.jpg" />
+    <BitmapImage x:Key="Card_other_uno_ico" UriSource="pack://application:,,,/MauMau;component/Images/outras/uno.ico" />
 
     <!--Player Cards-->
     <BitmapImage x:Key="Card_player_buzz" UriSource="pack://application:,,,/MauMau;component/Images/player/buzz.png" />

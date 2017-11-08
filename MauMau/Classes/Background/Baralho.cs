@@ -140,15 +140,6 @@ namespace MauMau.Classes.Background
         {
             return this.cartas;
         }
-        /// <summary>
-        /// Reorganiza o baralho em uma nova ordem
-        ///  int newplace = RAM.Next(0, cartas.Count - 1);
-        ///  
-        ///Carta aux = cartas[i];
-        ///cartas[i] = cartas[newplace];
-        ///cartas[newplace] = aux;
-        ///
-        /// </summary>
         public void Embaralhar()
         {
             this.cartas.SwitchAll(this.RAM);

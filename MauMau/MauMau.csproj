@@ -70,6 +70,9 @@
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
+    <Compile Include="Pages\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Visual Objects\Carta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,7 +220,12 @@
     <Resource Include="Images\player\camb.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\outras\uno.ico" />
+    <Resource Include="Images\outras\wallpaper.jpg" />
     <Content Include="Songs\GameMainThemeByYuGiOh.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

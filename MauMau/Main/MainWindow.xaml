@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
+        Icon="{StaticResource Card_other_uno_ico}"
         Title="MainWindow" Height="753" Width="1309" MouseMove="Window_MouseMove" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseUp="Window_MouseUp" Loaded="Window_Loaded" MouseDoubleClick="Window_MouseDoubleClick">
     <Grid x:Name="worldgrid">
         <Grid.Background>
