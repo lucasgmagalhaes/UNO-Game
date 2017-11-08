@@ -35,5 +35,13 @@ namespace MauMau.Classes.Background.Estruturas
             this.dado.Info = dado;
             this.dado.Index = index;
         }
+        public int GetIndex()
+        {
+            return this.index;
+        }
+        public void SetIndex(int val)
+        {
+            this.index = val;
+        }
     }
 }
