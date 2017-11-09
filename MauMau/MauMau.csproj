@@ -70,6 +70,9 @@
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
+    <Compile Include="Pages\GamePlay.xaml.cs">
+      <DependentUpon>GamePlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Start.xaml.cs">
       <DependentUpon>Start.xaml</DependentUpon>
     </Compile>
@@ -98,7 +101,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\GamePlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,9 +235,7 @@
     <Resource Include="Images\outras\wallpaper.jpg" />
     <Content Include="Songs\GameMainThemeByYuGiOh.mp3" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

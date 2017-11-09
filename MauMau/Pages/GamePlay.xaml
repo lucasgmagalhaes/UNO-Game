@@ -1,0 +1,65 @@
+﻿<Page x:Class="MauMau.Pages.GamePlay"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MauMau.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="753" d:DesignWidth="1309"
+      Title="GamePlay">
+    <Grid>
+       <!-- <Grid.Background>
+            <ImageBrush ImageSource="../Images/outras/poker-table-felt.jpg" Stretch="UniformToFill"></ImageBrush>
+        </Grid.Background>
+        <Grid x:Name="secondgrid">
+            <Grid Margin="0,-24,0,0">
+                <Canvas x:Name="root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,-10">
+                    <Rectangle x:Name="Mont" Canvas.Left="468" Canvas.Top="246" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114" MouseLeftButtonDown="Mont_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.121"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114"/>
+                    <Ellipse x:Name="btnUNO" Height="80" Cursor="Hand" Canvas.Left="907" Stroke="Black" Canvas.Top="607" Width="80" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="../Images/outras/uno_Button.jpg" Stretch="Fill" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Rectangle x:Name="player1" IsEnabled="False" Canvas.Left="386" Canvas.Top="25" RadiusY="10" RadiusX="10" Stroke="White" Height="72" Width="83">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/player/stormtrooper.png" Stretch="Fill" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label x:Name="player1name" IsEnabled="False" Content="Player1" Canvas.Left="393" FontSize="20" Canvas.Top="98" Width="152" Height="38"/>
+                    <Rectangle x:Name="player4" IsEnabled="False" Canvas.Left="18" Canvas.Top="69" RadiusY="10" RadiusX="10" Stroke="White" Height="72" Width="83">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/player/vader.png" Stretch="Fill" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label x:Name="player4name" IsEnabled="False" Content="Player4" Canvas.Left="18" FontSize="20" Canvas.Top="142" Width="152" Height="38"/>
+                    <Rectangle x:Name="player2" Canvas.Left="1209" Canvas.Top="69" RadiusY="10" RadiusX="10" Stroke="White" Height="72" Width="82">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/player/magneto.jpg" Stretch="Fill" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label x:Name="player2name" IsEnabled="False" Content="Player2" Canvas.Left="1208" FontSize="20" Canvas.Top="142" Width="152" Height="38"/>
+                    <Rectangle x:Name="player3" Canvas.Left="389" IsEnabled="False" Canvas.Top="607" RadiusY="10" RadiusX="10" Stroke="White" Height="72" Width="84">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/player/camb.jpg" Stretch="Fill" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label x:Name="player3name" Content="Player4" IsEnabled="False" Canvas.Left="397" FontSize="20" Canvas.Top="680" Width="152" Height="38"/>
+                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="211" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
+                </Canvas>
+            </Grid>
+        </Grid>-->
+    </Grid>
+</Page>

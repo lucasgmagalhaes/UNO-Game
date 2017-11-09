@@ -11,6 +11,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="{StaticResource Card_other_Wallpaper}" />
         </Grid.Background>
-        <Button x:Name="btnplay" Margin="360,452,360,100" Content="Jogar!" FontSize="30"/>
+        <Button x:Name="btnplay" Style="{StaticResource RoundCorner}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="332,0,338,80" Content="JOGAR!" FontFamily="Arial Bold" FontSize="30" Width="230" Height="62"/>
     </Grid>
 </Page>
