@@ -30,7 +30,7 @@
                             <ImageBrush ImageSource="../Images/outras/uno_back.jpg" Stretch="Fill" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle x:Name="Played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114"/>
+                    <Rectangle x:Name="played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114"/>
                     <Ellipse x:Name="btnUNO" Height="80" Cursor="Hand" Canvas.Left="907" Stroke="Black" Canvas.Top="607" Width="80" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="../Images/outras/uno_Button.jpg" Stretch="Fill" />

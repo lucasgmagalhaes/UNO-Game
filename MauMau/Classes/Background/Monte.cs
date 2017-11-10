@@ -23,12 +23,23 @@ namespace MauMau.Classes.Background
         {
             return this.cartas;
         }
-
-        public Carta GetCardOnTop()
+        /// <summary>
+        /// Pega a primeira carta do topo removendo-a
+        /// </summary>
+        /// <returns></returns>
+        public Carta RemoveTopCard()
         {
             return this.cartas.Pop();
         }
-        
+        /// <summary>
+        /// Pega a primeira carta do topo sem remove-la
+        /// </summary>
+        /// <returns></returns>
+        public Carta GetTopCard()
+        {
+            return this.cartas.Peek();
+        }
+
         public void PlayCard(Carta card)
         {
             this.cartas.Push(card);

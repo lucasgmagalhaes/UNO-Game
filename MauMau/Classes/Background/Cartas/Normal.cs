@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using MauMau.Classes.Background.Interfaces;
-using MauMau.Classes.Background.Cartas.Composicao;
+using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background.Cartas
 {

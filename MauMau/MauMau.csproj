@@ -55,10 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\Background\Cartas\Composicao\Cor.cs" />
-    <Compile Include="Classes\Background\Cartas\Composicao\Efeito.cs" />
-    <Compile Include="Classes\Background\Cartas\Composicao\PaletaCor.cs" />
-    <Compile Include="Classes\Background\Cartas\Composicao\PaletaEfeito.cs" />
+    <Compile Include="Classes\Background\Enum\Cor.cs" />
+    <Compile Include="Classes\Background\Enum\Efeito.cs" />
+    <Compile Include="Classes\Background\Enum\PaletaCor.cs" />
+    <Compile Include="Classes\Background\Enum\PaletaEfeito.cs" />
     <Compile Include="Classes\Background\Cartas\Coringa.cs" />
     <Compile Include="Classes\Background\Cartas\Especial.cs" />
     <Compile Include="Classes\Background\Enum\PlayerPosition.cs" />

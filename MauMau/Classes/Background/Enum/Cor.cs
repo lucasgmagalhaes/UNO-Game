@@ -1,4 +1,4 @@
-﻿namespace MauMau.Classes.Background.Cartas.Composicao
+﻿namespace MauMau.Classes.Background.Enum
 {
     /// <summary>
     /// Define uma pré-definida cor par uma carta

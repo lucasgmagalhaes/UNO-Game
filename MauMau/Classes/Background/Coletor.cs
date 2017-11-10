@@ -16,7 +16,6 @@ namespace MauMau.Classes.Background
         /// Pilha de todas as cartas do baralho
         /// </summary>
         private Pilha<Carta> cartas = new Pilha<Carta>();
-
         /// <summary>
         /// Recebe a primeira carta do baralho para ser a referência pro procedimento do jogo
         /// </summary>
@@ -34,15 +33,15 @@ namespace MauMau.Classes.Background
             return this.cartas;
         }
         /// <summary>
-        /// Pega a carta no topo da pilha
+        /// Pega a carta no topo da pilha sem remover
         /// </summary>
         /// <returns></returns>
-        public Carta GetCardOnTop()
+        public Carta GetTopCard()
         {
             return this.cartas.Peek();
         }
         //Insere na pilha uma carta jogada
-        public void GetPlayedCard(Carta card)
+        public void AddCard(Carta card)
         {
             this.cartas.Push(card);
         }

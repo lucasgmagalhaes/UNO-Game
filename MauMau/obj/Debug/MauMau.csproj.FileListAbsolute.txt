@@ -163,3 +163,6 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Pages\Start.baml
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Templates\ButtonStyle.baml
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.g.cs
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.g.cs
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.baml
+C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Templates\ButtonStyle.baml

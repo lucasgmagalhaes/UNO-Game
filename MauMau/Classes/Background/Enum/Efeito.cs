@@ -1,4 +1,4 @@
-﻿namespace MauMau.Classes.Background.Cartas.Composicao
+﻿namespace MauMau.Classes.Background.Enum
 {
     /// <summary>
     /// Define um efeito pré-definido para uma carta

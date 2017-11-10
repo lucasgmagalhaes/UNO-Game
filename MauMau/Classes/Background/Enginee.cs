@@ -70,9 +70,11 @@ namespace MauMau.Classes.Background
             }
         }
         public Monte Monte { get { return this.monte; } }
-        public Enginee(UIElement colapse, Canvas enviroment)
+
+        public Enginee(UIElement colapse, Canvas env)
         {
-            this.enviroment = enviroment;
+            this.enviroment = env;
+            this.element_colapse = colapse;
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
             this.LoadImage();
@@ -80,12 +82,14 @@ namespace MauMau.Classes.Background
             this.baralho = new Baralho();
             this.baralho.Embaralhar();
             this.realOne = this.players[2];
-            this.element_colapse = colapse;
             this.monte = new Monte(baralho.GetCards());
             this.roda = new Turno(this.players);
             this.DistributeCards();
             this.AddCardsOnInterface();
+            this.descarte = new Coletor(this.monte.RemoveTopCard());
+            this.AddColetorCardOnInterface();
         }
+
         /// <summary>
         /// Carrega as imagens dos jogadores
         /// </summary>
@@ -124,9 +128,13 @@ namespace MauMau.Classes.Background
         {
             return this.players;
         }
+        /// <summary>
+        /// Pega a carta do monte sem remove-la
+        /// </summary>
+        /// <returns></returns>
         public Carta GetFromMonte()
         {
-            return this.monte.GetCardOnTop();
+            return this.monte.GetTopCard();
         }
         public Player GetCurrentPlayer()
         {
@@ -139,7 +147,7 @@ namespace MauMau.Classes.Background
         {
             foreach (Player pl in this.players)
             {
-                for (int i = 0; i < 7; i++) pl.AddCardToHand(this.monte.GetCardOnTop());
+                for (int i = 0; i < 7; i++) pl.AddCardToHand(this.monte.RemoveTopCard());
                 this.AlignCardsToHand(pl);
             }
         }
@@ -243,6 +251,21 @@ namespace MauMau.Classes.Background
             Canvas.SetLeft(el, Canvas.GetLeft(this.element_colapse));
             Canvas.SetTop(el, Canvas.GetTop(this.element_colapse));
             return el;
+        }
+
+        private void AddColetorCardOnInterface()
+        {
+            UIElement aux = this.descarte.GetTopCard().ElementUI;
+            Canvas.SetLeft(aux, Canvas.GetLeft(this.element_colapse));
+            Canvas.SetTop(aux, Canvas.GetTop(this.element_colapse));
+
+            this.enviroment.Children.Add(this.descarte.GetTopCard().ElementUI);
+        }
+
+        public bool ValidatePlay(Carta played)
+        {
+            if (this.descarte.GetTopCard().Equals(played)) return true;
+            return false;
         }
     }
 }

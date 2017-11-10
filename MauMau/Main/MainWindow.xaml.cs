@@ -36,7 +36,7 @@ namespace MauMau
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            eng = new Enginee(Played, root);
+            eng = new Enginee(played, root);
             Lista<Player> img = eng.GetPlayers();
 
             player1.Fill = img[0].Infos.GetImageBrush();
@@ -101,8 +101,8 @@ namespace MauMau
                 if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")
                 {
                     Canvas.SetZIndex(element, count++);
-                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
-                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.Played), new Duration(TimeSpan.FromMilliseconds(100)));
+                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
+                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
                     if (nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;

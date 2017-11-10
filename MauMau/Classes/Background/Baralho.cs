@@ -4,7 +4,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MauMau.Classes.Exceptions;
 using MauMau.Classes.Background.Cartas;
-using MauMau.Classes.Background.Cartas.Composicao;
+using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
 using System.IO;
 namespace MauMau.Classes.Background

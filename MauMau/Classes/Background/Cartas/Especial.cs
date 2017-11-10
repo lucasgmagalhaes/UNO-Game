@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
-using MauMau.Classes.Background.Cartas.Composicao;
+using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Interfaces;
 namespace MauMau.Classes.Background.Cartas
 {
