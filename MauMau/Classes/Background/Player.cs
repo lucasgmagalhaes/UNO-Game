@@ -1,4 +1,5 @@
 ﻿using MauMau.Classes.Background.Enum;
+using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,34 +12,34 @@ namespace MauMau.Classes.Background
 {
     class Player
     {
-        protected List<Carta> hand;
+        protected Lista<Carta> hand;
         protected Profile infos;
         protected PlayerPosition position;
 
         public Profile Infos { get { return this.infos; } set { this.infos = value; } }
-        public List<Carta> Hand { get { return this.hand; } }
+        public Lista<Carta> Hand { get { return this.hand; } }
         public PlayerPosition Position { get { return this.position; } }
 
         public Player(Profile infos)
         {
-            this.hand = new List<Carta>();
+            this.hand = new Lista<Carta>();
             this.infos = infos;
         }
 
         public Player(Profile infos, PlayerPosition position)
         {
-            this.hand = new List<Carta>();
+            this.hand = new Lista<Carta>();
             this.infos = infos;
             this.position = position;
         }
 
-        public Player(List<Carta> hand, Profile infos)
+        public Player(Lista<Carta> hand, Profile infos)
         {
             this.hand = hand;
             this.infos = infos;
         }
 
-        public Player(List<Carta> hand, Profile infos, PlayerPosition position)
+        public Player(Lista<Carta> hand, Profile infos, PlayerPosition position)
         {
             this.hand = hand;
             this.infos = infos;
@@ -117,11 +118,11 @@ namespace MauMau.Classes.Background
             if (CountHand() == 1) return true;
             return false;
         }
-        public List<Carta> GetHand()
+        public Lista<Carta> GetHand()
         {
             return this.hand;
         }
-        public void SetHand(List<Carta> hd)
+        public void SetHand(Lista<Carta> hd)
         {
             this.hand = hd;
         }
@@ -132,6 +133,10 @@ namespace MauMau.Classes.Background
         public void SetProfile(Profile prf)
         {
             this.infos = prf;
+        }
+        public Carta GetLastCard()
+        {
+            return this.hand[this.hand.Count - 1];
         }
     }
 }

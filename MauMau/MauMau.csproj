@@ -65,7 +65,7 @@
     <Compile Include="Classes\Background\Estruturas\Elemento.cs" />
     <Compile Include="Classes\Background\Estruturas\Lista.cs" />
     <Compile Include="Classes\Background\Estruturas\Pilha.cs" />
-    <Compile Include="Classes\Background\Interfaces\IEquatable.cs" />
+    <Compile Include="Classes\Background\Interfaces\ICompatible.cs" />
     <Compile Include="Classes\Background\Cartas\Normal.cs" />
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />

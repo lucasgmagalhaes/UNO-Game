@@ -4,7 +4,7 @@ using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Interfaces;
 namespace MauMau.Classes.Background.Cartas
 {
-    class Especial : Carta, IEquatable
+    class Especial : Carta
     {
         private Efeito efeito;
         private Cor cor;
@@ -19,20 +19,21 @@ namespace MauMau.Classes.Background.Cartas
             this.cor = cor;
         }
 
-        public bool Equals(IEquatable card)
+        public override bool Compatible(ICompatible card)
         {
-            if (Normal.ReferenceEquals(this, card))
+            if (card is Normal)
             {
                 Normal aux = (Normal)card;
                 if (aux.Cor == this.cor) return true;
                 else return false;
             }
-            else
+            else if (card is Especial)
             {
                 Especial aux = (Especial)card;
                 if (this.cor == aux.Cor) return true;
                 else return false;
             }
+            else return true;
         }
     }
 }

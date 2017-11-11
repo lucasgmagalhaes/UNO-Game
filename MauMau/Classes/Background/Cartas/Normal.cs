@@ -9,7 +9,7 @@ using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background.Cartas
 {
-    class Normal : Carta, IEquatable
+    class Normal : Carta
     {
         private int numero;
         private Cor cor;
@@ -24,20 +24,21 @@ namespace MauMau.Classes.Background.Cartas
             base.frontImage = img;
         }
 
-        public bool Equals(IEquatable card)
+        public override bool Compatible(ICompatible card)
         {
-            if(Normal.ReferenceEquals(this, card))
+            if (card is Normal)
             {
                 Normal aux = (Normal)card;
-                if (aux.numero == this.numero || aux.cor == this.cor) return true;
+                if (aux.Cor == this.cor) return true;
                 else return false;
             }
-            else
+            else if (card is Especial)
             {
                 Especial aux = (Especial)card;
                 if (this.cor == aux.Cor) return true;
                 else return false;
             }
+            else return true;
         }
     }
 }

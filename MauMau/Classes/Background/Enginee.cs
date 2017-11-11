@@ -83,8 +83,8 @@ namespace MauMau.Classes.Background
             this.baralho.Embaralhar();
             this.realOne = this.players[2];
             this.monte = new Monte(baralho.GetCards());
-            this.roda = new Turno(this.players);
             this.DistributeCards();
+            this.roda = new Turno(this.players);
             this.AddCardsOnInterface();
             this.descarte = new Coletor(this.monte.RemoveTopCard());
             this.AddColetorCardOnInterface();
@@ -144,6 +144,10 @@ namespace MauMau.Classes.Background
         {
             return this.roda.GetCurrentPlayer();
         }
+        public void EndTurn()
+        {
+            this.roda.EndPLayerTurn();
+        }
         /// <summary>
         /// Distribui as cartas para os jogadores
         /// </summary>
@@ -172,7 +176,7 @@ namespace MauMau.Classes.Background
             }
             else if (pl.Position == Enum.PlayerPosition.Right)
             {
-                double Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2)-114;
+                double Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 114;
                 double X = System.Windows.SystemParameters.PrimaryScreenWidth - 15;
 
                 foreach (Carta card in pl.Hand)
@@ -266,9 +270,22 @@ namespace MauMau.Classes.Background
             this.enviroment.Children.Add(this.descarte.GetTopCard().ElementUI);
         }
 
-        public bool ValidatePlay(Carta played)
+        public bool ValidatePlay(UIElement played)
         {
-            if (this.descarte.GetTopCard().Equals(played)) return true;
+            Player auxplayer = this.GetCurrentPlayer();
+            foreach (Carta card in auxplayer.GetHand())
+            {
+                if (played.Uid == card.GetID())
+                {
+                    Carta aux = this.descarte.GetTopCard();
+                    if (aux.Compatible(card))
+                    {
+                        this.descarte.AddCard(auxplayer.PlayCard(aux));
+                        return true;
+                    }
+                    return false;
+                }
+            }
             return false;
         }
     }

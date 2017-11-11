@@ -9,7 +9,7 @@ using MauMau.Classes.Background.Interfaces;
 
 namespace MauMau.Classes.Background.Cartas
 {
-    class Coringa : Carta, IEquatable
+    class Coringa : Carta
     {
         private Efeito efeito;
         public Coringa(ImageBrush img, Efeito buycards,string id) : base(img, id)
@@ -18,7 +18,7 @@ namespace MauMau.Classes.Background.Cartas
             this.efeito = buycards;
         }
 
-        public bool Equals(IEquatable card)
+        public override bool Compatible(ICompatible card)
         {
             return true;
         }

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MauMau.Classes.Background;
 using MauMau.Classes.Background.Estruturas;
+using System.Threading;
 
 namespace MauMau
 {
@@ -31,8 +32,11 @@ namespace MauMau
         private Point mousePosition = new Point();
         private UIElement element;
         private Enginee eng;
-        int count = -90;
-
+        private int count = -90;
+        private UIElement next;
+        //Variáveis usadas para voltar o elemento para a antiga posição
+        private double backupleft;
+        private double backuptop;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(played, root);
@@ -73,43 +77,53 @@ namespace MauMau
             {
                 if (mouseWasDownOn is Rectangle && mouseWasDownOn.IsEnabled)
                 {
-                    element = mouseWasDownOn;
+                    this.element = mouseWasDownOn;
+                    this.CreatePositionBackup(element);
                     mousePosition = e.GetPosition(this);
-                    element.CaptureMouse();
+                    this.element.CaptureMouse();
                     Canvas.SetZIndex(element, 3);
                 }
                 else element = null;
             }
         }
+
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
             if (mouseon != null && mouseon.Name != "btnUNO")
             {
-                element = mouseon as UIElement;
-                if (element.IsEnabled && mouseon is Rectangle)
+                this.element = mouseon as UIElement;
+                if (this.element.IsEnabled && mouseon is Rectangle)
                 {
-                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
-                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
-                    element.BeginAnimation(Canvas.TopProperty, moveAnimY);
-                    element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-                    Canvas.SetZIndex(element, count++);
-                    eng.ColapseElement(element);
-                    Canvas.SetZIndex(element, count++);
-                    element = null;
+                    Canvas.SetZIndex(this.element, count++);
+                    this.CreatePositionBackup(this.element);
+                    if (ValidarJogada(element))
+                    {
+                        var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
+                        var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
+                        this.element.BeginAnimation(Canvas.TopProperty, moveAnimY);
+                        this.element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+                        if (next != null) //Cambiarra :(
+                        {
+                            Thread.Sleep(100);
+                            this.next.Visibility = Visibility.Collapsed;
+                        }
+                        this.next = element;
+                        this.element = null;
+                    }
                 }
             }
         }
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (element != null)
+            if (this.element != null)
             {
-                element.ReleaseMouseCapture();
-                if (element != null)
+                this.element.ReleaseMouseCapture();
+                if (this.element != null)
                 {
                     Canvas.SetZIndex(element, 0);
                 }
-                element = null;
+                this.element = null;
             }
         }
 
@@ -118,39 +132,30 @@ namespace MauMau
             DoubleAnimation da = new DoubleAnimation
                 (0, 360, new Duration(TimeSpan.FromMilliseconds(400)));
             RotateTransform rt = new RotateTransform();
-            btnUNO.RenderTransform = rt;
-            btnUNO.RenderTransformOrigin = new Point(0.5, 0.5);
+            this.btnUNO.RenderTransform = rt;
+            this.btnUNO.RenderTransformOrigin = new Point(0.5, 0.5);
             rt.BeginAnimation(RotateTransform.AngleProperty, da);
         }
 
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (eng.Monte.Count() > 0)
+            if (this.eng.Monte.Count() > 0)
             {
-                Rectangle getcard = eng.RemoveFromMonte().ElementUI;
+                Carta getcard = eng.RemoveFromMonte();
+                Rectangle cardUI = getcard.ElementUI;
+                Canvas.SetLeft(cardUI as UIElement, Canvas.GetLeft(this.Mont));
+                Canvas.SetTop(cardUI as UIElement, Canvas.GetTop(this.Mont));
 
-                ////getcard.MouseEnter += Getcard_MouseEnter;
-                ////getcard.MouseLeave += Getcard_MouseLeave;
-                Canvas.SetLeft(getcard as UIElement, Canvas.GetLeft(Mont));
-                Canvas.SetTop(getcard as UIElement, Canvas.GetTop(Mont));
-                root.Children.Add(getcard);
+                this.root.Children.Add(cardUI);
+                this.SendCardToHand(getcard);
+                eng.GetCurrentPlayer().AddCardToHand(getcard);
             }
             else //será chamado o método para reembaralhar
             {
-                Mont.IsEnabled = false;
-                Mont.Fill = null;
+                this.Mont.IsEnabled = false;
+                this.Mont.Fill = null;
             }
         }
-
-        //private void Getcard_MouseLeave(object sender, MouseEventArgs e)
-        //{
-        //    var ee = Mouse.DirectlyOver as UIElement;
-        //    if (ee.IsMouseOver && element != null)
-        //    {
-        //        ElementAnimationLeave(element);
-        //        element = null;
-        //    }
-        //}
 
         private void Getcard_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -179,6 +184,41 @@ namespace MauMau
         {
             var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(element) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
             element.BeginAnimation(Canvas.TopProperty, moveAnimY);
+        }
+
+        private void CreatePositionBackup(UIElement element)
+        {
+            this.backupleft = Canvas.GetLeft(element);
+            this.backuptop = Canvas.GetTop(element);
+        }
+
+        private bool ValidarJogada(UIElement cardJogada) // true se pode fazer a jogada, ou seja , compara carta que está jogando com a carta do top do coletor
+        {
+            if (eng.ValidatePlay(cardJogada))
+            {
+                eng.EndTurn();
+                return true;
+            }
+            else
+            {
+                if (this.backupleft != Canvas.GetLeft(cardJogada) || this.backuptop != Canvas.GetTop(cardJogada))
+                {
+                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(cardJogada), this.backuptop, new Duration(TimeSpan.FromMilliseconds(100)));
+                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardJogada), this.backupleft, new Duration(TimeSpan.FromMilliseconds(100)));
+                    cardJogada.BeginAnimation(Canvas.TopProperty, moveAnimY);
+                    cardJogada.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+                }
+                return false;
+            }
+        }
+
+        private void SendCardToHand(Carta card)
+        {
+            Carta aux = eng.GetCurrentPlayer().GetLastCard();
+            var moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+            var moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+            card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
+            card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
         }
     }
 }

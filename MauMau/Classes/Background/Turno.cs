@@ -15,7 +15,7 @@ namespace MauMau.Classes.Background
         public Turno(Lista<Player> jogadores)
         {
             this.jogadores = jogadores;
-            current = jogadores[0];
+            current = jogadores[2];
         }
         /// <summary>
         /// Pega o jogador da vez

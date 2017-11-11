@@ -16,7 +16,7 @@
         <Grid x:Name="secondgrid">
             <Grid Margin="0,-24,0,0">
                 <Canvas x:Name="root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,-10">
-                    <Rectangle x:Name="Mont" Canvas.Left="468" Canvas.Top="246" RadiusX="10" Stroke="White" RadiusY="10" Height="180" Width="114" MouseLeftButtonDown="Mont_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle x:Name="Mont" Canvas.Left="468" Canvas.Top="246" RadiusX="10"  Stroke="White" RadiusY="10" Height="180" Width="114" MouseLeftButtonDown="Mont_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -59,7 +59,7 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <Label x:Name="player3name" Content="Player4" IsEnabled="False" Canvas.Left="397" FontSize="20" Canvas.Top="680" Width="152" Height="38"/>
-                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="211" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
+                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="209" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
                 </Canvas>
             </Grid>
         </Grid>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MauMau.Classes.Background.Interfaces
 {
-    interface IEquatable : IEquatable<IEquatable>
+    interface ICompatible
     {
-        new bool Equals(IEquatable card);
+         bool Compatible(ICompatible card);
     }
 }
