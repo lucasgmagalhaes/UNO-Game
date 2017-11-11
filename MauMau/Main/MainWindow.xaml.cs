@@ -37,6 +37,7 @@ namespace MauMau
         //Variáveis usadas para voltar o elemento para a antiga posição
         private double backupleft;
         private double backuptop;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(played, root);
@@ -215,10 +216,16 @@ namespace MauMau
         private void SendCardToHand(Carta card)
         {
             Carta aux = eng.GetCurrentPlayer().GetLastCard();
-            var moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
-            var moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+
+            DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+            DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+            moveAnimX.FillBehavior = FillBehavior.Stop;
+            moveAnimY.FillBehavior = FillBehavior.Stop;
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+
+            Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
+            Canvas.SetTop(card.ElementUI, Canvas.GetTop(aux.ElementUI));
         }
     }
 }
