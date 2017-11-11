@@ -34,11 +34,11 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in GetCardsListOfEspecificColor("vermelho")) cartas.Add(card);
                 foreach (Carta card in GetCardsListOfEspecificColor("especial")) cartas.Add(card);
             }
-            catch(IOException  ee)
+            catch (IOException ee)
             {
                 new ImageLoadException(ee.Message);
             }
-            catch(NullReferenceException ee)
+            catch (NullReferenceException ee)
             {
 
             }
@@ -69,8 +69,8 @@ namespace MauMau.Classes.Background
                 case "especial":
                     for (int i = 1; i <= 4; i++)//Quatro cartas coringa
                     {
-                        aux.Add(CreateCuringaComEfeito());
-                        aux.Add(CreateCuringaSemEfeito());
+                        aux.Add(CreateCuringaComEfeito((color + "_sEfeito_" + i.ToString())));
+                        aux.Add(CreateCuringaSemEfeito((color + "_cEfeito_" + i.ToString())));
                     }
                     return aux;
                 default:
@@ -80,9 +80,9 @@ namespace MauMau.Classes.Background
             for (int i = 0; i != 9; i++) aux.Add(CreateCard(color, i.ToString(), corcarta));
             for (int i = 1; i <= 2; i++) //Duas cartas especiais de cada um desses tipos
             {
-                aux.Add(CreateCardSpecial(color, corcarta, "Bloq"));
-                aux.Add(CreateCardSpecial(color, corcarta, "Compra"));
-                aux.Add(CreateCardSpecial(color, corcarta, "Inverte"));
+                aux.Add(CreateCardSpecial(color, corcarta, "Bloq", i));
+                aux.Add(CreateCardSpecial(color, corcarta, "Compra", i));
+                aux.Add(CreateCardSpecial(color, corcarta, "Inverte", i));
             }
             return aux;
         }
@@ -99,14 +99,14 @@ namespace MauMau.Classes.Background
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardNumber + cardcolor + ".jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/" + foldercolor + "/" + cardNumber + cardcolor + ".png", UriKind.Absolute))); }
 
-            return new Normal(PaletaCor.GetCor(foldercolor), int.Parse(cardNumber), brush);
+            return new Normal(PaletaCor.GetCor(foldercolor), int.Parse(cardNumber), brush, (cardcolor + cardNumber));
         }
         /// <summary>
         /// Cria as cartas especiais de uma cor
         /// </summary>
         /// <param name="foldercolor"></param>
         /// <param name="cardcolor"></param>
-        private Carta CreateCardSpecial(string foldercolor, string cardcolor, string cardname)
+        private Carta CreateCardSpecial(string foldercolor, string cardcolor, string cardname, int numCard)
         {
             ImageBrush brush;
 
@@ -118,23 +118,23 @@ namespace MauMau.Classes.Background
             else if (cardname.ToUpper() == "COMPRA") efeitoaux = Efeito.Comprar2;
             else efeitoaux = Efeito.Inverter;
 
-            return new Especial(efeitoaux, brush, PaletaCor.GetCor(foldercolor));
+            return new Especial(efeitoaux, brush, PaletaCor.GetCor(foldercolor), (cardname + cardcolor + numCard));
         }
-        private Carta CreateCuringaSemEfeito()
+        private Carta CreateCuringaSemEfeito(string id)
         {
             ImageBrush brush;
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringa.png", UriKind.Absolute))); }
-            return new Coringa(brush, Efeito.MudarCor);
+            return new Coringa(brush, Efeito.MudarCor, id);
         }
-        private Carta CreateCuringaComEfeito()
+        private Carta CreateCuringaComEfeito(string id)
         {
             ImageBrush brush;
 
             try { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.jpg", UriKind.Absolute))); }
             catch { brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MauMau;component/Images/Cartas/especial/coringaCompra.png", UriKind.Absolute))); }
-            return new Coringa(brush, Efeito.MudarCorEComprar4);
+            return new Coringa(brush, Efeito.MudarCorEComprar4, id);
         }
         public Lista<Carta> GetCards()
         {
