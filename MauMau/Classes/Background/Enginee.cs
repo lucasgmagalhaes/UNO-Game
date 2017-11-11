@@ -136,6 +136,10 @@ namespace MauMau.Classes.Background
         {
             return this.monte.GetTopCard();
         }
+        public Carta RemoveFromMonte()
+        {
+            return this.monte.RemoveTopCard();
+        }
         public Player GetCurrentPlayer()
         {
             return this.roda.GetCurrentPlayer();

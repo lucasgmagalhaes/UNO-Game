@@ -31,8 +31,7 @@ namespace MauMau
         private Point mousePosition = new Point();
         private UIElement element;
         private Enginee eng;
-        private bool cardsExpanded;
-        int count = -100;
+        int count = -90;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -72,24 +71,15 @@ namespace MauMau
 
             if (mouseWasDownOn != null)
             {
-                if (mouseWasDownOn.Name != "Mont" && mouseWasDownOn.Name != "Played")
+                if (mouseWasDownOn is Rectangle && mouseWasDownOn.IsEnabled)
                 {
-                    if (cardsExpanded == true)
-                    {
-                        element = mouseWasDownOn;
-                        mousePosition = e.GetPosition(this);
-                        element.CaptureMouse();
-                        Canvas.SetZIndex(element, 3);
-                    }
-                    else ExpandPlayerCards();
+                    element = mouseWasDownOn;
+                    mousePosition = e.GetPosition(this);
+                    element.CaptureMouse();
+                    Canvas.SetZIndex(element, 3);
                 }
                 else element = null;
             }
-        }
-
-        private void ExpandPlayerCards()
-        {
-            cardsExpanded = true;
         }
         UIElement nexttohide;
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -98,7 +88,7 @@ namespace MauMau
             if (mouseon != null && mouseon.Name != "btnUNO")
             {
                 element = mouseon as UIElement;
-                if (element.IsEnabled == true && mouseon.Name != "root" && mouseon.Name != "worldgrid")
+                if (element.IsEnabled && mouseon is Rectangle)
                 {
                     Canvas.SetZIndex(element, count++);
                     var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
@@ -139,7 +129,7 @@ namespace MauMau
         {
             if (eng.Monte.Count() > 0)
             {
-                Rectangle getcard = eng.GetFromMonte().ElementUI;
+                Rectangle getcard = eng.RemoveFromMonte().ElementUI;
 
                 ////getcard.MouseEnter += Getcard_MouseEnter;
                 ////getcard.MouseLeave += Getcard_MouseLeave;
@@ -175,8 +165,10 @@ namespace MauMau
         {
             if (element != null)
             {
+                int g = Canvas.GetZIndex(element);
                 eng.ColapseElement(element);
                 Canvas.SetZIndex(element, count++);
+                int gg = Canvas.GetZIndex(element);
                 element = null;
             }
         }
