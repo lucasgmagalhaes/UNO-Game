@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
-    abstract class Carta
+    abstract class Carta  
     {
         protected ImageBrush frontImage;
         protected ImageBrush backImage = new ImageBrush(((ImageSource)Application.Current.Resources["Card_other_back"]));
@@ -19,7 +19,7 @@ namespace MauMau.Classes.Background
         public Rectangle ElementUI { get { return this.elementUI; } set { this.elementUI = value; } }
         public ImageBrush BackImage { get { return this.backImage; } }
 
-        public Carta(ImageBrush image)
+        public Carta(ImageBrush image, string id)
         {
             this.frontImage = image;
 
@@ -30,6 +30,11 @@ namespace MauMau.Classes.Background
             this.elementUI.Height = 180;
             this.elementUI.Width = 114;
             this.elementUI.Name = "newcard";
+            this.elementUI.Uid = id;
+        }
+        public string GetID()
+        {
+            return this.elementUI.Uid;
         }
     }
 }

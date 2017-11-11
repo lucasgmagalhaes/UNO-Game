@@ -12,7 +12,7 @@ namespace MauMau.Classes.Background.Cartas
     class Coringa : Carta, IEquatable
     {
         private Efeito efeito;
-        public Coringa(ImageBrush img, Efeito buycards) : base(img)
+        public Coringa(ImageBrush img, Efeito buycards,string id) : base(img, id)
         {
             base.frontImage = img;
             this.efeito = buycards;

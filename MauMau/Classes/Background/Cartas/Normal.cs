@@ -17,7 +17,7 @@ namespace MauMau.Classes.Background.Cartas
         public int Numero { get { return this.numero; } }
         public Cor Cor { get{ return this.cor; } }
 
-        public Normal(Cor cor, int numero, ImageBrush img) : base(img)
+        public Normal(Cor cor, int numero, ImageBrush img, string id) : base(img, id)
         {
             this.numero = numero;
             this.cor = cor;
