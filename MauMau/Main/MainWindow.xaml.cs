@@ -81,7 +81,6 @@ namespace MauMau
                 else element = null;
             }
         }
-        UIElement nexttohide;
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
@@ -90,18 +89,17 @@ namespace MauMau
                 element = mouseon as UIElement;
                 if (element.IsEnabled && mouseon is Rectangle)
                 {
-                    Canvas.SetZIndex(element, count++);
                     var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
                     var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
                     element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                     element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-                    if (nexttohide != null) nexttohide.Visibility = Visibility.Collapsed;
-                    nexttohide = element;
+                    Canvas.SetZIndex(element, count++);
+                    eng.ColapseElement(element);
+                    Canvas.SetZIndex(element, count++);
                     element = null;
                 }
             }
         }
-
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (element != null)
@@ -165,10 +163,8 @@ namespace MauMau
         {
             if (element != null)
             {
-                int g = Canvas.GetZIndex(element);
                 eng.ColapseElement(element);
                 Canvas.SetZIndex(element, count++);
-                int gg = Canvas.GetZIndex(element);
                 element = null;
             }
         }

@@ -262,7 +262,7 @@ namespace MauMau.Classes.Background
             UIElement aux = this.descarte.GetTopCard().ElementUI;
             Canvas.SetLeft(aux, Canvas.GetLeft(this.element_colapse));
             Canvas.SetTop(aux, Canvas.GetTop(this.element_colapse));
-
+            Canvas.SetZIndex(aux, -100);
             this.enviroment.Children.Add(this.descarte.GetTopCard().ElementUI);
         }
 
