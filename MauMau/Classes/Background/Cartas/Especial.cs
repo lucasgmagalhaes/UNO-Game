@@ -12,7 +12,7 @@ namespace MauMau.Classes.Background.Cartas
         public Efeito Efeito { get { return this.efeito; } }
         public Cor Cor { get { return this.cor; } }
 
-        public Especial(Efeito efeito, ImageBrush img, Cor cor) : base(img)
+        public Especial(Efeito efeito, ImageBrush img, Cor cor, string id) : base(img, id )
         {
             this.efeito = efeito;
             base.frontImage = img;
