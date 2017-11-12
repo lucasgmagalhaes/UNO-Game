@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using MauMau.Classes.Exceptions;
-using MauMau.Classes.Background.Cartas;
+﻿using MauMau.Classes.Background.Cartas;
+using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
-using System.IO;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
@@ -15,7 +14,7 @@ namespace MauMau.Classes.Background
         private Canvas ambiente;
         private Monte mnt;
         private Coletor clt;
-
+        private Enginee eng;
         /// <summary>
         /// Lista de todas as cartas do baralho
         /// </summary>
@@ -24,11 +23,12 @@ namespace MauMau.Classes.Background
             this.SetHand(new Lista<Carta>());
             SetProfile(prf);
         }
-        public Bot(Lista<Carta> hand, Profile infos, Canvas ambiente, Monte monte, Coletor coletor) : base(hand, infos)
+        public Bot(Lista<Carta> hand, Profile infos, Enginee eng, PlayerPosition position) : base(hand, infos, position)
         {
-            this.ambiente = ambiente;
-            this.mnt = monte;
-            this.clt = coletor;
+            this.eng = eng;
+            this.ambiente = this.eng.Enviroment;
+            this.mnt = this.eng.Monte;
+            this.clt = this.eng.Descarte;
             this.SetHand(new Lista<Carta>());
             SetProfile(infos);
         }
@@ -37,83 +37,110 @@ namespace MauMau.Classes.Background
         /// </summary>
         /// <param name="cardMonte">
         /// Recebe a carta do topo do coletor e o Monte</param> 
-        public void FazJogada()
+        public void Jogar()
         {
             Carta ctMenor = null;
             // pega carta do top do coletor como referencia
             Carta cdTop = this.clt.GetTopCard();
-            int valorMenor = 0;
-
+            Lista<Carta> listaaux = new Lista<Carta>();
+            if(this.hand.Count == 1)
+            {
+                base.TimeToUNO();
+            }
             //prioridade Normal(menor numero) > especial
             foreach (Carta cardMao in GetHand())
             {
                 if (cardMao.Compatible(cdTop))
                 {
-                    if (cardMao is Normal)
-                    {
-                        Normal auxCardMenor = (Normal)cardMao;
-                        // seleciona a menor baseado no numero
-                        if (valorMenor > auxCardMenor.Numero)
-                        {
-                            valorMenor = auxCardMenor.Numero;
-                            ctMenor = cardMao;
-                        }
-                    }
-                    // se não tiver uma carta menor escolhida irá pegar uma especial caso tenha
-                    if (ctMenor == null && cardMao is Especial)
-                    {
-                        ctMenor = cardMao;
-                    }
+                    listaaux.Add(cardMao);
                 }
-            } 
-            if (ctMenor != null)  
-            {
-                Carta ctAux = ctMenor; // auxiliar para a carta que será jogada
-               //tinha carta para jogar , joga carta para o monte e remove da mão
-               // faz animação de jogar carta da mão para monte
-                this.GetHand().Remove(this.PlayCard(ctMenor));
-                Clt.GetPlayedCard(ctAux);
             }
-            if (TimeToUNO())
+            if (listaaux.Count > 1)
             {
-                //pressiona botão uno
-            }
-        }
-        public Carta JogarCard(Monte Mnt, Coletor Clt)
-        {
-            /// compra carta
-            this.AddCardToHand(Mnt.GetCardOnTop());
-            // faz animação de compra carta
-
-            Carta ctMenor = null;
-            // pega carta do top do coletor como referencia
-            Carta cdTop = Clt.GetCardOnTop();
-            int valorMenor = 0;
-
-            //prioridade Normal(menor numero) > especial
-            foreach (Carta cardMao in GetHand())
-            {
-                if (cardMao.Equals(cdTop))
+                foreach (Carta card in listaaux)
                 {
-                    if (cardMao is Normal)
+                    if (card is Normal)
                     {
-                        Normal auxCardMenor = (Normal)cardMao;
-                        // seleciona a menor baseado no numero
-                        if (valorMenor > auxCardMenor.Numero)
-                        {
-                            valorMenor = auxCardMenor.Numero;
-                            ctMenor = cardMao;
-                        }
+                        ctMenor = card;
+                        goto Continuar;
                     }
-                    // se não tiver uma carta menor escolhida irá pegar uma especial caso tenha
-                    if (ctMenor == null && cardMao is Especial)
+                }
+                foreach (Carta card in listaaux)
+                {
+                    if (card is Especial)
                     {
-                        ctMenor = cardMao;
+                        ctMenor = card;
+                        goto Continuar;
+                    }
+                }
+                foreach (Carta card in listaaux)
+                {
+                    if (card is Coringa)
+                    {
+                        ctMenor = card;
+                        goto Continuar;
                     }
                 }
             }
-            //retorna o card menor que localizou ou uma especial
-            return ctMenor;
+            else
+            {
+                ctMenor = listaaux[0];
+            }
+            Continuar:
+            if (ctMenor != null)
+            {
+                AnimationHandToColetor(ctMenor);
+            }
+            else
+            {
+                Carta added = AnimationMontToHand();
+                if (added.Compatible(cdTop))
+                {
+                    AnimationHandToColetor(ctMenor);
+                }
+            }
+            this.eng.EndTurn();
+        }
+        private void AnimationHandToColetor(Carta card)
+        {
+            DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
+            DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
+            card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
+            card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+        }
+        private Carta AnimationMontToHand()
+        {
+            Carta getcard = this.eng.RemoveFromMonte();
+            Rectangle cardUI = getcard.ElementUI;
+            Canvas.SetLeft(cardUI as UIElement, Canvas.GetLeft(this.eng.MonteUI));
+            Canvas.SetTop(cardUI as UIElement, Canvas.GetTop(this.eng.MonteUI));
+
+            this.eng.Enviroment.Children.Add(cardUI);
+            Carta aux = this.hand[this.hand.Count - 1];
+            DoubleAnimation moveAnimY;
+            DoubleAnimation moveAnimX;
+
+            if (base.position == PlayerPosition.Right || base.position == PlayerPosition.Left)
+            {
+                moveAnimY = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI) + 30, new Duration(TimeSpan.FromMilliseconds(100)));
+                moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+            }
+            else
+            {
+                moveAnimY = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+                moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+            }
+
+            moveAnimX.FillBehavior = FillBehavior.Stop;
+            moveAnimY.FillBehavior = FillBehavior.Stop;
+            getcard.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
+            getcard.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+
+            Canvas.SetLeft(getcard.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
+            Canvas.SetTop(getcard.ElementUI, Canvas.GetTop(aux.ElementUI));
+
+            this.hand.Add(getcard);
+            return getcard;
         }
     }
 }

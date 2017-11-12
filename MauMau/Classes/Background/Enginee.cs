@@ -60,6 +60,7 @@ namespace MauMau.Classes.Background
         /// Define se as cartas dos BOTs vao ou não serem exibidas
         /// </summary>
         private bool showBotCards;
+        private UIElement monteUI;
         public bool ShowBotCards
         {
             get { return this.showBotCards; }
@@ -71,10 +72,18 @@ namespace MauMau.Classes.Background
             }
         }
         public Monte Monte { get { return this.monte; } }
+        public UIElement Element_colapse { get { return this.element_colapse; } }
+        public Canvas Enviroment { get { return this.enviroment; } }
+        public Turno Roda { get { return this.roda; } }
+        public Player RealOne { get { return this.realOne; } }
+        public Baralho Baralho { get { return this.baralho; } }
+        public Coletor Descarte { get { return this.descarte; } }
+        public UIElement MonteUI { get { return this.monteUI; } }
 
-        public Enginee(UIElement colapse, Canvas env)
+        public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
             this.enviroment = env;
+            this.monteUI = monteUI;
             this.element_colapse = colapse;
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
@@ -148,6 +157,7 @@ namespace MauMau.Classes.Background
         public void EndTurn()
         {
             this.roda.EndPLayerTurn();
+            if (this.GetCurrentPlayer() is Bot) ((Bot)this.GetCurrentPlayer()).Jogar();
         }
         /// <summary>
         /// Distribui as cartas para os jogadores

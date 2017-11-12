@@ -40,7 +40,7 @@ namespace MauMau
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            eng = new Enginee(played, root);
+            eng = new Enginee(this.played, this.root, this.Mont);
             Lista<Player> img = eng.GetPlayers();
 
             player1.Fill = img[0].Infos.GetImageBrush();
@@ -111,6 +111,7 @@ namespace MauMau
                         }
                         this.next = element;
                         this.element = null;
+                        this.eng.EndTurn();
                     }
                 }
             }
