@@ -124,6 +124,13 @@ namespace MauMau
                 if (this.element != null)
                 {
                     Canvas.SetZIndex(element, 0);
+                    if (this.backupleft != Canvas.GetLeft(this.element) || this.backuptop != Canvas.GetTop(this.element))
+                    {
+                        var moveAnimY = new DoubleAnimation(Canvas.GetTop(this.element), this.backuptop, new Duration(TimeSpan.FromMilliseconds(100)));
+                        var moveAnimX = new DoubleAnimation(Canvas.GetLeft(this.element), this.backupleft, new Duration(TimeSpan.FromMilliseconds(100)));
+                        this.element.BeginAnimation(Canvas.TopProperty, moveAnimY);
+                        this.element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+                    }
                 }
                 this.element = null;
             }
@@ -170,9 +177,13 @@ namespace MauMau
         {
             if (element != null)
             {
-                eng.ColapseElement(element);
-                Canvas.SetZIndex(element, count++);
-                element = null;
+                if (ValidarJogada(element))
+                {
+                    eng.ColapseElement(element);
+                    Canvas.SetZIndex(element, count++);
+                    element = null;
+                    this.eng.EndTurn();
+                }
             }
         }
 

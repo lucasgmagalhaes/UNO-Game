@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -82,6 +83,7 @@ namespace MauMau.Classes.Background
 
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
+            //Não mude a ordem de iniciação desses elementos. A troca pode acarretar em falhas no programa
             this.enviroment = env;
             this.monteUI = monteUI;
             this.element_colapse = colapse;
@@ -125,10 +127,10 @@ namespace MauMau.Classes.Background
                 aux[3] = ran.Next(0, this.allprofiles.Count - 1);
             }
 
-            players.Add(new Player(allprofiles[aux[0]], Enum.PlayerPosition.Top));
-            players.Add(new Player(allprofiles[aux[1]], Enum.PlayerPosition.Right));
+            players.Add(new Bot(allprofiles[aux[0]], this, Enum.PlayerPosition.Top));
+            players.Add(new Bot(allprofiles[aux[1]], this, Enum.PlayerPosition.Right));
             players.Add(new Player(allprofiles[aux[2]], Enum.PlayerPosition.Bottom));
-            players.Add(new Player(allprofiles[aux[3]], Enum.PlayerPosition.Left));
+            players.Add(new Bot(allprofiles[aux[3]], this, Enum.PlayerPosition.Left));
         }
         public Player GetMainPlayer()
         {

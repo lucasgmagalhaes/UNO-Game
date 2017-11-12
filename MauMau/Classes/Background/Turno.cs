@@ -30,7 +30,7 @@ namespace MauMau.Classes.Background
         /// </summary>
         public void EndPLayerTurn()
         {
-            if (jogadores.GetIndexOf(current) + 1 > jogadores.Count) current = jogadores[0];   
+            if (jogadores.GetIndexOf(current) + 1 == jogadores.Count) current = jogadores[0];   
             else current = jogadores[jogadores.GetIndexOf(current) + 1];
         }
     }

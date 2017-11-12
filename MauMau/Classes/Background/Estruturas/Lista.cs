@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MauMau.Classes.Exceptions;
+using System;
 using System.Collections;
 
 namespace MauMau.Classes.Background.Estruturas
@@ -53,7 +54,7 @@ namespace MauMau.Classes.Background.Estruturas
         private object GetByIndex(int val)
         {
             Elemento aux = prim.Prox;
-            if (val > this.count || val < 0) throw new IndexOutOfRangeException();
+            if (val >= this.count || val < 0) throw new InvalidIndexException();
             else if (aux == null) throw new NullReferenceException();
 
             while (aux != null && val != aux.GetIndex()) aux = aux.Prox;
@@ -264,14 +265,12 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public int GetIndexOf(object obj)
         {
-            int auxcount = 0;
             Elemento aux = prim.Prox;
-            while (aux != null || aux.GetDado() == obj)
+            while (aux != null && aux.GetDado() != obj)
             {
                 aux = aux.Prox;
-                auxcount++;
             }
-            return count;
+            return aux.GetIndex();
         }
         /// <summary>
         /// Remove um elemento localizado em uma posição fornecida

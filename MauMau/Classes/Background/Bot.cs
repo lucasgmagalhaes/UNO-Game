@@ -2,8 +2,10 @@
 using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
@@ -12,8 +14,6 @@ namespace MauMau.Classes.Background
     class Bot : Player
     {
         private Canvas ambiente;
-        private Monte mnt;
-        private Coletor clt;
         private Enginee eng;
         /// <summary>
         /// Lista de todas as cartas do baralho
@@ -27,8 +27,13 @@ namespace MauMau.Classes.Background
         {
             this.eng = eng;
             this.ambiente = this.eng.Enviroment;
-            this.mnt = this.eng.Monte;
-            this.clt = this.eng.Descarte;
+            this.SetHand(hand);
+            SetProfile(infos);
+        }
+        public Bot(Profile infos, Enginee eng, PlayerPosition position) : base(infos, position)
+        {
+            this.eng = eng;
+            this.ambiente = this.eng.Enviroment;
             this.SetHand(new Lista<Carta>());
             SetProfile(infos);
         }
@@ -41,14 +46,14 @@ namespace MauMau.Classes.Background
         {
             Carta ctMenor = null;
             // pega carta do top do coletor como referencia
-            Carta cdTop = this.clt.GetTopCard();
+            Carta cdTop = this.eng.Descarte.GetTopCard();
             Lista<Carta> listaaux = new Lista<Carta>();
-            if(this.hand.Count == 1)
+            if (this.hand.Count == 1)
             {
                 base.TimeToUNO();
             }
             //prioridade Normal(menor numero) > especial
-            foreach (Carta cardMao in GetHand())
+            foreach (Carta cardMao in this.hand)
             {
                 if (cardMao.Compatible(cdTop))
                 {
@@ -103,11 +108,19 @@ namespace MauMau.Classes.Background
         }
         private void AnimationHandToColetor(Carta card)
         {
+            Rotate(card);
             DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
             DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+            moveAnimX.Completed += MoveAnimX_Completed; 
         }
+
+        private void MoveAnimX_Completed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private Carta AnimationMontToHand()
         {
             Carta getcard = this.eng.RemoveFromMonte();
@@ -141,6 +154,36 @@ namespace MauMau.Classes.Background
 
             this.hand.Add(getcard);
             return getcard;
+        }
+        private void Rotate(Carta card)
+        {
+            DoubleAnimation da;
+            RotateTransform rt;
+
+            switch (this.position)
+            {
+                case PlayerPosition.Left:
+                    da = new DoubleAnimation(-90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+                    rt = new RotateTransform();
+                    card.ElementUI.RenderTransform = rt;
+                    card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
+                    rt.BeginAnimation(RotateTransform.AngleProperty, da);
+                    break;
+                case PlayerPosition.Right:
+                    da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+                    rt = new RotateTransform();
+                    card.ElementUI.RenderTransform = rt;
+                    card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
+                    rt.BeginAnimation(RotateTransform.AngleProperty, da);
+                    break;
+                case PlayerPosition.Top:
+                    da = new DoubleAnimation(180, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+                    rt = new RotateTransform();
+                    card.ElementUI.RenderTransform = rt;
+                    card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
+                    rt.BeginAnimation(RotateTransform.AngleProperty, da);
+                    break;
+            }
         }
     }
 }
