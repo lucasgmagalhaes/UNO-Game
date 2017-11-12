@@ -4,24 +4,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MauMau.Classes.Exceptions;
 using MauMau.Classes.Background.Cartas;
-using MauMau.Classes.Background.Cartas.Composicao;
 using MauMau.Classes.Background.Estruturas;
 using System.IO;
+using System.Windows.Controls;
+
 namespace MauMau.Classes.Background
 {
     class Bot : Player
     {
+        private Canvas ambiente;
+        private Monte mnt;
+        private Coletor clt;
+
         /// <summary>
         /// Lista de todas as cartas do baralho
         /// </summary>
         public Bot(Profile prf) : base(prf)
         {
-            this.SetHand(new List<Carta>());
+            this.SetHand(new Lista<Carta>());
             SetProfile(prf);
         }
-        public Bot(List<Carta> hand, Profile infos) : base(hand, infos)
+        public Bot(Lista<Carta> hand, Profile infos, Canvas ambiente, Monte monte, Coletor coletor) : base(hand, infos)
         {
-            this.SetHand(new List<Carta>());
+            this.ambiente = ambiente;
+            this.mnt = monte;
+            this.clt = coletor;
+            this.SetHand(new Lista<Carta>());
             SetProfile(infos);
         }
         /// <summary>
@@ -29,21 +37,17 @@ namespace MauMau.Classes.Background
         /// </summary>
         /// <param name="cardMonte">
         /// Recebe a carta do topo do coletor e o Monte</param> 
-        public void FazJogada(Monte Mnt, Coletor Clt)
+        public void FazJogada()
         {
-            /// compra carta
-            this.AddCardToHand(Mnt.GetCardOnTop());
-            // faz animação de compra carta
-
             Carta ctMenor = null;
             // pega carta do top do coletor como referencia
-            Carta cdTop = Clt.GetCardOnTop();
+            Carta cdTop = this.clt.GetTopCard();
             int valorMenor = 0;
 
             //prioridade Normal(menor numero) > especial
             foreach (Carta cardMao in GetHand())
             {
-                if (cardMao.Equals(cdTop))
+                if (cardMao.Compatible(cdTop))
                 {
                     if (cardMao is Normal)
                     {
