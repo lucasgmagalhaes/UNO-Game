@@ -143,6 +143,7 @@ namespace MauMau.Classes.Background
         public void Embaralhar()
         {
             this.cartas.SwitchAll(this.RAM);
+            this.cartas.SwitchAll(this.RAM);
         }
     }
 }

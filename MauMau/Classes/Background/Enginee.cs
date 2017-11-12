@@ -1,4 +1,5 @@
-﻿using MauMau.Classes.Background.Estruturas;
+﻿using MauMau.Classes.Background.Cartas;
+using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,7 +87,7 @@ namespace MauMau.Classes.Background
             this.DistributeCards();
             this.roda = new Turno(this.players);
             this.AddCardsOnInterface();
-            this.descarte = new Coletor(this.monte.RemoveTopCard());
+            this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
         }
 
@@ -261,15 +262,31 @@ namespace MauMau.Classes.Background
             return el;
         }
 
+        private Carta GetValidCard()
+        {
+            Carta aux = this.monte.RemoveTopCard();
+            Pilha<Carta> pilhaaux = new Pilha<Carta>();
+            while (aux is Especial || aux is Coringa)
+            {
+                pilhaaux.Push(aux);
+                aux = this.monte.RemoveTopCard();
+            }
+            while (pilhaaux.Count > 0) this.monte.Add(pilhaaux.Pop());
+            return aux;
+        }
+
         private void AddColetorCardOnInterface()
         {
             UIElement aux = this.descarte.GetTopCard().ElementUI;
             Canvas.SetLeft(aux, Canvas.GetLeft(this.element_colapse));
             Canvas.SetTop(aux, Canvas.GetTop(this.element_colapse));
             Canvas.SetZIndex(aux, -100);
-            this.enviroment.Children.Add(this.descarte.GetTopCard().ElementUI);
+            this.enviroment.Children.Add(aux);
         }
-
+        public void PlayCard(Carta card)
+        {
+            this.descarte.AddCard(this.GetCurrentPlayer().PlayCard(card));
+        }
         public bool ValidatePlay(UIElement played)
         {
             Player auxplayer = this.GetCurrentPlayer();
@@ -280,7 +297,7 @@ namespace MauMau.Classes.Background
                     Carta aux = this.descarte.GetTopCard();
                     if (aux.Compatible(card))
                     {
-                        this.descarte.AddCard(auxplayer.PlayCard(aux));
+                        PlayCard(card);
                         return true;
                     }
                     return false;

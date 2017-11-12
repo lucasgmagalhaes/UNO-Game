@@ -29,7 +29,7 @@ namespace MauMau.Classes.Background.Cartas
             if (card is Normal)
             {
                 Normal aux = (Normal)card;
-                if (aux.Cor == this.cor) return true;
+                if (aux.Cor == this.cor || aux.numero == this.numero) return true;
                 else return false;
             }
             else if (card is Especial)

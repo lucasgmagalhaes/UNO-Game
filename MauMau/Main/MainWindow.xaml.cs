@@ -197,7 +197,6 @@ namespace MauMau
         {
             if (eng.ValidatePlay(cardJogada))
             {
-                eng.EndTurn();
                 return true;
             }
             else

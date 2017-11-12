@@ -23,6 +23,11 @@ namespace MauMau.Classes.Background
         {
             return this.cartas;
         }
+
+        public void Add(Carta card)
+        {
+            this.cartas.Push(card);
+        }
         /// <summary>
         /// Pega a primeira carta do topo removendo-a
         /// </summary>
