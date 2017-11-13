@@ -30,7 +30,7 @@ namespace MauMau.Classes.Background.Cartas
             else if (card is Especial)
             {
                 Especial aux = (Especial)card;
-                if (this.cor == aux.Cor) return true;
+                if (this.cor == aux.Cor || this.efeito == aux.efeito) return true;
                 else return false;
             }
             else return true;

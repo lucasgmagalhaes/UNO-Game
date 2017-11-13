@@ -308,6 +308,7 @@ namespace MauMau.Classes.Background
                 {
                     Carta aux = this.descarte.GetTopCard();
                     if (aux.Compatible(card))
+                    if (true)                  
                     {
                         PlayCard(card);
                         return true;
