@@ -157,9 +157,9 @@ namespace MauMau.Classes.Background
         }
         public void EndTurn()
         {
-            this.roda.EndPLayerTurn();
-            Lista<Carta> get = this.GetCurrentPlayer().Hand;
-            if (this.GetCurrentPlayer() is Bot) ((Bot)this.GetCurrentPlayer()).Jogar();
+            //this.roda.EndPLayerTurn();
+            //Lista<Carta> get = this.GetCurrentPlayer().Hand;
+            //if (this.GetCurrentPlayer() is Bot) ((Bot)this.GetCurrentPlayer()).Jogar();
         }
         /// <summary>
         /// Distribui as cartas para os jogadores
@@ -302,13 +302,13 @@ namespace MauMau.Classes.Background
         public bool ValidatePlay(UIElement played)
         {
             Player auxplayer = this.GetCurrentPlayer();
-            foreach (Carta card in auxplayer.GetHand())
+            Lista<Carta> auxlista = auxplayer.GetHand();
+            foreach (Carta card in auxlista)
             {
                 if (played.Uid == card.GetID())
                 {
                     Carta aux = this.descarte.GetTopCard();
-                    if (aux.Compatible(card))
-                    if (true)                  
+                    if (aux.Compatible(card))                
                     {
                         PlayCard(card);
                         return true;
