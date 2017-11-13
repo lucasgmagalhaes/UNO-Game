@@ -96,8 +96,7 @@ namespace MauMau.Classes.Background
         {
             for (int i = 0; i < CountHand(); i++)
             {
-                if (this.hand[i] == card) hand.RemoveAt(i);
-                return card;
+                if (this.hand[i] == card) return hand.RemoveAt(i);
             }
             return null;
         }

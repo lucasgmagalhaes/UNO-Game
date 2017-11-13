@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -101,7 +101,6 @@ namespace MauMau.Classes.Background
             this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
         }
-
         /// <summary>
         /// Carrega as imagens dos jogadores
         /// </summary>
@@ -159,6 +158,7 @@ namespace MauMau.Classes.Background
         public void EndTurn()
         {
             this.roda.EndPLayerTurn();
+            Lista<Carta> get = this.GetCurrentPlayer().Hand;
             if (this.GetCurrentPlayer() is Bot) ((Bot)this.GetCurrentPlayer()).Jogar();
         }
         /// <summary>

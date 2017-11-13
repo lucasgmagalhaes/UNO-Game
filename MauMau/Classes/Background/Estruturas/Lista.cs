@@ -53,7 +53,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         private object GetByIndex(int val)
         {
-            Elemento aux = prim.Prox;
+            Elemento aux = prim;
             if (val >= this.count || val < 0) throw new InvalidIndexException();
             else if (aux == null) throw new NullReferenceException();
 
@@ -67,7 +67,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         private Elemento GetElementoByIndex(int val)
         {
-            Elemento aux = this.prim.Prox;
+            Elemento aux = this.prim;
             if (val > this.count || val < 0) throw new IndexOutOfRangeException();
             else if (aux == null) throw new NullReferenceException();
 
@@ -112,7 +112,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// </summary>
         private void Rebuild()
         {
-            if (this.prim.Prox == null)
+            if (this.prim == null)
             {
                 object dad = null;
                 this.prim = new Elemento(dad, 0);
@@ -125,9 +125,18 @@ namespace MauMau.Classes.Background.Estruturas
         /// <param name="el"></param>
         public virtual void Add(object el)
         {
-            Elemento aux = new Elemento(el, this.count);
-            this.ult.Prox = aux;
-            this.ult = aux;
+            if (this.count == 0)
+            {
+                this.prim.SetDado(el);
+                this.ult.Prox = this.prim;
+                this.ult = this.prim;
+            }
+            else
+            {
+                Elemento aux = new Elemento(el, this.count);
+                this.ult.Prox = aux;
+                this.ult = aux;
+            }
             this.ElementAdded();
         }
         /// <summary>
@@ -147,6 +156,7 @@ namespace MauMau.Classes.Background.Estruturas
                     aux2.Prox = null;
                     this.ElementDeleted();
                     this.Rebuild();
+                    this.RefactoreIndex();
                     return (T)aux2.GetDado();
                 }
                 aux = aux.Prox;
@@ -161,12 +171,13 @@ namespace MauMau.Classes.Background.Estruturas
         {
             if (this.prim.Prox != null)
             {
-                Elemento aux = this.prim.Prox;
+                Elemento aux = this.prim;
                 Elemento aux2 = aux;
                 this.prim.Prox = aux.Prox;
                 aux = null;
                 this.ElementDeleted();
                 Rebuild();
+                this.RefactoreIndex();
                 return (T)aux2.GetDado();
             }
             else return default(T);
@@ -194,7 +205,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// </summary>
         public void Clear()
         {
-            Elemento aux = this.prim.Prox;
+            Elemento aux = this.prim;
             Elemento aux2;
             while (aux != null)
             {
@@ -265,7 +276,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public int GetIndexOf(object obj)
         {
-            Elemento aux = prim.Prox;
+            Elemento aux = prim;
             while (aux != null && aux.GetDado() != obj)
             {
                 aux = aux.Prox;
@@ -280,16 +291,35 @@ namespace MauMau.Classes.Background.Estruturas
         public T RemoveAt(int index)
         {
             Elemento aux = this.prim;
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < index-1; i++)
             {
                 if (aux.Prox != null) aux = aux.Prox;
             }
             Elemento aux2 = aux.Prox;
             aux.Prox = aux.Prox.Prox;
             aux2.Prox = null;
-            ElementDeleted();
-            Rebuild();
+            this.ElementDeleted();
+            this.Rebuild();
+            this.RefactoreIndex();
             return (T)aux2.GetDado();
+        }
+        private void RefactoreIndex()
+        {
+            Elemento aux = this.prim;
+            while (aux != null)
+            {
+                if (null != aux.Prox && aux.GetIndex() != aux.Prox.GetIndex() - 1)
+                {
+                    aux = aux.Prox;
+                    while (aux != null)
+                    {
+                        aux.SetIndex(aux.GetIndex() - 1);
+                        aux = aux.Prox;
+                    }
+                    return;
+                }
+                aux = aux.Prox;
+            }
         }
         /// <summary>
         /// troca a posições entre dois elementos da lista

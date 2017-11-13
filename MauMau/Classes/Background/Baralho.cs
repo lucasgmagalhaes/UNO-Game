@@ -38,10 +38,6 @@ namespace MauMau.Classes.Background
             {
                 new ImageLoadException(ee.Message);
             }
-            catch (NullReferenceException ee)
-            {
-
-            }
         }
         /// <summary>
         /// Retorna uma lista de cartas de acordo com a cor especificada

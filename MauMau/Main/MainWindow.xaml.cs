@@ -32,7 +32,7 @@ namespace MauMau
         private Point mousePosition = new Point();
         private UIElement element;
         private Enginee eng;
-        private int count = -90;
+        public static int count = -90;
         private UIElement next;
         //Variáveis usadas para voltar o elemento para a antiga posição
         private double backupleft;
@@ -128,8 +128,15 @@ namespace MauMau
                     {
                         var moveAnimY = new DoubleAnimation(Canvas.GetTop(this.element), this.backuptop, new Duration(TimeSpan.FromMilliseconds(100)));
                         var moveAnimX = new DoubleAnimation(Canvas.GetLeft(this.element), this.backupleft, new Duration(TimeSpan.FromMilliseconds(100)));
+
+                        moveAnimX.FillBehavior = FillBehavior.Stop;
+                        moveAnimY.FillBehavior = FillBehavior.Stop;
+
                         this.element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                         this.element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+
+                        Canvas.SetLeft(this.element, this.backupleft);
+                        Canvas.SetTop(this.element, this.backuptop);
                     }
                 }
                 this.element = null;

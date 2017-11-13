@@ -15,7 +15,12 @@ namespace MauMau.Classes.Background
     {
         private Canvas ambiente;
         private Enginee eng;
-        /// <summary>
+        private DoubleAnimation moveAnimY;
+        private DoubleAnimation moveAnimX;
+        private DoubleAnimation moveAnimY2;
+        private DoubleAnimation moveAnimX2;
+        private Carta ctMenor = null;
+        /// <sum            
         /// Lista de todas as cartas do baralho
         /// </summary>
         public Bot(Profile prf) : base(prf)
@@ -36,6 +41,13 @@ namespace MauMau.Classes.Background
             this.ambiente = this.eng.Enviroment;
             this.SetHand(new Lista<Carta>());
             SetProfile(infos);
+            this.moveAnimX = new DoubleAnimation();
+            this.moveAnimY = new DoubleAnimation();
+            this.moveAnimX.Completed += MoveAnimX_Completed;
+
+            this.moveAnimX2 = new DoubleAnimation();
+            this.moveAnimY2 = new DoubleAnimation();
+            this.moveAnimX2.Completed += MoveAnimX2_Completed;
         }
         /// <summary>
         /// Simula jogadas de um player
@@ -44,7 +56,6 @@ namespace MauMau.Classes.Background
         /// Recebe a carta do topo do coletor e o Monte</param> 
         public void Jogar()
         {
-            Carta ctMenor = null;
             // pega carta do top do coletor como referencia
             Carta cdTop = this.eng.Descarte.GetTopCard();
             Lista<Carta> listaaux = new Lista<Carta>();
@@ -101,26 +112,31 @@ namespace MauMau.Classes.Background
                 Carta added = AnimationMontToHand();
                 if (added.Compatible(cdTop))
                 {
-                    AnimationHandToColetor(ctMenor);
+                    AnimationHandToColetor(added);
+                }
+                else
+                {
+                    this.eng.EndTurn();
+                    this.ctMenor = null;
                 }
             }
-            this.eng.EndTurn();
         }
         private void AnimationHandToColetor(Carta card)
         {
             Rotate(card);
-            DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
-            DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(this.eng.Element_colapse), new Duration(TimeSpan.FromMilliseconds(100)));
+            this.eng.PlayCard(card);
+            this.moveAnimY.From = Canvas.GetTop(card.ElementUI);
+            this.moveAnimY.To = Canvas.GetTop(this.eng.Element_colapse);
+            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
+            this.moveAnimX.From = Canvas.GetLeft(card.ElementUI);
+            this.moveAnimX.To = Canvas.GetLeft(this.eng.Element_colapse);
+            this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-            moveAnimX.Completed += MoveAnimX_Completed; 
+            Canvas.SetZIndex(card.ElementUI, ++MainWindow.count);
         }
-
-        private void MoveAnimX_Completed(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private Carta AnimationMontToHand()
         {
             Carta getcard = this.eng.RemoveFromMonte();
@@ -130,22 +146,21 @@ namespace MauMau.Classes.Background
 
             this.eng.Enviroment.Children.Add(cardUI);
             Carta aux = this.hand[this.hand.Count - 1];
-            DoubleAnimation moveAnimY;
-            DoubleAnimation moveAnimX;
 
             if (base.position == PlayerPosition.Right || base.position == PlayerPosition.Left)
             {
-                moveAnimY = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI) + 30, new Duration(TimeSpan.FromMilliseconds(100)));
-                moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+                moveAnimY2 = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI) + 30, new Duration(TimeSpan.FromMilliseconds(100)));
+                moveAnimX2 = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
             }
             else
             {
-                moveAnimY = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+                moveAnimY2 = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
                 moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
             }
 
-            moveAnimX.FillBehavior = FillBehavior.Stop;
-            moveAnimY.FillBehavior = FillBehavior.Stop;
+            moveAnimX2.FillBehavior = FillBehavior.Stop;
+            moveAnimY2.FillBehavior = FillBehavior.Stop;
+
             getcard.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             getcard.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
 
@@ -169,6 +184,7 @@ namespace MauMau.Classes.Background
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
                     rt.BeginAnimation(RotateTransform.AngleProperty, da);
                     break;
+
                 case PlayerPosition.Right:
                     da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
                     rt = new RotateTransform();
@@ -176,6 +192,7 @@ namespace MauMau.Classes.Background
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
                     rt.BeginAnimation(RotateTransform.AngleProperty, da);
                     break;
+
                 case PlayerPosition.Top:
                     da = new DoubleAnimation(180, 0, new Duration(TimeSpan.FromMilliseconds(200)));
                     rt = new RotateTransform();
@@ -185,5 +202,21 @@ namespace MauMau.Classes.Background
                     break;
             }
         }
+
+        private void MoveAnimX2_Completed(object sender, EventArgs e)
+        {
+            Thread.Sleep(300);
+            this.eng.EndTurn();
+        }
+
+        private void MoveAnimX_Completed(object sender, EventArgs e)
+        {
+            if (this.ctMenor != null)
+            {
+                this.ctMenor = null;
+                this.eng.EndTurn();
+            }
+        }
+
     }
 }
