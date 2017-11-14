@@ -98,8 +98,11 @@ namespace MauMau.Classes.Background
             this.DistributeCards();
             this.roda = new Turno(this.players);
             this.AddCardsOnInterface();
+            this.AddIconsOnInterface();
             this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
+            this.DisableMoveIconsPlayers();
+            this.AlignIconsPlayers();
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -175,7 +178,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Alinha a posição das cartas na mão dos jogadores
         /// </summary>
-        private void AlignCardsToHand(Player pl)
+        public void AlignCardsToHand(Player pl)
         {
             if (pl.Position == Enum.PlayerPosition.Left)
             {
@@ -205,7 +208,7 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, 200);
+                    Canvas.SetTop(card.ElementUI, 206);
                     X += 40;
                 }
             }
@@ -217,8 +220,68 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, Y - 165);
+                    Canvas.SetTop(card.ElementUI, Y - 225);
                     X += 40;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Torna o booleano "isEnabled" dos elementos UI falsos, para que não seja possível mover os ícones dos personagens.
+        /// </summary>
+        public void DisableMoveIconsPlayers()
+        {
+            foreach (Player i in this.players)
+                i.Infos.ElementUI.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Alinha a posição dos ícones dos jogadores
+        /// </summary>
+        public void AlignIconsPlayers()
+        {
+            double X = 0;
+            double Y = 0;
+
+            for (int i = 0; i < this.players.Count; i++)
+            {
+                switch (this.players[i].Position)
+                {
+                    case Enum.PlayerPosition.Left:
+                        Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 225;
+                        X = 18;
+
+                        Canvas.SetLeft(this.players[0].Infos.ElementUI, X);
+                        Canvas.SetTop(this.players[0].Infos.ElementUI, Y);
+
+                        break;
+
+                    case Enum.PlayerPosition.Right:
+
+                        X = (System.Windows.SystemParameters.PrimaryScreenWidth) - 80;
+                        Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 225;
+
+                        Canvas.SetLeft(this.players[1].Infos.ElementUI, X);
+                        Canvas.SetTop(this.players[1].Infos.ElementUI, Y);
+                        break;
+
+                    case Enum.PlayerPosition.Top:
+
+                        X = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - 245;
+                        Y = 30;
+
+                        Canvas.SetLeft(this.players[2].Infos.ElementUI, X);
+                        Canvas.SetTop(this.players[2].Infos.ElementUI, Y);
+
+                        break;
+
+                    default:
+                        X = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - 250;
+                        Y = System.Windows.SystemParameters.PrimaryScreenHeight - 115;
+
+                        Canvas.SetLeft(this.players[3].Infos.ElementUI, X);
+                        Canvas.SetTop(this.players[3].Infos.ElementUI, Y);
+                        break;
                 }
             }
         }
@@ -260,6 +323,17 @@ namespace MauMau.Classes.Background
                     enviroment.Children.Add(card.ElementUI);
                     if (pl.Position != Enum.PlayerPosition.Bottom) card.ElementUI.IsEnabled = false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Adiciona os ícones dos jogadores na interface gráfica
+        /// </summary>
+        private void AddIconsOnInterface()
+        {
+            foreach (Player pl in this.players)
+            {
+                enviroment.Children.Add(pl.Infos.ElementUI);
             }
         }
         /// <summary>
@@ -318,7 +392,6 @@ namespace MauMau.Classes.Background
                         PlayCard(card);
                         return true;
                     }
-                    return false;
                 }
             }
             return false;

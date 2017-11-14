@@ -42,19 +42,6 @@ namespace MauMau
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(this.played, this.root, this.Mont);
-            Lista<Player> img = eng.GetPlayers();
-
-            player1.Fill = img[0].Infos.GetImageBrush();
-            player1name.Content = img[0].Infos.Name;
-
-            player2.Fill = img[1].Infos.GetImageBrush();
-            player2name.Content = img[1].Infos.Name;
-
-            player3.Fill = img[2].Infos.GetImageBrush();
-            player3name.Content = img[2].Infos.Name;
-
-            player4.Fill = img[3].Infos.GetImageBrush();
-            player4name.Content = img[3].Infos.Name;
 
             moveAnimX.Completed += MoveAnimX_Completed;
         }

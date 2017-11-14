@@ -72,3 +72,27 @@ C:\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
 C:\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
 C:\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.exe
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.pdb
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\MainWindow.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\Start.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Visual Objects\Carta.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\App.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_Content.g.cs
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.cache
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau_MarkupCompile.lref
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\App.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Dependency\BitmapImages.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Main\MainWindow.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Pages\Start.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Templates\ButtonStyle.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Visual Objects\Carta.baml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.g.resources
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.Properties.Resources.resources
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.exe
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.pdb
