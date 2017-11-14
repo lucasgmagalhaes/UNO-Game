@@ -1,7 +1,7 @@
 # UNO-Game
 Trabalho final SI 3º período
 
-#Plataforma: C# WPF
+#Tecnologia: WPF
 
 Jogo de cartas simples composto por 1 jogador real, e 3 BOTs. 
 
