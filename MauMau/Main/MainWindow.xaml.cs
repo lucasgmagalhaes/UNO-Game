@@ -41,7 +41,7 @@ namespace MauMau
         DoubleAnimation moveAnimX = new DoubleAnimation();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            eng = new Enginee(this.played, this.root, this.Mont);
+            this.eng = new Enginee(this.played, this.root, this.Mont);
 
             moveAnimX.Completed += MoveAnimX_Completed;
         }

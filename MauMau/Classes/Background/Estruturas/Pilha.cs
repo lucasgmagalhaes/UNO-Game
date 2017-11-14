@@ -21,7 +21,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <param name="novo"></param>
         public void Push(object novo)
         {
-            if (novo == null) throw new NullParameterException();
+            if (novo == null) throw new NullParameterException(this.ToString() + ", line 24");
             Elemento elemento = new Elemento(novo);
             elemento.Prox = this.topo.Prox;
             this.topo.Prox = elemento;

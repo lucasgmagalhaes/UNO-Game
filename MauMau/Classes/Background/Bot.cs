@@ -13,13 +13,51 @@ namespace MauMau.Classes.Background
 {
     class Bot : Player
     {
+        /// <summary>
+        /// Elemento gráfico que contem todos os outros (Referência dele)
+        /// </summary>
         private Canvas ambiente;
+        /// <summary>
+        /// Estrutura gerenciadora do jogo. (Referência dela)
+        /// </summary>
         private Enginee eng;
+
+        /// <summary>
+        /// Elemento de auxilio para animação referente ao AnimationHandToMont() no ponto Y
+        /// </summary>
         private DoubleAnimation moveAnimY;
+        /// <summary>
+        /// Elemento de auxilio para animação referente ao AnimationHandToMont() no ponto X
+        /// </summary>
         private DoubleAnimation moveAnimX;
+        /// <summary>
+        /// Elemento de auxilio para animação referente ao AnimationMontToHand() no ponto Y
+        /// </summary>
         private DoubleAnimation moveAnimY2;
+        /// <summary>
+        /// Elemento de auxilio para animação referente ao AnimationMontToHand() no ponto X
+        /// </summary>
         private DoubleAnimation moveAnimX2;
+        /// <summary>
+        /// Elemento interno auxiliar para definir a carta que será jogada
+        /// </summary>
         private Carta ctMenor = null;
+        /// <summary>
+        /// Verificador de quantas vezes a animação AnimationHandToColetor() foi executada
+        /// </summary>
+        private int anim1loop;
+        /// <summary>
+        /// Verificador de quantas vezes a animação AnimationMontToHand() foi executada
+        /// </summary>
+        private int anim2loop;
+        /// <summary>
+        /// Carta que está no topo do Coletor
+        /// </summary>
+        private Carta cdTop;
+        /// <summary>
+        /// Carda pegada do monte
+        /// </summary>
+        private Carta getcard;
         /// <sum            
         /// Lista de todas as cartas do baralho
         /// </summary>
@@ -28,6 +66,13 @@ namespace MauMau.Classes.Background
             this.SetHand(new Lista<Carta>());
             SetProfile(prf);
         }
+        /// <summary>
+        /// Construtor do BOT com a mão ja definida
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <param name="infos"></param>
+        /// <param name="eng"></param>
+        /// <param name="position"></param>
         public Bot(Lista<Carta> hand, Profile infos, Enginee eng, PlayerPosition position) : base(hand, infos, position)
         {
             this.eng = eng;
@@ -35,6 +80,12 @@ namespace MauMau.Classes.Background
             this.SetHand(hand);
             SetProfile(infos);
         }
+        /// <summary>
+        /// Construtor do BOT sem as cartas da mão definidas
+        /// </summary>
+        /// <param name="infos"></param>
+        /// <param name="eng"></param>
+        /// <param name="position"></param>
         public Bot(Profile infos, Enginee eng, PlayerPosition position) : base(infos, position)
         {
             this.eng = eng;
@@ -57,7 +108,7 @@ namespace MauMau.Classes.Background
         public void Jogar()
         {
             // pega carta do top do coletor como referencia
-            Carta cdTop = this.eng.Descarte.GetTopCard();
+            cdTop = this.eng.Descarte.GetTopCard();
             Lista<Carta> listaaux = new Lista<Carta>();
             if (this.hand.Count == 1)
             {
@@ -71,7 +122,7 @@ namespace MauMau.Classes.Background
                     listaaux.Add(cardMao);
                 }
             }
-            if (listaaux.Count > 0)
+            if (listaaux.Count > 1)
             {
                 foreach (Carta card in listaaux)
                 {
@@ -98,29 +149,21 @@ namespace MauMau.Classes.Background
                     }
                 }
             }
+            else if (listaaux.Count == 1)
+            {
+                ctMenor = listaaux[0];
+            }
             else
             {
-                //ctMenor = listaaux[0];
+                this.ctMenor = this.AnimationMontToHand();
             }
             Continuar:
-            if (ctMenor != null)
-            {
-                AnimationHandToColetor(ctMenor);
-            }
-            else
-            {
-                Carta added = AnimationMontToHand();
-                if (added.Compatible(cdTop))
-                {
-                    AnimationHandToColetor(added);
-                }
-                else
-                {
-                    this.eng.EndTurn();
-                    this.ctMenor = null;
-                }
-            }
+            this.AnimationHandToColetor(ctMenor);
         }
+        /// <summary>
+        /// Animação da retirada da carta da mão do jogador para o Coletor
+        /// </summary>
+        /// <param name="card"></param>
         private void AnimationHandToColetor(Carta card)
         {
             Rotate(card);
@@ -136,10 +179,15 @@ namespace MauMau.Classes.Background
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
             Canvas.SetZIndex(card.ElementUI, ++MainWindow.count);
+            this.anim1loop++;
         }
+        /// <summary>
+        /// Animação da retirada da carta do monte para a mão do jogador
+        /// </summary>
+        /// <returns></returns>
         private Carta AnimationMontToHand()
         {
-            Carta getcard = this.eng.RemoveFromMonte();
+            this.getcard = this.eng.RemoveFromMonte();
             Rectangle cardUI = getcard.ElementUI;
             Canvas.SetLeft(cardUI as UIElement, Canvas.GetLeft(this.eng.MonteUI));
             Canvas.SetTop(cardUI as UIElement, Canvas.GetTop(this.eng.MonteUI));
@@ -149,27 +197,41 @@ namespace MauMau.Classes.Background
 
             if (base.position == PlayerPosition.Right || base.position == PlayerPosition.Left)
             {
-                moveAnimY2 = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI) + 30, new Duration(TimeSpan.FromMilliseconds(100)));
-                moveAnimX2 = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
+                this.moveAnimY2.From = Canvas.GetTop(cardUI);
+                this.moveAnimY2.To = Canvas.GetTop(aux.ElementUI) + 30;
+                this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+
+                this.moveAnimX2.From = Canvas.GetLeft(cardUI);
+                this.moveAnimX2.To = Canvas.GetLeft(aux.ElementUI);
+                this.moveAnimX2.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+
             }
             else
             {
-                moveAnimY2 = new DoubleAnimation(Canvas.GetTop(cardUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
-                moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+                this.moveAnimY2.From = Canvas.GetTop(cardUI);
+                this.moveAnimY2.To = Canvas.GetTop(aux.ElementUI);
+                this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+
+                this.moveAnimX2.From = Canvas.GetLeft(cardUI);
+                this.moveAnimX2.To = Canvas.GetLeft(aux.ElementUI) + 40;
+                this.moveAnimX2.Duration = new Duration(TimeSpan.FromMilliseconds(200));
             }
 
             moveAnimX2.FillBehavior = FillBehavior.Stop;
             moveAnimY2.FillBehavior = FillBehavior.Stop;
 
-            getcard.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
-            getcard.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+            getcard.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY2);
+            getcard.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX2);
 
             Canvas.SetLeft(getcard.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
             Canvas.SetTop(getcard.ElementUI, Canvas.GetTop(aux.ElementUI));
 
-            this.hand.Add(getcard);
             return getcard;
         }
+        /// <summary>
+        /// Roda a carta para o angulo de 0º. Tornando-a alinhada com o Coletor
+        /// </summary>
+        /// <param name="card"></param>
         private void Rotate(Carta card)
         {
             DoubleAnimation da;
@@ -178,7 +240,7 @@ namespace MauMau.Classes.Background
             switch (this.position)
             {
                 case PlayerPosition.Left:
-                    da = new DoubleAnimation(-90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+                    da = new DoubleAnimation(-90, 0, new Duration(TimeSpan.FromMilliseconds(100)));
                     rt = new RotateTransform();
                     card.ElementUI.RenderTransform = rt;
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
@@ -186,7 +248,7 @@ namespace MauMau.Classes.Background
                     break;
 
                 case PlayerPosition.Right:
-                    da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+                    da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(100)));
                     rt = new RotateTransform();
                     card.ElementUI.RenderTransform = rt;
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
@@ -203,20 +265,43 @@ namespace MauMau.Classes.Background
             }
         }
 
+        /// <summary>
+        /// Evento de animação completa para o método AnimationMontToHand()
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MoveAnimX2_Completed(object sender, EventArgs e)
         {
-            Thread.Sleep(300);
-            this.eng.EndTurn();
-        }
+            this.hand.Add(getcard);
+            this.ctMenor = getcard;
+            this.anim2loop++;
 
-        private void MoveAnimX_Completed(object sender, EventArgs e)
-        {
-            if (this.ctMenor != null)
+            if (this.ctMenor.Compatible(cdTop))
             {
-                this.ctMenor = null;
+                this.AnimationHandToColetor(this.ctMenor);
+            }
+            else
+            {
+                this.cdTop = ctMenor = null;
+                this.anim1loop = this.anim2loop = 0;
                 this.eng.EndTurn();
             }
         }
 
+        /// <summary>
+        /// Evento de animação completa para o método AnimationHandToColetor()
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MoveAnimX_Completed(object sender, EventArgs e)
+        {
+            if (this.anim1loop == 2 && this.anim2loop == 1 ||
+                this.anim1loop == 1 && this.anim2loop == 0)
+            {
+                this.cdTop = ctMenor = null;
+                this.anim1loop = this.anim2loop = 0;
+                this.eng.EndTurn();
+            }
+        }
     }
 }

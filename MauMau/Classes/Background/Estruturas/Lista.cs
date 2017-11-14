@@ -19,7 +19,7 @@ namespace MauMau.Classes.Background.Estruturas
             get
             {
                 T val = this[actualIndexPosition];
-                if (val == null) throw new InvalidOperationException();
+                if (val == null) throw new InvalidOperationException(this.ToString() + ", line 22");
                 else return val;
             }
         }
@@ -53,8 +53,8 @@ namespace MauMau.Classes.Background.Estruturas
         private object GetByIndex(int val)
         {
             Elemento aux = prim;
-            if (val >= this.count || val < 0) throw new InvalidIndexException();
-            else if (aux == null) throw new NullReferenceException();
+            if (val >= this.count || val < 0) throw new InvalidIndexException(this.ToString() + ", line 56");
+            else if (aux == null) throw new NullReferenceException(this.ToString() + ", line 57");
             while (aux != null && val != aux.GetIndex())
             {
                 aux = aux.Prox;
@@ -69,8 +69,8 @@ namespace MauMau.Classes.Background.Estruturas
         private Elemento GetElementoByIndex(int val)
         {
             Elemento aux = this.prim;
-            if (val > this.count || val < 0) throw new IndexOutOfRangeException();
-            else if (aux == null) throw new NullReferenceException();
+            if (val > this.count || val < 0) throw new IndexOutOfRangeException(this.ToString() + ", line 72");
+            else if (aux == null) throw new NullReferenceException(this.ToString() + ", line 73");
 
             while (val != aux.GetIndex()) aux = aux.Prox;
             return aux;
