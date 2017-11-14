@@ -292,12 +292,15 @@ namespace MauMau.Classes.Background
             UIElement aux = this.descarte.GetTopCard().ElementUI;
             Canvas.SetLeft(aux, Canvas.GetLeft(this.element_colapse));
             Canvas.SetTop(aux, Canvas.GetTop(this.element_colapse));
+
             Canvas.SetZIndex(aux, -100);
             this.enviroment.Children.Add(aux);
         }
         public void PlayCard(Carta card)
         {
-            this.descarte.AddCard(this.GetCurrentPlayer().PlayCard(card));
+            Player current = this.GetCurrentPlayer();
+            Carta carta_jogada = current.PlayCard(card);
+            this.descarte.AddCard(carta_jogada);
         }
         public bool ValidatePlay(UIElement played)
         {

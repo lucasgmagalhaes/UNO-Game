@@ -37,7 +37,7 @@ namespace MauMau.Classes.Background.Estruturas
         {
             get
             {
-                if (index > count) return default(T);
+                //if (index > count) return default(T);
                 return (T)this.GetByIndex(index);
             }
             set
@@ -56,8 +56,10 @@ namespace MauMau.Classes.Background.Estruturas
             Elemento aux = prim;
             if (val >= this.count || val < 0) throw new InvalidIndexException();
             else if (aux == null) throw new NullReferenceException();
-
-            while (aux != null && val != aux.GetIndex()) aux = aux.Prox;
+            while (aux != null && val != aux.GetIndex())
+            {
+                aux = aux.Prox;
+            }
             return aux.GetDado();
         }
         /// <summary>
@@ -146,22 +148,41 @@ namespace MauMau.Classes.Background.Estruturas
         /// <returns></returns>
         public virtual T Remover(object obj)
         {
+            //Elemento aux = this.prim;
+            //while (aux.Prox != null)
+            //{
+            //    if (aux.Prox.GetDado().Equals(obj))
+            //    {
+            //        Elemento aux2 = aux.Prox;
+            //        aux.Prox = aux2.Prox;
+            //        if (aux == this.ult) this.ult = aux;
+            //        else aux2.Prox = null;
+
+            //        this.ElementDeleted();
+            //        this.Rebuild();
+            //        this.RefactoreIndex();
+            //        return (T)aux2.GetDado();
+            //    }
+            //    aux = aux.Prox;
+            //}
+            //return default(T);
             Elemento aux = this.prim;
-            while (aux.Prox != null)
+            while((aux.Prox !=null) && (!aux.Prox.GetDado().Equals(obj)))
             {
-                if (aux.Prox.GetDado().Equals(obj))
-                {
-                    Elemento aux2 = aux.Prox;
-                    aux.Prox = aux.Prox.Prox;
-                    aux2.Prox = null;
-                    this.ElementDeleted();
-                    this.Rebuild();
-                    this.RefactoreIndex();
-                    return (T)aux2.GetDado();
-                }
                 aux = aux.Prox;
             }
-            return default(T);
+            if (aux.Prox != null)
+            {
+                Elemento auxret = aux.Prox;
+                aux.Prox = auxret.Prox;
+                if (auxret == this.ult) this.ult = aux;
+                else auxret.Prox = null;
+                this.ElementDeleted();
+                this.Rebuild();
+                this.RefactoreIndex();
+                return (T)auxret.GetDado();
+            }
+            else return default(T);
         }
         /// <summary>
         /// Remove o primeiro elemento da lista
@@ -291,7 +312,7 @@ namespace MauMau.Classes.Background.Estruturas
         public T RemoveAt(int index)
         {
             Elemento aux = this.prim;
-            for (int i = 0; i < index-1; i++)
+            for (int i = 0; i < index - 1; i++)
             {
                 if (aux.Prox != null) aux = aux.Prox;
             }

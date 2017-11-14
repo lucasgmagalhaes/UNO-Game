@@ -75,15 +75,18 @@ namespace MauMau.Classes.Background
                     RotateTransform rotate = new RotateTransform(-90);
                     card.ElementUI.RenderTransform = rotate;
                     return card;
+
                 case PlayerPosition.Right:
                     rotate = new RotateTransform(90);
                     card.ElementUI.RenderTransform = rotate;
                     return card;
+
                 case PlayerPosition.Top:
                     rotate = new RotateTransform(180);
                     card.ElementUI.RenderTransform = rotate;
                     return card;
-                default: return card; ;
+
+                default: return card;
             }
         }
 
@@ -94,11 +97,11 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         private Carta Remover(Carta card)
         {
-            for (int i = 0; i < CountHand(); i++)
-            {
-                if (this.hand[i] == card) return hand.RemoveAt(i);
-            }
-            return null;
+            //for (int i = 0; i < CountHand(); i++)
+            //{
+            //    if (this.hand[i] == card) return hand.RemoveAt(i);
+            //}
+            return this.hand.Remover(card);
         }
         /// <summary>
         /// Retorna o número de cartas na mão do jogador

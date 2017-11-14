@@ -54,6 +54,8 @@ namespace MauMau
 
             player4.Fill = img[3].Infos.GetImageBrush();
             player4name.Content = img[3].Infos.Name;
+
+            this.eng.ShowBotCards = false;
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -84,7 +86,7 @@ namespace MauMau
                     this.element.CaptureMouse();
                     Canvas.SetZIndex(element, 3);
                 }
-                else element = null;
+                //else element = null;
             }
         }
 
@@ -102,8 +104,17 @@ namespace MauMau
                     {
                         var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
                         var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
+
+                        moveAnimX.FillBehavior = FillBehavior.Stop;
+                        moveAnimY.FillBehavior = FillBehavior.Stop;
+
                         this.element.BeginAnimation(Canvas.TopProperty, moveAnimY);
                         this.element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+
+                        Canvas.SetLeft(this.element, Canvas.GetLeft(this.played));
+                        Canvas.SetTop(this.element, Canvas.GetTop(this.played));
+
+
                         if (next != null) //Cambiarra :(
                         {
                             Thread.Sleep(100);
@@ -164,7 +175,8 @@ namespace MauMau
 
                 this.root.Children.Add(cardUI);
                 this.SendCardToHand(getcard);
-                eng.GetCurrentPlayer().AddCardToHand(getcard);
+                Player current = eng.GetCurrentPlayer();
+                current.AddCardToHand(getcard);
             }
             else //será chamado o método para reembaralhar
             {
@@ -237,8 +249,10 @@ namespace MauMau
 
             DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
             DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+
             moveAnimX.FillBehavior = FillBehavior.Stop;
             moveAnimY.FillBehavior = FillBehavior.Stop;
+
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
 
