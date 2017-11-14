@@ -71,7 +71,7 @@ namespace MauMau.Classes.Background
                     listaaux.Add(cardMao);
                 }
             }
-            if (listaaux.Count > 1)
+            if (listaaux.Count > 0)
             {
                 foreach (Carta card in listaaux)
                 {
@@ -100,7 +100,7 @@ namespace MauMau.Classes.Background
             }
             else
             {
-                ctMenor = listaaux[0];
+                //ctMenor = listaaux[0];
             }
             Continuar:
             if (ctMenor != null)

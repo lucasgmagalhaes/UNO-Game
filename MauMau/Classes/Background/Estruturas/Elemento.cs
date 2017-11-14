@@ -19,6 +19,11 @@ namespace MauMau.Classes.Background.Estruturas
             this.index = index;
         }
 
+        public Elemento(object dado)
+        {
+            this.dado = dado;
+        }
+
         public object GetDado()
         {
             return this.dado;

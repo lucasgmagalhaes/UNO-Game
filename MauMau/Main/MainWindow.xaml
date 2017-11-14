@@ -59,7 +59,7 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <Label x:Name="player3name" Content="Player4" Canvas.Left="389" FontSize="20" Canvas.Top="667" Width="99" Height="38"/>
-                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="209" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
+                    <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="214" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
                 </Canvas>
             </Grid>
         </Grid>

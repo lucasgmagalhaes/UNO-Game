@@ -97,10 +97,13 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         private Carta Remover(Carta card)
         {
-            //for (int i = 0; i < CountHand(); i++)
-            //{
-            //    if (this.hand[i] == card) return hand.RemoveAt(i);
-            //}
+            for (int i = 0; i < this.CountHand(); i++)
+            {
+                if (this.hand[i] == card)
+                {
+                    return hand.RemoveAt(i);
+                }
+            }
             return this.hand.Remover(card);
         }
         /// <summary>

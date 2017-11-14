@@ -37,7 +37,8 @@ namespace MauMau
         //Variáveis usadas para voltar o elemento para a antiga posição
         private double backupleft;
         private double backuptop;
-
+        private DoubleAnimation moveAnimY = new DoubleAnimation();
+        DoubleAnimation moveAnimX = new DoubleAnimation();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             eng = new Enginee(this.played, this.root, this.Mont);
@@ -55,7 +56,7 @@ namespace MauMau
             player4.Fill = img[3].Infos.GetImageBrush();
             player4name.Content = img[3].Infos.Name;
 
-            this.eng.ShowBotCards = false;
+            moveAnimX.Completed += MoveAnimX_Completed;
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -98,31 +99,35 @@ namespace MauMau
                 this.element = mouseon as UIElement;
                 if (this.element.IsEnabled && mouseon is Rectangle)
                 {
-                    Canvas.SetZIndex(this.element, count++);
                     this.CreatePositionBackup(this.element);
                     if (ValidarJogada(element))
                     {
-                        var moveAnimY = new DoubleAnimation(Canvas.GetTop(element), Canvas.GetTop(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
-                        var moveAnimX = new DoubleAnimation(Canvas.GetLeft(element), Canvas.GetLeft(this.played), new Duration(TimeSpan.FromMilliseconds(100)));
+                        this.moveAnimY.From = Canvas.GetTop(element);
+                        this.moveAnimY.To = Canvas.GetTop(this.played);
+                        this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
 
-                        moveAnimX.FillBehavior = FillBehavior.Stop;
-                        moveAnimY.FillBehavior = FillBehavior.Stop;
+                        this.moveAnimX.From = Canvas.GetLeft(element);
+                        this.moveAnimX.To = Canvas.GetLeft(this.played);
+                        this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
 
-                        this.element.BeginAnimation(Canvas.TopProperty, moveAnimY);
-                        this.element.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+                        this.moveAnimX.FillBehavior = FillBehavior.Stop;
+                        this.moveAnimY.FillBehavior = FillBehavior.Stop;
+
+                        this.element.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
+                        this.element.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
 
                         Canvas.SetLeft(this.element, Canvas.GetLeft(this.played));
                         Canvas.SetTop(this.element, Canvas.GetTop(this.played));
-
 
                         if (next != null) //Cambiarra :(
                         {
                             Thread.Sleep(100);
                             this.next.Visibility = Visibility.Collapsed;
                         }
-                        this.next = element;
-                        this.element = null;
-                        this.eng.EndTurn();
+                        if (eng.GetCurrentPlayer().Hand.Count == 0)
+                        {
+                            MessageBox.Show("VOCÊ GANHOU!!");
+                        }                        
                     }
                 }
             }
@@ -202,6 +207,11 @@ namespace MauMau
                     Canvas.SetZIndex(element, count++);
                     element = null;
                     this.eng.EndTurn();
+
+                    if (eng.GetCurrentPlayer().Hand.Count == 0)
+                    {
+                        MessageBox.Show("VOCÊ GANHOU!!");
+                    }
                 }
             }
         }
@@ -258,6 +268,15 @@ namespace MauMau
 
             Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
             Canvas.SetTop(card.ElementUI, Canvas.GetTop(aux.ElementUI));
+        }
+
+        private void MoveAnimX_Completed(object sender, EventArgs e)
+        {
+            eng.ColapseElement(element);
+            Canvas.SetZIndex(element, ++count);
+            element = null;
+            this.eng.EndTurn();
+            this.next = element;
         }
     }
 }

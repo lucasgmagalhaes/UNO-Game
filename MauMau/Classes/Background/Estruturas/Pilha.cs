@@ -1,4 +1,6 @@
-﻿namespace MauMau.Classes.Background.Estruturas
+﻿using MauMau.Classes.Exceptions;
+
+namespace MauMau.Classes.Background.Estruturas
 {
     class Pilha<T>
     {
@@ -9,7 +11,7 @@
 
         public Pilha()
         {
-            this.topo = new Elemento(null, 0);
+            this.topo = new Elemento(null);
             this.fundo = this.topo;
         }
 
@@ -19,7 +21,8 @@
         /// <param name="novo"></param>
         public void Push(object novo)
         {
-            Elemento elemento = new Elemento(novo, count);
+            if (novo == null) throw new NullParameterException();
+            Elemento elemento = new Elemento(novo);
             elemento.Prox = this.topo.Prox;
             this.topo.Prox = elemento;
             if (this.topo == this.fundo) this.fundo = elemento;
@@ -37,7 +40,8 @@
             {
                 this.topo.Prox = aux.Prox;
                 aux.Prox = null;
-                if (aux == this.fundo) this.fundo = this.topo;
+                if (aux == this.fundo)
+                    this.fundo = this.topo;
                 this.count--;
                 return (T)aux.GetDado();
             }
