@@ -38,7 +38,8 @@ namespace MauMau
         private double backupleft;
         private double backuptop;
         private DoubleAnimation moveAnimY = new DoubleAnimation();
-        DoubleAnimation moveAnimX = new DoubleAnimation();
+        private DoubleAnimation moveAnimX = new DoubleAnimation();
+        private Animation myanimation = new Animation(100);
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

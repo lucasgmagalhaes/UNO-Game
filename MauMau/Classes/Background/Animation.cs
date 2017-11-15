@@ -7,43 +7,108 @@ namespace MauMau.Classes.Background
 {
     class Animation
     {
-        private Turno turno;
+        private DoubleAnimation moveanimX;
+        private DoubleAnimation moveanimY;
+        private int time;
 
-        public Animation(Turno turno_obj)
+        public DoubleAnimation PointX { get { return this.moveanimX; } }
+        public DoubleAnimation PointY { get { return this.moveanimY; } }
+
+        public Animation(int duration)
         {
-            this.turno = turno_obj;
-        }
-        private Action method;
-        public void SetTopAnimationCompletEvent(Action method)
-        {
-
-        }
-        public void SendCardToHand(Carta card)
-        {
-            Carta aux = this.turno.GetCurrentPlayer().GetLastCard();
-
-            DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
-            DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
-
-            moveAnimX.FillBehavior = FillBehavior.Stop;
-            moveAnimY.FillBehavior = FillBehavior.Stop;
-
-            card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
-            card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-
-            Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
-            Canvas.SetTop(card.ElementUI, Canvas.GetTop(aux.ElementUI));
+            this.Init();
+            this.time = duration;
         }
 
-        public void BackCardToHand(UIElement cardJogada, double backupleft, double backuptop) // true se pode fazer a jogada, ou seja , compara carta que está jogando com a carta do top do coletor
+        public Animation()
         {
-            if (backupleft != Canvas.GetLeft(cardJogada) || backuptop != Canvas.GetTop(cardJogada))
-            {
-                var moveAnimY = new DoubleAnimation(Canvas.GetTop(cardJogada), backuptop, new Duration(TimeSpan.FromMilliseconds(100)));
-                var moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardJogada), backupleft, new Duration(TimeSpan.FromMilliseconds(100)));
-                cardJogada.BeginAnimation(Canvas.TopProperty, moveAnimY);
-                cardJogada.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-            }
+            this.Init();
+        }
+
+        private void Init()
+        {
+            this.moveanimX = new DoubleAnimation();
+            this.moveanimY = new DoubleAnimation();
+        }
+
+        public void Begin(UIElement elementofrom, UIElement elementto)
+        {
+            this.moveanimX.From = Canvas.GetLeft(elementofrom);
+            this.moveanimX.To = Canvas.GetLeft(elementto);
+            this.moveanimX.Duration = new Duration(TimeSpan.FromMilliseconds(this.time));
+
+            this.moveanimY.From = Canvas.GetTop(elementofrom);
+            this.moveanimY.To = Canvas.GetTop(elementto);
+            this.moveanimY.Duration = new Duration(TimeSpan.FromMilliseconds(this.time));
+
+            moveanimX.FillBehavior = FillBehavior.Stop;
+            moveanimY.FillBehavior = FillBehavior.Stop;
+
+            elementofrom.BeginAnimation(Canvas.TopProperty, moveanimY);
+            elementofrom.BeginAnimation(Canvas.LeftProperty, moveanimX);
+
+            Canvas.SetLeft(elementofrom, Canvas.GetLeft(elementofrom));
+            Canvas.SetTop(elementofrom, Canvas.GetTop(elementofrom));
+        }
+
+        public void Begin(UIElement elementofrom, UIElement elementto, int time)
+        {
+            this.moveanimX.From = Canvas.GetLeft(elementofrom);
+            this.moveanimX.To = Canvas.GetLeft(elementto);
+            this.moveanimX.Duration = new Duration(TimeSpan.FromMilliseconds(time));
+
+            this.moveanimY.From = Canvas.GetTop(elementofrom);
+            this.moveanimY.To = Canvas.GetTop(elementto);
+            this.moveanimY.Duration = new Duration(TimeSpan.FromMilliseconds(time));
+
+            moveanimX.FillBehavior = FillBehavior.Stop;
+            moveanimY.FillBehavior = FillBehavior.Stop;
+
+            elementofrom.BeginAnimation(Canvas.TopProperty, moveanimY);
+            elementofrom.BeginAnimation(Canvas.LeftProperty, moveanimX);
+
+            Canvas.SetLeft(elementofrom, Canvas.GetLeft(elementofrom));
+            Canvas.SetTop(elementofrom, Canvas.GetTop(elementofrom));
+        }
+
+        public void Begin(UIElement elementofrom, int to)
+        {
+            this.moveanimX.From = Canvas.GetLeft(elementofrom);
+            this.moveanimX.To = to;
+            this.moveanimX.Duration = new Duration(TimeSpan.FromMilliseconds(this.time));
+
+            this.moveanimY.From = Canvas.GetTop(elementofrom);
+            this.moveanimY.To = to;
+            this.moveanimY.Duration = new Duration(TimeSpan.FromMilliseconds(this.time));
+
+            moveanimX.FillBehavior = FillBehavior.Stop;
+            moveanimY.FillBehavior = FillBehavior.Stop;
+
+            elementofrom.BeginAnimation(Canvas.TopProperty, moveanimY);
+            elementofrom.BeginAnimation(Canvas.LeftProperty, moveanimX);
+
+            Canvas.SetLeft(elementofrom, Canvas.GetLeft(elementofrom));
+            Canvas.SetTop(elementofrom, Canvas.GetTop(elementofrom));
+        }
+
+        public void Begin(UIElement elementofrom, int to, int time)
+        {
+            this.moveanimX.From = Canvas.GetLeft(elementofrom);
+            this.moveanimX.To = to;
+            this.moveanimX.Duration = new Duration(TimeSpan.FromMilliseconds(time));
+
+            this.moveanimY.From = Canvas.GetTop(elementofrom);
+            this.moveanimY.To = to;
+            this.moveanimY.Duration = new Duration(TimeSpan.FromMilliseconds(time));
+
+            moveanimX.FillBehavior = FillBehavior.Stop;
+            moveanimY.FillBehavior = FillBehavior.Stop;
+
+            elementofrom.BeginAnimation(Canvas.TopProperty, moveanimY);
+            elementofrom.BeginAnimation(Canvas.LeftProperty, moveanimX);
+
+            Canvas.SetLeft(elementofrom, Canvas.GetLeft(elementofrom));
+            Canvas.SetTop(elementofrom, Canvas.GetTop(elementofrom));
         }
     }
 }
