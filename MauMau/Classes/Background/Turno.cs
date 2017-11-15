@@ -11,11 +11,13 @@ namespace MauMau.Classes.Background
     {
         private Lista<Player> jogadores = new Lista<Player>();
         private Player current;
+        private int sentido; // 1 sentido horario - -1 sentido anti-horario
 
         public Turno(Lista<Player> jogadores)
         {
             this.jogadores = jogadores;
             current = jogadores[2];
+            sentido = 1; // independentemente vai começar sentido horario só troca com o andar do jogo
         }
         /// <summary>
         /// Pega o jogador da vez
@@ -25,13 +27,42 @@ namespace MauMau.Classes.Background
         {
             return this.current;
         }
+        public void SetSentido(int val)
+        {
+            this.sentido = val;
+        }
+        public int GetSentido()
+        {
+            return this.sentido;
+        }
         /// <summary>
         /// Finaliza o turno do jogador definindo o proximo na lista
         /// </summary>
         public void EndPLayerTurn()
         {
-            if (jogadores.GetIndexOf(current) + 1 == jogadores.Count) current = jogadores[0];   
-            else current = jogadores[jogadores.GetIndexOf(current) + 1];
+            if (sentido > 0) //horario
+            {
+                if (jogadores.GetIndexOf(current) + 1 == jogadores.Count)
+                {
+                    current = jogadores[0];
+                }
+                else
+                {
+                    current = jogadores[jogadores.GetIndexOf(current) + 1];
+                }
+            }
+            else
+            {
+                if (jogadores.GetIndexOf(current) - 1 == 0)
+                {
+                    current = jogadores[jogadores.Count - 1];
+                }
+                else
+                {
+                    current = jogadores[jogadores.GetIndexOf(current) - 1];
+                }
+            }
+
         }
     }
 }
