@@ -22,7 +22,6 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResourc
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csproj.CoreCompileInputs.cache
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.pdb
-C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\1047825\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.pdb
@@ -96,3 +95,4 @@ C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.Properties.Resou
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.csproj.GenerateResource.Cache
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.exe
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\MauMau.pdb
+C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache

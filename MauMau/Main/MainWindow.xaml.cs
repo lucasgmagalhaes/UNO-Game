@@ -242,7 +242,7 @@ namespace MauMau
 
         private void SendCardToHand(Carta card)
         {
-            Carta aux = eng.GetCurrentPlayer().GetLastCard();
+            Carta aux = this.eng.GetCurrentPlayer().GetLastCard();
 
             DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), Canvas.GetTop(aux.ElementUI), new Duration(TimeSpan.FromMilliseconds(100)));
             DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), Canvas.GetLeft(aux.ElementUI) + 40, new Duration(TimeSpan.FromMilliseconds(100)));
