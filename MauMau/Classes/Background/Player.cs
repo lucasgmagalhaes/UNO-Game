@@ -15,7 +15,9 @@ namespace MauMau.Classes.Background
         protected Lista<Carta> hand;
         protected Profile infos;
         protected PlayerPosition position;
+        protected bool uno;
 
+        public bool Uno { get { return this.uno; } }
         public Profile Infos { get { return this.infos; } set { this.infos = value; } }
         public Lista<Carta> Hand { get { return this.hand; } }
         public PlayerPosition Position { get { return this.position; } }
@@ -52,6 +54,7 @@ namespace MauMau.Classes.Background
         public void AddCardToHand(Carta card)
         {
             this.hand.Add(SetCardAngle(card));
+            if (uno) uno = false;
         }
         /// <summary>
         /// Retira uma carta da mão do jogador
@@ -123,25 +126,53 @@ namespace MauMau.Classes.Background
             if (CountHand() == 1) return true;
             return false;
         }
+        /// <summary>
+        /// Pega a coleção de cartas
+        /// </summary>
+        /// <returns></returns>
         public Lista<Carta> GetHand()
         {
             return this.hand;
         }
+        /// <summary>
+        /// Define a coleção de cartas
+        /// </summary>
+        /// <param name="hd"></param>
         public void SetHand(Lista<Carta> hd)
         {
             this.hand = hd;
         }
+        /// <summary>
+        /// Pega o perfil do jogador
+        /// </summary>
+        /// <returns></returns>
         public Profile GetProfile()
         {
             return this.infos;
         }
+        /// <summary>
+        /// Define o perfil do jogador
+        /// </summary>
+        /// <param name="prf"></param>
         public void SetProfile(Profile prf)
         {
             this.infos = prf;
         }
+        /// <summary>
+        /// Retorna a lista de cartas do jogador
+        /// </summary>
+        /// <returns></returns>
         public Carta GetLastCard()
         {
             return this.hand[this.hand.Count - 1];
+        }
+        /// <summary>
+        /// Ao gritar uno, o jogador evita pegar uma carta em seu proximo turno, caso esse método não seja chamado, 
+        /// No próximo turno, o jogador deve receber uma carta
+        /// </summary>
+        public void SayUno()
+        {
+            this.uno = true;
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MauMau
         private double backuptop;
         private DoubleAnimation moveAnimY = new DoubleAnimation();
         DoubleAnimation moveAnimX = new DoubleAnimation();
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.eng = new Enginee(this.played, this.root, this.Mont);
@@ -87,7 +88,7 @@ namespace MauMau
                 if (this.element.IsEnabled && mouseon is Rectangle)
                 {
                     this.CreatePositionBackup(this.element);
-                    if (ValidarJogada(element))
+                    if (this.eng.ValidatePlay(element))
                     {
                         this.moveAnimY.From = Canvas.GetTop(element);
                         this.moveAnimY.To = Canvas.GetTop(this.played);
@@ -114,7 +115,11 @@ namespace MauMau
                         if (eng.GetCurrentPlayer().Hand.Count == 0)
                         {
                             MessageBox.Show("VOCÊ GANHOU!!");
-                        }                        
+                        }
+                    }
+                    else
+                    {
+                        this.BackCardToHand(element);
                     }
                 }
             }
@@ -154,6 +159,8 @@ namespace MauMau
             this.btnUNO.RenderTransform = rt;
             this.btnUNO.RenderTransformOrigin = new Point(0.5, 0.5);
             rt.BeginAnimation(RotateTransform.AngleProperty, da);
+
+            this.eng.GetCurrentPlayer().SayUno();
         }
 
         private void Mont_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -188,17 +195,30 @@ namespace MauMau
         {
             if (element != null)
             {
-                if (ValidarJogada(element))
+                if (this.eng.GetCurrentPlayer().GetHand().Count > 1)
                 {
+                    if (eng.ValidatePlay(element))
+                    {
+                        eng.ColapseElement(element);
+                        Canvas.SetZIndex(element, count++);
+                        element = null;
+                        //this.eng.EndTurn();
+                    }
+                    else
+                    {
+                        this.BackCardToHand(element);
+                    }
+                }
+                else if (this.eng.GetCurrentPlayer().Uno)
+                {
+                    MessageBox.Show("VOCÊ GANHOU!!");
                     eng.ColapseElement(element);
                     Canvas.SetZIndex(element, count++);
                     element = null;
-                    this.eng.EndTurn();
-
-                    if (eng.GetCurrentPlayer().Hand.Count == 0)
-                    {
-                        MessageBox.Show("VOCÊ GANHOU!!");
-                    }
+                }
+                else //!this.eng.GetCurrentPlayer().Uno
+                {
+                    this.BackCardToHand(element);
                 }
             }
         }
@@ -221,22 +241,20 @@ namespace MauMau
             this.backuptop = Canvas.GetTop(element);
         }
 
-        private bool ValidarJogada(UIElement cardJogada) // true se pode fazer a jogada, ou seja , compara carta que está jogando com a carta do top do coletor
+        private void BackCardToHand(UIElement cardJogada) // true se pode fazer a jogada, ou seja , compara carta que está jogando com a carta do top do coletor
         {
-            if (eng.ValidatePlay(cardJogada))
+            if (this.backupleft != Canvas.GetLeft(cardJogada) || this.backuptop != Canvas.GetTop(cardJogada))
             {
-                return true;
-            }
-            else
-            {
-                if (this.backupleft != Canvas.GetLeft(cardJogada) || this.backuptop != Canvas.GetTop(cardJogada))
-                {
-                    var moveAnimY = new DoubleAnimation(Canvas.GetTop(cardJogada), this.backuptop, new Duration(TimeSpan.FromMilliseconds(100)));
-                    var moveAnimX = new DoubleAnimation(Canvas.GetLeft(cardJogada), this.backupleft, new Duration(TimeSpan.FromMilliseconds(100)));
-                    cardJogada.BeginAnimation(Canvas.TopProperty, moveAnimY);
-                    cardJogada.BeginAnimation(Canvas.LeftProperty, moveAnimX);
-                }
-                return false;
+                this.moveAnimY.From = Canvas.GetTop(cardJogada);
+                this.moveAnimY.To = this.backuptop;
+                this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
+                this.moveAnimX.From = Canvas.GetLeft(cardJogada);
+                this.moveAnimX.To = this.backupleft;
+                this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
+                cardJogada.BeginAnimation(Canvas.TopProperty, moveAnimY);
+                cardJogada.BeginAnimation(Canvas.LeftProperty, moveAnimX);
             }
         }
 
@@ -257,13 +275,43 @@ namespace MauMau
             Canvas.SetTop(card.ElementUI, Canvas.GetTop(aux.ElementUI));
         }
 
+        private void SendCardToHand(Carta card, double left, double top)
+        {
+            DoubleAnimation moveAnimY = new DoubleAnimation(Canvas.GetTop(card.ElementUI), top, new Duration(TimeSpan.FromMilliseconds(100)));
+            DoubleAnimation moveAnimX = new DoubleAnimation(Canvas.GetLeft(card.ElementUI), left + 40, new Duration(TimeSpan.FromMilliseconds(100)));
+
+            moveAnimX.FillBehavior = FillBehavior.Stop;
+            moveAnimY.FillBehavior = FillBehavior.Stop;
+
+            card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
+            card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
+
+            Canvas.SetLeft(card.ElementUI, left + 40);
+            Canvas.SetTop(card.ElementUI, top);
+        }
+
         private void MoveAnimX_Completed(object sender, EventArgs e)
         {
-            eng.ColapseElement(element);
-            Canvas.SetZIndex(element, ++count);
-            element = null;
-            this.eng.EndTurn();
-            this.next = element;
+            if (this.eng.GetCurrentPlayer().GetHand().Count > 1)
+            {
+                eng.ColapseElement(element);
+                Canvas.SetZIndex(element, ++count);
+                element = null;
+                this.eng.EndTurn();
+                this.next = element;
+            }
+            else if(!this.eng.GetCurrentPlayer().Uno)
+            {
+                Carta getcard = eng.RemoveFromMonte();
+                Rectangle cardUI = getcard.ElementUI;
+                Canvas.SetLeft(cardUI as UIElement, Canvas.GetLeft(this.Mont));
+                Canvas.SetTop(cardUI as UIElement, Canvas.GetTop(this.Mont));
+
+                this.root.Children.Add(cardUI);
+                this.SendCardToHand(getcard, this.backupleft, this.backuptop);
+                Player current = eng.GetCurrentPlayer();
+                current.AddCardToHand(getcard);
+            }
         }
     }
 }

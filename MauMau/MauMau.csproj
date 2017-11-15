@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Background\Animation.cs" />
     <Compile Include="Classes\Background\Bot.cs" />
     <Compile Include="Classes\Background\Enum\Cor.cs" />
     <Compile Include="Classes\Background\Enum\Efeito.cs" />
