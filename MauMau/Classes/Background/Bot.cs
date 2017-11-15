@@ -128,7 +128,7 @@ namespace MauMau.Classes.Background
                 {
                     if (card is Normal)
                     {
-                        ctMenor = card;
+                        this.getcard = card;
                         goto Continuar;
                     }
                 }
@@ -136,7 +136,7 @@ namespace MauMau.Classes.Background
                 {
                     if (card is Especial)
                     {
-                        ctMenor = card;
+                        this.getcard = card;
                         goto Continuar;
                     }
                 }
@@ -144,21 +144,21 @@ namespace MauMau.Classes.Background
                 {
                     if (card is Coringa)
                     {
-                        ctMenor = card;
+                        this.getcard = card;
                         goto Continuar;
                     }
                 }
             }
             else if (listaaux.Count == 1)
             {
-                ctMenor = listaaux[0];
+                this.getcard = listaaux[0];
             }
             else
             {
-                this.ctMenor = this.AnimationMontToHand();
+                this.AnimationMontToHand();
             }
             Continuar:
-            this.AnimationHandToColetor(ctMenor);
+            this.AnimationHandToColetor(this.getcard);
         }
         /// <summary>
         /// Animação da retirada da carta da mão do jogador para o Coletor
@@ -167,7 +167,7 @@ namespace MauMau.Classes.Background
         private void AnimationHandToColetor(Carta card)
         {
             Rotate(card);
-            this.eng.PlayCard(card);
+
             this.moveAnimY.From = Canvas.GetTop(card.ElementUI);
             this.moveAnimY.To = Canvas.GetTop(this.eng.Element_colapse);
             this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
@@ -225,8 +225,9 @@ namespace MauMau.Classes.Background
 
             Canvas.SetLeft(getcard.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
             Canvas.SetTop(getcard.ElementUI, Canvas.GetTop(aux.ElementUI));
+            this.anim2loop++;
 
-            return getcard;
+            return this.getcard;
         }
         /// <summary>
         /// Roda a carta para o angulo de 0º. Tornando-a alinhada com o Coletor
@@ -272,13 +273,12 @@ namespace MauMau.Classes.Background
         /// <param name="e"></param>
         private void MoveAnimX2_Completed(object sender, EventArgs e)
         {
-            this.hand.Add(getcard);
-            this.ctMenor = getcard;
+            this.hand.Add(this.getcard);
             this.anim2loop++;
 
             if (this.ctMenor.Compatible(cdTop))
             {
-                this.AnimationHandToColetor(this.ctMenor);
+                this.AnimationHandToColetor(this.getcard);
             }
             else
             {
@@ -295,6 +295,15 @@ namespace MauMau.Classes.Background
         /// <param name="e"></param>
         private void MoveAnimX_Completed(object sender, EventArgs e)
         {
+            try
+            {
+
+                this.eng.PlayCard(this.getcard);
+            }
+            catch
+            {
+
+            }
             if (this.anim1loop == 2 && this.anim2loop == 1 ||
                 this.anim1loop == 1 && this.anim2loop == 0)
             {
