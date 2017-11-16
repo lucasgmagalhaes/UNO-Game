@@ -1,17 +1,10 @@
 ﻿using MauMau.Classes.Background.Cartas;
 using MauMau.Classes.Background.Estruturas;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Timers;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
@@ -61,7 +54,17 @@ namespace MauMau.Classes.Background
         /// Define se as cartas dos BOTs vao ou não serem exibidas
         /// </summary>
         private bool showBotCards;
+        /// <summary>
+        /// Elemento gráfico que representa o monte
+        /// </summary>
         private UIElement monteUI;
+        /// <summary>
+        /// Define qual ação será executada ao jogar uma carta
+        /// </summary>
+        private Evento evento;
+        /// <summary>
+        /// Define se as cartas dos bots serão ou não exibidas
+        /// </summary>
         public bool ShowBotCards
         {
             get { return this.showBotCards; }
@@ -80,29 +83,35 @@ namespace MauMau.Classes.Background
         public Baralho Baralho { get { return this.baralho; } }
         public Coletor Descarte { get { return this.descarte; } }
         public UIElement MonteUI { get { return this.monteUI; } }
-
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
             //Não mude a ordem de iniciação desses elementos. A troca pode acarretar em falhas no programa
             this.enviroment = env;
             this.monteUI = monteUI;
             this.element_colapse = colapse;
+
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
             this.LoadImage();
+
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
             this.baralho.Embaralhar();
+
             this.realOne = this.players[2];
             this.monte = new Monte(baralho.GetCards());
             this.DistributeCards();
+
             this.roda = new Turno(this.players);
             this.AddCardsOnInterface();
             this.AddIconsOnInterface();
+
             this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
             this.DisableMoveIconsPlayers();
+
             this.AlignIconsPlayers();
+            this.evento = new Evento(this);
         }
         /// <summary>
         /// Carrega as imagens dos jogadores
@@ -374,6 +383,7 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
+            this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
         }
         /// <summary>

@@ -73,6 +73,7 @@
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
+    <Compile Include="Classes\Background\Util\Animation.cs" />
     <Compile Include="Classes\Exceptions\InvalidIndexException.cs" />
     <Compile Include="Classes\Exceptions\NullParameterException.cs" />
     <Compile Include="Pages\GamePlay.xaml.cs">

@@ -14,6 +14,7 @@ namespace MauMau.Classes.Background
         private Player current;
         private SentidoJogada sentido; // 1 sentido horario - -1 sentido anti-horario
 
+        public Lista<Player> Jogadores { get { return this.jogadores; } }
         public Turno(Lista<Player> jogadores)
         {
             this.jogadores = jogadores;
@@ -28,6 +29,10 @@ namespace MauMau.Classes.Background
         {
             return this.current;
         }
+        public void SetCurrentPlayer(Player player)
+        {
+            this.current = player;
+        }
         public void SetSentido(SentidoJogada val)
         {
             this.sentido = val;
@@ -35,35 +40,6 @@ namespace MauMau.Classes.Background
         public SentidoJogada GetSentido()
         {
             return this.sentido;
-        }
-        /// <summary>
-        /// Bloqueia a jogada do proximo jogador
-        /// </summary>
-        public void PularProximo()
-        {
-            switch (this.sentido)
-            {
-                case SentidoJogada.Horario:
-                    if (jogadores.GetIndexOf(current) + 2 >= jogadores.Count)
-                    {
-                        current = jogadores[0];
-                    }
-                    else
-                    {
-                        current = jogadores[jogadores.GetIndexOf(current) + 2];
-                    }
-                    break;
-                case SentidoJogada.AntiHorario:
-                    if (jogadores.GetIndexOf(current) - 2 < 0)
-                    {
-                        current = jogadores[jogadores.Count - 1];
-                    }
-                    else
-                    {
-                        current = jogadores[jogadores.GetIndexOf(current) - 1];
-                    }
-                    break;
-            }
         }
         /// <summary>
         /// Finaliza o turno do jogador definindo o proximo na lista
@@ -92,7 +68,35 @@ namespace MauMau.Classes.Background
                     current = jogadores[jogadores.GetIndexOf(current) - 1];
                 }
             }
-
+        }
+        /// <summary>
+        /// Retorna o jogador no próximo turno
+        /// </summary>
+        /// <returns></returns>
+        public Player GetNextPlayerInOrder()
+        {
+            if (sentido == SentidoJogada.Horario)
+            {
+                if (jogadores.GetIndexOf(current) + 1 == jogadores.Count)
+                {
+                    return jogadores[0];
+                }
+                else
+                {
+                    return jogadores[jogadores.GetIndexOf(current) + 1];
+                }
+            }
+            else
+            {
+                if (jogadores.GetIndexOf(current) - 1 < 0)
+                {
+                    return  jogadores[jogadores.Count - 1];
+                }
+                else
+                {
+                    return jogadores[jogadores.GetIndexOf(current) - 1];
+                }
+            }
         }
     }
 }
