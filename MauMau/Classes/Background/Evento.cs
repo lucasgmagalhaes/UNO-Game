@@ -13,10 +13,10 @@ using System.Windows.Controls;
 
 namespace MauMau.Classes.Background
 {
-    abstract class Evento
+     class Evento
     {
-        protected Enginee eng;
-        protected MainWindow mWindow; 
+        private Enginee eng;
+        private MainWindow mWindow;
 
         public Evento(Enginee e, MainWindow mw)
         {
@@ -54,16 +54,19 @@ namespace MauMau.Classes.Background
                 {
                     this.eng.EndTurn();
                 }
-                if (cardJogada.ElementUI.Uid.Contains("Inverte"))
+                else if (cardJogada.ElementUI.Uid.Contains("Inverte"))
                 {
-                    this.eng.Roda.SetSentido((this.eng.Roda.GetSentido() * (-1)));
-                    this.eng.EndTurn();
+                    if (this.eng.Roda.GetSentido() == Enum.SentidoJogada.Horario)
+                    {
+                        this.eng.Roda.SetSentido(Enum.SentidoJogada.AntiHorario);
+                    }
+                    else this.eng.Roda.SetSentido(Enum.SentidoJogada.Horario);
                 }
-                if (cardJogada.ElementUI.Uid.Contains("cEfeito")) //coringa troca cor
+                else if (cardJogada.ElementUI.Uid.Contains("cEfeito")) //coringa troca cor
                 {
                     //trocar cor - a fazer
                 }
-                if (cardJogada.ElementUI.Uid.Contains("sEfeito")) // coringa compra 4
+                else if (cardJogada.ElementUI.Uid.Contains("sEfeito")) // coringa compra 4
                 {
                     for (int i = 0; i < 4; i++)
                     {
@@ -79,7 +82,7 @@ namespace MauMau.Classes.Background
                             Player current = eng.GetCurrentPlayer();
                             current.AddCardToHand(getcard);
                         }
-                    } 
+                    }
                     //trocar cor - a fazer
                     this.eng.EndTurn();
                 }
@@ -101,6 +104,7 @@ namespace MauMau.Classes.Background
             Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(aux.ElementUI) + 40);
             Canvas.SetTop(card.ElementUI, Canvas.GetTop(aux.ElementUI));
         }
+    
     }
 }
 

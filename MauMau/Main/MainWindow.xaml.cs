@@ -204,7 +204,7 @@ namespace MauMau
                         Canvas.SetZIndex(element, count++);
                         element = null;
                         this.eng.RealignCards();
-                        //this.eng.EndTurn();
+                        this.eng.EndTurn();
                     }
                     else
                     {
@@ -296,13 +296,16 @@ namespace MauMau
         {
             if (this.eng.GetCurrentPlayer().GetHand().Count > 1)
             {
-                eng.ColapseElement(element);
-                Canvas.SetZIndex(element, ++count);
-                element = null;
-                this.eng.EndTurn();
-                this.next = element;
+                if (this.element != null)
+                {
+                    eng.ColapseElement(element);
+                    Canvas.SetZIndex(element, ++count);
+                    element = null;
+                    this.eng.EndTurn();
+                    this.next = element;
+                }
             }
-            else if(!this.eng.GetCurrentPlayer().Uno)
+            else if (!this.eng.GetCurrentPlayer().Uno)
             {
                 Carta getcard = eng.RemoveFromMonte();
                 Rectangle cardUI = getcard.ElementUI;

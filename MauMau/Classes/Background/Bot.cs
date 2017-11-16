@@ -175,11 +175,11 @@ namespace MauMau.Classes.Background
 
             this.moveAnimY.From = Canvas.GetTop(card.ElementUI);
             this.moveAnimY.To = Canvas.GetTop(this.eng.Element_colapse);
-            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(400));
 
             this.moveAnimX.From = Canvas.GetLeft(card.ElementUI);
             this.moveAnimX.To = Canvas.GetLeft(this.eng.Element_colapse);
-            this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+            this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(400));
 
             card.ElementUI.BeginAnimation(Canvas.TopProperty, moveAnimY);
             card.ElementUI.BeginAnimation(Canvas.LeftProperty, moveAnimX);
@@ -197,11 +197,11 @@ namespace MauMau.Classes.Background
 
             this.moveAnimY2.From = Canvas.GetTop(card.ElementUI);
             this.moveAnimY2.To = Canvas.GetTop(aux.ElementUI);
-            this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+            this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(250));
 
             this.moveAnimX2.From = Canvas.GetLeft(card.ElementUI);
             this.moveAnimY2.To = Canvas.GetLeft(aux.ElementUI) + 40;
-            this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+            this.moveAnimY2.Duration = new Duration(TimeSpan.FromMilliseconds(250));
 
             moveAnimY2.FillBehavior = FillBehavior.Stop;
             moveAnimX2.FillBehavior = FillBehavior.Stop;
@@ -224,7 +224,7 @@ namespace MauMau.Classes.Background
             switch (this.position)
             {
                 case PlayerPosition.Left:
-                    da = new DoubleAnimation(-90, 0, new Duration(TimeSpan.FromMilliseconds(100)));
+                    da = new DoubleAnimation(-90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
                     rt = new RotateTransform();
                     card.ElementUI.RenderTransform = rt;
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);
@@ -232,7 +232,7 @@ namespace MauMau.Classes.Background
                     break;
 
                 case PlayerPosition.Right:
-                    da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(100)));
+                    da = new DoubleAnimation(90, 0, new Duration(TimeSpan.FromMilliseconds(200)));
                     rt = new RotateTransform();
                     card.ElementUI.RenderTransform = rt;
                     card.ElementUI.RenderTransformOrigin = new Point(0.5, 0.5);

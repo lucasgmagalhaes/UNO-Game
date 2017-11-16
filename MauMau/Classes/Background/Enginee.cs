@@ -374,10 +374,11 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
-            this.RealignPlayedCard();
             this.descarte.AddCard(carta_jogada);
         }
-
+        /// <summary>
+        /// Não usado atualmente
+        /// </summary>
         private void RealignPlayedCard()
         {
             Player pl = this.roda.GetCurrentPlayer();
@@ -388,8 +389,7 @@ namespace MauMau.Classes.Background
 
             foreach (Carta card in pl.Hand)
             {
-                distance = Canvas.GetLeft(card.ElementUI);
-                distance = Canvas.GetLeft(card.ElementUI);
+                distance = Canvas.GetLeft(previucard as FrameworkElement);
 
                 distance2 = Canvas.GetLeft(previucard2) - Canvas.GetLeft(previucard);
 
@@ -476,8 +476,7 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    //aux.Compatible(card)
-                    if (true)
+                    if (aux.Compatible(card))
                     {
                         PlayCard(card);
                         return true;
