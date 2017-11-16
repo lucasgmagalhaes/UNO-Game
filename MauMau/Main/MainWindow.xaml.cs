@@ -39,7 +39,6 @@ namespace MauMau
         private double backuptop;
         private DoubleAnimation moveAnimY = new DoubleAnimation();
         private DoubleAnimation moveAnimX = new DoubleAnimation();
-        private Animation myanimation = new Animation(100);
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -177,6 +176,7 @@ namespace MauMau
                 this.SendCardToHand(getcard);
                 Player current = eng.GetCurrentPlayer();
                 current.AddCardToHand(getcard);
+                this.eng.RealignCards();
             }
             else //será chamado o método para reembaralhar
             {
@@ -203,6 +203,7 @@ namespace MauMau
                         eng.ColapseElement(element);
                         Canvas.SetZIndex(element, count++);
                         element = null;
+                        this.eng.RealignCards();
                         //this.eng.EndTurn();
                     }
                     else

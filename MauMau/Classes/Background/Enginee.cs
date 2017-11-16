@@ -374,8 +374,98 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
+            this.RealignPlayedCard();
             this.descarte.AddCard(carta_jogada);
         }
+
+        private void RealignPlayedCard()
+        {
+            Player pl = this.roda.GetCurrentPlayer();
+            UIElement previucard = new UIElement();
+            UIElement previucard2 = new UIElement();
+            double distance = 0;
+            double distance2 = 0;
+
+            foreach (Carta card in pl.Hand)
+            {
+                distance = Canvas.GetLeft(card.ElementUI);
+                distance = Canvas.GetLeft(card.ElementUI);
+
+                distance2 = Canvas.GetLeft(previucard2) - Canvas.GetLeft(previucard);
+
+                if (distance2 != distance)
+                {
+                    Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) - distance);
+                }
+                previucard2 = previucard;
+                previucard = card.ElementUI;
+            }
+        }
+        public void RealignCards()
+        {
+            Player pl = this.roda.GetCurrentPlayer();
+            int space = 0;
+            int getsize = pl.Hand.Count;
+            UIElement previucard = new UIElement();
+            Lista<Carta> cartas = this.roda.GetCurrentPlayer().GetHand();
+
+            if (getsize > 7)
+            {
+                if (pl.Position == Enum.PlayerPosition.Bottom || pl.Position == Enum.PlayerPosition.Top)
+                {
+                    foreach (Carta card in pl.Hand)
+                    {
+                        if (Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard) > 50)
+                        {
+                            int indexstart = this.roda.GetCurrentPlayer().Hand.GetIndexOf(card);
+                            int handsize = this.roda.GetCurrentPlayer().Hand.Count;
+
+                            double diferencedistance = Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard);
+
+                            for (int i = indexstart; i < handsize; i++)
+                            {
+                                Canvas.SetLeft(cartas[i].ElementUI, Canvas.GetLeft(cartas[i].ElementUI) - diferencedistance + 30);
+                            }
+                            break;
+                        }
+                        Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) - space);
+                        previucard = card.ElementUI;
+                        space++;
+                    }
+                }
+                else
+                {
+                    foreach (Carta card in pl.Hand)
+                    {
+                        Canvas.SetTop(card.ElementUI, Canvas.GetTop(card.ElementUI) - space);
+                        previucard = card.ElementUI;
+                        space++;
+                    }
+                }
+            }
+            else
+            {
+                if (pl.Position == Enum.PlayerPosition.Bottom || pl.Position == Enum.PlayerPosition.Top)
+                {
+                    foreach (Carta card in pl.Hand)
+                    {
+                        Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) + space);
+                        previucard = card.ElementUI;
+                        space++;
+                    }
+                }
+                else
+                {
+                    foreach (Carta card in pl.Hand)
+                    {
+                        Canvas.SetTop(card.ElementUI, Canvas.GetTop(card.ElementUI) + space);
+                        previucard = card.ElementUI;
+                        space++;
+                    }
+                }
+            }
+        }
+
         public bool ValidatePlay(UIElement played)
         {
             Player auxplayer = this.GetCurrentPlayer();
@@ -387,7 +477,7 @@ namespace MauMau.Classes.Background
                 if (played.Uid == card.GetID())
                 {
                     //aux.Compatible(card)
-                    if (true)                
+                    if (true)
                     {
                         PlayCard(card);
                         return true;

@@ -19,7 +19,7 @@ namespace MauMau.Classes.Background.Estruturas
             get
             {
                 T val = this[actualIndexPosition];
-                if (val == null) throw new InvalidOperationException(this.ToString() + ", line 22");
+                if (val == null) throw new InvalidOperationException();
                 else return val;
             }
         }
@@ -37,7 +37,9 @@ namespace MauMau.Classes.Background.Estruturas
         {
             get
             {
-                return (T)this.GetByIndex(index);
+                T val = (T)this.GetByIndex(index);
+                if (val == null) throw new InvalidIndexException(this.ToString() + " line 41"); 
+                return val;
             }
             set
             {
