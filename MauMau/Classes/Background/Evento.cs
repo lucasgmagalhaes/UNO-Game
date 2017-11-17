@@ -24,10 +24,15 @@ namespace MauMau.Classes.Background
         /// Variável auxiliar para quantidade de repetições que uma animação executará
         /// </summary>
         private int numberofrepetions;
+        /// <summary>
+        /// Jogador para o qual a animação se destinará
+        /// </summary>
+        private Player player_destiny;
+
         public Evento(Enginee e)
         {
             this.eng = e;
-            this.anim = new Animation(eng);
+            this.anim = new Animation(eng, 900);
             this.anim.MoveAnimX.Completed += MoveAnimX_Completed;
         }
         /// <summary>
@@ -36,17 +41,27 @@ namespace MauMau.Classes.Background
         private void Comprar()
         {
             cardsBuyed++;
-            Player playeraux = this.eng.Roda.GetNextPlayerInOrder();
-            Carta auxcard;
-
-            auxcard = this.eng.Monte.RemoveTopCard();
-            playeraux.AddCardToHand(auxcard);
+            Carta auxcard = this.eng.Monte.RemoveTopCard();
+            this.anim.RotateToHand(auxcard, this.player_destiny);
 
             this.anim.MontToHand(auxcard.ElementUI);
+            this.player_destiny.AddCardToHand(auxcard);
         }
+        /// <summary>
+        /// Carrega as informações sobre o usuário que receberá a carta
+        /// </summary>
+        private void LoadPlayerInfos()
+        {
+            this.player_destiny = this.eng.Roda.GetNextPlayerInOrder();
+        }
+        /// <summary>
+        /// Método auxílio que definirá quantas cartas serão compradas, chamando o método real de compra de cartas
+        /// </summary>
+        /// <param name="quant"></param>
         private void Comprar(int quant)
         {
             this.numberofrepetions = quant;
+            this.LoadPlayerInfos();
             this.Comprar();
         }
         /// <summary>

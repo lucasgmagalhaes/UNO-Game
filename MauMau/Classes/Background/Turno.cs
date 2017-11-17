@@ -29,14 +29,26 @@ namespace MauMau.Classes.Background
         {
             return this.current;
         }
+        /// <summary>
+        /// Define o jogador atual
+        /// </summary>
+        /// <param name="player"></param>
         public void SetCurrentPlayer(Player player)
         {
             this.current = player;
         }
+        /// <summary>
+        /// Define o a ordem de turno dos jogadores
+        /// </summary>
+        /// <param name="val"></param>
         public void SetSentido(SentidoJogada val)
         {
             this.sentido = val;
         }
+        /// <summary>
+        /// Retorna o sentido do turno dos jogadores
+        /// </summary>
+        /// <returns></returns>
         public SentidoJogada GetSentido()
         {
             return this.sentido;
@@ -70,7 +82,7 @@ namespace MauMau.Classes.Background
             }
         }
         /// <summary>
-        /// Retorna o jogador no próximo turno
+        /// Retorna quem irá jogar no próximo turno
         /// </summary>
         /// <returns></returns>
         public Player GetNextPlayerInOrder()
