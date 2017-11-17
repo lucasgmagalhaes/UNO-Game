@@ -1,4 +1,5 @@
-﻿using MauMau.Classes.Background.Estruturas;
+﻿using MauMau.Classes.Background.Enum;
+using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace MauMau.Classes.Background
     {
         private Lista<Player> jogadores = new Lista<Player>();
         private Player current;
-        private int sentido; // 1 sentido horario - -1 sentido anti-horario
+        private SentidoJogada sentido; // 1 sentido horario - -1 sentido anti-horario
 
+        public Lista<Player> Jogadores { get { return this.jogadores; } }
         public Turno(Lista<Player> jogadores)
         {
             this.jogadores = jogadores;
             current = jogadores[2];
-            sentido = 1; // independentemente vai começar sentido horario só troca com o andar do jogo
+            sentido = SentidoJogada.Horario; // independentemente vai começar sentido horario só troca com o andar do jogo
         }
         /// <summary>
         /// Pega o jogador da vez
@@ -27,11 +29,27 @@ namespace MauMau.Classes.Background
         {
             return this.current;
         }
-        public void SetSentido(int val)
+        /// <summary>
+        /// Define o jogador atual
+        /// </summary>
+        /// <param name="player"></param>
+        public void SetCurrentPlayer(Player player)
+        {
+            this.current = player;
+        }
+        /// <summary>
+        /// Define o a ordem de turno dos jogadores
+        /// </summary>
+        /// <param name="val"></param>
+        public void SetSentido(SentidoJogada val)
         {
             this.sentido = val;
         }
-        public int GetSentido()
+        /// <summary>
+        /// Retorna o sentido do turno dos jogadores
+        /// </summary>
+        /// <returns></returns>
+        public SentidoJogada GetSentido()
         {
             return this.sentido;
         }
@@ -40,7 +58,7 @@ namespace MauMau.Classes.Background
         /// </summary>
         public void EndPLayerTurn()
         {
-            if (sentido > 0) //horario
+            if (sentido == SentidoJogada.Horario)
             {
                 if (jogadores.GetIndexOf(current) + 1 == jogadores.Count)
                 {
@@ -53,7 +71,7 @@ namespace MauMau.Classes.Background
             }
             else
             {
-                if (jogadores.GetIndexOf(current) - 1 == 0)
+                if (jogadores.GetIndexOf(current) - 1 < 0)
                 {
                     current = jogadores[jogadores.Count - 1];
                 }
@@ -62,7 +80,35 @@ namespace MauMau.Classes.Background
                     current = jogadores[jogadores.GetIndexOf(current) - 1];
                 }
             }
-
+        }
+        /// <summary>
+        /// Retorna quem irá jogar no próximo turno
+        /// </summary>
+        /// <returns></returns>
+        public Player GetNextPlayerInOrder()
+        {
+            if (sentido == SentidoJogada.Horario)
+            {
+                if (jogadores.GetIndexOf(current) + 1 == jogadores.Count)
+                {
+                    return jogadores[0];
+                }
+                else
+                {
+                    return jogadores[jogadores.GetIndexOf(current) + 1];
+                }
+            }
+            else
+            {
+                if (jogadores.GetIndexOf(current) - 1 < 0)
+                {
+                    return  jogadores[jogadores.Count - 1];
+                }
+                else
+                {
+                    return jogadores[jogadores.GetIndexOf(current) - 1];
+                }
+            }
         }
     }
 }

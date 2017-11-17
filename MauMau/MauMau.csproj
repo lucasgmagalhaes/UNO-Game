@@ -63,17 +63,19 @@
     <Compile Include="Classes\Background\Cartas\Coringa.cs" />
     <Compile Include="Classes\Background\Cartas\Especial.cs" />
     <Compile Include="Classes\Background\Enum\PlayerPosition.cs" />
+    <Compile Include="Classes\Background\Enum\SentidoJogada.cs" />
     <Compile Include="Classes\Background\Estruturas\Elemento.cs" />
     <Compile Include="Classes\Background\Estruturas\Lista.cs" />
     <Compile Include="Classes\Background\Estruturas\Pilha.cs" />
+    <Compile Include="Classes\Background\Evento.cs" />
     <Compile Include="Classes\Background\Interfaces\ICompatible.cs" />
     <Compile Include="Classes\Background\Cartas\Normal.cs" />
     <Compile Include="Classes\Background\Coletor.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
+    <Compile Include="Classes\Background\Util\Animation.cs" />
     <Compile Include="Classes\Exceptions\InvalidIndexException.cs" />
     <Compile Include="Classes\Exceptions\NullParameterException.cs" />
-    <Compile Include="Classes\Utilitario\Code.cs" />
     <Compile Include="Pages\GamePlay.xaml.cs">
       <DependentUpon>GamePlay.xaml</DependentUpon>
     </Compile>

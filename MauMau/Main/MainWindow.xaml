@@ -36,6 +36,10 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="214" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
+                    <Ellipse x:Name="selectyellow" Fill="#FFAA01" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="406" Canvas.Top="654"/>
+                    <Ellipse x:Name="selectblue" Fill="#5455FF" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="516" Canvas.Top="654"/>
+                    <Ellipse x:Name="selectgreen" Fill="#55AA55" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="616" Canvas.Top="654"/>
+                    <Ellipse x:Name="selectred" Fill="#FF5454" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="716" Canvas.Top="654"/>
                 </Canvas>
             </Grid>
         </Grid>
