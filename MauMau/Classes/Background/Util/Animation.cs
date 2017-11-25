@@ -143,31 +143,31 @@ namespace MauMau.Classes.Background.Util
             optionyellow = yellow;
         }
 
-        private double GetCardX()
+        private double GetCardX(Player who)
         {
-            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
-            return Canvas.GetLeft(auxplayer.GetLastCard().ElementUI);
+            Carta aux = who.GetLastCard();
+            return Canvas.GetLeft(aux.ElementUI);
         }
 
-        private double GetCardY()
+        private double GetCardY(Player who)
         {
-            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
-            Carta aux = auxplayer.GetLastCard();
+            Carta aux = who.GetLastCard();
             return Canvas.GetTop(aux.ElementUI);
         }
         /// <summary>
         /// Cria a animação da carta indo do 'monte' até a mão do jogador
         /// </summary>
         /// <param name="elementfrom"></param>
-        public void MontToHand(UIElement elementfrom)
+        public void MontToHand(UIElement elementfrom, Player who)
         {
             Canvas.SetLeft(elementfrom, Canvas.GetLeft(this.mont));
             Canvas.SetTop(elementfrom, Canvas.GetTop(this.mont));
 
             this.container.Children.Add(elementfrom);
 
-            double X = this.GetCardX();
-            double Y = this.GetCardY();
+            double X = this.GetCardX(who);
+            double Y = this.GetCardY(who);
+            this.ConvertCoordnatesToValueRight(ref X, ref Y, this.GetPlayerPosition());
 
             this.moveAnimY.From = Canvas.GetTop(elementfrom);
             this.moveAnimY.To = Y;
@@ -179,6 +179,27 @@ namespace MauMau.Classes.Background.Util
 
             elementfrom.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
             elementfrom.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
+        }
+        private PlayerPosition GetPlayerPosition()
+        {
+            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
+            return auxplayer.Position;
+        }
+        private void ConvertCoordnatesToValueRight(ref double X, ref double Y, PlayerPosition destiny)
+        {
+            switch (destiny)
+            {
+                case PlayerPosition.Bottom:                   
+                    break;
+                case PlayerPosition.Left:
+                    X = 50;
+                    Y = 450;
+                    break;
+                case PlayerPosition.Right:
+                    break;
+                case PlayerPosition.Top:
+                    break;
+            }
         }
         /// <summary>
         /// Cria a animação da carta rodando até o angulo correspondente ao da posição do jogador no jogo

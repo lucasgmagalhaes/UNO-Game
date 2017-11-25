@@ -83,6 +83,7 @@ namespace MauMau.Classes.Background
         public Baralho Baralho { get { return this.baralho; } }
         public Coletor Descarte { get { return this.descarte; } }
         public UIElement MonteUI { get { return this.monteUI; } }
+
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
             //Não mude a ordem de iniciação desses elementos. A troca pode acarretar em falhas no programa
@@ -383,7 +384,7 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
-            this.evento.EventAtivado(carta_jogada);
+            //this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
         }
         /// <summary>
@@ -475,7 +476,14 @@ namespace MauMau.Classes.Background
                 }
             }
         }
-
+        public Carta GetCardFromUI(Player pl, UIElement card)
+        {
+            foreach(Carta cd in pl.Hand)
+            {
+                if (card == cd.ElementUI) return cd;
+            }
+            return null;
+        }
         public bool ValidatePlay(UIElement played)
         {
             Player auxplayer = this.GetCurrentPlayer();
@@ -486,7 +494,8 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    if (aux.Compatible(card))
+                    if(true)
+                    //if (aux.Compatible(card))
                     {
                         PlayCard(card);
                         return true;

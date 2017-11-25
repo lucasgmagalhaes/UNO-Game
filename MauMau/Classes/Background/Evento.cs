@@ -44,7 +44,7 @@ namespace MauMau.Classes.Background
             Carta auxcard = this.eng.Monte.RemoveTopCard();
             this.anim.RotateToHand(auxcard, this.player_destiny);
 
-            this.anim.MontToHand(auxcard.ElementUI);
+            this.anim.MontToHand(auxcard.ElementUI, this.player_destiny);
             this.player_destiny.AddCardToHand(auxcard);
         }
         /// <summary>
