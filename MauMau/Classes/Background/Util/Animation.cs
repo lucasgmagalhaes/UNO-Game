@@ -202,7 +202,7 @@ namespace MauMau.Classes.Background.Util
             switch (destiny)
             {
                 case PlayerPosition.Bottom:
-                    X = 700+ this.bottomCardPointCount;
+                    X = 710 + this.bottomCardPointCount;
                     Y = auxY - 233;
                     this.bottomCardPointCount += 30;
                     break;
