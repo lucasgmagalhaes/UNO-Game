@@ -4,17 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\
+=======
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\obj\Debug\
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
 MauMau
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\Main\App.xaml
 7-1273408028
 122585331
 37-1424539967
+=======
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\Main\App.xaml
+71310392693
+122585331
+37-1309960699
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
 13738642453
-Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Pages\GamePlay.xaml;Pages\Start.xaml;Templates\ButtonStyle.xaml;Visual Objects\Carta.xaml;Windows\Log.xaml;
+Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Pages\GamePlay.xaml;Pages\Start.xaml;Templates\ButtonStyle.xaml;Visual Objects\Carta.xaml;Windows\ScreenLog.xaml;
 
 False
 

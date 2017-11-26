@@ -50,6 +50,5 @@ namespace MauMau.Classes.Background
                     break;
             }
         }
-
     }
 }

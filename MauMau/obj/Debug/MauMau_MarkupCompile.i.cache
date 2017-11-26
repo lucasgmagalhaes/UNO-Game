@@ -9,12 +9,19 @@ MauMau
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\Main\App.xaml
 7-1273408028
 122585331
 411897933232
+=======
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\Main\App.xaml
+71310392693
+122585331
+41-939119992
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
 13738642453
-Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Pages\GamePlay.xaml;Pages\Start.xaml;Templates\ButtonStyle.xaml;Visual Objects\Carta.xaml;Windows\Log.xaml;
+Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Pages\GamePlay.xaml;Pages\Start.xaml;Templates\ButtonStyle.xaml;Visual Objects\Carta.xaml;Windows\ScreenLog.xaml;
 
-True
+False
 

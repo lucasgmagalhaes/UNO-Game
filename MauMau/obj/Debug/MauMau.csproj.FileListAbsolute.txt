@@ -148,5 +148,10 @@ C:\Users\Lucax\Desktop\MauMau\obj\Debug\MauMau.exe
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\MauMau.pdb
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\Windows\Log.g.cs
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\Windows\Log.baml
+<<<<<<< HEAD
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Windows\Log.g.cs
 C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\Windows\Log.baml
+=======
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\obj\Debug\Windows\ScreenLog.g.cs
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\obj\Debug\Windows\ScreenLog.baml
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
