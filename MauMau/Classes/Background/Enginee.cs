@@ -10,6 +10,8 @@ namespace MauMau.Classes.Background
 {
     class Enginee
     {
+        double screenSizeX, screenSizeY;
+
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
@@ -85,7 +87,10 @@ namespace MauMau.Classes.Background
         public UIElement MonteUI { get { return this.monteUI; } }
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
-            //Não mude a ordem de iniciação desses elementos. A troca pode acarretar em falhas no programa
+            this.screenSizeY = System.Windows.SystemParameters.PrimaryScreenHeight;
+            this.screenSizeX = System.Windows.SystemParameters.PrimaryScreenWidth;
+
+            //Não mude a ordem de iniciação desses elementos. A troca pode acarretar graves consequências físicas ao culpado.
             this.enviroment = env;
             this.monteUI = monteUI;
             this.element_colapse = colapse;
@@ -109,6 +114,9 @@ namespace MauMau.Classes.Background
             this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
             this.DisableMoveIconsPlayers();
+
+            this.PosicionarUltimaCartaJogada();
+            this.PosicionarMonteUI();
 
             this.AlignIconsPlayers();
             this.evento = new Evento(this);
@@ -184,53 +192,67 @@ namespace MauMau.Classes.Background
                 this.AlignCardsToHand(pl);
             }
         }
+
+        private void PosicionarUltimaCartaJogada()
+        {
+            Canvas.SetLeft(this.element_colapse, this.screenSizeX / 2 + 40);
+            Canvas.SetTop(this.element_colapse, this.screenSizeY / 2 - 114);
+        }
+
+        private void PosicionarMonteUI()
+        {
+            Canvas.SetLeft(this.monteUI, this.screenSizeX / 2 - 115);
+            Canvas.SetTop(this.monteUI, this.screenSizeY / 2 - 114);
+        }
+
         /// <summary>
         /// Alinha a posição das cartas na mão dos jogadores
         /// </summary>
         public void AlignCardsToHand(Player pl)
         {
+            // Auxiliares criadas para não alterar valores das variáveis com os valores originais.
+            double auxX, auxY;
+
+            auxY = screenSizeY;
+            auxX = screenSizeX;
+
             if (pl.Position == Enum.PlayerPosition.Left)
             {
-                double X = System.Windows.SystemParameters.PrimaryScreenHeight / 2;
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, 15);
-                    Canvas.SetTop(card.ElementUI, X);
-                    X += 30;
+                    Canvas.SetTop(card.ElementUI, auxY/2);
+                    auxY += 50;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Right)
             {
-                double Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 114;
-                double X = System.Windows.SystemParameters.PrimaryScreenWidth - 15;
-
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, Y);
-                    Y += 30;
+                    Canvas.SetLeft(card.ElementUI, auxX-15);
+                    Canvas.SetTop(card.ElementUI, auxY/2-114);
+                    auxY += 50;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Top)
             {
-                int X = 621;
+                
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, X);
+                    Canvas.SetLeft(card.ElementUI, auxX/2);
                     Canvas.SetTop(card.ElementUI, 206);
-                    X += 40;
+                    auxX += 50;
                 }
             }
             else
             {
-                int X = 501;
                 double Y = System.Windows.SystemParameters.PrimaryScreenHeight - 15;
 
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, X);
-                    Canvas.SetTop(card.ElementUI, Y - 225);
-                    X += 40;
+                    Canvas.SetLeft(card.ElementUI, auxX/2-114);
+                    Canvas.SetTop(card.ElementUI, auxY - 235);
+                    auxX += 50;
                 }
             }
         }
