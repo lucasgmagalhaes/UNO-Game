@@ -44,7 +44,7 @@ namespace MauMau.Classes.Background
             Carta auxcard = this.eng.Monte.RemoveTopCard();
             this.anim.RotateToHand(auxcard, this.player_destiny);
 
-            this.anim.MontToHand(auxcard.ElementUI);
+            this.anim.MontToHand(auxcard.ElementUI, this.player_destiny);
             this.player_destiny.AddCardToHand(auxcard);
         }
         /// <summary>
@@ -52,7 +52,8 @@ namespace MauMau.Classes.Background
         /// </summary>
         private void LoadPlayerInfos()
         {
-            this.player_destiny = this.eng.Roda.GetNextPlayerInOrder();
+            //this.player_destiny = this.eng.Roda.GetNextPlayerInOrder();
+            this.player_destiny = this.eng.Roda.GetPlayerByPosition(PlayerPosition.Bottom);
         }
         /// <summary>
         /// Método auxílio que definirá quantas cartas serão compradas, chamando o método real de compra de cartas

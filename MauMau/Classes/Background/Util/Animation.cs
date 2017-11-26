@@ -1,5 +1,5 @@
-﻿
-using MauMau.Classes.Background.Enum;
+﻿using MauMau.Classes.Background.Enum;
+using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +15,11 @@ namespace MauMau.Classes.Background.Util
         private DoubleAnimation moveAnimX = new DoubleAnimation();
         private DoubleAnimation rotateAnimation = new DoubleAnimation();
         private RotateTransform rotateAngle = new RotateTransform();
+
+        private int leftCardPointCount = 30;
+        private int topCardPointCount = 30;
+        private int rightCardPointCount = 30;
+        private int bottomCardPointCount = 30;
 
         private DoubleAnimation interanimation1 = new DoubleAnimation();
         private DoubleAnimation interanimation2 = new DoubleAnimation();
@@ -144,31 +149,31 @@ namespace MauMau.Classes.Background.Util
             optionyellow = yellow;
         }
 
-        private double GetCardX()
+        private double GetCardX(Player who)
         {
-            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
-            return Canvas.GetLeft(auxplayer.GetLastCard().ElementUI);
+            Carta aux = who.GetLastCard();
+            return Canvas.GetLeft(aux.ElementUI);
         }
 
-        private double GetCardY()
+        private double GetCardY(Player who)
         {
-            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
-            Carta aux = auxplayer.GetLastCard();
+            Carta aux = who.GetLastCard();
             return Canvas.GetTop(aux.ElementUI);
         }
         /// <summary>
         /// Cria a animação da carta indo do 'monte' até a mão do jogador
         /// </summary>
         /// <param name="elementfrom"></param>
-        public void MontToHand(UIElement elementfrom)
+        public void MontToHand(UIElement elementfrom, Player who)
         {
             Canvas.SetLeft(elementfrom, Canvas.GetLeft(this.mont));
             Canvas.SetTop(elementfrom, Canvas.GetTop(this.mont));
 
             this.container.Children.Add(elementfrom);
 
-            double X = this.GetCardX();
-            double Y = this.GetCardY();
+            double X = this.GetCardX(who);
+            double Y = this.GetCardY(who);
+            this.ConvertCoordnatesToValueRight(ref X, ref Y, who.Position);
 
             this.moveAnimY.From = Canvas.GetTop(elementfrom);
             this.moveAnimY.To = Y;
@@ -178,8 +183,45 @@ namespace MauMau.Classes.Background.Util
             this.moveAnimX.To = X;
             this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(animationTime));
 
+            this.moveAnimY.FillBehavior = FillBehavior.Stop;
+            this.moveAnimX.FillBehavior = FillBehavior.Stop;
+
             elementfrom.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
             elementfrom.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
+
+            Canvas.SetLeft(elementfrom, X);
+            Canvas.SetTop(elementfrom, Y);
+
+
+        }
+        private void ConvertCoordnatesToValueRight(ref double X, ref double Y, PlayerPosition destiny)
+        {
+            double auxX = this.motor.ScreenSizeX;
+            double auxY = this.motor.ScreenSizeY;
+
+            switch (destiny)
+            {
+                case PlayerPosition.Bottom:
+                    X = 700+ this.bottomCardPointCount;
+                    Y = auxY - 233;
+                    this.bottomCardPointCount += 30;
+                    break;
+                case PlayerPosition.Left:
+                    X = 50;
+                    Y = 380 + this.leftCardPointCount;
+                    this.leftCardPointCount += 30;
+                    break;
+                case PlayerPosition.Right:
+                    X = auxX - 161;
+                    Y = 380 + this.rightCardPointCount;
+                    this.rightCardPointCount += 30;
+                    break;
+                case PlayerPosition.Top:
+                    X = 710 + this.topCardPointCount;
+                    Y = 26;
+                    this.topCardPointCount += 30;
+                    break;
+            }
         }
         /// <summary>
         /// Cria a animação da carta rodando até o angulo correspondente ao da posição do jogador no jogo

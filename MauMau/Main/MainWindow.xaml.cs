@@ -34,6 +34,7 @@ namespace MauMau
         private Enginee eng;
         public static int count = -90;
         private UIElement next;
+        private Evento evento;
         //Variáveis usadas para voltar o elemento para a antiga posição
         private double backupleft;
         private double backuptop;
@@ -43,7 +44,7 @@ namespace MauMau
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.eng = new Enginee(this.played, this.root, this.Mont);
-
+            this.evento = new Evento(this.eng);
             moveAnimX.Completed += MoveAnimX_Completed;
         }
 
@@ -198,13 +199,18 @@ namespace MauMau
             {
                 if (this.eng.GetCurrentPlayer().GetHand().Count > 1)
                 {
+                    Carta card = this.eng.GetCardFromUI(this.eng.GetCurrentPlayer(), element);
                     if (eng.ValidatePlay(element))
                     {
                         eng.ColapseElement(element);
                         Canvas.SetZIndex(element, count++);
+                        this.eng.RealignCards();                     
                         element = null;
-                        this.eng.RealignCards();
-                        this.eng.EndTurn();
+                        if (card != null)
+                        {
+                            this.evento.EventAtivado(card);
+                        }
+                        //this.eng.EndTurn();
                     }
                     else
                     {
@@ -318,5 +324,6 @@ namespace MauMau
                 current.AddCardToHand(getcard);
             }
         }
+
     }
 }

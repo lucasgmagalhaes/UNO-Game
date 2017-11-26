@@ -14,6 +14,9 @@ namespace MauMau.Classes.Background.Estruturas
         private int count;
         private int actualIndexPosition = -1;
         public int Count { get { return this.count; } }
+        /// <summary>
+        /// Retorna o elemento referente ao ponteiro
+        /// </summary>
         public object Current
         {
             get
@@ -223,6 +226,9 @@ namespace MauMau.Classes.Background.Estruturas
             {
                 this.val = val;
             }
+            /// <summary>
+            /// Pega o elemento atual
+            /// </summary>
             public object Current
             {
                 get
@@ -230,13 +236,18 @@ namespace MauMau.Classes.Background.Estruturas
                     return this.val[indexactual];
                 }
             }
-
+            /// <summary>
+            /// Move para o proximo elemento da lista
+            /// </summary>
+            /// <returns></returns>
             public bool MoveNext()
             {
                 indexactual++;
                 return (indexactual < this.val.count);
             }
-
+            /// <summary>
+            /// Reseta o ponteiro de posição
+            /// </summary>
             public void Reset()
             {
                 indexactual = -1;
@@ -305,6 +316,9 @@ namespace MauMau.Classes.Background.Estruturas
             this.RefactoreIndex();
             return (T)auxret.GetDado();
         }
+        /// <summary>
+        /// Reajusta os indeces dos elementos da lista
+        /// </summary>
         private void RefactoreIndex()
         {
             Elemento aux = this.prim;
@@ -386,23 +400,41 @@ namespace MauMau.Classes.Background.Estruturas
                 }
             }
         }
-
+        /// <summary>
+        /// Verifica se ocorrerá uma exceção do tipo IndexOutOfRangeException
+        /// </summary>
+        /// <param name="forsearch"></param>
         private void TreatIndexException(int forsearch)
         {
             if (forsearch < 0 || forsearch > this.count) throw new IndexOutOfRangeException();
         }
-
+        /// <summary>
+        /// Verifica se ocorrerá uma exceção do tipo NullReferenceException
+        /// </summary>
+        /// <param name="el"></param>
         private void TreatElementException(Elemento el)
         {
             Elemento aux;
             if (el == null) throw new ArgumentNullException();
             else if ((aux = GetElementOnList(el.GetDado())) == null) throw new NullReferenceException();
         }
+        /// <summary>
+        /// Verifica se ocorrerá uma exceção do tipo NullReferenceException
+        /// </summary>
+        /// <param name="obj"></param>
         private void TreatElementException(object obj)
         {
             Elemento aux;
             if (obj == null) throw new ArgumentNullException();
             else if ((aux = this.GetElementOnList(obj)) == null) throw new NullReferenceException();
+        }
+        /// <summary>
+        /// Retorna o elemento na ultima posição da lista
+        /// </summary>
+        /// <returns></returns>
+        public T GetElementInLastIndex()
+        {
+            return (T)this.GetByIndex(this.count);
         }
     }
 }
