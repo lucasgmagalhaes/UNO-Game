@@ -320,7 +320,7 @@ namespace MauMau
         {
             if(e.Key == Key.L)
             {
-                Log log = new Log();
+                ScreenLog log = new ScreenLog();
                 log.Show();
             }
         }

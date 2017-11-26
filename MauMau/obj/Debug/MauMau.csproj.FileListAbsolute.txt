@@ -148,3 +148,5 @@ C:\Users\Lucax\Desktop\MauMau\obj\Debug\MauMau.exe
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\MauMau.pdb
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\Windows\Log.g.cs
 C:\Users\Lucax\Desktop\MauMau\obj\Debug\Windows\Log.baml
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\obj\Debug\Windows\ScreenLog.g.cs
+C:\Users\Lucax\source\repos\UNO-Game\MauMau\obj\Debug\Windows\ScreenLog.baml

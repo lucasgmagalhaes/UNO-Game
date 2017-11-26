@@ -86,8 +86,8 @@
     <Compile Include="Visual Objects\Carta.xaml.cs">
       <DependentUpon>Carta.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Log.xaml.cs">
-      <DependentUpon>Log.xaml</DependentUpon>
+    <Compile Include="Windows\ScreenLog.xaml.cs">
+      <DependentUpon>ScreenLog.xaml</DependentUpon>
     </Compile>
     <Page Include="Dependency\BitmapImages.xaml">
       <SubType>Designer</SubType>
@@ -127,7 +127,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Log.xaml">
+    <Page Include="Windows\ScreenLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

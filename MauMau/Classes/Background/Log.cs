@@ -19,6 +19,5 @@ namespace MauMau.Classes.Background
         {
             
         }
-
     }
 }

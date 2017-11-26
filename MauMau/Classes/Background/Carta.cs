@@ -30,7 +30,7 @@ namespace MauMau.Classes.Background
             this.elementUI.RadiusY = 10;
             this.elementUI.Height = 180;
             this.elementUI.Width = 114;
-            this.elementUI.Name = ;
+            this.elementUI.Name = "newcard";
             this.elementUI.Uid = id;
         }
         public string GetID()
