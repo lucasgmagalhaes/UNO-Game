@@ -10,14 +10,17 @@ namespace MauMau.Classes.Background
     {
         static List<String> listaEventos = new List<string>();
 
-        public static List<string> ListaEventos { get => listaEventos; set => listaEventos = value; }
+        public static List<String> ListaEventos { get => listaEventos; set => listaEventos = value; }
 
         /// <summary>
-        /// Método que será chamado sempre que um novo evento acontecer durante o jogo.
+        /// Chamado sempre que uma carta for jogada.
         /// </summary>
-        static public void AdicionarEvento(string jogadorAtual, string cartaJogada, DateTime tempoJogada)
+        static public AtualizarUltimaCartaJogada(Carta card)
         {
-            
+            switch (card)
+            {
+                case card.ElementUI.
+            }
         }
 
     }
