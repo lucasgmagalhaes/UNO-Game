@@ -1,4 +1,5 @@
-﻿using MauMau.Classes.Background.Enum;
+﻿
+using MauMau.Classes.Background.Enum;
 using System;
 using System.Windows;
 using System.Windows.Controls;

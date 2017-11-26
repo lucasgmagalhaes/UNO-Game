@@ -95,9 +95,13 @@ namespace MauMau.Classes.Background
             this.monteUI = monteUI;
             this.element_colapse = colapse;
 
+            this.PosicionarMonteUI();
+            this.PosicionarUltimaCartaJogada();
+
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
             this.LoadImage();
+
 
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
@@ -114,9 +118,6 @@ namespace MauMau.Classes.Background
             this.descarte = new Coletor(GetValidCard());
             this.AddColetorCardOnInterface();
             this.DisableMoveIconsPlayers();
-
-            this.PosicionarUltimaCartaJogada();
-            this.PosicionarMonteUI();
 
             this.AlignIconsPlayers();
             this.evento = new Evento(this);
@@ -221,8 +222,8 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, 15);
-                    Canvas.SetTop(card.ElementUI, auxY/2);
-                    auxY += 50;
+                    Canvas.SetTop(card.ElementUI, auxY/2-100);
+                    auxY += 80;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Right)
@@ -230,8 +231,8 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, auxX-15);
-                    Canvas.SetTop(card.ElementUI, auxY/2-114);
-                    auxY += 50;
+                    Canvas.SetTop(card.ElementUI, auxY/2-214);
+                    auxY += 80;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Top)
@@ -239,9 +240,9 @@ namespace MauMau.Classes.Background
                 
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, auxX/2);
+                    Canvas.SetLeft(card.ElementUI, auxX/2-54);
                     Canvas.SetTop(card.ElementUI, 206);
-                    auxX += 50;
+                    auxX += 80;
                 }
             }
             else
@@ -250,9 +251,9 @@ namespace MauMau.Classes.Background
 
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, auxX/2-114);
+                    Canvas.SetLeft(card.ElementUI, auxX/2-164);
                     Canvas.SetTop(card.ElementUI, auxY - 235);
-                    auxX += 50;
+                    auxX += 80;
                 }
             }
         }
@@ -271,47 +272,40 @@ namespace MauMau.Classes.Background
         /// </summary>
         public void AlignIconsPlayers()
         {
-            double X = 0;
-            double Y = 0;
+            // Auxiliares criadas para não alterar valores das variáveis com os valores originais.
+            double auxX, auxY;
+
+            auxX = screenSizeX;
+            auxY = screenSizeY;
 
             for (int i = 0; i < this.players.Count; i++)
             {
                 switch (this.players[i].Position)
                 {
                     case Enum.PlayerPosition.Left:
-                        Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 225;
-                        X = 18;
 
-                        Canvas.SetLeft(this.players[0].Infos.ElementUI, X);
-                        Canvas.SetTop(this.players[0].Infos.ElementUI, Y);
+                        Canvas.SetLeft(this.players[0].Infos.ElementUI, 75);
+                        Canvas.SetTop(this.players[0].Infos.ElementUI, (auxY/2)-300);
 
                         break;
 
                     case Enum.PlayerPosition.Right:
 
-                        X = (System.Windows.SystemParameters.PrimaryScreenWidth) - 80;
-                        Y = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - 225;
-
-                        Canvas.SetLeft(this.players[1].Infos.ElementUI, X);
-                        Canvas.SetTop(this.players[1].Infos.ElementUI, Y);
+                        Canvas.SetLeft(this.players[1].Infos.ElementUI, auxX - 132);
+                        Canvas.SetTop(this.players[1].Infos.ElementUI, (auxY / 2) - 300);
                         break;
 
                     case Enum.PlayerPosition.Top:
 
-                        X = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - 245;
-                        Y = 30;
-
-                        Canvas.SetLeft(this.players[2].Infos.ElementUI, X);
-                        Canvas.SetTop(this.players[2].Infos.ElementUI, Y);
+                        Canvas.SetLeft(this.players[2].Infos.ElementUI, (auxX/2)-255);
+                        Canvas.SetTop(this.players[2].Infos.ElementUI, 80);
 
                         break;
 
                     default:
-                        X = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - 250;
-                        Y = System.Windows.SystemParameters.PrimaryScreenHeight - 115;
 
-                        Canvas.SetLeft(this.players[3].Infos.ElementUI, X);
-                        Canvas.SetTop(this.players[3].Infos.ElementUI, Y);
+                        Canvas.SetLeft(this.players[3].Infos.ElementUI, (auxX/2)-250);
+                        Canvas.SetTop(this.players[3].Infos.ElementUI, auxY-115);
                         break;
                 }
             }
