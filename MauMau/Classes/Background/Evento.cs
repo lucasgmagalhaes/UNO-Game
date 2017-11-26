@@ -161,7 +161,10 @@ namespace MauMau.Classes.Background
             else if (cardJogada is Coringa) //coringa troca cor
             {
                 Coringa aux = (Coringa)cardJogada;
-                this.anim.ShowPaletColors();
+                if (this.eng.GetCurrentPlayer().Position == PlayerPosition.Bottom)
+                {
+                    this.anim.ShowPaletColors();
+                }
                 switch (aux.Efeito)
                 {
                     case Efeito.MudarCor:

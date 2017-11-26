@@ -35,5 +35,11 @@ namespace MauMau.Classes.Background.Cartas
             }
             else return true;
         }
+
+        public override bool Compatible(ICompatible card, Cor color)
+        {
+            if (color == 0 || color == this.cor) return true;
+            return false;
+        }
     }
 }

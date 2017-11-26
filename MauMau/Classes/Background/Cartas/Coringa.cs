@@ -24,5 +24,10 @@ namespace MauMau.Classes.Background.Cartas
         {
             return true;
         }
+
+        public override bool Compatible(ICompatible card, Cor color)
+        {
+            return true;
+        }
     }
 }

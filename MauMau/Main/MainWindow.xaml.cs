@@ -9,6 +9,7 @@ using MauMau.Classes.Background;
 using System.Threading;
 using MauMau.Windows;
 using MauMau.Classes.Background.Util;
+using MauMau.Classes.Background.Enum;
 
 namespace MauMau
 {
@@ -335,25 +336,30 @@ namespace MauMau
                 log.Show();
             }
         }
+        private void SetColor(Cor color)
+        {
+            this.eng.ColorChosen = color;
 
+            this.eng.EndTurn();
+        }
         private void selectyellow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            this.SetColor(Cor.Amarelo);
         }
 
         private void selectblue_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            this.SetColor(Cor.Azul);
         }
 
         private void selectgreen_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            this.SetColor(Cor.Verde);
         }
 
         private void selectred_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            this.SetColor(Cor.Vermelho);
         }
     }
 }
