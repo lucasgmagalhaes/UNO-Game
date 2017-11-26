@@ -134,10 +134,11 @@ namespace MauMau.Classes.Background
             }
         }
         /// <summary>
-        /// Faz o evento conforme carta jogada 
+        /// Faz o evento conforme carta jogada.
+        /// Retorna false caso a carta jogada for do tipo Curinga
         /// </summary>
         /// <param name="cardJogada"></param>
-        public void EventAtivado(Carta cardJogada)
+        public bool EventAtivado(Carta cardJogada)
         {
             if (cardJogada is Especial)
             {
@@ -155,20 +156,22 @@ namespace MauMau.Classes.Background
                         this.Inverter();
                         break;
                 }
+                return true;
             }
             else if (cardJogada is Coringa) //coringa troca cor
             {
                 Coringa aux = (Coringa)cardJogada;
+                this.anim.ShowPaletColors();
                 switch (aux.Efeito)
                 {
                     case Efeito.MudarCor:
-
                         break;
                     case Efeito.MudarCorEComprar4:
                         Comprar(4);
                         break;
                 }
             }
+            return false;
         }
     }
 }

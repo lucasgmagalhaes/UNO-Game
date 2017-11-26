@@ -8,6 +8,8 @@ using System.Windows.Shapes;
 using MauMau.Classes.Background;
 using System.Threading;
 using MauMau.Windows;
+using MauMau.Classes.Background.Util;
+
 namespace MauMau
 {
     /// <summary>
@@ -18,6 +20,11 @@ namespace MauMau
         public MainWindow()
         {
             InitializeComponent();
+
+            this.selectblue.Opacity = 0;
+            this.selectgreen.Opacity = 0;
+            this.selectred.Opacity = 0;
+            this.selectyellow.Opacity = 0;
         }
 
         private Point mousePosition = new Point();
@@ -36,6 +43,7 @@ namespace MauMau
         {
             this.eng = new Enginee(this.played, this.root, this.Mont);
             this.evento = new Evento(this.eng);
+            Animation.SetColorOptionEllipses(this.selectred, this.selectgreen, this.selectblue, this.selectyellow);
             moveAnimX.Completed += MoveAnimX_Completed;
         }
 
@@ -199,9 +207,11 @@ namespace MauMau
                         element = null;
                         if (card != null)
                         {
-                            this.evento.EventAtivado(card);
-                        }
-                        this.eng.EndTurn();
+                            if (this.evento.EventAtivado(card))
+                            {
+                                this.eng.EndTurn();
+                            }
+                        } 
                     }
                     else
                     {
@@ -323,6 +333,26 @@ namespace MauMau
                 ScreenLog log = new ScreenLog();
                 log.Show();
             }
+        }
+
+        private void selectyellow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void selectblue_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void selectgreen_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void selectred_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -21,15 +21,15 @@ namespace MauMau.Classes.Background.Util
         private int rightCardPointCount = 30;
         private int bottomCardPointCount = 30;
 
-        private DoubleAnimation interanimation1 = new DoubleAnimation();
-        private DoubleAnimation interanimation2 = new DoubleAnimation();
-        private DoubleAnimation interanimation3 = new DoubleAnimation();
-        private DoubleAnimation interanimation4 = new DoubleAnimation();
-
         private static Ellipse optionred;
         private static Ellipse optionyellow;
         private static Ellipse optionblue;
         private static Ellipse optiongreen;
+
+        private bool optionredIsVisible;
+        private bool optionyellowIsVisible;
+        private bool optionblueIsVisible;
+        private bool optiongreenIsVisible;
 
         private Canvas container;
         private double animationTime = 100;
@@ -46,60 +46,37 @@ namespace MauMau.Classes.Background.Util
 
         private void Init()
         {
-            this.interanimation1.Completed += Interanimation1_Completed;
-            this.interanimation2.Completed += Interanimation2_Completed;
-            this.interanimation3.Completed += Interanimation3_Completed;
-            this.interanimation4.Completed += Interanimation4_Completed;
+            this.moveAnimY.Completed += MoveAnimY_Completed;
         }
 
-        private void ShowColorOptions()
+        private void MoveAnimY_Completed(object sender, EventArgs e)
         {
-            this.interanimation1.From = this.interanimation2.From = this.interanimation3.From = this.interanimation4.From = 0;
-            this.interanimation1.To = this.interanimation2.To = this.interanimation3.To = this.interanimation4.To = 300;
-
-            this.interanimation1.Duration = this.interanimation2.Duration = this.interanimation3.Duration = this.interanimation4.Duration = new Duration(TimeSpan.FromMilliseconds(optionColorTimer));
+            if (!optionyellowIsVisible)
+            {
+                this.ShowEllipeColor(optionyellow);
+                this.optionyellowIsVisible = true;
+            }
+            else if (!optionblueIsVisible)
+            {
+                this.ShowEllipeColor(optionblue);
+                this.optionblueIsVisible = true;
+            }
+            else if (!optiongreenIsVisible)
+            {
+                this.ShowEllipeColor(optiongreen);
+                this.optiongreenIsVisible = true;
+            }
+            else if (!optionredIsVisible)
+            {
+                this.ShowEllipeColor(optionred);
+                this.optionredIsVisible = true;
+            }
         }
 
-        private void ShowYellow()
+        public void ShowPaletColors()
         {
-            optionyellow.BeginAnimation(Canvas.TopProperty, this.interanimation1);
+            this.ShowEllipeColor(optionyellow);
         }
-
-        private void ShowBlue()
-        {
-            optionblue.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
-        }
-
-        private void ShowGreen()
-        {
-            optiongreen.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
-        }
-
-        private void ShowRed()
-        {
-            optionred.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
-        }
-
-        private void Interanimation4_Completed(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Interanimation3_Completed(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Interanimation2_Completed(object sender, EventArgs e)
-        {
-            this.ShowGreen();
-        }
-
-        private void Interanimation1_Completed(object sender, EventArgs e)
-        {
-            this.ShowBlue();
-        }
-
         public Animation(Canvas container)
         {
             this.container = container;
@@ -191,8 +168,22 @@ namespace MauMau.Classes.Background.Util
 
             Canvas.SetLeft(elementfrom, X);
             Canvas.SetTop(elementfrom, Y);
+        }
+        private void ShowEllipeColor(UIElement elipse)
+        {
+            double auxY = this.motor.ScreenSizeY;
+            auxY = auxY - 300;
+            elipse.Opacity = 1;
+            Canvas.SetZIndex(elipse, 10);
+            this.moveAnimY.From = Canvas.GetTop(elipse);
+            this.moveAnimY.To = auxY;
+            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(300));
 
+            this.moveAnimY.FillBehavior = FillBehavior.Stop;
 
+            elipse.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
+
+            Canvas.SetTop(elipse, auxY);
         }
         private void ConvertCoordnatesToValueRight(ref double X, ref double Y, PlayerPosition destiny)
         {

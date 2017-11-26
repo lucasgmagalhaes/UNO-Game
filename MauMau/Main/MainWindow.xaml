@@ -30,16 +30,17 @@
                         </Rectangle.Fill>
                     </Rectangle>
                     <Rectangle x:Name="played" Canvas.Left="720" Canvas.Top="246"  Canvas.ZIndex="-100"  RadiusY="10" RadiusX="10" Stroke="White" Height="180" Width="114"/>
-                    <Ellipse x:Name="btnUNO" Height="80" Cursor="Hand" Canvas.Left="907" Stroke="Black" Canvas.Top="607" Width="80" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
+                    <Ellipse x:Name="btnUNO" Height="68" Cursor="Hand" Canvas.Left="914" Stroke="Black" Canvas.Top="607" Width="73" MouseLeftButtonDown="btnUNO_MouseLeftButtonDown">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="../Images/outras/uno_Button.jpg" Stretch="Fill" />
                         </Ellipse.Fill>
                     </Ellipse>
                     <Ellipse x:Name="blockplayedborder" Fill="#FFF4F4F5" Opacity=".0" Panel.ZIndex="10" Height="249" Canvas.Left="691" Stroke="Transparent" Canvas.Top="214" Width="173" MouseEnter="blockplayedborder_MouseEnter"/>
-                    <Ellipse x:Name="selectyellow" Fill="#FFAA01" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="406" Canvas.Top="654"/>
-                    <Ellipse x:Name="selectblue" Fill="#5455FF" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="516" Canvas.Top="654"/>
-                    <Ellipse x:Name="selectgreen" Fill="#55AA55" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="616" Canvas.Top="654"/>
-                    <Ellipse x:Name="selectred" Fill="#FF5454" HorizontalAlignment="Left" Height="82" Stroke="Transparent" VerticalAlignment="Top" Width="84" Canvas.Left="716" Canvas.Top="654"/>
+                    
+                    <Ellipse x:Name="selectyellow" Fill="#FFAA01" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="421" Canvas.Top="676" MouseLeftButtonDown="selectyellow_MouseLeftButtonDown"/>
+                    <Ellipse x:Name="selectblue" Fill="#5455FF" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="516" Canvas.Top="676" MouseLeftButtonDown="selectblue_MouseLeftButtonDown"/>
+                    <Ellipse x:Name="selectgreen" Fill="#55AA55" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="616" Canvas.Top="676" MouseLeftButtonDown="selectgreen_MouseLeftButtonDown"/>
+                    <Ellipse x:Name="selectred" Fill="#FF5454" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="706" Canvas.Top="676" MouseLeftButtonDown="selectred_MouseLeftButtonDown"/>
                 </Canvas>
             </Grid>
         </Grid>
