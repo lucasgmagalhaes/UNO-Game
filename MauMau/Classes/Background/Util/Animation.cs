@@ -1,5 +1,4 @@
 ﻿using MauMau.Classes.Background.Enum;
-using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +11,7 @@ namespace MauMau.Classes.Background.Util
     class Animation
     {
         private DoubleAnimation moveAnimY = new DoubleAnimation();
+        private DoubleAnimation moveAnimYHideEllipse = new DoubleAnimation();
         private DoubleAnimation moveAnimX = new DoubleAnimation();
         private DoubleAnimation rotateAnimation = new DoubleAnimation();
         private RotateTransform rotateAngle = new RotateTransform();
@@ -26,10 +26,15 @@ namespace MauMau.Classes.Background.Util
         private static Ellipse optionblue;
         private static Ellipse optiongreen;
 
-        private bool optionredIsVisible;
-        private bool optionyellowIsVisible;
-        private bool optionblueIsVisible;
-        private bool optiongreenIsVisible;
+        private static bool optionredVisiblefalse;
+        private static bool optionyellowVisiblefalse;
+        private static bool optionblueVisiblefalse;
+        private static bool optiongreenVisiblefalse;
+
+        private static bool optionredVisibletrue = true;
+        private static bool optionyellowVisibletrue = true;
+        private static bool optionblueVisibletrue = true;
+        private static bool optiongreenVisibletrue = true;
 
         private Canvas container;
         private double animationTime = 100;
@@ -45,36 +50,7 @@ namespace MauMau.Classes.Background.Util
         private void Init()
         {
             this.moveAnimY.Completed += MoveAnimY_Completed;
-        }
-
-        private void MoveAnimY_Completed(object sender, EventArgs e)
-        {
-            if (!optionyellowIsVisible)
-            {
-                this.ShowEllipeColor(optionyellow);
-                this.optionyellowIsVisible = true;
-            }
-            else if (!optionblueIsVisible)
-            {
-                this.ShowEllipeColor(optionblue);
-                this.optionblueIsVisible = true;
-            }
-            else if (!optiongreenIsVisible)
-            {
-                this.ShowEllipeColor(optiongreen);
-                this.optiongreenIsVisible = true;
-            }
-            else if (!optionredIsVisible)
-            {
-                this.ShowEllipeColor(optionred);
-                this.optionredIsVisible = true;
-            }
-        }
-
-        public Animation(Canvas container)
-        {
-            this.container = container;
-            this.Init();
+            this.moveAnimYHideEllipse.Completed += MoveAnimYHideEllipse_Completed;
         }
 
         public Animation(Enginee motor)
@@ -110,6 +86,67 @@ namespace MauMau.Classes.Background.Util
         public Animation(double timer)
         {
             this.animationTime = timer;
+        }
+
+        private void MoveAnimYHideEllipse_Completed(object sender, EventArgs e)
+        {
+            if (optionyellowVisibletrue)
+            {
+                this.HideEllipseColors(optionyellow);
+                optionyellowVisibletrue = false;
+            }
+            else if (optionblueVisibletrue)
+            {
+                this.HideEllipseColors(optionblue);
+                optionblueVisibletrue = false;
+            }
+            else if (optiongreenVisibletrue)
+            {
+                this.HideEllipseColors(optiongreen);
+                optiongreenVisibletrue = false;
+            }
+            else if (optionredVisibletrue)
+            {
+                this.HideEllipseColors(optionred);
+                optionredVisibletrue = false;
+            }
+        }
+
+        private void MoveAnimY_Completed(object sender, EventArgs e)
+        {
+            if (!optionyellowVisiblefalse)
+            {
+                this.ShowEllipeColor(optionyellow);
+                optionyellowVisiblefalse = true;
+            }
+            else if (!optionblueVisiblefalse)
+            {
+                this.ShowEllipeColor(optionblue);
+                optionblueVisiblefalse = true;
+            }
+            else if (!optiongreenVisiblefalse)
+            {
+                this.ShowEllipeColor(optiongreen);
+                optiongreenVisiblefalse = true;
+            }
+            else if (!optionredVisiblefalse)
+            {
+                this.ShowEllipeColor(optionred);
+                optionredVisiblefalse = true;
+            }
+        }
+        private void ResetTRUEvariablesToTRUE()
+        {
+            optionblueVisibletrue = optiongreenVisibletrue = optionredVisibletrue = optionyellowVisibletrue = true;
+        }
+        private void ResetFALSEvariablesToFALSE()
+        {
+            optionblueVisiblefalse = optionredVisiblefalse = optionyellowVisiblefalse = optiongreenVisiblefalse = false;
+        }
+        public Animation(Canvas container)
+        {
+            this.container = container;
+            this.Init();
         }
 
         public static void SetColorOptionEllipses(Ellipse red, Ellipse green, Ellipse blue, Ellipse yellow)
@@ -176,13 +213,13 @@ namespace MauMau.Classes.Background.Util
             double auxY = this.motor.ScreenSizeY;
             elipse.Opacity = 1;
             Canvas.SetZIndex(elipse, 0);
-            this.moveAnimY.From = Canvas.GetTop(elipse);
-            this.moveAnimY.To = auxY;
-            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+            this.moveAnimYHideEllipse.From = Canvas.GetTop(elipse);
+            this.moveAnimYHideEllipse.To = auxY;
+            this.moveAnimYHideEllipse.Duration = new Duration(TimeSpan.FromMilliseconds(300));
 
-            this.moveAnimY.FillBehavior = FillBehavior.Stop;
+            this.moveAnimYHideEllipse.FillBehavior = FillBehavior.Stop;
 
-            elipse.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
+            elipse.BeginAnimation(Canvas.TopProperty, this.moveAnimYHideEllipse);
 
             Canvas.SetTop(elipse, auxY);
         }

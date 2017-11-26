@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MauMau.Classes.Background.Cartas;
 
 namespace MauMau.Classes.Background
@@ -10,7 +7,7 @@ namespace MauMau.Classes.Background
     static class Log
     {
         static int aux;
-        static List<String> listaEventos = new List<string>();
+        static List<String> listaEventos = new List<String>();
 
         public static List<String> ListaEventos { get => listaEventos; set => listaEventos = value; }
 

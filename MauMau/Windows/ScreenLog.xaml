@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:MauMau.Windows"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
-        Title="Log de operações" Height="358.131" Width="287.543" KeyDown="Window_KeyDown">
+        Title="Log de operações" Height="358.131" Width="317.284" KeyDown="Window_KeyDown">
     <Grid>
-        <ListBox x:Name="logfield" HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="280" Margin="0,31,0,0">
+        <ListBox x:Name="logfield" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,31,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
@@ -21,7 +21,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="btnlogclear" Content="Limpar log" HorizontalAlignment="Left" Margin="195,6,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="btnlogclear_Click" />
-
+        <Button x:Name="btnlogclear" Content="Limpar log" HorizontalAlignment="Stretch"  Margin="224,6,10,0" VerticalAlignment="Top" Cursor="Hand" Click="btnlogclear_Click" />
     </Grid>
 </Window>
