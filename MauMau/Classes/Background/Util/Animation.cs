@@ -175,7 +175,7 @@ namespace MauMau.Classes.Background.Util
         {
             double auxY = this.motor.ScreenSizeY;
             elipse.Opacity = 1;
-            Canvas.SetZIndex(elipse, 10);
+            Canvas.SetZIndex(elipse, 0);
             this.moveAnimY.From = Canvas.GetTop(elipse);
             this.moveAnimY.To = auxY;
             this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(300));
