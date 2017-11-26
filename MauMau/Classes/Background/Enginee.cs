@@ -1,4 +1,5 @@
 ﻿using MauMau.Classes.Background.Cartas;
+using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Linq;
@@ -67,7 +68,6 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Define se as cartas dos bots serão ou não exibidas
         /// </summary>
-        private bool isplayerturn;
         public bool ShowBotCards
         {
             get { return this.showBotCards; }
@@ -78,7 +78,8 @@ namespace MauMau.Classes.Background
                 else HideBOTCards();
             }
         }
-
+        private bool isplayerturn;
+        private Cor colorChosen;
         public Monte Monte { get { return this.monte; } }
         public UIElement Element_colapse { get { return this.element_colapse; } }
         public Canvas Enviroment { get { return this.enviroment; } }
@@ -89,6 +90,21 @@ namespace MauMau.Classes.Background
         public UIElement MonteUI { get { return this.monteUI; } }
         public double ScreenSizeX { get { return this.screenSizeX; } }
         public double ScreenSizeY { get { return this.screenSizeY; } }
+        public bool IsPlayerTurn
+        {
+            get
+            {
+                if (this.GetCurrentPlayer().Position == PlayerPosition.Bottom)
+                {
+                    return this.isplayerturn = true;
+                }
+                else
+                {
+                    return this.isplayerturn = false;
+                }
+            }
+        }
+        public Cor ColorChosen { get { return this.colorChosen; } set { this.colorChosen = value; } }
 
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
@@ -106,7 +122,6 @@ namespace MauMau.Classes.Background
             this.players = new Lista<Player>();
             this.allprofiles = new Lista<Profile>();
             this.LoadImage();
-
 
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
@@ -152,10 +167,10 @@ namespace MauMau.Classes.Background
                 aux[3] = ran.Next(0, this.allprofiles.Count - 1);
             }
 
-            players.Add(new Bot(allprofiles[aux[0]], this, Enum.PlayerPosition.Top));
-            players.Add(new Bot(allprofiles[aux[1]], this, Enum.PlayerPosition.Right));
-            players.Add(new Player(allprofiles[aux[2]], Enum.PlayerPosition.Bottom));
-            players.Add(new Bot(allprofiles[aux[3]], this, Enum.PlayerPosition.Left));
+            players.Add(new Bot(allprofiles[aux[0]], this, PlayerPosition.Top));
+            players.Add(new Bot(allprofiles[aux[1]], this, PlayerPosition.Right));
+            players.Add(new Player(allprofiles[aux[2]], PlayerPosition.Bottom));
+            players.Add(new Bot(allprofiles[aux[3]], this, PlayerPosition.Left));
         }
         public Player GetMainPlayer()
         {
@@ -227,7 +242,7 @@ namespace MauMau.Classes.Background
                 foreach (Carta card in pl.Hand)
                 {
                     Canvas.SetLeft(card.ElementUI, 15);
-                    Canvas.SetTop(card.ElementUI, auxY/2-100);
+                    Canvas.SetTop(card.ElementUI, auxY / 2 - 100);
                     auxY += 80;
                 }
             }
@@ -235,17 +250,17 @@ namespace MauMau.Classes.Background
             {
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, auxX-15);
-                    Canvas.SetTop(card.ElementUI, auxY/2-214);
+                    Canvas.SetLeft(card.ElementUI, auxX - 15);
+                    Canvas.SetTop(card.ElementUI, auxY / 2 - 214);
                     auxY += 80;
                 }
             }
             else if (pl.Position == Enum.PlayerPosition.Top)
             {
-                
+
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, auxX/2-54);
+                    Canvas.SetLeft(card.ElementUI, auxX / 2 - 54);
                     Canvas.SetTop(card.ElementUI, 206);
                     auxX += 80;
                 }
@@ -256,7 +271,7 @@ namespace MauMau.Classes.Background
 
                 foreach (Carta card in pl.Hand)
                 {
-                    Canvas.SetLeft(card.ElementUI, auxX/2-164);
+                    Canvas.SetLeft(card.ElementUI, auxX / 2 - 164);
                     Canvas.SetTop(card.ElementUI, auxY - 235);
                     auxX += 80;
                 }
@@ -283,34 +298,32 @@ namespace MauMau.Classes.Background
             auxX = screenSizeX;
             auxY = screenSizeY;
 
-            for (int i = 0; i < this.players.Count; i++)
+            foreach(Player player in this.players)
             {
-                switch (this.players[i].Position)
+                switch (player.Position)
                 {
-                    case Enum.PlayerPosition.Left:
+                    case PlayerPosition.Left:
 
-                        Canvas.SetLeft(this.players[0].Infos.ElementUI, 75);
-                        Canvas.SetTop(this.players[0].Infos.ElementUI, (auxY/2)-300);
-
+                        Canvas.SetLeft(player.Infos.ElementUI, 75);
+                        Canvas.SetTop(player.Infos.ElementUI, (auxY / 2) - 300);
                         break;
 
-                    case Enum.PlayerPosition.Right:
+                    case PlayerPosition.Right:
 
-                        Canvas.SetLeft(this.players[1].Infos.ElementUI, auxX - 132);
-                        Canvas.SetTop(this.players[1].Infos.ElementUI, (auxY / 2) - 300);
+                        Canvas.SetLeft(player.Infos.ElementUI, auxX - 132);
+                        Canvas.SetTop(player.Infos.ElementUI, (auxY / 2) - 300);
                         break;
 
-                    case Enum.PlayerPosition.Top:
+                    case PlayerPosition.Top:
 
-                        Canvas.SetLeft(this.players[2].Infos.ElementUI, (auxX/2)-255);
-                        Canvas.SetTop(this.players[2].Infos.ElementUI, 80);
-
+                        Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 255);
+                        Canvas.SetTop(player.Infos.ElementUI, 80);
                         break;
 
-                    default:
+                    case PlayerPosition.Bottom:
 
-                        Canvas.SetLeft(this.players[3].Infos.ElementUI, (auxX/2)-250);
-                        Canvas.SetTop(this.players[3].Infos.ElementUI, auxY-115);
+                        Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 250);
+                        Canvas.SetTop(player.Infos.ElementUI, auxY - 115);
                         break;
                 }
             }
@@ -506,7 +519,7 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         public Carta GetCardFromUI(Player pl, UIElement card)
         {
-            foreach(Carta cd in pl.Hand)
+            foreach (Carta cd in pl.Hand)
             {
                 if (card == cd.ElementUI) return cd;
             }
@@ -519,7 +532,7 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         public Carta GetCardFromUI(UIElement card)
         {
-            foreach(Carta cd in this.players[0].Hand)
+            foreach (Carta cd in this.players[0].Hand)
             {
                 if (cd.ElementUI == card) return cd;
             }
@@ -552,9 +565,10 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    if (aux.Compatible(card))
+                    if (aux.Compatible(card, this.colorChosen))
                     {
                         PlayCard(card);
+                        this.colorChosen = 0;
                         return true;
                     }
                 }

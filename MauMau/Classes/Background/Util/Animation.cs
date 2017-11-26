@@ -42,8 +42,6 @@ namespace MauMau.Classes.Background.Util
         public DoubleAnimation RotateAnimation { get { return this.rotateAnimation; } }
         public RotateTransform RotateAngle { get { return this.rotateAngle; } }
 
-        private double optionColorTimer = 200;
-
         private void Init()
         {
             this.moveAnimY.Completed += MoveAnimY_Completed;
@@ -73,10 +71,6 @@ namespace MauMau.Classes.Background.Util
             }
         }
 
-        public void ShowPaletColors()
-        {
-            this.ShowEllipeColor(optionyellow);
-        }
         public Animation(Canvas container)
         {
             this.container = container;
@@ -168,6 +162,29 @@ namespace MauMau.Classes.Background.Util
 
             Canvas.SetLeft(elementfrom, X);
             Canvas.SetTop(elementfrom, Y);
+        }
+        public void ShowPaletColors()
+        {
+            this.ShowEllipeColor(optionyellow);
+        }
+        public void HidePaletColors()
+        {
+            this.HideEllipseColors(optionyellow);
+        }
+        private void HideEllipseColors(UIElement elipse)
+        {
+            double auxY = this.motor.ScreenSizeY;
+            elipse.Opacity = 1;
+            Canvas.SetZIndex(elipse, 0);
+            this.moveAnimY.From = Canvas.GetTop(elipse);
+            this.moveAnimY.To = auxY;
+            this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+
+            this.moveAnimY.FillBehavior = FillBehavior.Stop;
+
+            elipse.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
+
+            Canvas.SetTop(elipse, auxY);
         }
         private void ShowEllipeColor(UIElement elipse)
         {

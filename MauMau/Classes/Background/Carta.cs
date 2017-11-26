@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background
 {
@@ -38,5 +39,7 @@ namespace MauMau.Classes.Background
             return this.elementUI.Uid;
         }
         public abstract bool Compatible(ICompatible card);
+
+        public abstract bool Compatible(ICompatible card, Cor color);
     }
 }
