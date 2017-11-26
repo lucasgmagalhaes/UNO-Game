@@ -14,7 +14,7 @@ namespace MauMau.Classes.Background
         {
             this.jogadores = jogadores;
             current = jogadores[2];
-            sentido = SentidoJogada.Horario; // independentemente vai começar sentido horario só troca com o andar do jogo
+            sentido = SentidoJogada.AntiHorario; // independentemente vai começar sentido horario só troca com o andar do jogo
         }
         /// <summary>
         /// Pega o jogador da vez

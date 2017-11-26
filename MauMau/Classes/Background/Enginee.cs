@@ -123,7 +123,6 @@ namespace MauMau.Classes.Background
             this.allprofiles = new Lista<Profile>();
             this.LoadImage();
 
-
             this.SetRandomPlayersProfile();
             this.baralho = new Baralho();
             this.baralho.Embaralhar();
@@ -168,10 +167,10 @@ namespace MauMau.Classes.Background
                 aux[3] = ran.Next(0, this.allprofiles.Count - 1);
             }
 
-            players.Add(new Bot(allprofiles[aux[0]], this, Enum.PlayerPosition.Top));
-            players.Add(new Bot(allprofiles[aux[1]], this, Enum.PlayerPosition.Right));
-            players.Add(new Player(allprofiles[aux[2]], Enum.PlayerPosition.Bottom));
-            players.Add(new Bot(allprofiles[aux[3]], this, Enum.PlayerPosition.Left));
+            players.Add(new Bot(allprofiles[aux[0]], this, PlayerPosition.Top));
+            players.Add(new Bot(allprofiles[aux[1]], this, PlayerPosition.Right));
+            players.Add(new Player(allprofiles[aux[2]], PlayerPosition.Bottom));
+            players.Add(new Bot(allprofiles[aux[3]], this, PlayerPosition.Left));
         }
         public Player GetMainPlayer()
         {
@@ -299,34 +298,32 @@ namespace MauMau.Classes.Background
             auxX = screenSizeX;
             auxY = screenSizeY;
 
-            for (int i = 0; i < this.players.Count; i++)
+            foreach(Player player in this.players)
             {
-                switch (this.players[i].Position)
+                switch (player.Position)
                 {
-                    case Enum.PlayerPosition.Left:
+                    case PlayerPosition.Left:
 
-                        Canvas.SetLeft(this.players[0].Infos.ElementUI, 75);
-                        Canvas.SetTop(this.players[0].Infos.ElementUI, (auxY / 2) - 300);
-
+                        Canvas.SetLeft(player.Infos.ElementUI, 75);
+                        Canvas.SetTop(player.Infos.ElementUI, (auxY / 2) - 300);
                         break;
 
-                    case Enum.PlayerPosition.Right:
+                    case PlayerPosition.Right:
 
-                        Canvas.SetLeft(this.players[1].Infos.ElementUI, auxX - 132);
-                        Canvas.SetTop(this.players[1].Infos.ElementUI, (auxY / 2) - 300);
+                        Canvas.SetLeft(player.Infos.ElementUI, auxX - 132);
+                        Canvas.SetTop(player.Infos.ElementUI, (auxY / 2) - 300);
                         break;
 
-                    case Enum.PlayerPosition.Top:
+                    case PlayerPosition.Top:
 
-                        Canvas.SetLeft(this.players[2].Infos.ElementUI, (auxX / 2) - 255);
-                        Canvas.SetTop(this.players[2].Infos.ElementUI, 80);
-
+                        Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 255);
+                        Canvas.SetTop(player.Infos.ElementUI, 80);
                         break;
 
-                    default:
+                    case PlayerPosition.Bottom:
 
-                        Canvas.SetLeft(this.players[3].Infos.ElementUI, (auxX / 2) - 250);
-                        Canvas.SetTop(this.players[3].Infos.ElementUI, auxY - 115);
+                        Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 250);
+                        Canvas.SetTop(player.Infos.ElementUI, auxY - 115);
                         break;
                 }
             }
