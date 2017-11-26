@@ -407,7 +407,12 @@ namespace MauMau.Classes.Background
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
 
+<<<<<<< HEAD
+            Log.AdicionarEvento(current);
+            Log.AdicionarEvento(carta_jogada);
+=======
             //Log.AdicionarEvento(current.Infos.Name, carta_jogada.FrontImage.
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
         }
         /// <summary>
         /// Não usado atualmente

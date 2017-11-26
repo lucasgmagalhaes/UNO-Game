@@ -331,8 +331,13 @@ namespace MauMau
         {
             if(e.Key == Key.L)
             {
+<<<<<<< HEAD
+                //Log log = new Log();
+                //log.Show();
+=======
                 ScreenLog log = new ScreenLog();
                 log.Show();
+>>>>>>> 499330b7d153226bb29602d6dfdb7cb207bb3dc2
             }
         }
 
