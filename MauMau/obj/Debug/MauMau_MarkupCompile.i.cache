@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\obj\Debug\
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\obj\Debug\
 MauMau
 none
 false
 DEBUG;TRACE
-C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\Main\App.xaml
+C:\Users\Home\Documents\GitHub\UNO-Game\MauMau\Main\App.xaml
 6-667120323
 122585331
-391099652547
+40432753677
 13738642453
 Dependency\BitmapImages.xaml;Main\MainWindow.xaml;Pages\GamePlay.xaml;Pages\Start.xaml;Templates\ButtonStyle.xaml;Visual Objects\Carta.xaml;
 
-False
+True
 

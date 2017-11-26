@@ -210,7 +210,7 @@ namespace MauMau
                         {
                             this.evento.EventAtivado(card);
                         }
-                        //this.eng.EndTurn();
+                        this.eng.EndTurn();
                     }
                     else
                     {

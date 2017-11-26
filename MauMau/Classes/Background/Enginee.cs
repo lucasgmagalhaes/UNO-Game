@@ -405,6 +405,8 @@ namespace MauMau.Classes.Background
             Carta carta_jogada = current.PlayCard(card);
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
+
+            Log.AdicionarEvento(current.Infos.Name, carta_jogada.FrontImage.
         }
         /// <summary>
         /// Não usado atualmente
@@ -549,8 +551,7 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    if(true)
-                    //if (aux.Compatible(card))
+                    if (aux.Compatible(card))
                     {
                         PlayCard(card);
                         return true;
