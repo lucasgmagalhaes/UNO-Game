@@ -549,8 +549,7 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    if(true)
-                    //if (aux.Compatible(card))
+                    if (aux.Compatible(card))
                     {
                         PlayCard(card);
                         return true;

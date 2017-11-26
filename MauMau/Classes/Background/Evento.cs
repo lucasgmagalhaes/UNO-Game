@@ -52,8 +52,8 @@ namespace MauMau.Classes.Background
         /// </summary>
         private void LoadPlayerInfos()
         {
-            //this.player_destiny = this.eng.Roda.GetNextPlayerInOrder();
-            this.player_destiny = this.eng.Roda.GetPlayerByPosition(PlayerPosition.Bottom);
+            this.player_destiny = this.eng.Roda.GetNextPlayerInOrder();
+            //this.player_destiny = this.eng.Roda.GetPlayerByPosition(PlayerPosition.Bottom);
         }
         /// <summary>
         /// Método auxílio que definirá quantas cartas serão compradas, chamando o método real de compra de cartas
