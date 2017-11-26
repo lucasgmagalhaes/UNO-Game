@@ -71,6 +71,7 @@
     <Compile Include="Classes\Background\Interfaces\ICompatible.cs" />
     <Compile Include="Classes\Background\Cartas\Normal.cs" />
     <Compile Include="Classes\Background\Coletor.cs" />
+    <Compile Include="Classes\Background\Log.cs" />
     <Compile Include="Classes\Background\Monte.cs" />
     <Compile Include="Classes\Background\Turno.cs" />
     <Compile Include="Classes\Background\Util\Animation.cs" />
