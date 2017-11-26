@@ -210,7 +210,7 @@ namespace MauMau
                         {
                             this.evento.EventAtivado(card);
                         }
-                        this.eng.EndTurn();
+                        //this.eng.EndTurn();
                     }
                     else
                     {
@@ -324,5 +324,6 @@ namespace MauMau
                 current.AddCardToHand(getcard);
             }
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MauMau.Classes.Background.Enum;
+using MauMau.Classes.Background.Estruturas;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,11 @@ namespace MauMau.Classes.Background.Util
         private DoubleAnimation moveAnimX = new DoubleAnimation();
         private DoubleAnimation rotateAnimation = new DoubleAnimation();
         private RotateTransform rotateAngle = new RotateTransform();
+
+        private int leftCardPointCount = 30;
+        private int topCardPointCount = 30;
+        private int rightCardPointCount = 30;
+        private int bottomCardPointCount = 30;
 
         private DoubleAnimation interanimation1 = new DoubleAnimation();
         private DoubleAnimation interanimation2 = new DoubleAnimation();
@@ -167,7 +173,7 @@ namespace MauMau.Classes.Background.Util
 
             double X = this.GetCardX(who);
             double Y = this.GetCardY(who);
-            this.ConvertCoordnatesToValueRight(ref X, ref Y, this.GetPlayerPosition());
+            this.ConvertCoordnatesToValueRight(ref X, ref Y, who.Position);
 
             this.moveAnimY.From = Canvas.GetTop(elementfrom);
             this.moveAnimY.To = Y;
@@ -177,27 +183,43 @@ namespace MauMau.Classes.Background.Util
             this.moveAnimX.To = X;
             this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(animationTime));
 
+            this.moveAnimY.FillBehavior = FillBehavior.Stop;
+            this.moveAnimX.FillBehavior = FillBehavior.Stop;
+
             elementfrom.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
             elementfrom.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
-        }
-        private PlayerPosition GetPlayerPosition()
-        {
-            Player auxplayer = this.motor.Roda.GetNextPlayerInOrder();
-            return auxplayer.Position;
+
+            Canvas.SetLeft(elementfrom, X);
+            Canvas.SetTop(elementfrom, Y);
+
+
         }
         private void ConvertCoordnatesToValueRight(ref double X, ref double Y, PlayerPosition destiny)
         {
+            double auxX = this.motor.ScreenSizeX;
+            double auxY = this.motor.ScreenSizeY;
+
             switch (destiny)
             {
-                case PlayerPosition.Bottom:                   
+                case PlayerPosition.Bottom:
+                    X = 700+ this.bottomCardPointCount;
+                    Y = auxY - 233;
+                    this.bottomCardPointCount += 30;
                     break;
                 case PlayerPosition.Left:
                     X = 50;
-                    Y = 450;
+                    Y = 380 + this.leftCardPointCount;
+                    this.leftCardPointCount += 30;
                     break;
                 case PlayerPosition.Right:
+                    X = auxX - 161;
+                    Y = 380 + this.rightCardPointCount;
+                    this.rightCardPointCount += 30;
                     break;
                 case PlayerPosition.Top:
+                    X = 710 + this.topCardPointCount;
+                    Y = 26;
+                    this.topCardPointCount += 30;
                     break;
             }
         }

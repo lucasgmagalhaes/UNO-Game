@@ -10,8 +10,8 @@ namespace MauMau.Classes.Background
 {
     class Enginee
     {
-        double screenSizeX, screenSizeY;
-
+        double screenSizeX;
+        double screenSizeY;
         /// <summary>
         /// Lista com todos os jogadores
         /// </summary>
@@ -77,6 +77,7 @@ namespace MauMau.Classes.Background
                 else HideBOTCards();
             }
         }
+
         public Monte Monte { get { return this.monte; } }
         public UIElement Element_colapse { get { return this.element_colapse; } }
         public Canvas Enviroment { get { return this.enviroment; } }
@@ -85,6 +86,8 @@ namespace MauMau.Classes.Background
         public Baralho Baralho { get { return this.baralho; } }
         public Coletor Descarte { get { return this.descarte; } }
         public UIElement MonteUI { get { return this.monteUI; } }
+        public double ScreenSizeX { get { return this.screenSizeX; } }
+        public double ScreenSizeY { get { return this.screenSizeY; } }
 
         public Enginee(UIElement colapse, Canvas env, UIElement monteUI)
         {
@@ -406,7 +409,7 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
-            //this.evento.EventAtivado(carta_jogada);
+            this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
         }
         /// <summary>
@@ -498,6 +501,12 @@ namespace MauMau.Classes.Background
                 }
             }
         }
+        /// <summary>
+        /// Retorna a carta recebendo um UI element e um player no qual deve conter a carta
+        /// </summary>
+        /// <param name="pl"></param>
+        /// <param name="card"></param>
+        /// <returns></returns>
         public Carta GetCardFromUI(Player pl, UIElement card)
         {
             foreach(Carta cd in pl.Hand)
@@ -506,6 +515,36 @@ namespace MauMau.Classes.Background
             }
             return null;
         }
+        /// <summary>
+        /// Procura pelo UIElement nas mãos dos jogadores, se algum deles conte-la, tal carta será retornada
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
+        public Carta GetCardFromUI(UIElement card)
+        {
+            foreach(Carta cd in this.players[0].Hand)
+            {
+                if (cd.ElementUI == card) return cd;
+            }
+            foreach (Carta cd in this.players[1].Hand)
+            {
+                if (cd.ElementUI == card) return cd;
+            }
+            foreach (Carta cd in this.players[2].Hand)
+            {
+                if (cd.ElementUI == card) return cd;
+            }
+            foreach (Carta cd in this.players[3].Hand)
+            {
+                if (cd.ElementUI == card) return cd;
+            }
+            return null;
+        }
+        /// <summary>
+        /// Valida a jogada
+        /// </summary>
+        /// <param name="played"></param>
+        /// <returns></returns>
         public bool ValidatePlay(UIElement played)
         {
             Player auxplayer = this.GetCurrentPlayer();

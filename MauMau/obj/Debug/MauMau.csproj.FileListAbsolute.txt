@@ -99,7 +99,6 @@ C:\Users\Lucax\Documents\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyR
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\bin\Debug\MauMau.exe.config
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\bin\Debug\MauMau.exe
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\bin\Debug\MauMau.pdb
-C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\obj\Debug\MauMau.csprojResolveAssemblyReference.cache
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\obj\Debug\Main\MainWindow.g.cs
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\obj\Debug\Pages\GamePlay.g.cs
 C:\Users\Lucax\Source\Repos\UNO-Game\MauMau\obj\Debug\Pages\Start.g.cs

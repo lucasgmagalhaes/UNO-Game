@@ -1,10 +1,5 @@
 ﻿using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MauMau.Classes.Background
 {
@@ -80,6 +75,14 @@ namespace MauMau.Classes.Background
                     current = jogadores[jogadores.GetIndexOf(current) - 1];
                 }
             }
+        }
+        public Player GetPlayerByPosition(PlayerPosition pos)
+        {
+           foreach(Player pl in this.jogadores)
+            {
+                if (pl.Position == pos) return pl;
+            }
+            return null;
         }
         /// <summary>
         /// Retorna quem irá jogar no próximo turno
