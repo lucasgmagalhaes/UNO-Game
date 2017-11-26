@@ -323,7 +323,7 @@ namespace MauMau.Classes.Background
                     case PlayerPosition.Bottom:
 
                         Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 250);
-                        Canvas.SetTop(player.Infos.ElementUI, auxY - 115);
+                        Canvas.SetTop(player.Infos.ElementUI, auxY - 170);
                         break;
                 }
             }
@@ -420,7 +420,7 @@ namespace MauMau.Classes.Background
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
 
-            //Log.AdicionarEvento(current.Infos.Name, carta_jogada.FrontImage.
+            Log.AdicionarEvento(current, carta_jogada);
         }
         /// <summary>
         /// Não usado atualmente
