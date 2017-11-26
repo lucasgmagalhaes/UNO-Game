@@ -67,6 +67,7 @@ namespace MauMau.Classes.Background
         /// <summary>
         /// Define se as cartas dos bots serão ou não exibidas
         /// </summary>
+        private bool isplayerturn;
         public bool ShowBotCards
         {
             get { return this.showBotCards; }

@@ -211,6 +211,7 @@ namespace MauMau
                             {
                                 this.eng.EndTurn();
                             }
+
                         } 
                     }
                     else
