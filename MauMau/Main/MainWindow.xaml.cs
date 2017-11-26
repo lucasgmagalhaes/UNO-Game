@@ -39,6 +39,7 @@ namespace MauMau
         private double backuptop;
         private DoubleAnimation moveAnimY = new DoubleAnimation();
         private DoubleAnimation moveAnimX = new DoubleAnimation();
+        private Animation anim;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -46,6 +47,7 @@ namespace MauMau
             this.evento = new Evento(this.eng);
             Animation.SetColorOptionEllipses(this.selectred, this.selectgreen, this.selectblue, this.selectyellow);
             moveAnimX.Completed += MoveAnimX_Completed;
+            this.anim = new Animation(this.eng);
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -339,7 +341,7 @@ namespace MauMau
         private void SetColor(Cor color)
         {
             this.eng.ColorChosen = color;
-
+            this.anim.HidePaletColors();
             this.eng.EndTurn();
         }
         private void selectyellow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

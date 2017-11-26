@@ -9,5 +9,5 @@
         Amarelo = 2,
         Vermelho = 3,
         Verde = 4
-    };
+    }
 }

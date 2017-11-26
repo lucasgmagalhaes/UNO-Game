@@ -29,12 +29,18 @@ namespace MauMau.Classes.Background.Cartas
             if (card is Normal)
             {
                 Normal aux = (Normal)card;
-                if (aux.Cor == this.cor || aux.numero == this.numero) return true;
+                if (aux.Cor == this.cor || aux.numero == this.numero)
+                {
+                    return true;
+                }
             }
             else if (card is Especial)
             {
                 Especial aux = (Especial)card;
-                if (this.cor == aux.Cor) return true;
+                if (this.cor == aux.Cor)
+                {
+                    return true;
+                }
             }
             else return true;
             return false;
@@ -45,14 +51,26 @@ namespace MauMau.Classes.Background.Cartas
             if (card is Normal)
             {
                 Normal auxN = (Normal)card;
-                if (color == 0 && this.cor == auxN.Cor || this.numero == auxN.numero) return true;
-                else if (auxN.Cor == color) return true;
+                if (color == 0 && this.cor == auxN.Cor || this.numero == auxN.numero)
+                {
+                    return true;
+                }
+                else if (auxN.Cor == color)
+                {
+                    return true;
+                }
             }
             else if (card is Especial)
             {
                 Especial auxE = (Especial)card;
-                if (color == 0 && this.cor == auxE.Cor) return true;
-                else if (auxE.Cor == color) return true;
+                if (color == 0 && this.cor == auxE.Cor)
+                {
+                    return true;
+                }
+                else if (auxE.Cor == color)
+                {
+                    return true;
+                }
             }
             else return true;
             return false;

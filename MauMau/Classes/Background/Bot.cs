@@ -113,11 +113,12 @@ namespace MauMau.Classes.Background
             //prioridade Normal(menor numero) > especial
             foreach (Carta cardMao in this.hand)
             {
-                if (cardMao.Compatible(cdTop, this.eng.ColorChosen))
+                if (cdTop.Compatible(cardMao, this.eng.ColorChosen))
                 {
                     listaaux.Add(cardMao);
                 }
             }
+            this.eng.ColorChosen = 0;
             if (listaaux.Count > 1)
             {
                 foreach (Carta card in listaaux)
