@@ -16,7 +16,7 @@
         <Grid x:Name="secondgrid">
             <Grid Margin="0,-24,0,0">
                 <Canvas x:Name="root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,-10">
-                    <Rectangle x:Name="Mont" Canvas.Left="468" Canvas.Top="246" RadiusX="10"  Stroke="White" RadiusY="10" Height="180" Width="114" MouseLeftButtonDown="Mont_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle x:Name="Mont" Cursor="Hand" Canvas.Left="468" Canvas.Top="246" RadiusX="10"  Stroke="White" RadiusY="10" Height="180" Width="114" MouseLeftButtonDown="Mont_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -40,7 +40,7 @@
                     <Ellipse x:Name="selectyellow" Fill="#FFAA01" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="421" Canvas.Top="676" MouseLeftButtonDown="selectyellow_MouseLeftButtonDown"/>
                     <Ellipse x:Name="selectblue" Fill="#5455FF" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="516" Canvas.Top="676" MouseLeftButtonDown="selectblue_MouseLeftButtonDown"/>
                     <Ellipse x:Name="selectgreen" Fill="#55AA55" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="616" Canvas.Top="676" MouseLeftButtonDown="selectgreen_MouseLeftButtonDown"/>
-                    <Ellipse x:Name="selectred" Fill="#FF5454" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="706" Canvas.Top="676" MouseLeftButtonDown="selectred_MouseLeftButtonDown"/>
+                    <Ellipse x:Name="selectred" Fill="#FF5454" HorizontalAlignment="Left" Height="60" Stroke="Transparent" VerticalAlignment="Top" Width="65" Canvas.Left="706" Canvas.Top="676" MouseLeftButtonDown="Selectred_MouseLeftButtonDown"/>
                 </Canvas>
             </Grid>
         </Grid>

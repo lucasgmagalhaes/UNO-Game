@@ -68,16 +68,13 @@ namespace MauMau
         {
             var mouseWasDownOn = e.Source as FrameworkElement;
 
-            if (mouseWasDownOn != null)
+            if (this.CanElementMove(mouseWasDownOn))
             {
-                if (mouseWasDownOn is Rectangle && mouseWasDownOn.IsEnabled)
-                {
-                    this.element = mouseWasDownOn;
-                    this.CreatePositionBackup(element);
-                    mousePosition = e.GetPosition(this);
-                    this.element.CaptureMouse();
-                    Canvas.SetZIndex(element, 3);
-                }
+                this.element = mouseWasDownOn;
+                this.CreatePositionBackup(element);
+                mousePosition = e.GetPosition(this);
+                this.element.CaptureMouse();
+                Canvas.SetZIndex(element, 3);
                 //else element = null;
             }
         }
@@ -85,45 +82,42 @@ namespace MauMau
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mouseon = e.OriginalSource as FrameworkElement;
-            if (mouseon != null && mouseon.Name != "btnUNO")
+            this.element = mouseon as UIElement;
+            if (this.CanElementMove(this.element))
             {
-                this.element = mouseon as UIElement;
-                if (this.element.IsEnabled && mouseon is Rectangle)
+                this.CreatePositionBackup(this.element);
+                if (this.eng.ValidatePlay(element))
                 {
-                    this.CreatePositionBackup(this.element);
-                    if (this.eng.ValidatePlay(element))
+                    this.moveAnimY.From = Canvas.GetTop(element);
+                    this.moveAnimY.To = Canvas.GetTop(this.played);
+                    this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
+                    this.moveAnimX.From = Canvas.GetLeft(element);
+                    this.moveAnimX.To = Canvas.GetLeft(this.played);
+                    this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
+
+                    this.moveAnimX.FillBehavior = FillBehavior.Stop;
+                    this.moveAnimY.FillBehavior = FillBehavior.Stop;
+
+                    this.element.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
+                    this.element.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
+
+                    Canvas.SetLeft(this.element, Canvas.GetLeft(this.played));
+                    Canvas.SetTop(this.element, Canvas.GetTop(this.played));
+
+                    if (next != null) //Cambiarra :(
                     {
-                        this.moveAnimY.From = Canvas.GetTop(element);
-                        this.moveAnimY.To = Canvas.GetTop(this.played);
-                        this.moveAnimY.Duration = new Duration(TimeSpan.FromMilliseconds(100));
-
-                        this.moveAnimX.From = Canvas.GetLeft(element);
-                        this.moveAnimX.To = Canvas.GetLeft(this.played);
-                        this.moveAnimX.Duration = new Duration(TimeSpan.FromMilliseconds(100));
-
-                        this.moveAnimX.FillBehavior = FillBehavior.Stop;
-                        this.moveAnimY.FillBehavior = FillBehavior.Stop;
-
-                        this.element.BeginAnimation(Canvas.TopProperty, this.moveAnimY);
-                        this.element.BeginAnimation(Canvas.LeftProperty, this.moveAnimX);
-
-                        Canvas.SetLeft(this.element, Canvas.GetLeft(this.played));
-                        Canvas.SetTop(this.element, Canvas.GetTop(this.played));
-
-                        if (next != null) //Cambiarra :(
-                        {
-                            Thread.Sleep(100);
-                            this.next.Visibility = Visibility.Collapsed;
-                        }
-                        if (eng.GetCurrentPlayer().Hand.Count == 0)
-                        {
-                            MessageBox.Show("VOCÊ GANHOU!!");
-                        }
+                        Thread.Sleep(100);
+                        this.next.Visibility = Visibility.Collapsed;
                     }
-                    else
+                    if (eng.GetCurrentPlayer().Hand.Count == 0)
                     {
-                        this.BackCardToHand(element);
+                        MessageBox.Show("VOCÊ GANHOU!!");
                     }
+                }
+                else
+                {
+                    this.BackCardToHand(element);
                 }
             }
         }
@@ -132,7 +126,7 @@ namespace MauMau
             if (this.element != null)
             {
                 this.element.ReleaseMouseCapture();
-                if (this.element != null)
+                if (this.CanElementMove(this.element))
                 {
                     Canvas.SetZIndex(element, 0);
                     if (this.backupleft != Canvas.GetLeft(this.element) || this.backuptop != Canvas.GetTop(this.element))
@@ -206,7 +200,7 @@ namespace MauMau
                     {
                         eng.ColapseElement(element);
                         Canvas.SetZIndex(element, count++);
-                        this.eng.RealignCards();                     
+                        this.eng.RealignCards();
                         element = null;
                         if (card != null)
                         {
@@ -214,7 +208,7 @@ namespace MauMau
                             {
                                 this.eng.EndTurn();
                             }
-                        } 
+                        }
                     }
                     else
                     {
@@ -331,7 +325,7 @@ namespace MauMau
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.L)
+            if (e.Key == Key.L)
             {
                 ScreenLog log = new ScreenLog(this.eng);
                 log.Show();
@@ -358,9 +352,22 @@ namespace MauMau
             this.SetColor(Cor.Verde);
         }
 
-        private void selectred_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Selectred_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.SetColor(Cor.Vermelho);
+        }
+        /// <summary>
+        /// Verifica se um Elemento pode ser movido
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private bool CanElementMove(UIElement element)
+        {
+            if (element is Rectangle && element.IsEnabled && (element as FrameworkElement).Name != "Mont")
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

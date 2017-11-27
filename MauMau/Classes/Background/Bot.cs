@@ -78,6 +78,26 @@ namespace MauMau.Classes.Background
             SetProfile(infos);
         }
         /// <summary>
+        /// Construtor do BOT sem as cartas da mão definidas
+        /// </summary>
+        /// <param name="infos"></param>
+        /// <param name="eng"></param>
+        /// <param name="position"></param>
+        public Bot(Profile infos, Enginee eng, PlayerPosition position) : base(infos, position)
+        {
+            this.eng = eng;
+            this.ambiente = this.eng.Enviroment;
+            this.SetHand(new Lista<Carta>());
+            SetProfile(infos);
+            this.moveAnimX = new DoubleAnimation();
+            this.moveAnimY = new DoubleAnimation();
+            this.moveAnimX.Completed += MoveAnimX_Completed;
+
+            this.moveAnimX2 = new DoubleAnimation();
+            this.moveAnimY2 = new DoubleAnimation();
+            this.moveAnimX2.Completed += MoveAnimX2_Completed;
+        }
+        /// <summary>
         /// Retorna a cor mais abundande na mão
         /// </summary>
         /// <returns></returns>
@@ -92,22 +112,26 @@ namespace MauMau.Classes.Background
 
             int countaux;
             Cor auxcor = 0;
-            foreach (Carta card in base.hand)
-            {                
-                if(!(card is Coringa))
+            foreach (Carta card in base.hand)//Varre a mão contando a quantidade de cartas de cada cor que possui
+            {
+                if (!(card is Coringa))
                 {
-                    if(card is Normal)
+                    if (card is Normal)
                     {
                         Normal aux = (Normal)card;
                         switch (aux.Cor)
                         {
-                            case Cor.Amarelo: auxcor = Cor.Amarelo;
+                            case Cor.Amarelo:
+                                auxcor = Cor.Amarelo;
                                 break;
-                            case Cor.Azul: auxcor = Cor.Azul;
+                            case Cor.Azul:
+                                auxcor = Cor.Azul;
                                 break;
-                            case Cor.Verde: auxcor = Cor.Verde;
+                            case Cor.Verde:
+                                auxcor = Cor.Verde;
                                 break;
-                            case Cor.Vermelho: auxcor = Cor.Vermelho;
+                            case Cor.Vermelho:
+                                auxcor = Cor.Vermelho;
                                 break;
                         }
                         quantidade.TryGetValue(auxcor, out countaux);
@@ -142,31 +166,11 @@ namespace MauMau.Classes.Background
                 }
             }
             KeyValuePair<Cor, int> retorno = new KeyValuePair<Cor, int>(Cor.None, int.MinValue);
-            foreach(KeyValuePair<Cor, int> item in quantidade)
+            foreach (KeyValuePair<Cor, int> item in quantidade)
             {
                 if (item.Value > retorno.Value) retorno = item;
             }
             return retorno.Key;
-        }
-        /// <summary>
-        /// Construtor do BOT sem as cartas da mão definidas
-        /// </summary>
-        /// <param name="infos"></param>
-        /// <param name="eng"></param>
-        /// <param name="position"></param>
-        public Bot(Profile infos, Enginee eng, PlayerPosition position) : base(infos, position)
-        {
-            this.eng = eng;
-            this.ambiente = this.eng.Enviroment;
-            this.SetHand(new Lista<Carta>());
-            SetProfile(infos);
-            this.moveAnimX = new DoubleAnimation();
-            this.moveAnimY = new DoubleAnimation();
-            this.moveAnimX.Completed += MoveAnimX_Completed;
-
-            this.moveAnimX2 = new DoubleAnimation();
-            this.moveAnimY2 = new DoubleAnimation();
-            this.moveAnimX2.Completed += MoveAnimX2_Completed;
         }
         /// <summary>
         /// Simula jogadas de um player
@@ -178,6 +182,7 @@ namespace MauMau.Classes.Background
             // pega carta do top do coletor como referencia
             cdTop = this.eng.Descarte.GetTopCard();
             Lista<Carta> listaaux = new Lista<Carta>();
+
             if (this.hand.Count == 1)
             {
                 base.TimeToUNO();

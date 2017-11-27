@@ -1,13 +1,9 @@
 ﻿using MauMau.Classes.Background.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using MauMau.Classes.Background.Enum;
+using System.Windows.Input;
 
 namespace MauMau.Classes.Background
 {
@@ -33,6 +29,7 @@ namespace MauMau.Classes.Background
             this.elementUI.Width = 114;
             this.elementUI.Name = "newcard";
             this.elementUI.Uid = id;
+            this.elementUI.Cursor = Cursors.Hand;
         }
         public string GetID()
         {
