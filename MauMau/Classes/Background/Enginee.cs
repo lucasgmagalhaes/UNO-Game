@@ -323,7 +323,7 @@ namespace MauMau.Classes.Background
                     case PlayerPosition.Bottom:
 
                         Canvas.SetLeft(player.Infos.ElementUI, (auxX / 2) - 250);
-                        Canvas.SetTop(player.Infos.ElementUI, auxY - 115);
+                        Canvas.SetTop(player.Infos.ElementUI, auxY - 170);
                         break;
                 }
             }
@@ -565,7 +565,8 @@ namespace MauMau.Classes.Background
             {
                 if (played.Uid == card.GetID())
                 {
-                    if (aux.Compatible(card, this.colorChosen))
+                    if(true)
+                    //if (aux.Compatible(card, this.colorChosen))
                     {
                         PlayCard(card);
                         this.colorChosen = 0;

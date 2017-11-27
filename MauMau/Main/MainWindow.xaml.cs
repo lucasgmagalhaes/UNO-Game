@@ -210,11 +210,10 @@ namespace MauMau
                         element = null;
                         if (card != null)
                         {
-                            if (this.evento.EventAtivado(card))
+                            if (!this.evento.IsJoker(card))
                             {
                                 this.eng.EndTurn();
                             }
-
                         } 
                     }
                     else

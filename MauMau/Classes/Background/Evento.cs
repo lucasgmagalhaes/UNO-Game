@@ -134,11 +134,31 @@ namespace MauMau.Classes.Background
             }
         }
         /// <summary>
+        /// Verifica se uma carta possui efeito
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
+        public bool HasEfect(Carta card)
+        {
+            if (card is Especial || card is Coringa) return true;
+            else return false;
+        }
+        /// <summary>
+        /// Verifica se a carta é curinga
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
+        public bool IsJoker(Carta card)
+        {
+            if (card is Coringa) return true;
+            return false;
+        }
+        /// <summary>
         /// Faz o evento conforme carta jogada.
         /// Retorna false caso a carta jogada for do tipo Curinga
         /// </summary>
         /// <param name="cardJogada"></param>
-        public bool EventAtivado(Carta cardJogada)
+        public void EventAtivado(Carta cardJogada)
         {
             if (cardJogada is Especial)
             {
@@ -156,7 +176,6 @@ namespace MauMau.Classes.Background
                         this.Inverter();
                         break;
                 }
-                return true;
             }
             else if (cardJogada is Coringa) //coringa troca cor
             {
@@ -173,9 +192,7 @@ namespace MauMau.Classes.Background
                         Comprar(4);
                         break;
                 }
-                return false;
             }
-            return true;
         }
     }
 }
