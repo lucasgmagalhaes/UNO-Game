@@ -419,6 +419,7 @@ namespace MauMau.Classes.Background
             Carta carta_jogada = current.PlayCard(card);
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
+            this.RealignCards();
 
             Log.AddEventoJogarCarta(current, carta_jogada);
         }
@@ -447,6 +448,60 @@ namespace MauMau.Classes.Background
                 previucard = card.ElementUI;
             }
         }
+        private void RealignMoreThanSeven(Player pl)
+        {
+            int space = 0;
+            int getsize = pl.Hand.Count;
+            UIElement previucard = new UIElement();
+            Lista<Carta> cartas = this.roda.GetCurrentPlayer().GetHand();
+
+            foreach (Carta card in pl.Hand)
+            {
+                if (Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard) > 50)
+                {
+                    int indexstart = this.roda.GetCurrentPlayer().Hand.GetIndexOf(card);
+                    int handsize = this.roda.GetCurrentPlayer().Hand.Count;
+
+                    double diferencedistance = Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard);
+
+                    for (int i = indexstart; i < handsize; i++)
+                    {
+                        Canvas.SetLeft(cartas[i].ElementUI, Canvas.GetLeft(cartas[i].ElementUI) - diferencedistance + 30);
+                    }
+                    break;
+                }
+                Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) - space);
+                previucard = card.ElementUI;
+                space++;
+            }
+        }
+        private void RealignLessThanSeven(Player pl)
+        {
+            int space = 0;
+            int getsize = pl.Hand.Count;
+            UIElement previucard = new UIElement();
+            Lista<Carta> cartas = this.roda.GetCurrentPlayer().GetHand();
+
+            foreach (Carta card in pl.Hand)
+            {
+                if (Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard) > 50)
+                {
+                    int indexstart = this.roda.GetCurrentPlayer().Hand.GetIndexOf(card);
+                    int handsize = this.roda.GetCurrentPlayer().Hand.Count;
+
+                    double diferencedistance = Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard);
+
+                    for (int i = indexstart; i < handsize; i++)
+                    {
+                        Canvas.SetLeft(cartas[i].ElementUI, Canvas.GetLeft(cartas[i].ElementUI) - diferencedistance + 30);
+                    }
+                    break;
+                }
+                Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) - space);
+                previucard = card.ElementUI;
+                space++;
+            }
+        }
         public void RealignCards()
         {
             Player pl = this.roda.GetCurrentPlayer();
@@ -459,25 +514,7 @@ namespace MauMau.Classes.Background
             {
                 if (pl.Position == Enum.PlayerPosition.Bottom || pl.Position == Enum.PlayerPosition.Top)
                 {
-                    foreach (Carta card in pl.Hand)
-                    {
-                        if (Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard) > 50)
-                        {
-                            int indexstart = this.roda.GetCurrentPlayer().Hand.GetIndexOf(card);
-                            int handsize = this.roda.GetCurrentPlayer().Hand.Count;
-
-                            double diferencedistance = Canvas.GetLeft(card.ElementUI) - Canvas.GetLeft(previucard);
-
-                            for (int i = indexstart; i < handsize; i++)
-                            {
-                                Canvas.SetLeft(cartas[i].ElementUI, Canvas.GetLeft(cartas[i].ElementUI) - diferencedistance + 30);
-                            }
-                            break;
-                        }
-                        Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) - space);
-                        previucard = card.ElementUI;
-                        space++;
-                    }
+                    this.RealignMoreThanSeven(pl);
                 }
                 else
                 {
@@ -493,12 +530,7 @@ namespace MauMau.Classes.Background
             {
                 if (pl.Position == Enum.PlayerPosition.Bottom || pl.Position == Enum.PlayerPosition.Top)
                 {
-                    foreach (Carta card in pl.Hand)
-                    {
-                        Canvas.SetLeft(card.ElementUI, Canvas.GetLeft(card.ElementUI) + space);
-                        previucard = card.ElementUI;
-                        space++;
-                    }
+                    this.RealignLessThanSeven(pl);
                 }
                 else
                 {
