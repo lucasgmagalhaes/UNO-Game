@@ -417,11 +417,12 @@ namespace MauMau.Classes.Background
         {
             Player current = this.GetCurrentPlayer();
             Carta carta_jogada = current.PlayCard(card);
+
+            Log.AddEventoJogarCarta(current, carta_jogada);
+
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
             this.RealignCards();
-
-            Log.AddEventoJogarCarta(current, carta_jogada);
         }
         /// <summary>
         /// Não usado atualmente

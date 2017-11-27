@@ -22,6 +22,8 @@ namespace MauMau
         {
             InitializeComponent();
 
+            Log.AddEventoPersonalizado("O JOGO COMEÇOU!!!");
+
             this.selectblue.Opacity = 0;
             this.selectgreen.Opacity = 0;
             this.selectred.Opacity = 0;
@@ -334,6 +336,9 @@ namespace MauMau
         private void SetColor(Cor color)
         {
             this.eng.ColorChosen = color;
+
+            Log.AddEventoMudancaCor(eng.GetCurrentPlayer(), color);
+
             this.anim.HidePaletColors();
             this.eng.EndTurn();
         }

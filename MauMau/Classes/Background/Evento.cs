@@ -98,10 +98,12 @@ namespace MauMau.Classes.Background
                     if (jogadores.GetIndexOf(turno.GetCurrentPlayer()) + 2 >= jogadores.Count)
                     {
                         turno.SetCurrentPlayer(jogadores[0]);
+                        Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
                     }
                     else
                     {
                         turno.SetCurrentPlayer(jogadores[jogadores.GetIndexOf(turno.GetCurrentPlayer()) + 2]);
+                        Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
                     }
                     break;
 
@@ -110,15 +112,15 @@ namespace MauMau.Classes.Background
                     if (jogadores.GetIndexOf(turno.GetCurrentPlayer()) - 2 < 0)
                     {
                         turno.SetCurrentPlayer(jogadores[jogadores.Count - 1]);
+                        Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
                     }
                     else
                     {
                         turno.SetCurrentPlayer(jogadores[jogadores.GetIndexOf(turno.GetCurrentPlayer()) - 1]);
+                         Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
                     }
                     break;
             }
-
-            Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
         }
 
         /// <summary>

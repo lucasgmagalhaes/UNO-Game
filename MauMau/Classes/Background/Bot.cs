@@ -175,6 +175,7 @@ namespace MauMau.Classes.Background
         /// Recebe a carta do topo do coletor e o Monte</param> 
         public void Jogar()
         {
+            Log.AddEventoJogadorAtual(this);
             // pega carta do top do coletor como referencia
             cdTop = this.eng.Descarte.GetTopCard();
             Lista<Carta> listaaux = new Lista<Carta>();

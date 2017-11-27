@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MauMau.Classes.Background.Cartas;
+using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background
 {
@@ -101,9 +102,13 @@ namespace MauMau.Classes.Background
             listaEventos.Add(horaAtual + "O Jogador " + player.Infos.Name + " comprou " + quantCartas + " cartas.");
         }
 
+        /// <summary>
+        /// Evento chamado sempre que um jogador for bloqueado.
+        /// </summary>
+        /// <param name="playerBloqueado"></param>
         static public void AddEventoBloquearJogador(Player playerBloqueado)
         {
-            listaEventos.Add(horaAtual + "O Jogador " + player.Infos.Name + " perdeu a vez.");
+            listaEventos.Add(horaAtual + "O Jogador " + playerBloqueado.Infos.Name + " perdeu a vez.");
         }
 
         /// <summary>
@@ -111,7 +116,7 @@ namespace MauMau.Classes.Background
         /// </summary>
         static public void AddEventoPassagemTurno()
         {
-            listaEventos.Add(horaAtual + "- - - FIM DE TURNO - - -");
+            listaEventos.Add(horaAtual + "- - - - - - - - - - - - FIM DE TURNO - - - - - - - - - - - - - - -");
         }
 
         /// <summary>
@@ -121,6 +126,42 @@ namespace MauMau.Classes.Background
         static public void AddEventoPersonalizado(string descricaoEvento)
         {
             listaEventos.Add(horaAtual + descricaoEvento);
+        }
+
+        static public void AddEventoMudancaCor(Player player, Cor corEscolhida)
+        {
+            string cor = "";
+
+            switch (corEscolhida)
+            {
+                case Cor.Amarelo:
+                    cor = "Amarelo";
+                    break;
+
+                case Cor.Azul:
+                    cor = "Azul";
+                    break;
+
+                case Cor.Verde:
+                    cor = "Verde";
+                    break;
+
+                case Cor.Vermelho:
+                    cor = "Vermelho";
+                    break;
+            }
+
+            ListaEventos.Add(horaAtual + "O Jogador " + player.Infos.Name + " escolheu a cor " + cor + ".");
+        }
+
+        static public void AddEventoJogadorAtual(Player playerAtual)
+        {
+            ListaEventos.Add(horaAtual + "Agora é a vez do Jogador " + playerAtual.Infos.Name + "!");
+        }
+
+        static public void AddEventoFimJogada(Player playerAtual)
+        {
+            ListaEventos.Add(horaAtual + "O Jogador " + playerAtual.Infos.Name + " finalizou sua jogada!");
         }
     }
 }

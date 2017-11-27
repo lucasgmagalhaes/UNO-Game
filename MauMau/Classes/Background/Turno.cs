@@ -54,6 +54,8 @@ namespace MauMau.Classes.Background
         /// </summary>
         public void EndPLayerTurn()
         {
+            Log.AddEventoFimJogada(GetCurrentPlayer());
+
             if (sentido == SentidoJogada.Horario)
             {
                 if (jogadores.GetIndexOf(current) + 1 == jogadores.Count)
@@ -77,11 +79,16 @@ namespace MauMau.Classes.Background
                 }
             }
 
-            contTurno++;
+            VerificarPassagemTurno();
         }
 
+        /// <summary>
+        /// Assim que completar 4 jogadas, passa o turno.
+        /// </summary>
         private void VerificarPassagemTurno()
         {
+            contTurno++;
+
             if (contTurno == 4)
             {
                 Log.AddEventoPassagemTurno();
