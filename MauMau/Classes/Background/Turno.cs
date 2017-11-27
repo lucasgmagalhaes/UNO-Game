@@ -3,7 +3,7 @@ using MauMau.Classes.Background.Estruturas;
 
 namespace MauMau.Classes.Background
 {
-    class Turno
+    public class Turno
     {
         private Lista<Player> jogadores = new Lista<Player>();
         private Player current;
@@ -78,7 +78,7 @@ namespace MauMau.Classes.Background
         }
         public Player GetPlayerByPosition(PlayerPosition pos)
         {
-           foreach(Player pl in this.jogadores)
+            foreach (Player pl in this.jogadores)
             {
                 if (pl.Position == pos) return pl;
             }
@@ -105,7 +105,7 @@ namespace MauMau.Classes.Background
             {
                 if (jogadores.GetIndexOf(current) - 1 < 0)
                 {
-                    return  jogadores[jogadores.Count - 1];
+                    return jogadores[jogadores.Count - 1];
                 }
                 else
                 {

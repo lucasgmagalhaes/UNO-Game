@@ -1,6 +1,6 @@
 ﻿namespace MauMau.Classes.Background.Estruturas
 {
-    class Elemento
+   public class Elemento
     {
         private object dado;
         private Elemento proximo;

@@ -8,7 +8,7 @@ using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background.Util
 {
-    class Animation
+   public class Animation
     {
         private DoubleAnimation moveAnimY = new DoubleAnimation();
         private DoubleAnimation moveAnimYHideEllipse = new DoubleAnimation();

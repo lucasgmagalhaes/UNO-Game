@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MauMau.Classes.Background
 {
-    class Monte
+    public class Monte
     {
         /// <summary>
         /// Lista de todas as cartas do restantes

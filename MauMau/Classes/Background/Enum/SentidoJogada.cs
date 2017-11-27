@@ -1,6 +1,6 @@
 ﻿namespace MauMau.Classes.Background.Enum
 {
-    enum SentidoJogada
+   public enum SentidoJogada
     {
         Horario = 1,
         AntiHorario = -1

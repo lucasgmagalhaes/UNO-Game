@@ -9,7 +9,7 @@ using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background.Cartas
 {
-    class Normal : Carta
+   public class Normal : Carta
     {
         private int numero;
         private Cor cor;

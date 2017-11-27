@@ -11,7 +11,7 @@ using MauMau.Classes.Background.Enum;
 
 namespace MauMau.Classes.Background
 {
-    abstract class Carta : ICompatible
+    public abstract class Carta : ICompatible
     {
         protected ImageBrush frontImage;
         protected ImageBrush backImage = new ImageBrush(((ImageSource)Application.Current.Resources["Card_other_back"]));

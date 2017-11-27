@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:MauMau.Windows"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
-        Title="Log de operações" Height="358.131" Width="317.284" KeyDown="Window_KeyDown">
+        Title="Log de operações" Height="512.842" Width="385.44" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="logfield" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,31,0,0">
+        <ListBox x:Name="logfield" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,88,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
@@ -21,6 +21,14 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="btnlogclear" Content="Limpar log" HorizontalAlignment="Stretch"  Margin="224,6,10,0" VerticalAlignment="Top" Cursor="Hand" Click="btnlogclear_Click" />
+        <Button x:Name="btnlogclear" Content="Limpar log" HorizontalAlignment="Stretch"  Margin="283,6,10,0" VerticalAlignment="Top" Cursor="Hand" Click="btnlogclear_Click" />
+        <GroupBox Header="Nº Cartas" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Width="252">
+            <Grid HorizontalAlignment="Stretch" Margin="5,4,0,-3" VerticalAlignment="Stretch">
+                <Label x:Name="player1" Content="PL1" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="102"/>
+                <Label x:Name="player2" Content="PL2" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="102"/>
+                <Label x:Name="player3" Content="PL3" HorizontalAlignment="Left" Margin="117,4,0,0" VerticalAlignment="Top" Width="102"/>
+                <Label x:Name="player4" Content="PL4" HorizontalAlignment="Left" Margin="117,30,0,0" VerticalAlignment="Top" Width="102"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

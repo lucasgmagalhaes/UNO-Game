@@ -10,7 +10,7 @@ namespace MauMau.Classes.Background
     /// <summary>
     /// Cartas jogadas
     /// </summary>
-    class Coletor
+    public class Coletor
     {
         /// <summary>
         /// Pilha de todas as cartas do baralho

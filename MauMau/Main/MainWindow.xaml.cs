@@ -334,7 +334,7 @@ namespace MauMau
         {
             if(e.Key == Key.L)
             {
-                ScreenLog log = new ScreenLog();
+                ScreenLog log = new ScreenLog(this.eng);
                 log.Show();
             }
         }

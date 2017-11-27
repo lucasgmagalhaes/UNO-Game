@@ -6,7 +6,7 @@ using MauMau.Classes.Background.Estruturas;
 
 namespace MauMau.Classes.Background
 {
-    class Evento
+    public class Evento
     {
         /// <summary>
         /// Referência para o motor do jogo
@@ -173,8 +173,9 @@ namespace MauMau.Classes.Background
                         Comprar(4);
                         break;
                 }
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }

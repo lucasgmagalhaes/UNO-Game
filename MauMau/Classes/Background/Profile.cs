@@ -8,7 +8,7 @@ using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
-    class Profile
+    public class Profile
     {
         private string name;
         private ImageBrush source;
@@ -16,7 +16,10 @@ namespace MauMau.Classes.Background
 
         public string Name { get { return this.name; } }
         public ImageBrush Source { get { return this.source; } }
-        public Rectangle ElementUI { get { return elementUI; } set { elementUI = value; }
+        public Rectangle ElementUI
+        {
+            get { return elementUI; }
+            set { elementUI = value; }
         }
 
         public Profile(string name, ImageBrush source)

@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
-    class Player
+   public class Player
     {
         protected Lista<Carta> hand;
         protected Profile infos;

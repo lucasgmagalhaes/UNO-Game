@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace MauMau.Classes.Background
 {
-    class Enginee
+    public class Enginee
     {
         double screenSizeX;
         double screenSizeY;
@@ -420,8 +420,7 @@ namespace MauMau.Classes.Background
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
 
-            Log.AdicionarEvento(current);
-            Log.AdicionarEvento(carta_jogada);
+            Log.AdicionarEvento(current, carta_jogada);
         }
         /// <summary>
         /// Não usado atualmente

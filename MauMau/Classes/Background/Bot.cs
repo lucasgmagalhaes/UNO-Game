@@ -2,6 +2,7 @@
 using MauMau.Classes.Background.Enum;
 using MauMau.Classes.Background.Estruturas;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +12,7 @@ using System.Windows.Shapes;
 
 namespace MauMau.Classes.Background
 {
-    class Bot : Player
+    public class Bot : Player
     {
         /// <summary>
         /// Elemento gráfico que contem todos os outros (Referência dele)
@@ -75,6 +76,77 @@ namespace MauMau.Classes.Background
             this.ambiente = this.eng.Enviroment;
             this.SetHand(hand);
             SetProfile(infos);
+        }
+        /// <summary>
+        /// Retorna a cor mais abundande na mão
+        /// </summary>
+        /// <returns></returns>
+        private Cor GetHightColor()
+        {
+            Dictionary<Cor, int> quantidade = new Dictionary<Cor, int>();
+            quantidade.Add(Cor.Amarelo, 0);
+            quantidade.Add(Cor.Azul, 0);
+            quantidade.Add(Cor.Verde, 0);
+            quantidade.Add(Cor.Vermelho, 0);
+            quantidade.Add(Cor.None, 0);
+
+            int countaux;
+            Cor auxcor = 0;
+            foreach (Carta card in base.hand)
+            {                
+                if(!(card is Coringa))
+                {
+                    if(card is Normal)
+                    {
+                        Normal aux = (Normal)card;
+                        switch (aux.Cor)
+                        {
+                            case Cor.Amarelo: auxcor = Cor.Amarelo;
+                                break;
+                            case Cor.Azul: auxcor = Cor.Azul;
+                                break;
+                            case Cor.Verde: auxcor = Cor.Verde;
+                                break;
+                            case Cor.Vermelho: auxcor = Cor.Vermelho;
+                                break;
+                        }
+                        quantidade.TryGetValue(auxcor, out countaux);
+                        quantidade[auxcor] = ++countaux;
+                    }
+                    else
+                    {
+                        Especial aux = (Especial)card;
+                        switch (aux.Cor)
+                        {
+                            case Cor.Amarelo:
+                                auxcor = Cor.Amarelo;
+                                break;
+                            case Cor.Azul:
+                                auxcor = Cor.Azul;
+                                break;
+                            case Cor.Verde:
+                                auxcor = Cor.Verde;
+                                break;
+                            case Cor.Vermelho:
+                                auxcor = Cor.Vermelho;
+                                break;
+                        }
+                        quantidade.TryGetValue(auxcor, out countaux);
+                        quantidade[auxcor] = ++countaux;
+                    }
+                }
+                else
+                {
+                    quantidade.TryGetValue(Cor.None, out countaux);
+                    quantidade[Cor.None] = ++countaux;
+                }
+            }
+            KeyValuePair<Cor, int> retorno = new KeyValuePair<Cor, int>(Cor.None, int.MinValue);
+            foreach(KeyValuePair<Cor, int> item in quantidade)
+            {
+                if (item.Value > retorno.Value) retorno = item;
+            }
+            return retorno.Key;
         }
         /// <summary>
         /// Construtor do BOT sem as cartas da mão definidas
@@ -142,6 +214,10 @@ namespace MauMau.Classes.Background
             }
             else if (listaaux.Count == 1)
             {
+                if (listaaux[0] is Coringa)
+                {
+                    this.eng.ColorChosen = this.GetHightColor();
+                }
                 this.getcard = listaaux[0];
             }
             else

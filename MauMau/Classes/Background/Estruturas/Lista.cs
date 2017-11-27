@@ -8,7 +8,7 @@ namespace MauMau.Classes.Background.Estruturas
     /// Lista de elementos do tipo T
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class Lista<T> : IEnumerator, IEnumerable
+    public class Lista<T> : IEnumerator, IEnumerable
     {
         private Elemento prim, ult;
         private int count;
@@ -41,7 +41,7 @@ namespace MauMau.Classes.Background.Estruturas
             get
             {
                 T val = (T)this.GetByIndex(index);
-                if (val == null) throw new InvalidIndexException(this.ToString() + " line 41"); 
+                if (val == null) throw new InvalidIndexException(this.ToString() + " line 41");
                 return val;
             }
             set
@@ -217,7 +217,7 @@ namespace MauMau.Classes.Background.Estruturas
         /// <summary>
         /// Classe interna para foreach
         /// </summary>
-        private class internClass : IEnumerator
+        private sealed class internClass : IEnumerator
         {
             private Lista<T> val;
             private int indexactual = -1;

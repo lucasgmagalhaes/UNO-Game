@@ -2,7 +2,7 @@
 
 namespace MauMau.Classes.Background.Interfaces
 {
-    interface ICompatible
+   public interface ICompatible
     {
         bool Compatible(ICompatible card);
         bool Compatible(ICompatible card, Cor color);

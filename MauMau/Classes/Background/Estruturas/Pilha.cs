@@ -2,7 +2,7 @@
 
 namespace MauMau.Classes.Background.Estruturas
 {
-    class Pilha<T>
+   public class Pilha<T>
     {
         public Elemento topo, fundo;
         private int count = 0;

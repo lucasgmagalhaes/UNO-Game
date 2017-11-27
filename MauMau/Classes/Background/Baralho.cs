@@ -9,7 +9,7 @@ using MauMau.Classes.Background.Estruturas;
 using System.IO;
 namespace MauMau.Classes.Background
 {
-    class Baralho
+    public class Baralho
     {
         /// <summary>
         /// Lista de todas as cartas do baralho
