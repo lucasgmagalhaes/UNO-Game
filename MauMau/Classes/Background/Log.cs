@@ -6,69 +6,48 @@ namespace MauMau.Classes.Background
 {
     static class Log
     {
-<<<<<<< HEAD
-        static List<String> listaEventos = new List<string>();
-=======
         static int aux;
         static List<String> listaEventos = new List<String>();
->>>>>>> a61589a99ae81678c74626ae16d03cc76ef3485e
 
         public static List<String> ListaEventos { get => listaEventos; set => listaEventos = value; }
 
         /// <summary>
-        /// Chamado sempre que uma carta for jogada, armazenando na lista o nome do jogador e a(s) carta(s) jogada(s) por ele.
+        /// Chamado sempre que uma carta for jogada.
         /// </summary>
-        static public void AdicionarEvento(Player player, Carta card)
+        static public void AdicionarEvento(Object obj)
         {
-            string textoEfeito;
             string horaAtual = DateTime.UtcNow.TimeOfDay.ToString().Substring(0, 8) + " - ";
-            string textoPadrao = "O jogador " + player.Infos.Name + " jogou a carta ";
+            string textoPadrao = horaAtual + "Carta jogada: ";
 
-            switch (card.GetType().Name)
+
+            switch (obj.GetType().Name)
             {
                 case "Normal":
-                    Normal normal = (Normal)card;
-                    listaEventos.Add(horaAtual + textoPadrao + normal.Cor + " " + normal.Numero + ".");
+                    Normal aux = (Normal)obj;
+                    listaEventos.Add(textoPadrao + aux.Cor + " " + aux.Numero);
+                    break;
+
+                case "Bot":
+                    Player bot = (Player)obj;
+                    listaEventos.Add(horaAtual + "Player atual: " + bot.Infos.Name);
+                    break;
+
+                case "Player":
+                    Player player = (Player)obj;
+                    listaEventos.Add(horaAtual + "Player atual: " + player.Infos.Name);
                     break;
 
                 case "Especial":
-                    Especial especial = (Especial)card;
-
-                    textoEfeito = especial.Efeito.ToString();
-
-                    // Se for uma carta do tipo "comprar 2", será resolvida no bloco try. Se não (inverter), será no catch.
-                    try
-                    {
-                        int auxiliar = int.Parse(textoEfeito.Substring(textoEfeito.Length - 1));
-                        textoEfeito = textoEfeito.Remove(textoEfeito.Length - 1);
-                        textoEfeito += " " + auxiliar.ToString();
-                    }
-                    catch { }
-
-                    listaEventos.Add(horaAtual + textoPadrao + especial.Cor + " " + textoEfeito + ".");
+                    Especial especial = (Especial)obj;
+                    listaEventos.Add(textoPadrao + especial.Cor + ", Efeito: " + especial.Efeito);
                     break;
 
                 case "Coringa":
-                    Coringa coringa = (Coringa)card;
-
-                    textoEfeito = coringa.Efeito.ToString();
-
-                    // Se for um tipo "coringa comprar 4", será resolvida no try. Se não, será no catch.
-                    try
-                    {
-                        int aux = int.Parse(textoEfeito.Substring(textoEfeito.Length-1));
-                        textoEfeito = "Coringa Comprar " + aux.ToString();
-                    }
-                    catch
-                    {
-                        textoEfeito = "Coringa";
-                    }
-
-                    listaEventos.Add(horaAtual + textoPadrao + textoEfeito + ".");
-
-
+                    Coringa coringa = (Coringa)obj;
+                    listaEventos.Add(textoPadrao + coringa.Efeito);
                     break;
-            }    
+            }
+
         }
     }
 }
