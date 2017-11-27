@@ -35,6 +35,7 @@ namespace MauMau.Classes.Background
             this.anim = new Animation(eng, 900);
             this.anim.MoveAnimX.Completed += MoveAnimX_Completed;
         }
+
         /// <summary>
         /// Envia duas cartas para a mão do jogador
         /// </summary>
@@ -64,6 +65,8 @@ namespace MauMau.Classes.Background
             this.numberofrepetions = quant;
             this.LoadPlayerInfos();
             this.Comprar();
+
+            Log.AddEventoComprarCartas(this.player_destiny, numberofrepetions);
         }
         /// <summary>
         /// Evento para quanto a animação terminar
@@ -114,7 +117,10 @@ namespace MauMau.Classes.Background
                     }
                     break;
             }
+
+            Log.AddEventoBloquearJogador(turno.GetCurrentPlayer());
         }
+
         /// <summary>
         /// Inverte a ordem sequencial de jogada
         /// </summary>
@@ -127,9 +133,13 @@ namespace MauMau.Classes.Background
             {
                 case SentidoJogada.Horario:
                     turno.SetSentido(SentidoJogada.AntiHorario);
+
+                    Log.AddEventoInverterJogo();
                     break;
                 case SentidoJogada.AntiHorario:
                     turno.SetSentido(SentidoJogada.Horario);
+
+                    Log.AddEventoInverterJogo();
                     break;
             }
         }
@@ -140,7 +150,7 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         public bool HasEfect(Carta card)
         {
-            if (card is Especial || card is Coringa) return true;
+            if (card is Especial || card is Curinga) return true;
             else return false;
         }
         /// <summary>
@@ -150,7 +160,7 @@ namespace MauMau.Classes.Background
         /// <returns></returns>
         public bool IsJoker(Carta card)
         {
-            if (card is Coringa) return true;
+            if (card is Curinga) return true;
             return false;
         }
         /// <summary>
@@ -177,9 +187,9 @@ namespace MauMau.Classes.Background
                         break;
                 }
             }
-            else if (cardJogada is Coringa) //coringa troca cor
+            else if (cardJogada is Curinga) //coringa troca cor
             {
-                Coringa aux = (Coringa)cardJogada;
+                Curinga aux = (Curinga)cardJogada;
                 if (this.eng.GetCurrentPlayer().Position == PlayerPosition.Bottom)
                 {
                     this.anim.ShowPaletColors();

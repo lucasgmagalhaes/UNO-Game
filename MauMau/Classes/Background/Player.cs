@@ -173,6 +173,8 @@ namespace MauMau.Classes.Background
         public void SayUno()
         {
             this.uno = true;
+
+            Log.AddEventoSayUno(this);
         }
     }
 }

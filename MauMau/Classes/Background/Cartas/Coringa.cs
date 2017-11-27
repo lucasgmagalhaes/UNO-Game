@@ -4,12 +4,12 @@ using MauMau.Classes.Background.Interfaces;
 
 namespace MauMau.Classes.Background.Cartas
 {
-   public class Coringa : Carta
+   public class Curinga : Carta
     {
         private Efeito efeito;
 
         public Efeito Efeito { get { return this.efeito; } }
-        public Coringa(ImageBrush img, Efeito buycards, string id) : base(img, id)
+        public Curinga(ImageBrush img, Efeito buycards, string id) : base(img, id)
         {
             base.frontImage = img;
             this.efeito = buycards;

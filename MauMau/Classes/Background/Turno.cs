@@ -5,6 +5,7 @@ namespace MauMau.Classes.Background
 {
     public class Turno
     {
+        int contTurno = 0;
         private Lista<Player> jogadores = new Lista<Player>();
         private Player current;
         private SentidoJogada sentido; // 1 sentido horario - -1 sentido anti-horario
@@ -75,7 +76,20 @@ namespace MauMau.Classes.Background
                     current = jogadores[jogadores.GetIndexOf(current) - 1];
                 }
             }
+
+            contTurno++;
         }
+
+        private void VerificarPassagemTurno()
+        {
+            if (contTurno == 4)
+            {
+                Log.AddEventoPassagemTurno();
+
+                contTurno = 0;
+            }
+        }
+
         public Player GetPlayerByPosition(PlayerPosition pos)
         {
             foreach (Player pl in this.jogadores)

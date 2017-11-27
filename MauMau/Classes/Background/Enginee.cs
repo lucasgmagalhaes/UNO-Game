@@ -395,7 +395,7 @@ namespace MauMau.Classes.Background
         {
             Carta aux = this.monte.RemoveTopCard();
             Pilha<Carta> pilhaaux = new Pilha<Carta>();
-            while (aux is Especial || aux is Coringa)
+            while (aux is Especial || aux is Curinga)
             {
                 pilhaaux.Push(aux);
                 aux = this.monte.RemoveTopCard();
@@ -420,7 +420,7 @@ namespace MauMau.Classes.Background
             this.evento.EventAtivado(carta_jogada);
             this.descarte.AddCard(carta_jogada);
 
-            Log.AdicionarEvento(current, carta_jogada);
+            Log.AddEventoJogarCarta(current, carta_jogada);
         }
         /// <summary>
         /// Não usado atualmente

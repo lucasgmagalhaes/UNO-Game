@@ -94,7 +94,7 @@ namespace MauMau.Classes.Background
             Cor auxcor = 0;
             foreach (Carta card in base.hand)
             {                
-                if(!(card is Coringa))
+                if(!(card is Curinga))
                 {
                     if(card is Normal)
                     {
@@ -195,7 +195,7 @@ namespace MauMau.Classes.Background
             {
                 foreach (Carta card in listaaux)
                 {
-                    if (card is Coringa)
+                    if (card is Curinga)
                     {
                         this.getcard = card;
                     }
@@ -214,7 +214,7 @@ namespace MauMau.Classes.Background
             }
             else if (listaaux.Count == 1)
             {
-                if (listaaux[0] is Coringa)
+                if (listaaux[0] is Curinga)
                 {
                     this.eng.ColorChosen = this.GetHightColor();
                 }
